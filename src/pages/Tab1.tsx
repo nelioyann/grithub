@@ -10,24 +10,24 @@ const Tab1: React.FC = () => {
       <Header name="Habits" icon={settingsOutline} iconTarget="/settings" />
       <IonContent fullscreen >
         <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" />
-        <div className="page-wrapper ion-padding-horizontal">
+        <div className="page-wrapper ion-padding-horizontal" >
 
-          <div className="page-wrapper-content ">
+          <div className="page-wrapper-content" style={{ position: 'relative' }}>
             <Heading2>
               Welcome back, John Dough
             </Heading2>
-            <Heading5 style={{marginTop: "3em", textAlign: "center"}}>
-            You haven't set any habit yet
+            <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
+              You haven't set any habit yet
             </Heading5>
 
             {/* <IonFab vertical="bottom" horizontal="end" slot="fixed"> */}
-            <div style={{position: "fixed", bottom: "2em", right: "1em"}}>
+            <div style={{ position: "absolute", bottom: "0", right: "1em" }}>
 
-          <IonFabButton routerLink="/new">
-            <IonIcon icon={addOutline} />
-          </IonFabButton>
+              <IonFabButton routerLink="/new">
+                <IonIcon icon={addOutline} />
+              </IonFabButton>
             </div>
-        {/* </IonFab> */}
+            {/* </IonFab> */}
           </div>
         </div>
       </IonContent>

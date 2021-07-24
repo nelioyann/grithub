@@ -1,24 +1,26 @@
 .page-wrapper-content, ion-toolbar{
     width: clamp(15em, 100%, 45em) ;
-    margin: 0px auto !important;
+    margin: 0 auto 0px !important;
     
 }
 
 
-ion-header, ion-toolbar{
+/* ion-header, ion-toolbar{
     background: white;
-}
+} */
 /* ion-toolbar, ion-header, .header-collapse-condense ion-toolbar{
     --background: transparent;
 } */
 
 .page-wrapper{
     /* background: var(--ion-color-light); */
-
+    display: flex;
+    /* flex-direction: column; */
+    align-items: stretch;
     min-height: 80vh;
 }
 /* .page-wrapper-content{
-    margin-bottom: 2em;
+    height: 100%;
 } */
 
 .ion-page{

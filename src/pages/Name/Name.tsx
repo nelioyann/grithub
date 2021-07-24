@@ -14,17 +14,19 @@ const Name: React.FC = () => {
 
             <IonContent fullscreen >
 
-                <div className="page-wrapper ion-padding-horizontal">
+                <div className="page-wrapper ion-padding-horizontal" style={{alignItems: 'flex-end'}}>
 
                     <div className="page-wrapper-content">
-                        <ColumnContainer style={{marginTop: "2em"}}>
+                        <ColumnContainer style={{marginTop: "2em"}} >
 
-                        <Heading2>
+                        <Heading2 style={{marginTop: "auto"}}>
                             How should we refer to you ?
                         </Heading2>
 
+                        <div style={{filter: "invert(0.5)"}}>
 
                         <Lottie isClickToPauseDisabled={true} options={characterOptions} height={230} width={300} />
+                        </div>
 
                         <IonItem color="light">
                             <IonLabel position="floating">Preferred name</IonLabel>
