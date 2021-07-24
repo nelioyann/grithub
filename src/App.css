@@ -1,0 +1,39 @@
+.page-wrapper-content, ion-toolbar{
+    width: clamp(15em, 100%, 45em) ;
+    margin: 0px auto !important;
+    
+}
+
+
+ion-header, ion-toolbar{
+    background: white;
+}
+/* ion-toolbar, ion-header, .header-collapse-condense ion-toolbar{
+    --background: transparent;
+} */
+
+.page-wrapper{
+    /* background: var(--ion-color-light); */
+
+    min-height: 80vh;
+}
+/* .page-wrapper-content{
+    margin-bottom: 2em;
+} */
+
+.ion-page{
+    align-items: center;
+    /* background: var(--ion-color-light); */
+
+}
+
+
+
+ion-col{
+    display: flex;
+}
+
+ion-tab-button ion-label{
+    font-size: 0.875rem;
+    font-weight: var(--font-semibold);
+}

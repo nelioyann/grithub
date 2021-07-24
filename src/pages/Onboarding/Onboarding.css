@@ -1,0 +1,19 @@
+.swiper-slide {
+    display: block;
+    /* width: 100px !important; */
+    /* background-color: white !important; */
+  }
+
+
+.onboarding-modal{
+    --background: white;
+    --width: 100%;
+    --height: 100%;
+    /* display: none; */
+}
+
+.ion-page, ion-content{
+  align-items: center;
+  --background: var(--ion-color-light);
+
+}

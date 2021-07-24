@@ -1,0 +1,16 @@
+.bottom-tab-bar .tab-selected::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0.5em;
+    box-sizing: border-box;
+    width: calc(100% - 1em);
+    height: 0.25em;
+    border-radius: 5px;
+    
+    background-color: var(--ion-color-primary);
+
+}
+.bottom-tab-bar ion-tab-button{
+    position: relative;
+}
