@@ -17,16 +17,16 @@ const Name: React.FC = () => {
                 <div className="page-wrapper ion-padding-horizontal">
 
                     <div className="page-wrapper-content">
-                        <ColumnContainer style={{marginTop: "4em"}}>
+                        <ColumnContainer style={{marginTop: "2em"}}>
 
                         <Heading2>
                             How should we refer to you ?
                         </Heading2>
 
 
-                        <Lottie isClickToPauseDisabled={true} options={characterOptions} height={300} width={300} />
+                        <Lottie isClickToPauseDisabled={true} options={characterOptions} height={230} width={300} />
 
-                        <IonItem>
+                        <IonItem color="light">
                             <IonLabel position="floating">Preferred name</IonLabel>
                             <IonInput value={""}></IonInput>
                         </IonItem>

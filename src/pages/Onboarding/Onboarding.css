@@ -17,3 +17,7 @@
   --background: var(--ion-color-light);
 
 }
+
+.header-md::after{
+  background: none;
+}

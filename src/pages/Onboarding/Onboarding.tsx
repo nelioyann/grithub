@@ -47,9 +47,9 @@ const Onboarding: React.FC = () => {
     const [tutorialModal, setTutorialModal] = useState(true);
     return (
         <IonPage>
-            <IonHeader style={{ "--background": "transparent", "box-shadow": "none" }}>
+            <IonHeader className="noborder" style={{ "--background": "transparent", "--border-style": "none" }}>
 
-                <IonToolbar  >
+                <IonToolbar className="noborder"  style={{"--border-style": "none", "--background": "var(--ion-color-light)"}}  >
                     <IonButtons slot="end">
                         {currentIndex != 2 && <IonButton color="dark" onClick={() => handleSwipeFinal()} >
                             <MediumParagraph>
@@ -71,7 +71,7 @@ const Onboarding: React.FC = () => {
                             <Heading3 style={{ color: "var(--ion-color-primary)" }}>
                                 Create healthy habits and achieve your goals
                             </Heading3>
-                            <Lottie isClickToPauseDisabled={true} options={stairsOptions} height={300} width={300} />
+                            <Lottie isClickToPauseDisabled={true} options={stairsOptions} height={230} width={300} />
                             
                         </div>
                         <RowContainer>
@@ -98,14 +98,14 @@ const Onboarding: React.FC = () => {
                             <Heading3 style={{ color: "var(--ion-color-primary)" }}>
                                 Track your progress, one day at a time
                             </Heading3>
-                            <Lottie isClickToPauseDisabled={true} options={calendarOptions} height={300} width={300} />
+                            <Lottie isClickToPauseDisabled={true} options={calendarOptions} height={230} width={300} />
                             
                         </div>
 
                         <IonButton onClick={() => handleSwipeNext()} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
                             <LargeButton>
 
-                                Suivant
+                                Next
                             </LargeButton>
 
                         </IonButton>
@@ -118,13 +118,13 @@ const Onboarding: React.FC = () => {
                             <Heading3 style={{ color: "var(--ion-color-primary)" }}>
                                 Visualize your growth and maintain streaks
                             </Heading3>
-                            <Lottie isClickToPauseDisabled={true} options={newhabitsOptions} height={300} width={300} />
+                            <Lottie isClickToPauseDisabled={true} options={newhabitsOptions} height={230} width={300} />
                             
                         </div>
                         <IonButton routerLink="/name" onClick={() => setTutorialModal(false)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
                             <LargeButton>
 
-                                Terminer
+                                Let's start
                             </LargeButton>
 
                         </IonButton>

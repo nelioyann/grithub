@@ -1,19 +1,18 @@
 import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar } from '@ionic/react'
-import { settingsOutline } from 'ionicons/icons'
 import React from 'react'
-import Header from '../../components/Headers/Header'
-import { Heading2, Heading4, Heading5 } from '../../theme/globalStyles'
+import { Heading2, Heading4 } from '../../theme/globalStyles'
 
-const Settings = () => {
+const New = () => {
     return (
         <IonPage >
+            {/* <Header name="Habits" icon={settingsOutline} iconTarget="/onboarding" /> */}
             <IonHeader>
                 <IonToolbar  >
                     <IonButtons slot="start">
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
                     <IonTitle>
-                        <Heading4 style={{ color: "var(--ion-color-primary)", textAlign: "left" }}>Settings</Heading4>
+                        <Heading4 style={{ color: "var(--ion-color-primary)", textAlign: "left" }}>New habit</Heading4>
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
@@ -23,7 +22,7 @@ const Settings = () => {
 
                     <div className="page-wrapper-content ">
                         <Heading2>
-                            Settings
+                            
                         </Heading2>
                     </div>
                 </div>
@@ -32,4 +31,4 @@ const Settings = () => {
     )
 }
 
-export default Settings
+export default New

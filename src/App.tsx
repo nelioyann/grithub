@@ -37,6 +37,7 @@ import Tabs from './components/Tabs/Tabs';
 import Onboarding from './pages/Onboarding/Onboarding';
 import Name from './pages/Name/Name';
 import Settings from './pages/Settings/Settings';
+import New from './pages/New/New';
 
 const App: React.FC = () => (
   <IonApp>
@@ -54,6 +55,9 @@ const App: React.FC = () => (
         </Route>
         <Route path="/settings" exact={true} >
           <Settings />
+        </Route>
+        <Route path="/new" exact={true} >
+          <New />
         </Route>
         <Redirect exact from="/" to="/onboarding" />
       </IonRouterOutlet>
