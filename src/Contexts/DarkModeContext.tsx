@@ -9,7 +9,7 @@ export interface DarkModeContextProps {
 export const DarkModeContext = createContext({} as DarkModeContextProps)
 
 const DarkModeContextProvider:React.FC = (props) =>{
-    const [darkMode, darkModeSet] = useState(true);
+    const [darkMode, darkModeSet] = useState(false);
     
     const defaultThemeMode: DarkModeContextProps = {
         darkMode: darkMode, darkModeSet: darkModeSet
