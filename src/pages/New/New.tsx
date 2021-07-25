@@ -12,7 +12,7 @@ const New = () => {
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
                     <IonTitle>
-                        <Heading4 style={{ color: "var(--ion-color-primary)", textAlign: "left" }}>New habit</Heading4>
+                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "left" }}>New habit</Heading4>
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
@@ -21,18 +21,18 @@ const New = () => {
                 <div className="page-wrapper ion-padding-horizontal">
 
                     <div className="page-wrapper-content ">
-                        <ColumnContainer style={{marginTop: "0"}}>
+                        <ColumnContainer style={{marginTop: "4em"}}>
                         <Heading3  style={{ color: "var(--ion-color-primary)", textAlign: "center" }}>
                             I want to
                         </Heading3>
-                        <IonItem color="light">
+                        <IonItem color="light" style={{ border: "2px solid var(--ion-color-primary)", borderRadius: "1em"}}>
                             <IonLabel position="floating">New habit</IonLabel>
                             <IonInput value={""}></IonInput>
                         </IonItem>
                         <Heading3  style={{ color: "var(--ion-color-primary)", textAlign: "center" }}>
                             Everyday
                         </Heading3>
-                        <IonButton routerLink="/"  style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
+                        <IonButton routerLink="/tabs/habits"  style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
                                 <LargeButton>
 
                                     Create habit

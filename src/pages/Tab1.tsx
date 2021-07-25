@@ -1,11 +1,17 @@
-import { IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonCard, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { addCircle, addOutline, arrowForwardCircle, settingsOutline } from 'ionicons/icons';
 import Header from '../components/Headers/Header';
+import { NameContext } from '../Contexts/NameContext';
 import { Heading2, Heading5 } from '../theme/globalStyles';
 import './Tab1.css';
+import React, { useContext } from 'react'
+
 
 const Tab1: React.FC = () => {
-  const dummy = [{name: "Programming", id: 1, dates: [20210723]}]
+
+  const { name, nameSet } = useContext(NameContext);
+
+  const dummies = [{name: "Programming", id: 1, dates: [20210723]}, {name: "Reading", id: 2, dates: [20210723]}]
   let dummydate = Date.now();
   console.log(dummydate)
   return (
@@ -17,11 +23,23 @@ const Tab1: React.FC = () => {
 
           <div className="page-wrapper-content" style={{ position: 'relative' }}>
             <Heading2>
-              Welcome back, John Dough
+              Welcome back, {name}
             </Heading2>
-            <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
+            {/* <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
+              You haven't set any habit yet
+            </Heading5> */}
+            {dummies ? (dummies.map(dummy =>{
+              return(<IonCard className="ion-padding" key={dummy.id} button={true}>
+                <IonCardTitle>{dummy.name}</IonCardTitle>
+                <IonCardSubtitle>Streak: 000</IonCardSubtitle>
+              </IonCard>)
+            })): 
+            (
+              <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
               You haven't set any habit yet
             </Heading5>
+            )
+            }
 
             {/* <IonFab vertical="bottom" horizontal="end" slot="fixed"> */}
             <div style={{ position: "absolute", bottom: "0", right: "1em" }}>

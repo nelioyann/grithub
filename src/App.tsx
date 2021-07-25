@@ -39,6 +39,7 @@ import Name from './pages/Name/Name';
 import Settings from './pages/Settings/Settings';
 import New from './pages/New/New';
 import DarkModeContextProvider from './Contexts/DarkModeContext';
+import NameContextProvider from './Contexts/NameContext';
 
 const App: React.FC = () => (
   <IonApp>
@@ -46,6 +47,7 @@ const App: React.FC = () => (
       {/* <IonTabs> */}
       <IonRouterOutlet>
         <DarkModeContextProvider>
+        <NameContextProvider>
 
         <Route path="/tabs"  >
           <Tabs />
@@ -63,6 +65,7 @@ const App: React.FC = () => (
           <New />
         </Route>
         <Redirect exact from="/" to="/onboarding" />
+        </NameContextProvider>
         </DarkModeContextProvider>
       </IonRouterOutlet>
 

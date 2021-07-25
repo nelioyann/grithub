@@ -8,6 +8,7 @@ import { Heading2, Heading4, Heading5 } from '../../theme/globalStyles'
 const Settings: React.FC = () => {
 
     const {darkMode, darkModeSet} = useContext(DarkModeContext);
+    
     console.log(darkMode)
     // Query for the toggle that is used to change between themes
     const darkToggle = useRef<HTMLIonToggleElement>(null);
