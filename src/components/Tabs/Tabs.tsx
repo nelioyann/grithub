@@ -1,5 +1,5 @@
 import { IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react'
-import { apps, globe, trendingUp, personCircle } from 'ionicons/icons'
+import { appsOutline, globeOutline, trendingUp, personCircle } from 'ionicons/icons'
 import React from 'react'
 import { Route, Redirect } from 'react-router'
 import Tab1 from '../../pages/Tab1'
@@ -33,11 +33,11 @@ function Tabs() {
 
       <IonTabBar className="bottom-tab-bar" style={{  backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "60px" }} slot="bottom" >
         <IonTabButton layout="label-hide" tab="tab1" href="/tabs/habits">
-          <IonIcon icon={apps} />
+          <IonIcon icon={appsOutline} />
           <IonLabel>Habits</IonLabel>
         </IonTabButton>
         <IonTabButton layout="label-hide" tab="tab2" href="/tabs/community">
-          <IonIcon icon={globe} />
+          <IonIcon icon={globeOutline} />
           <IonLabel>Community</IonLabel>
         </IonTabButton>
 

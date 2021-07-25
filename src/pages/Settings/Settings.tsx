@@ -1,26 +1,29 @@
 import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonIcon, IonItem, IonLabel, IonToggle, IonList } from '@ionic/react'
 import { moon, settingsOutline } from 'ionicons/icons'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Header from '../../components/Headers/Header'
+import { DarkModeContext } from '../../Contexts/DarkModeContext'
 import { Heading2, Heading4, Heading5 } from '../../theme/globalStyles'
 
-const Settings = () => {
+const Settings: React.FC = () => {
 
-    const [darkMode, darkModeSet] = useState(false);
+    const {darkMode, darkModeSet} = useContext(DarkModeContext);
+    console.log(darkMode)
     // Query for the toggle that is used to change between themes
     const darkToggle = useRef<HTMLIonToggleElement>(null);
 
     useEffect(() => {
-        // Listen for changes to the prefers-color-scheme media query
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-        darkModeSet(prefersDark.matches)
-        handleDarkMode(prefersDark.matches)
+        //Listen for changes to the prefers-color-scheme media query
+        // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        // darkModeSet(prefersDark.matches)
+        handleDarkMode(darkMode)
     }, [darkMode])
 
 
     function handleDarkMode(checked: boolean): void {
         // Listen for the toggle check/uncheck to toggle the dark class on the <body>
         document.body.classList.toggle('dark', checked);
+        darkModeSet(checked)
 
     }
     // 

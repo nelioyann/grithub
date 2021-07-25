@@ -5,6 +5,9 @@ import { Heading2, Heading5 } from '../theme/globalStyles';
 import './Tab1.css';
 
 const Tab1: React.FC = () => {
+  const dummy = [{name: "Programming", id: 1, dates: [20210723]}]
+  let dummydate = Date.now();
+  console.log(dummydate)
   return (
     <IonPage >
       <Header name="Habits" icon={settingsOutline} iconTarget="/settings" />
