@@ -23,7 +23,7 @@ const Tab1: React.FC = () => {
 
           <div className="page-wrapper-content" style={{ position: 'relative' }}>
             <Heading2>
-              Welcome back, {name}
+              Welcome back, {name != "" ? name : "Fellow Grithuber"}
             </Heading2>
             {/* <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
               You haven't set any habit yet
@@ -42,7 +42,7 @@ const Tab1: React.FC = () => {
             }
 
             {/* <IonFab vertical="bottom" horizontal="end" slot="fixed"> */}
-            <div style={{ position: "absolute", bottom: "0", right: "1em" }}>
+            <div style={{ position: "absolute", bottom: "0.5em", right: "0.8em" }}>
 
               <IonFabButton routerLink="/new">
                 <IonIcon icon={addOutline} />

@@ -1,9 +1,9 @@
-import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonIcon, IonItem, IonLabel, IonToggle, IonList } from '@ionic/react'
-import { moon, settingsOutline } from 'ionicons/icons'
+import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonIcon, IonItem, IonLabel, IonToggle, IonList, IonListHeader } from '@ionic/react'
+import { bug, moon, person, settingsOutline } from 'ionicons/icons'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import Header from '../../components/Headers/Header'
 import { DarkModeContext } from '../../Contexts/DarkModeContext'
-import { Heading2, Heading4, Heading5 } from '../../theme/globalStyles'
+import { Heading2, Heading4, Heading5, SmallParagraph } from '../../theme/globalStyles'
 
 const Settings: React.FC = () => {
 
@@ -49,15 +49,36 @@ const Settings: React.FC = () => {
                             Settings
                         </Heading2>
                         <IonList>
-
+                            <IonListHeader>
+                                Appearance
+                            </IonListHeader>
                             <IonItem lines="full">
                                 <IonIcon slot="start" icon={moon}></IonIcon>
                                 <IonLabel>
-                                    Toggle Dark Theme
+                                    Dark Mode
                                 </IonLabel>
                                 <IonToggle ref={darkToggle} checked={darkMode} id="themeToggle" slot="end" onIonChange={e => handleDarkMode(e.detail.checked)} />
                             </IonItem>
                         </IonList>
+                        <IonList>
+                            <IonListHeader>
+                                Profile
+                            </IonListHeader>
+                            <IonItem detail={true} button={true} routerLink="/name" lines="full">
+                                <IonIcon slot="start" icon={person}></IonIcon>
+                                <IonLabel>
+                                    Change name
+                                </IonLabel>
+                            </IonItem>
+                            <IonItem detail={true} button={true} routerLink="/name" lines="full">
+                                <IonIcon slot="start" icon={bug}></IonIcon>
+                                <IonLabel>
+                                    Report a problem
+                                </IonLabel>
+                            </IonItem>
+                        </IonList>
+
+                        <SmallParagraph style={{textAlign:"center"}}>Version: beta 1</SmallParagraph>
                     </div>
                 </div>
             </IonContent>
