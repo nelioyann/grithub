@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "^3.1.2",
     "@capacitor/core": "3.1.1",
     "@ionic/react": "^5.5.0",
     "@ionic/react-router": "^5.5.0",
