@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ name, icon, collapsible, iconTarget }) 
                     </IonButton>
                 </IonButtons>
                 <IonTitle  size={collapsible ? "large" : undefined}>
-                    {collapsible ? <Heading3 style={{ color: "var(--ion-color-primary)" }} >{name}</Heading3> : <Heading4 style={{ color: "var(--ion-color-primary)" }}>{name}</Heading4>}
+                    <Heading4 style={{ color: "var(--ion-color-primary)" }}>{name}</Heading4>
                 </IonTitle>
             </IonToolbar>
 

@@ -2,7 +2,7 @@ import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, Io
 import React, { useState } from 'react'
 import { ColumnContainer, Heading2, Heading3, Heading4, Heading5, LargeButton } from '../../theme/globalStyles'
 
-const New = () => {
+const New: React.FC= () => {
     const [newHabit, newhabitSet] = useState<string>("")
 
     const handleChange = (habit: string) => {

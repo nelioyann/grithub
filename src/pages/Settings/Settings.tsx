@@ -1,13 +1,17 @@
 import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonIcon, IonItem, IonLabel, IonToggle, IonList, IonListHeader } from '@ionic/react'
 import { bug, moon, person, settingsOutline } from 'ionicons/icons'
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useHistory } from 'react-router'
 import Header from '../../components/Headers/Header'
+import { useAuth } from '../../Contexts/authProvider'
 import { DarkModeContext } from '../../Contexts/DarkModeContext'
 import { Heading2, Heading4, Heading5, SmallParagraph } from '../../theme/globalStyles'
 
 const Settings: React.FC = () => {
 
+    const history = useHistory()
     const {darkMode, darkModeSet} = useContext(DarkModeContext);
+    const {logout} = useAuth()
     
     console.log(darkMode)
     // Query for the toggle that is used to change between themes
@@ -25,6 +29,13 @@ const Settings: React.FC = () => {
         // Listen for the toggle check/uncheck to toggle the dark class on the <body>
         document.body.classList.toggle('dark', checked);
         darkModeSet(checked)
+
+    }
+
+    const doLogout = () => {
+        logout();
+        history.replace("/login")
+
 
     }
     // 
@@ -74,6 +85,12 @@ const Settings: React.FC = () => {
                                 <IonIcon slot="start" icon={bug}></IonIcon>
                                 <IonLabel>
                                     Report a problem
+                                </IonLabel>
+                            </IonItem>
+                            <IonItem detail={true} button={true} onClick={doLogout} lines="full">
+                                <IonIcon slot="start" icon={bug}></IonIcon>
+                                <IonLabel>
+                                    Logout
                                 </IonLabel>
                             </IonItem>
                         </IonList>

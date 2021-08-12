@@ -77,17 +77,12 @@ const App: React.FC = () => {
             {/* Important to keep these inlines for privating routes */}
             <PrivateRoute path="/tabs" component={Tabs} />
             
-            <Route path="/onboarding" exact={true} >
-              <Onboarding />
-            </Route>
+            <Route path="/new" component={New} />
+            <Route path="/onboarding" component={Onboarding} />
+            <PrivateRoute path="/settings" component={Settings} />
+              
             <Route path="/name" exact={true} >
               <Name />
-            </Route>
-            <Route path="/settings" exact={true} >
-              <Settings />
-            </Route>
-            <Route path="/new" exact={true} >
-              <New />
             </Route>
 
             <Route path="/login" exact={true}>
@@ -123,7 +118,7 @@ const PrivateRoute = ({component: Component, ...rest}:any) => {
   )
 }
 
-const Tabs = () => {
+const Tabs: React.FC= () => {
   return (
     <IonTabs >
       <IonRouterOutlet>
