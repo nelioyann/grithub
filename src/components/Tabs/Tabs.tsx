@@ -14,24 +14,17 @@ function Tabs() {
   return (
     <IonTabs >
       <IonRouterOutlet>
-        {/* <FetchedModuleContextProvider> */}
-        {/* <Route exact path="/module/:id" >
-            <ViewModule />
-          </Route> */}
         <Route exact path="/tabs/habits">
           <Tab1 />
         </Route>
         <Route exact path="/tabs/community">
           <Tab2 />
         </Route>
-
         <Route exact path="/tabs">
           <Redirect to="/tabs/habits" />
         </Route>
-        {/* </FetchedModuleContextProvider> */}
       </IonRouterOutlet>
-
-      <IonTabBar className="bottom-tab-bar" style={{  backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "60px" }} slot="bottom" >
+      <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "60px" }} slot="bottom" >
         <IonTabButton layout="label-hide" tab="tab1" href="/tabs/habits">
           <IonIcon icon={appsOutline} />
           <IonLabel>Habits</IonLabel>
