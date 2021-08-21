@@ -4,15 +4,12 @@ import "firebase/firestore"
 import "firebase/functions"
 
 
-// const config = {
-//     apiKey: process.env.REACT_APP_FIREBASE_CONFIG_API_KEY,
-//     projectId: process.env.REACT_APP_FIREBASE_CONFIG_PROJECT_ID
-// }
-
 const config = {
-    apiKey: "AIzaSyC78qJ3dKFn0MDwyirTPcK3isC9T_1yTdU",
-    projectId: "grithub-5254d"
+    apiKey: process.env.REACT_APP_FIREBASE_CONFIG_API_KEY,
+    projectId: process.env.REACT_APP_FIREBASE_CONFIG_PROJECT_ID
 }
+
+
 
 // console.log(process.env.REACT_APP_FIREBASE_CONFIG_API_KEY)
 function initFirebase(){
