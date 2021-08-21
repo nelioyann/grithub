@@ -1,27 +1,27 @@
-import { IonButton, IonContent,  IonHeader, IonInput, IonItem, IonLabel, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 import { toast } from '../../components/Toasts/Toast';
 import { firebaseAuth } from '../../initFirebase';
 
 const CreateAccountPage = () => {
-    const history = useHistory() 
-    const [email, emailSet] = useState("");
-    const [password, passwordSet] = useState("");
+  const history = useHistory()
+  const [email, emailSet] = useState("");
+  const [password, passwordSet] = useState("");
 
-    const doSignIn = async () => {
-        try{
+  const doSignIn = async () => {
+    try {
 
-            const result = await firebaseAuth.createUserWithEmailAndPassword(email, password);
-            console.log(result)
-            history.replace("/tabs")
-        } catch (error){
-            toast(error.message)
+      const result = await firebaseAuth.createUserWithEmailAndPassword(email, password);
+      console.log(result)
+      history.replace("/tabs")
+    } catch (error) {
+      toast(error.message)
 
-        }
     }
-    return (
-        <>
+  }
+  return (
+    <IonPage>
       <IonHeader>
         <IonToolbar >
           <IonTitle>Create Account</IonTitle>
@@ -33,8 +33,8 @@ const CreateAccountPage = () => {
           <IonInput
             type="email"
             value={email}
-            onInput={(e:any) => emailSet(e.target.value)}
-           
+            onInput={(e: any) => emailSet(e.target.value)}
+
           />
         </IonItem>
         <IonItem>
@@ -42,8 +42,8 @@ const CreateAccountPage = () => {
           <IonInput
             type="password"
             value={password}
-            onInput={(e:any) => passwordSet(e.target.value)}
-           
+            onInput={(e: any) => passwordSet(e.target.value)}
+
           />
         </IonItem>
         <div
@@ -58,8 +58,8 @@ const CreateAccountPage = () => {
           </IonButton>
         </div>
       </IonContent>
-    </>
-    )
+    </IonPage>
+  )
 }
 
 export default CreateAccountPage

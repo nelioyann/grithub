@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react"
+import React, {createContext, useEffect, useState} from "react"
 
 export interface DarkModeContextProps {
     darkMode: boolean;
@@ -9,12 +9,18 @@ export interface DarkModeContextProps {
 export const DarkModeContext = createContext({} as DarkModeContextProps)
 
 const DarkModeContextProvider:React.FC = (props) =>{
-    const [darkMode, darkModeSet] = useState(false);
+    const [darkMode, darkModeSet] = useState(true);
     
     const defaultThemeMode: DarkModeContextProps = {
         darkMode: darkMode, darkModeSet: darkModeSet
     }
 
+    useEffect(() => {
+            // Listen for the toggle check/uncheck to toggle the dark class on the <body>
+            document.body.classList.toggle('dark', darkMode);
+            darkModeSet(darkMode)
+    
+    }, [])
     return(
         <DarkModeContext.Provider value={defaultThemeMode}>
             {props.children}

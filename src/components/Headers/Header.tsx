@@ -6,7 +6,7 @@ import { personCircle, search, ellipsisHorizontal, ellipsisVertical } from "ioni
 
 interface HeaderProps {
     name: string;
-    icon: string;
+    icon?: string;
     collapsible?: boolean;
     iconTarget?: string;
 
@@ -17,11 +17,14 @@ const Header: React.FC<HeaderProps> = ({ name, icon, collapsible, iconTarget }) 
     return (
         <IonHeader  collapse={collapsible ? "condense" : undefined} className=" ion-no-border">
             <IonToolbar  color="light"  >
-                <IonButtons slot="primary" collapse={true}>
+                
+                    {icon && (
+                    <IonButtons slot="primary" collapse={true}>
                     <IonButton fill="clear" color="dark" routerLink={iconTarget}>
                         <IonIcon icon={icon} />
                     </IonButton>
-                </IonButtons>
+</IonButtons>)
+                }
                 <IonTitle  size={collapsible ? "large" : undefined}>
                     <Heading4 style={{ color: "var(--ion-color-primary)" }}>{name}</Heading4>
                 </IonTitle>

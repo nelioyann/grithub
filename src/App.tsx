@@ -46,6 +46,7 @@ import CreateAccountPage from './pages/Authentification/CreateAccountPage';
 import {AuthContextProvider, useAuth} from './Contexts/authProvider';
 import { firebaseAuth } from './initFirebase';
 import { useEffect } from 'react';
+import ViewTask from './components/Tasks/ViewTask';
 
 const App: React.FC = () => {
   const {loading} = useAuth()
@@ -81,6 +82,7 @@ const App: React.FC = () => {
             <Route path="/onboarding" component={Onboarding} />
             <PrivateRoute path="/settings" component={Settings} />
               
+            <Route path="/habit" exact={true} component={ViewTask}/>
             <Route path="/name" exact={true} >
               <Name />
             </Route>
@@ -107,6 +109,7 @@ export default App;
 const PrivateRoute = ({component: Component, ...rest}:any) => {
   // const {user, loading} = useAuth();
   const isAuth = firebaseAuth.currentUser !== null;
+  // const isAuth = 
   console.log(isAuth)
   // auth.session to get the current user's auth state
   return(
@@ -132,7 +135,7 @@ const Tabs: React.FC= () => {
           <Redirect to="/tabs/habits" />
         </Route>
       </IonRouterOutlet>
-      <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "60px" }} slot="bottom" >
+      <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "60px",  border: "none" }} slot="bottom" >
         <IonTabButton layout="label-hide" tab="tab1" href="/tabs/habits">
           <IonIcon icon={appsOutline} />
           <IonLabel>Habits</IonLabel>

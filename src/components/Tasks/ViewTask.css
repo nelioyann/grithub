@@ -1,0 +1,107 @@
+/* Article - https://bitsofco.de/github-contribution-graph-css-grid/ */
+/* Inspired by  https://codepen.io/ire/pen/Legmwo*/
+/* Grid-related CSS */
+
+:root {
+    --square-size: clamp(14px, 4.5vw, 3rem);
+    --square-gap: clamp(8px , 0.3vw, 10px);
+    --week-width: calc(var(--square-size) + var(--square-gap));
+}
+
+.graph li{
+    list-style-type: none;
+    
+}
+.months {
+    grid-area: months;
+    margin: 0;
+    padding: 0;
+
+}
+
+.days {
+    grid-area: days;
+    margin: 0;
+    padding: 0;
+}
+
+.squares {
+    grid-area: squares;
+    margin: 0;
+    padding: 0;
+}
+
+.graph {
+    width: 100%;
+    padding: clamp(0.3rem, 1vw, 4rem);
+    display: inline-grid;
+    grid-template-areas: "empty months"
+        "days squares";
+    grid-template-columns: auto 1fr;
+    grid-gap: 5px;
+    /* border: 1px #0e0e0e solid; */
+    /* background: #000; */
+}
+
+
+.months,
+.days {
+    /* color: #eee; */
+    font-size: 0.7rem;
+
+}
+
+.months {
+    display: grid;
+    grid-template-columns: repeat(12, var(--week-width));
+}
+
+.days,
+.squares {
+    display: grid;
+    grid-gap: var(--square-gap);
+    grid-template-rows: repeat(31, var(--square-size));
+}
+
+.squares {
+    grid-auto-flow: column;
+    grid-auto-columns: var(--square-size);
+}
+
+/* Other styling */
+
+
+
+
+.days li:nth-child(even) {
+    visibility: hidden;
+}
+
+.squares li {
+    background-color: #b3b5b8;
+}
+.squares li.completed {
+    background-color: var(--ion-color-secondary);
+}
+
+.squares li[data-level="1"] {
+    background-color: #c6e48b;
+}
+
+.squares li[data-level="2"] {
+    background-color: #7bc96f;
+}
+
+.squares li[data-level="3"] {
+    background-color: #196127;
+}
+
+.squares li[data-month="02"][data-day="31"],
+.squares li[data-month="02"][data-day="30"],
+.squares li[data-month="02"][data-day="29"],
+.squares li[data-month="04"][data-day="31"],
+.squares li[data-month="06"][data-day="31"],
+.squares li[data-month="09"][data-day="31"],
+.squares li[data-month="11"][data-day="31"] {
+    visibility: hidden;
+}
