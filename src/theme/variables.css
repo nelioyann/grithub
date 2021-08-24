@@ -169,19 +169,19 @@ body.dark {
   --ion-color-danger-shade: #e04055;
   --ion-color-danger-tint: #ff5b71;
 
-  --ion-color-light: #222428;
-  --ion-color-light-rgb: 34, 36, 40;
+  --ion-color-light: rgb(0, 0, 0);
+  --ion-color-light-rgb: 0, 0, 0;
   --ion-color-light-contrast: #ffffff;
   --ion-color-light-contrast-rgb: 255, 255, 255;
   --ion-color-light-shade: #1e2023;
   --ion-color-light-tint: #383a3e;
 
-  --ion-color-medium: #3E3E3E;
+  --ion-color-medium: rgb(62, 62, 62);
   --ion-color-medium-rgb: 62, 62, 62;
   --ion-color-medium-contrast: #ffffff;
   --ion-color-medium-contrast-rgb: 255, 255, 255;
-  --ion-color-medium-shade: #373737;
-  --ion-color-medium-tint: #515151;
+  --ion-color-medium-shade: rgb(55, 55, 55);
+  --ion-color-medium-tint: rgb(81, 81, 81);
 
   --ion-color-dark: #F8F2EE;
   --ion-color-dark-rgb: 248, 242, 238;
@@ -240,7 +240,7 @@ body.dark {
    * -------------------------------------------
    */
 
-.md body.dark {
+/* .md body.dark {
   --ion-background-color: #121212;
   --ion-background-color-rgb: 18, 18, 18;
 
@@ -276,4 +276,4 @@ body.dark {
   --ion-tab-bar-background: #1f1f1f;
 
   --ion-card-background: #1e1e1e;
-}
+} */

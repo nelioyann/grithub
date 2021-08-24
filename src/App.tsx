@@ -109,7 +109,7 @@ export default App;
 const PrivateRoute = ({component: Component, ...rest}:any) => {
   // const {user, loading} = useAuth();
   const isAuth = firebaseAuth.currentUser !== null;
-  // const isAuth = 
+  // const isAuth = true
   console.log(isAuth)
   // auth.session to get the current user's auth state
   return(

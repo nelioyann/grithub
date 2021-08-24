@@ -4,7 +4,7 @@
 
 :root {
     --square-size: clamp(14px, 4.5vw, 3rem);
-    --square-gap: clamp(8px , 0.3vw, 10px);
+    --square-gap: clamp(8px , 0.2vw, 10px);
     --week-width: calc(var(--square-size) + var(--square-gap));
 }
 
@@ -46,7 +46,7 @@
 
 .months,
 .days {
-    /* color: #eee; */
+    color: var(--ion-color-dark);
     font-size: 0.7rem;
 
 }
@@ -78,7 +78,8 @@
 }
 
 .squares li {
-    background-color: #b3b5b8;
+    background-color: var(--ion-color-dark);
+    border-radius: 2px;
 }
 .squares li.completed {
     background-color: var(--ion-color-secondary);

@@ -48,9 +48,10 @@ const Tab1: React.FC = () => {
               You haven't set any habit yet
             </Heading5> */}
             {dummies ? (dummies.map(dummy => {
-              return (<IonCard mode="ios" routerLink="/habit" className="ion-padding" key={dummy.id} button={true}>
-                <IonCardTitle>{dummy.name}</IonCardTitle>
-                <IonCardSubtitle>Streak: 000</IonCardSubtitle>
+              return (<IonCard mode="ios" className="ion-padding-horizontal" routerLink="/habit" color="light"  style={{ border: "2px solid"}} key={dummy.id} button={true}>
+
+                <Heading5>{dummy.name}</Heading5>
+                {/* <IonCardSubtitle>Streak: 000</IonCardSubtitle> */}
               </IonCard>)
             })) :
               (
@@ -59,7 +60,7 @@ const Tab1: React.FC = () => {
                 </Heading5>
               )
             }
-            <TaskItem/>
+            <TaskItem />
             {/* <ViewTask/> */}
             {/* <IonFab vertical="bottom" horizontal="end" slot="fixed"> */}
             <div style={{ position: "absolute", bottom: "2.5rem", right: "0.8em" }}>
