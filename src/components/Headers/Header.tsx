@@ -15,7 +15,7 @@ interface HeaderProps {
 // style={{backgroundColor: "var(--ion-color-light)"}}
 const Header: React.FC<HeaderProps> = ({ name, icon, collapsible, iconTarget }) => {
     return (
-        <IonHeader  collapse={collapsible ? "condense" : undefined} className=" ion-no-border">
+        <IonHeader   collapse={collapsible ? "condense" : undefined} className=" ion-no-border">
             <IonToolbar  color="light"  >
                 
                     {icon && (

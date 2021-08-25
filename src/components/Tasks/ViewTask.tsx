@@ -1,6 +1,6 @@
 import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
 import React from 'react'
-import { Heading4 } from '../../theme/globalStyles'
+import { Heading4, Heading5 } from '../../theme/globalStyles'
 import Header from '../Headers/Header'
 import "./ViewTask.css"
 
@@ -11,13 +11,13 @@ const ViewTask = () => {
     return (
 
         <IonPage>
-            <IonHeader>
+            <IonHeader mode="ios">
                 <IonToolbar color="light" >
                     <IonButtons slot="start">
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
-                    <IonTitle>
-                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "left" }}> habit</Heading4>
+                    <IonTitle slot="end">
+                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "left" }}>Habit</Heading4>
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
@@ -25,7 +25,7 @@ const ViewTask = () => {
                 <div className="page-wrapper ion-padding-horizontal">
 
                     <div className="page-wrapper-content ">
-
+                        <Heading5>Yearly View</Heading5>
                         <div className="graph">
                             <ul className="months">
                                 <li>Jan</li>

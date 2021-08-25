@@ -1,11 +1,11 @@
-import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonIcon, IonItem, IonLabel, IonToggle, IonList, IonListHeader } from '@ionic/react'
+import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonIcon, IonItem, IonLabel, IonToggle, IonList, IonListHeader, IonNote } from '@ionic/react'
 import { bug, moon, person, settingsOutline } from 'ionicons/icons'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router'
 import Header from '../../components/Headers/Header'
 import { useAuth } from '../../Contexts/authProvider'
 import { DarkModeContext } from '../../Contexts/DarkModeContext'
-import { Heading2, Heading4, Heading5, SmallParagraph } from '../../theme/globalStyles'
+import { Heading2, Heading4, Heading5, MediumParagraph, SmallParagraph } from '../../theme/globalStyles'
 
 const Settings: React.FC = () => {
 
@@ -41,13 +41,13 @@ const Settings: React.FC = () => {
     // 
     return (
         <IonPage >
-            <IonHeader>
+            <IonHeader mode="ios">
                 <IonToolbar color="light" >
-                    <IonButtons slot="start">
+                    <IonButtons slot="">
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
-                    <IonTitle>
-                        <Heading4 style={{ color: "var(--ion-color-primary)", textAlign: "left" }}>Settings</Heading4>
+                    <IonTitle slot="end">
+                        <Heading4 style={{ color: "var(--ion-color-primary)", textAlign: "center" }}>Settings</Heading4>
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
@@ -55,45 +55,47 @@ const Settings: React.FC = () => {
                 {/* <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" /> */}
                 <div className="page-wrapper ion-padding-horizontal">
 
-                    <div className="page-wrapper-content ">
-                        <Heading2>
-                            Settings
-                        </Heading2>
-                        <IonList>
-                            <IonListHeader>
+                    <div className="page-wrapper-content" >
+                        <div >
+                            <IonNote >
                                 Appearance
-                            </IonListHeader>
-                            <IonItem lines="full">
-                                <IonIcon slot="start" icon={moon}></IonIcon>
+                            </IonNote>
+                            <IonItem  color="light" lines="none">
+                                {/* <IonIcon slot="start" icon={moon}></IonIcon> */}
+                                <div>
                                 <IonLabel>
+
                                     Dark Mode
                                 </IonLabel>
+                                {/* <IonN>Turn on Dark Mode for a great viewing experience and battery saving.</IonN> */}
+
+                                </div>
                                 <IonToggle ref={darkToggle} checked={darkMode} id="themeToggle" slot="end" onIonChange={e => handleDarkMode(e.detail.checked)} />
                             </IonItem>
-                        </IonList>
-                        <IonList>
-                            <IonListHeader>
+                        </div>
+                        <div >
+                            <IonNote >
                                 Profile
-                            </IonListHeader>
-                            <IonItem detail={true} button={true} routerLink="/name" lines="full">
-                                <IonIcon slot="start" icon={person}></IonIcon>
+                            </IonNote>
+                            <IonItem color="light" detail={true} button={true} routerLink="/name" lines="none">
+                                {/* <IonIcon slot="start" icon={person}></IonIcon> */}
                                 <IonLabel>
                                     Change name
                                 </IonLabel>
                             </IonItem>
-                            <IonItem detail={true} button={true} routerLink="/name" lines="full">
-                                <IonIcon slot="start" icon={bug}></IonIcon>
+                            <IonItem color="light" detail={true} button={true} routerLink="/name" lines="none">
+                                {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
                                 <IonLabel>
                                     Report a problem
                                 </IonLabel>
                             </IonItem>
-                            <IonItem detail={true} button={true} onClick={doLogout} lines="full">
-                                <IonIcon slot="start" icon={bug}></IonIcon>
+                            <IonItem color="light" detail={true} button={true} onClick={doLogout} lines="none">
+                                {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
                                 <IonLabel>
                                     Logout
                                 </IonLabel>
                             </IonItem>
-                        </IonList>
+                        </div>
 
                         <SmallParagraph style={{textAlign:"center"}}>Version: beta 1</SmallParagraph>
                     </div>

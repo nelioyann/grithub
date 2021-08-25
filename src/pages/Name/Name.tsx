@@ -1,6 +1,6 @@
-import { useIonRouter , IonPage, IonContent, IonInput, IonItem, IonLabel, IonButton } from '@ionic/react'
+import { useIonRouter , IonPage, IonContent, IonInput, IonItem, IonLabel, IonButton, IonBackButton, IonButtons, IonHeader, IonToolbar } from '@ionic/react'
 import React, { useContext, useState } from 'react'
-import { Heading2, LargeButton, ColumnContainer } from '../../theme/globalStyles'
+import { Heading4, LargeButton, ColumnContainer } from '../../theme/globalStyles'
 import Lottie from "react-lottie";
 import personnageAnimation from "./character.json"
 import { text } from 'ionicons/icons';
@@ -25,7 +25,14 @@ const Name: React.FC = () => {
     }
     return (
         <IonPage >
-
+            <IonHeader mode="ios">
+                <IonToolbar color="light" >
+                    <IonButtons slot="">
+                        <IonBackButton color="dark" text="" />
+                    </IonButtons>
+                    
+                </IonToolbar>
+            </IonHeader>
             <IonContent fullscreen >
 
                 <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'flex-end' }}>
@@ -33,9 +40,9 @@ const Name: React.FC = () => {
                     <div className="page-wrapper-content">
                         <ColumnContainer style={{ marginTop: "2em" }} >
 
-                            <Heading2 style={{ marginTop: "auto" }}>
+                            <Heading4 style={{ marginTop: "auto" }}>
                                 How should we refer to you ?
-                            </Heading2>
+                            </Heading4>
 
                             <div style={{ filter: "invert(0.5)" }}>
 

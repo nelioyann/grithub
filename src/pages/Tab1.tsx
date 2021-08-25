@@ -28,7 +28,7 @@ const Tab1: React.FC = () => {
               </Heading4>
             </IonTitle>
             <IonButtons slot="end">
-              <IonButton>
+              <IonButton routerLink="/settings">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="32" height="32" rx="2.85714" fill="white" />
                   <rect width="32" height="32" rx="16" fill="white" />
@@ -61,14 +61,15 @@ const Tab1: React.FC = () => {
               )
             }
             <TaskItem />
+            <IonCard mode="ios" className="ion-padding-horizontal" routerLink="/new" color="light"  style={{ border: "2px solid"}}>
+                <Heading5 style={{  textAlign: "center" }}>
+
+                <IonIcon icon={addOutline} />
+                </Heading5>
+              </IonCard>
             {/* <ViewTask/> */}
             {/* <IonFab vertical="bottom" horizontal="end" slot="fixed"> */}
-            <div style={{ position: "absolute", bottom: "2.5rem", right: "0.8em" }}>
-
-              <IonFabButton routerLink="/new">
-                <IonIcon icon={addOutline} />
-              </IonFabButton>
-            </div>
+          
             {/* </IonFab> */}
           </div>
         </div>

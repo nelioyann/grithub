@@ -10,7 +10,7 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { appsOutline, ellipse, globeOutline, square, triangle } from 'ionicons/icons';
+import { apps, ellipse, globeOutline, square, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -135,14 +135,14 @@ const Tabs: React.FC= () => {
           <Redirect to="/tabs/habits" />
         </Route>
       </IonRouterOutlet>
-      <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "60px",  border: "none" }} slot="bottom" >
-        <IonTabButton layout="label-hide" tab="tab1" href="/tabs/habits">
-          <IonIcon icon={appsOutline} />
+      <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px",  border: "none" }} slot="bottom" >
+        <IonTabButton  tab="tab1" href="/tabs/habits">
+          <IonIcon icon={apps} />
           <IonLabel>Habits</IonLabel>
         </IonTabButton>
-        <IonTabButton layout="label-hide" tab="tab2" href="/tabs/community">
+        <IonTabButton  tab="tab2" href="/tabs/community">
           <IonIcon icon={globeOutline} />
-          <IonLabel>Community</IonLabel>
+          <IonLabel>Feed</IonLabel>
         </IonTabButton>
 
       </IonTabBar>

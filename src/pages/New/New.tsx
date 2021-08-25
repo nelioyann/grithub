@@ -11,12 +11,12 @@ const New: React.FC= () => {
     return (
         <IonPage >
             {/* <Header name="Habits" icon={settingsOutline} iconTarget="/onboarding" /> */}
-            <IonHeader>
+            <IonHeader mode="ios">
                 <IonToolbar color="light" >
                     <IonButtons slot="start">
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
-                    <IonTitle>
+                    <IonTitle slot="end">
                         <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "left" }}>New habit</Heading4>
                     </IonTitle>
                 </IonToolbar>
@@ -28,14 +28,14 @@ const New: React.FC= () => {
                     <div className="page-wrapper-content ">
 
                         <Heading5>Suggestions</Heading5>
-                        <IonChip outline={true} onClick={() => handleChange("Read 5 pages")}>
-                            <IonLabel color="primary">Read 5 pages</IonLabel>
+                        <IonChip color="dark" outline={true} onClick={() => handleChange("Read 5 pages")}>
+                            <IonLabel >Read 5 pages</IonLabel>
                         </IonChip>
-                        <IonChip outline={true} onClick={() => handleChange("Run for 20 minutes")}>
-                            <IonLabel color="primary">Run for 20 minutes</IonLabel>
+                        <IonChip color="dark" outline={true} onClick={() => handleChange("Run for 20 minutes")}>
+                            <IonLabel  >Run for 20 minutes</IonLabel>
                         </IonChip>
-                        <IonChip outline={true} onClick={() => handleChange("Wake up before 6AM")}>
-                            <IonLabel color="primary">Wake up before 6AM</IonLabel>
+                        <IonChip color="dark" outline={true} onClick={() => handleChange("Wake up before 6AM")}>
+                            <IonLabel  >Wake up before 6AM</IonLabel>
                         </IonChip>
                         <ColumnContainer style={{ marginTop: "4em" }}>
                             {/* <Heading3 style={{ color: "var(--ion-color-primary)", textAlign: "center" }}>

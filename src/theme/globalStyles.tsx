@@ -56,8 +56,10 @@ export const Heading4 = styled.h4<HeadingProps>`
     font-size: 1.5rem;
     line-height: 133%;
 ` 
-export const Heading5 = styled.h5`
+export const Heading5 = styled.h5<HeadingProps>`
     font-weight: var(--font-bold);
+    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
+
     font-size: 1.25rem;
     line-height: 130%;
     white-space: normal;
