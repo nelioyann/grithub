@@ -11,9 +11,11 @@ const GlobalStyle = createGlobalStyle`
 `
 export default GlobalStyle;
 
-export const SmallParagraph = styled.p`
+export const SmallParagraph = styled.p<ColoredProps>`
   font-size: 0.75rem;
   line-height: 150%;
+  color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
+
   /* --ionicon-stroke-width: 64px; */
   white-space: normal;
   font-weight: var(--font-bold);
@@ -41,11 +43,11 @@ export const LargeButton = styled(MediumButton)`
   line-height: 122%;
 `;
 
-interface HeadingProps{
+interface ColoredProps{
     color?: "primary" | "secondary" | "tertiary" | "medium"| "dark";
 }
 
-export const Heading4 = styled.h4<HeadingProps>`
+export const Heading4 = styled.h4<ColoredProps>`
     font-weight: var(--font-bold);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
     padding: 0;
@@ -56,7 +58,7 @@ export const Heading4 = styled.h4<HeadingProps>`
     font-size: 1.5rem;
     line-height: 133%;
 ` 
-export const Heading5 = styled.h5<HeadingProps>`
+export const Heading5 = styled.h5<ColoredProps>`
     font-weight: var(--font-bold);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
 
@@ -64,7 +66,7 @@ export const Heading5 = styled.h5<HeadingProps>`
     line-height: 130%;
     white-space: normal;
 ` 
-export const Heading3 = styled.h3<HeadingProps>`
+export const Heading3 = styled.h3<ColoredProps>`
     font-weight: var(--font-bold);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
     font-size: 2rem;
@@ -73,7 +75,7 @@ export const Heading3 = styled.h3<HeadingProps>`
     white-space: normal;
 ` 
 
-export const Heading2 = styled.h2<HeadingProps>`
+export const Heading2 = styled.h2<ColoredProps>`
     font-weight: var(--font-bold);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
     font-size: 2.5rem;

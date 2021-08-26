@@ -1,20 +1,30 @@
 import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router';
 import { toast } from '../../components/Toasts/Toast';
-import { firebaseAuth } from '../../initFirebase';
+import {NameContext} from '../../Contexts/NameContext';
+import { firebaseAuth, firebaseStore } from '../../initFirebase';
 
 const CreateAccountPage = () => {
   const history = useHistory()
   const [email, emailSet] = useState("");
   const [password, passwordSet] = useState("");
+  const { name, nameSet } = useContext(NameContext);
+
 
   const doSignIn = async () => {
     try {
 
-      const result = await firebaseAuth.createUserWithEmailAndPassword(email, password);
-      console.log(result)
-      history.replace("/tabs")
+      const cred = await firebaseAuth.createUserWithEmailAndPassword(email, password);
+      if(cred){
+        firebaseStore.collection("users").doc(cred.user!.uid)
+        .set({
+          username: name
+        })
+        console.log(cred)
+        history.replace("/tabs")
+
+      }
     } catch (error) {
       toast(error.message)
 
@@ -43,6 +53,15 @@ const CreateAccountPage = () => {
             type="password"
             value={password}
             onInput={(e: any) => passwordSet(e.target.value)}
+
+          />
+        </IonItem>
+        <IonItem>
+          <IonLabel position="floating">Username</IonLabel>
+          <IonInput
+            type="text"
+            value={name}
+            onInput={(e: any) => nameSet(e.target.value)}
 
           />
         </IonItem>

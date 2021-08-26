@@ -20,6 +20,9 @@
     position: sticky;
     top: 0;
 }
+/* .months li{
+    max-width: var(--square-size);
+} */
 
 .days {
     grid-area: days;
@@ -40,8 +43,8 @@
     grid-template-areas: "empty months"
         "days squares";
     grid-template-columns: auto 1fr;
-    grid-gap: 5px;
-    /* border: 1px #0e0e0e solid; */
+    grid-gap: 6px;
+    /* border: 1px #fff9f9 solid; */
     /* background: #000; */
 }
 
@@ -56,6 +59,9 @@
 .months {
     display: grid;
     grid-template-columns: repeat(12, var(--week-width));
+    justify-content: space-between;
+    text-align: center;
+    /* gap: var(--square-gap); */
 }
 
 .days,
@@ -68,6 +74,7 @@
 .squares {
     grid-auto-flow: column;
     grid-auto-columns: var(--square-size);
+    justify-content: space-between;
 }
 
 /* Other styling */

@@ -1,23 +1,35 @@
 import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
 import React from 'react'
+import { useParams } from 'react-router'
+import { IHabits, useHabits } from '../../Contexts/habitsProvider'
 import { Heading4, Heading5 } from '../../theme/globalStyles'
 import Header from '../Headers/Header'
 import "./ViewTask.css"
 
-const ViewTask = () => {
+type RouteParams = {
+    id: string;
+  }
+
+const ViewTask: React.FC = () => {
+    const { id } = useParams<RouteParams>();
+    const {habits} = useHabits();
+    const [habit] = habits.filter(habit => habit.id === id);
+
+
+
     const defaultState = ["0129", "0325", "0902", "0831"]
     // const calendarSquares = Array.from(Array(31 * 12).keys())
     const calendarSquares = Array.from({ length: 12 * 31 }, (_, i) => i + 1)
     return (
 
         <IonPage>
-            <IonHeader mode="ios">
+            <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
                 <IonToolbar color="light" >
-                    <IonButtons slot="start">
+                    <IonButtons slot="">
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
-                    <IonTitle slot="end">
-                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "left" }}>Habit</Heading4>
+                    <IonTitle >
+                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>{habit.name}</Heading4>
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>

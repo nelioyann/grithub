@@ -8,6 +8,9 @@ import outilAnimation from "./lottieFiles/newhabits.json"
 import calendarAnimation from "./lottieFiles/calendar.json"
 import stairsAnimation from "./lottieFiles/stairs.json"
 
+import buildBricks from "./Images/02.png"
+import reachGoal from "./Images/09.png"
+import bulbPlant from "./Images/08.png"
 
 const newhabitsOptions = { loop: true, animationData: outilAnimation, autoplay: true }
 const calendarOptions = { loop: true, animationData: calendarAnimation, autoplay: true }
@@ -21,13 +24,13 @@ const Onboarding: React.FC = () => {
     const handleSwipeNext = async () => {
         const swiper = await onboardingSlides.current!.getSwiper()
         swiper.slideNext()
-        console.log("Link to next page")
+        // console.log("Link to next page")
     }
 
     const handleSwipeFinal = async () => {
         const swiper = await onboardingSlides.current!.getSwiper()
         swiper.slideTo(2)
-        console.log("Link to next page")
+        // console.log("Link to next page")
     }
     // a function to handle the slider changes
     const handleSlideChange = async (event: any) => {
@@ -35,7 +38,7 @@ const Onboarding: React.FC = () => {
         await event.target.getActiveIndex().then((value: any) => {
             index = value
             currentIndexSet(value)
-            console.log(index)
+            // console.log(index)
         })
         // setCurrentQuestion(index)
     }
@@ -64,14 +67,18 @@ const Onboarding: React.FC = () => {
             <IonContent fullscreen >
 
                 <IonSlides ref={onboardingSlides} style={{ height: "100%", width: "100%", "--bullet-background": "var(--ion-color-dark)" }} mode="ios" pager={true} options={slideOpts} onIonSlideDidChange={(e) => handleSlideChange(e)}>
-                    <IonSlide  style={{ display: "flex", flexDirection: "column" }} >
+                    <IonSlide style={{ display: "flex", flexDirection: "column" }} >
 
                         <div className="ion-padding-horizontal">
 
-                            <Heading4 className="ion-padding" style={{ color: "var(--ion-color-dark)" }}>
+                            <Heading4  style={{ color: "var(--ion-color-dark)", padding: "1em" }}>
                                 Create healthy habits and achieve your goals
                             </Heading4>
-                            <Lottie isClickToPauseDisabled={true} options={stairsOptions} height={230} width={300} />
+                            <div className="ion-padding ion-margin-vertical" style={{ display: "flex", justifyContent: "center" }}>
+
+                                <img style={{ width: "clamp(100px, 100%, 300px)", filter: "contrast(0) brightness(4.5)"}} src={buildBricks} alt="Image of the theme" />
+                            </div>
+                            {/* <Lottie isClickToPauseDisabled={true} options={stairsOptions} height={230} width={300} /> */}
                             {/* <Heading5 style={{ textTransform: "uppercase" }}>
                                 We can help <span style={{ color: "var(--ion-color-primary)" }}>you</span> to be a better version of <span style={{ color: "var(--ion-color-primary)" }}>yourself</span>.
                             </Heading5> */}
@@ -88,13 +95,17 @@ const Onboarding: React.FC = () => {
 
 
                     </IonSlide>
-                    <IonSlide  style={{ display: "flex", flexDirection: "column" }}>
+                    <IonSlide style={{ display: "flex", flexDirection: "column" }}>
                         <div className="ion-padding-horizontal">
 
-                            <Heading4 style={{ color: "var(--ion-color-dark)" }}>
-                            Track your progress, one day at a time
+                            <Heading4 style={{ color: "var(--ion-color-dark)", padding: "1em" }}>
+                                Track your progress, one day at a time
                             </Heading4>
-                            <Lottie isClickToPauseDisabled={true} options={calendarOptions} height={230} width={300} />
+                            <div className="ion-padding ion-margin-vertical" style={{ display: "flex", justifyContent: "center" }}>
+
+                                <img style={{ width: "clamp(100px, 100%, 300px)", filter: "contrast(0) brightness(4.5)"}} src={reachGoal} alt="Image of the theme" />
+                            </div>
+                            {/* <Lottie isClickToPauseDisabled={true} options={calendarOptions} height={230} width={300} /> */}
                             {/* <Heading5 style={{ textTransform: "uppercase" }}>
                                 We can help <span style={{ color: "var(--ion-color-primary)" }}>you</span> to be a better version of <span style={{ color: "var(--ion-color-primary)" }}>yourself</span>.
                             </Heading5> */}
@@ -114,10 +125,14 @@ const Onboarding: React.FC = () => {
                     <IonSlide style={{ display: "flex", flexDirection: "column" }}>
                         <div className="ion-padding-horizontal">
 
-                            <Heading4  style={{ color: "var(--ion-color-dark)" }}>
-                            Visualize your growth and maintain streaks
+                            <Heading4 style={{ color: "var(--ion-color-dark)", padding: "1em" }}>
+                                Visualize your growth and maintain streaks
                             </Heading4>
-                            <Lottie isClickToPauseDisabled={true} options={newhabitsOptions} height={230} width={300} />
+                            <div className="ion-padding ion-margin-vertical" style={{ display: "flex", justifyContent: "center" }}>
+
+                                <img style={{ width: "clamp(100px, 100%, 300px)", filter: "contrast(0) brightness(4.5)"}} src={bulbPlant} alt="Image of the theme" />
+                            </div>
+                            {/* <Lottie isClickToPauseDisabled={true} options={newhabitsOptions} height={230} width={300} /> */}
                             {/* <Heading5 style={{ textTransform: "uppercase" }}>
                                 We can help <span style={{ color: "var(--ion-color-primary)" }}>you</span> to be a better version of <span style={{ color: "var(--ion-color-primary)" }}>yourself</span>.
                             </Heading5> */}
@@ -134,14 +149,14 @@ const Onboarding: React.FC = () => {
 
                 </IonSlides>
                 {currentIndex != 2 && <div className="ion-margin-top" style={{ zIndex: 99, position: "absolute", bottom: "0", left: "50%", transform: "translateX(-50%)", display: "flex" }}>
-                    <IonButton style={{  maxWidth: "200px", "--background-hover-opacity": "0" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
+                    <IonButton style={{ maxWidth: "200px", "--background-hover-opacity": "0" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
                         <LargeButton>
 
                             Skip
                         </LargeButton>
 
                     </IonButton>
-                    <IonButton onClick={() => handleSwipeNext()} style={{  maxWidth: "200px", "--background-hover-opacity": "0" }} size="large" expand="block" fill="clear" >
+                    <IonButton onClick={() => handleSwipeNext()} style={{ maxWidth: "200px", "--background-hover-opacity": "0" }} size="large" expand="block" fill="clear" >
                         <LargeButton>
 
                             Next
@@ -150,17 +165,17 @@ const Onboarding: React.FC = () => {
                     </IonButton>
                 </div>}
                 {currentIndex == 2 && <div className="ion-margin-top" style={{ zIndex: 99, position: "absolute", bottom: "0", left: "50%", transform: "translateX(-50%)", display: "flex" }}>
-                    <IonButton style={{  maxWidth: "200px", "--background-hover-opacity": "0", visibility: "hidden" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
+                    <IonButton style={{ maxWidth: "200px", "--background-hover-opacity": "0", visibility: "hidden" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
                         <LargeButton>
 
                             Skip
                         </LargeButton>
 
                     </IonButton>
-                    <IonButton  routerLink="/tabs/habits" style={{  maxWidth: "200px", "--background-hover-opacity": "0" }} size="large" expand="block" fill="clear" >
+                    <IonButton routerLink="/tabs/habits" style={{ maxWidth: "200px", "--background-hover-opacity": "0" }} size="large" expand="block" fill="clear" >
                         <LargeButton>
 
-Start                        </LargeButton>
+                            Start                        </LargeButton>
 
                     </IonButton>
                 </div>}

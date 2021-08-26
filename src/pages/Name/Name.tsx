@@ -35,7 +35,7 @@ const Name: React.FC = () => {
             </IonHeader>
             <IonContent fullscreen >
 
-                <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'flex-end' }}>
+                <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center' }}>
 
                     <div className="page-wrapper-content">
                         <ColumnContainer style={{ marginTop: "2em" }} >

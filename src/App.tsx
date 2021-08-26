@@ -43,14 +43,16 @@ import DarkModeContextProvider from './Contexts/DarkModeContext';
 import NameContextProvider from './Contexts/NameContext';
 import LoginPage from './pages/Authentification/LoginPage';
 import CreateAccountPage from './pages/Authentification/CreateAccountPage';
-import {AuthContextProvider, useAuth} from './Contexts/authProvider';
+import {AuthContextProvider, useAuth, } from './Contexts/authProvider';
+import {HabitsContextProvider, useHabits } from './Contexts/habitsProvider';
 import { firebaseAuth } from './initFirebase';
 import { useEffect } from 'react';
 import ViewTask from './components/Tasks/ViewTask';
+import Attributions from './pages/Attributions/Attributions';
 
 const App: React.FC = () => {
   const {loading} = useAuth()
-  console.log(loading)
+  // console.log(loading)
 
   if (loading){
     return(
@@ -69,7 +71,7 @@ const App: React.FC = () => {
       <IonRouterOutlet>
         <DarkModeContextProvider>
           <NameContextProvider>
-            {/* <AuthContextProvider> */}
+            <HabitsContextProvider>
 
             <Route exact={true}  path="/">
 
@@ -81,8 +83,9 @@ const App: React.FC = () => {
             <Route path="/new" component={New} />
             <Route path="/onboarding" component={Onboarding} />
             <PrivateRoute path="/settings" component={Settings} />
+            <PrivateRoute path="/attributions" component={Attributions} />
               
-            <Route path="/habit" exact={true} component={ViewTask}/>
+            <Route path="/habit/:id" exact={true} component={ViewTask}/>
             <Route path="/name" exact={true} >
               <Name />
             </Route>
@@ -94,7 +97,7 @@ const App: React.FC = () => {
             <Route path="/create-account" exact={true}>
               <CreateAccountPage />
             </Route>
-            {/* </AuthContextProvider> */}
+            </HabitsContextProvider>
           </NameContextProvider>
         </DarkModeContextProvider>
       </IonRouterOutlet>
@@ -110,7 +113,7 @@ const PrivateRoute = ({component: Component, ...rest}:any) => {
   // const {user, loading} = useAuth();
   const isAuth = firebaseAuth.currentUser !== null;
   // const isAuth = true
-  console.log(isAuth)
+  // console.log(isAuth)
   // auth.session to get the current user's auth state
   return(
     <Route 

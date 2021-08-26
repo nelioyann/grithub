@@ -41,12 +41,12 @@ const Settings: React.FC = () => {
     // 
     return (
         <IonPage >
-            <IonHeader mode="ios">
+            <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
                 <IonToolbar color="light" >
                     <IonButtons slot="">
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
-                    <IonTitle slot="end">
+                    <IonTitle slot="">
                         <Heading4 style={{ color: "var(--ion-color-primary)", textAlign: "center" }}>Settings</Heading4>
                     </IonTitle>
                 </IonToolbar>
@@ -80,7 +80,7 @@ const Settings: React.FC = () => {
                             <IonItem color="light" detail={true} button={true} routerLink="/name" lines="none">
                                 {/* <IonIcon slot="start" icon={person}></IonIcon> */}
                                 <IonLabel>
-                                    Change name
+                                    Change username
                                 </IonLabel>
                             </IonItem>
                             <IonItem color="light" detail={true} button={true} routerLink="/name" lines="none">
@@ -93,6 +93,20 @@ const Settings: React.FC = () => {
                                 {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
                                 <IonLabel>
                                     Logout
+                                </IonLabel>
+                            </IonItem>
+                        </div>
+                        <div>
+                            <IonNote>About</IonNote>
+                            <IonItem color="light" detail={true} button={true} lines="none">
+                                {/* <IonIcon slot="start" icon={person}></IonIcon> */}
+                                <IonLabel>
+                                    Terms of Use
+                                </IonLabel>
+                            </IonItem>
+                            <IonItem color="light" routerLink="/attributions" detail={true} button={true} lines="none">
+                                <IonLabel>
+                                    Attributions
                                 </IonLabel>
                             </IonItem>
                         </div>

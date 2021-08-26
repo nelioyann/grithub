@@ -5,9 +5,9 @@
 }
 
 
-/* ion-header, ion-toolbar{
-    background: white;
-} */
+ion-header, ion-toolbar{
+    background-color: var(--ion-color-light);
+}
 /* ion-toolbar, ion-header, .header-collapse-condense ion-toolbar{
     --background: transparent;
 } */

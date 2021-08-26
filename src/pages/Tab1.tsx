@@ -7,15 +7,17 @@ import './Tab1.css';
 import React, { useContext } from 'react'
 import TaskItem from '../components/Tasks/TaskItem';
 import ViewTask from '../components/Tasks/ViewTask';
+import { useHabits } from '../Contexts/habitsProvider';
 
 
 const Tab1: React.FC = () => {
 
   const { name, nameSet } = useContext(NameContext);
-
+  const {habits} = useHabits();
+  console.log("habits",habits)
   const dummies = [{ name: "Programming", id: 1, dates: [20210723] }, { name: "Reading", id: 2, dates: [20210723] }]
   let dummydate = Date.now();
-  console.log(dummydate)
+  // console.log(dummydate)
   return (
     <IonPage >
       {/* <Header name="Habits" icon={settingsOutline} iconTarget="/settings" /> */}
@@ -34,7 +36,7 @@ const Tab1: React.FC = () => {
                   <rect width="32" height="32" rx="16" fill="white" />
                   <rect x="7.42857" y="18.8571" width="2.85714" height="2.85714" rx="1.42857" fill="black" />
                   <rect x="17.1429" y="18.8571" width="2.85714" height="2.85714" rx="1.42857" fill="black" />
-                  <path d="M10.8571 25.1429H17.1429" stroke="black" stroke-width="1.71429" stroke-linecap="round" />
+                  <path d="M10.8571 25.1429H17.1429" stroke="black" strokeWidth="1.71429" strokeLinecap="round" />
                 </svg>
               </IonButton>
             </IonButtons>
@@ -47,12 +49,15 @@ const Tab1: React.FC = () => {
             {/* <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
               You haven't set any habit yet
             </Heading5> */}
-            {dummies ? (dummies.map(dummy => {
-              return (<IonCard mode="ios" className="ion-padding-horizontal" routerLink="/habit" color="light"  style={{ border: "2px solid"}} key={dummy.id} button={true}>
+            {habits && <Heading5>Ongoing habits</Heading5>}
+            {habits ? (habits.map(habit => {
+              return (
+                <TaskItem key={habit.id} name={habit.name} id={habit.id} dates={habit.dates}/>
+              // <IonCard mode="ios" className="ion-padding-horizontal" routerLink="/habit" color="light"  style={{ border: "2px solid"}} key={habit.id} button={true}>
 
-                <Heading5>{dummy.name}</Heading5>
-                {/* <IonCardSubtitle>Streak: 000</IonCardSubtitle> */}
-              </IonCard>)
+              //   <Heading5>{habit.name}</Heading5>
+              // </IonCard>
+              )
             })) :
               (
                 <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
@@ -60,7 +65,7 @@ const Tab1: React.FC = () => {
                 </Heading5>
               )
             }
-            <TaskItem />
+            
             <IonCard mode="ios" className="ion-padding-horizontal" routerLink="/new" color="light"  style={{ border: "2px solid"}}>
                 <Heading5 style={{  textAlign: "center" }}>
 

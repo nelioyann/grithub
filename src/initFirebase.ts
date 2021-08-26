@@ -25,6 +25,7 @@ function initFirebase(){
 initFirebase()
 
 const firebaseAuth = firebase.auth()
-export {firebase, firebaseAuth}
+const firebaseStore = firebase.firestore()
+export {firebase, firebaseAuth, firebaseStore}
 // export const firebaseAuth = firebase.default.auth();
 // export const firebaseApp = firebase.default;

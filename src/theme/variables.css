@@ -127,12 +127,19 @@ http://ionicframework.com/docs/theming/ */
    */
 
 body.dark {
-  --ion-color-primary: #428cff;
+  /* --ion-color-primary: #428cff;
   --ion-color-primary-rgb: 66, 140, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3a7be0;
-  --ion-color-primary-tint: #5598ff;
+  --ion-color-primary-tint: #5598ff; */
+
+  --ion-color-primary: #F8F2EE;
+  --ion-color-primary-rgb: 248, 242, 238;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #dad5d1;
+  --ion-color-primary-tint: #f9f3f0;
 
   --ion-color-secondary: #50c8ff;
   --ion-color-secondary-rgb: 80, 200, 255;

@@ -32,9 +32,12 @@ const AuthContextProvider: React.FC = ({ children }) => {
         firebaseAuth.onAuthStateChanged((u) => {
             if (u) {
                 // var uid = user.uid;
-                console.log(u);
+                // User logged in
+                // console.log(u);
                 setUser(u)
                 
+            } else{
+                // user logged out
             }
             setLoading(false)
         })
