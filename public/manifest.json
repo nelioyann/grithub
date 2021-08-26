@@ -47,6 +47,6 @@
   "start_url": "/",
   "Scope": "/",
   "display": "standalone",
-  "theme_color": "#396AFC",
+  "theme_color": "#000000",
   "background_color": "#396AFC"
 }
