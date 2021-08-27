@@ -1,7 +1,9 @@
-import { IonBackButton, IonButtons, IonCard, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
+import { IonBackButton, IonButton, IonButtons, IonCard, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
 import React from 'react'
-import { useParams } from 'react-router'
+import { useHistory, useParams } from 'react-router'
+import { useAuth } from '../../Contexts/authProvider'
 import { IHabits, useHabits } from '../../Contexts/habitsProvider'
+import { firebaseStore } from '../../initFirebase'
 import { Heading4, Heading5 } from '../../theme/globalStyles'
 import Header from '../Headers/Header'
 import "./ViewTask.css"
@@ -12,10 +14,24 @@ type RouteParams = {
 
 const ViewTask: React.FC = () => {
     const { id } = useParams<RouteParams>();
+    const history = useHistory()
+
     const { habits } = useHabits();
+    const { user } = useAuth()
     const [habit] = habits.filter(habit => habit.id === id);
+    if (!habit) history.replace("/tabs/habits")
+    const handleRemove = async () => {
+        try {
+            console.log("delete it")
+            let ref = await firebaseStore.collection("users").doc(user!.uid)
+                .collection("habits").doc(id).delete()
+            console.log(ref)
 
+        } catch (err) {
+            console.log(err.message)
+        }
 
+    }
 
     const defaultState = ["0129", "0325", "0902", "0831"]
     // const calendarSquares = Array.from(Array(31 * 12).keys())
@@ -29,7 +45,7 @@ const ViewTask: React.FC = () => {
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
                     <IonTitle >
-                        <Heading5 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>{habit.name}</Heading5>
+                        <Heading5 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>{habit?.name }</Heading5>
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
@@ -39,8 +55,11 @@ const ViewTask: React.FC = () => {
                     <div className="page-wrapper-content ">
                         <Heading5>Did you achieve your goal today ?</Heading5>
                         <IonCard>
-
+                            Today
                         </IonCard>
+                        <IonButton onClick={() => handleRemove()} color="danger">
+                            Remove
+                        </IonButton>
                         <Heading5>Yearly View</Heading5>
                         <div className="graph">
                             <ul className="months">
@@ -91,7 +110,7 @@ const ViewTask: React.FC = () => {
                                 <li>31</li>
                             </ul>
                             <ul className="squares">
-                                {calendarSquares.map((index, calendarSquare) => {
+                                {habit?.dates && calendarSquares.map((index, calendarSquare) => {
                                     let month = Math.ceil(index / 31).toString().padStart(2, '0')
                                     let day = index % 31 == 0 ? "31" : (index % 31).toString().padStart(2, '0');
                                     let date = month + day;

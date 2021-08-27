@@ -16,6 +16,8 @@ const New: React.FC = () => {
     }
 
     const handleSubmit = async (habit: string) => {
+        console.log("new")
+        if (habit === "") return;
         try {
             let result = await firebaseStore.collection("users")
                 .doc(user!.uid).collection("habits")
@@ -68,10 +70,10 @@ const New: React.FC = () => {
 
                             <IonItem color="light" style={{ border: "2px solid var(--ion-color-primary)", borderRadius: "1em" }}>
                                 <IonLabel position="floating">Habit name</IonLabel>
-                                <IonInput required={true} onIonChange={(e: any) => handleChange(e.detail.value)} value={newHabit}></IonInput>
+                                <IonInput onIonChange={(e: any) => handleChange(e.detail.value)} value={newHabit}></IonInput>
                             </IonItem>
-                            <IonButton onSubmit={() => handleSubmit(newHabit)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
-                                <LargeButton>
+                            <IonButton onClick={() => handleSubmit(newHabit)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" >
+                                <LargeButton style={{color: "var(--ion-color-light)"}}>
                                     Create habit
                                 </LargeButton>
 

@@ -63,8 +63,14 @@ export const Heading4 = styled.h4<ColoredProps>`
 export const Heading5 = styled.h5<ColoredProps>`
     font-weight: var(--font-bold);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
-
     font-size: 1.25rem;
+    line-height: 130%;
+    white-space: normal;
+` 
+export const Heading6 = styled.h6<ColoredProps>`
+    font-weight: var(--font-bold);
+    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
+    font-size: 1rem;
     line-height: 130%;
     white-space: normal;
 ` 

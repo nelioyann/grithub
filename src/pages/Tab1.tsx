@@ -1,5 +1,5 @@
 import { IonButton, IonButtons, IonCard, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { addCircle, addOutline, arrowForwardCircle, settingsOutline } from 'ionicons/icons';
+import { addCircle, addOutline, arrowForwardCircle, flag, settingsOutline } from 'ionicons/icons';
 import Header from '../components/Headers/Header';
 import { NameContext } from '../Contexts/NameContext';
 import { Heading4, Heading5 } from '../theme/globalStyles';
@@ -14,7 +14,7 @@ import { getDateString } from '../components/Dates/DatesFunctions';
 const Tab1: React.FC = () => {
 
   const { name, nameSet } = useContext(NameContext);
-  const {habits} = useHabits();
+  const { habits } = useHabits();
   // console.log("habits",habits)
 
   return (
@@ -44,36 +44,36 @@ const Tab1: React.FC = () => {
         <div className="page-wrapper ion-padding-horizontal" >
 
           <div className="page-wrapper-content" style={{ position: 'relative' }}>
-            
+
             {/* <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
               You haven't set any habit yet
             </Heading5> */}
-            {habits && <Heading5>Ongoing habits</Heading5>}
-            {habits ? (habits.map(habit => {
+            {habits.length != 0 ? (<Heading5>Ongoing habits</Heading5>) :
+              (<Heading5>You have no active habits</Heading5>)}
+            {habits && (habits.map(habit => {
               return (
-                <TaskItem key={habit.id} name={habit.name} id={habit.id} dates={habit.dates}/>
-              // <IonCard mode="ios" className="ion-padding-horizontal" routerLink="/habit" color="light"  style={{ border: "2px solid"}} key={habit.id} button={true}>
+                <TaskItem key={habit.id} name={habit.name} id={habit.id} dates={habit.dates} />
+                // <IonCard mode="ios" className="ion-padding-horizontal" routerLink="/habit" color="light"  style={{ border: "2px solid"}} key={habit.id} button={true}>
 
-              //   <Heading5>{habit.name}</Heading5>
-              // </IonCard>
+                //   <Heading5>{habit.name}</Heading5>
+                // </IonCard>
               )
-            })) :
-              (
-                <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
-                  You haven't set any habit yet
-                </Heading5>
-              )
+            })) 
             }
-            
-            <IonCard mode="ios" className="ion-padding-horizontal" routerLink="/new" color="light"  style={{ border: "2px solid"}}>
-                <Heading5 style={{  textAlign: "center" }}>
 
-                <IonIcon icon={addOutline} />
-                </Heading5>
-              </IonCard>
+            {/* <IonCard mode="ios"  routerLink="/new" color="light"  > */}
+            <IonButton expand="block" routerLink="/new" fill="solid" style={{  marginLeft: "0", marginRight: "0" }}>
+              <div className="ion-padding ">
+
+              Add a new habit
+              </div>
+              <IonIcon  icon={flag} />
+            </IonButton>
+
+            {/* </IonCard> */}
             {/* <ViewTask/> */}
             {/* <IonFab vertical="bottom" horizontal="end" slot="fixed"> */}
-          
+
             {/* </IonFab> */}
           </div>
         </div>
