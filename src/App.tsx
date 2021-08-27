@@ -52,6 +52,8 @@ import Attributions from './pages/Attributions/Attributions';
 
 const App: React.FC = () => {
   const {loading} = useAuth()
+  let isAuth = firebaseAuth.currentUser !== null;
+
   // console.log(loading)
 
   if (loading){
@@ -82,7 +84,7 @@ const App: React.FC = () => {
             
             <Route path="/new" component={New} />
             <Route path="/onboarding" component={Onboarding} />
-            <PrivateRoute path="/settings" component={Settings} />
+            <Route path="/settings" component={Settings} />
             <PrivateRoute path="/attributions" component={Attributions} />
               
             <Route path="/habit/:id" exact={true} component={ViewTask}/>
@@ -91,7 +93,7 @@ const App: React.FC = () => {
             </Route>
 
             <Route path="/login" exact={true}>
-              <LoginPage />
+              {isAuth ? <Redirect to="/tabs/habits"/> : <LoginPage />}
             </Route>
 
             <Route path="/create-account" exact={true}>

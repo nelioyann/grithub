@@ -25,13 +25,13 @@ const TaskItem: React.FC<IHabits> = ({ name, id, dates }) => {
                 let ref = await firebaseStore.collection("users").doc(user!.uid)
                 .collection("habits").doc(id)
                 if(habitChecked){
-                console.log("adding", todayDateString)
+                // console.log("adding", todayDateString)
                 
                 ref.update({
                     dates: arrayUnion(todayDateString)
                 })
             } else{
-                    console.log("removing", todayDateString)
+                    // console.log("removing", todayDateString)
                     ref.update({
                         dates: arrayRemove(todayDateString)
                     })

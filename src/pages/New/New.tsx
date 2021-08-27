@@ -68,9 +68,9 @@ const New: React.FC = () => {
 
                             <IonItem color="light" style={{ border: "2px solid var(--ion-color-primary)", borderRadius: "1em" }}>
                                 <IonLabel position="floating">Habit name</IonLabel>
-                                <IonInput onIonChange={(e: any) => handleChange(e.detail.value)} value={newHabit}></IonInput>
+                                <IonInput required={true} onIonChange={(e: any) => handleChange(e.detail.value)} value={newHabit}></IonInput>
                             </IonItem>
-                            <IonButton onClick={() => handleSubmit(newHabit)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
+                            <IonButton onSubmit={() => handleSubmit(newHabit)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
                                 <LargeButton>
                                     Create habit
                                 </LargeButton>

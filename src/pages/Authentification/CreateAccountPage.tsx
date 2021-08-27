@@ -1,9 +1,12 @@
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonRouterLink, IonTitle, IonToolbar } from '@ionic/react';
+import { helpOutline } from 'ionicons/icons';
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router';
+import Header from '../../components/Headers/Header';
 import { toast } from '../../components/Toasts/Toast';
-import {NameContext} from '../../Contexts/NameContext';
+import { NameContext } from '../../Contexts/NameContext';
 import { firebaseAuth, firebaseStore } from '../../initFirebase';
+import { Heading5, MediumParagraph } from '../../theme/globalStyles';
 
 const CreateAccountPage = () => {
   const history = useHistory()
@@ -16,11 +19,11 @@ const CreateAccountPage = () => {
     try {
 
       const cred = await firebaseAuth.createUserWithEmailAndPassword(email, password);
-      if(cred){
+      if (cred) {
         firebaseStore.collection("users").doc(cred.user!.uid)
-        .set({
-          username: name
-        })
+          .set({
+            username: name
+          })
         console.log(cred)
         history.replace("/tabs")
 
@@ -32,49 +35,64 @@ const CreateAccountPage = () => {
   }
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar >
-          <IonTitle>Create Account</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header name="" icon={helpOutline} />
       <IonContent className="ion-padding">
-        <IonItem>
-          <IonLabel position="floating">Email Address</IonLabel>
-          <IonInput
-            type="email"
-            value={email}
-            onInput={(e: any) => emailSet(e.target.value)}
+        <div className="page-wrapper ion-padding-horizontal">
 
-          />
-        </IonItem>
-        <IonItem>
-          <IonLabel position="floating">Password</IonLabel>
-          <IonInput
-            type="password"
-            value={password}
-            onInput={(e: any) => passwordSet(e.target.value)}
 
-          />
-        </IonItem>
-        <IonItem>
-          <IonLabel position="floating">Username</IonLabel>
-          <IonInput
-            type="text"
-            value={name}
-            onInput={(e: any) => nameSet(e.target.value)}
+          <div className="page-wrapper-content ">
+            <Heading5>Create an account </Heading5>
 
-          />
-        </IonItem>
-        <div
-          style={{ justifyContent: "center", display: "flex", paddingTop: 8 }}
-        >
-          <IonButton onClick={doSignIn}>Create Account</IonButton>
-          <IonButton
-            routerLink="/login"
-            fill="outline"
-          >
-            Login Page
-          </IonButton>
+
+            <IonItem>
+              <IonLabel >Email Address</IonLabel>
+              <IonInput
+                type="email"
+                required={true}
+
+                value={email}
+                onInput={(e: any) => emailSet(e.target.value)}
+
+              />
+            </IonItem>
+            <IonItem>
+              <IonLabel >Password</IonLabel>
+              <IonInput
+                type="password"
+                required={true}
+
+                value={password}
+                onInput={(e: any) => passwordSet(e.target.value)}
+
+              />
+            </IonItem>
+            <IonItem>
+              <IonLabel >Username</IonLabel>
+              <IonInput
+                type="text"
+                value={name}
+                required={true}
+
+                onInput={(e: any) => nameSet(e.target.value)}
+
+              />
+            </IonItem>
+            <div
+              style={{ justifyContent: "center", display: "flex", paddingTop: 8 }}
+            >
+              <IonButton onClick={doSignIn}>Create Account</IonButton>
+              
+            </div>
+            <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-medium)" }}>{"Already have an account? "}
+
+              <IonRouterLink
+                routerLink="/login"
+                style={{ textDecoration: "underline" }}
+              >
+                {"Log in"}
+              </IonRouterLink>
+            </MediumParagraph>
+          </div>
         </div>
       </IonContent>
     </IonPage>

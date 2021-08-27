@@ -6,8 +6,8 @@ interface IWeekly{
     dates: string[]
 }
 const WeeklyCalendar: React.FC<IWeekly> = ({dates}) => {
-    console.log(dates)
-    let dummies = ["0827", "0825"]
+    // console.log(dates)
+    // let dummies = ["0827", "0825"]
     let weekdays  = ["M", "T", "W", "T", "F", "S", "S"]
     return (
         <ul className="weekly-graph">

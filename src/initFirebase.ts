@@ -6,7 +6,8 @@ import "firebase/functions"
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_CONFIG_API_KEY,
-    projectId: process.env.REACT_APP_FIREBASE_CONFIG_PROJECT_ID
+    projectId: process.env.REACT_APP_FIREBASE_CONFIG_PROJECT_ID,
+    authDomain: process.env.REACT_APP_FIREBASE_CONFIG_AUTH_DOMAIN,
 }
 
 

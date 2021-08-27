@@ -25,7 +25,7 @@ const Name: React.FC = () => {
     }
     return (
         <IonPage >
-            <IonHeader mode="ios">
+            <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
                 <IonToolbar color="light" >
                     <IonButtons slot="">
                         <IonBackButton color="dark" text="" />
@@ -53,9 +53,9 @@ const Name: React.FC = () => {
                                 <IonLabel position="floating">Preferred name</IonLabel>
                                 <IonInput onIonChange={(e) => handleChange(e)} value={nameInput}></IonInput>
                             </IonItem>
-                            <IonButton onClick={(e) => handleSave(e)}   style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
+                            <IonButton onClick={(e) => handleSave(e)}   style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="dark">
                             {/* routerLink="/tabs/habits" */}
-                                <LargeButton>
+                                <LargeButton style={{color: "var(--ion-color-light)"}}>
 
                                     Save
                                 </LargeButton>

@@ -13,7 +13,7 @@ const Settings: React.FC = () => {
     const {darkMode, darkModeSet} = useContext(DarkModeContext);
     const {logout} = useAuth()
     
-    console.log(darkMode)
+    // console.log(darkMode)
     // Query for the toggle that is used to change between themes
     const darkToggle = useRef<HTMLIonToggleElement>(null);
 
@@ -34,7 +34,7 @@ const Settings: React.FC = () => {
 
     const doLogout = () => {
         logout();
-        history.replace("/login")
+        history.replace("/onboarding")
 
 
     }

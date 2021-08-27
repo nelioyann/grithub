@@ -31,19 +31,23 @@ const HabitsContextProvider: React.FC = ({ children }) => {
 
     // useEffect(() => {
     useEffect(() => {
-        firebaseStore.collection("users")
+        try{
+            // If there is no user don't listen for data
+            if(user === null) return
+            firebaseStore.collection("users")
             .doc(user!.uid).collection("habits").onSnapshot((snapshot) => {
-
+                
                 setHabits(
                     snapshot.docs.map((doc) => ({
                         id: doc.id,
                         name: doc.data().name,
                         dates: doc.data().dates
                     }))
-                )
-
-
-            })
+                    )
+                    
+                    
+                })
+            }catch(e){console.log(e.message)}
             setLoadingHabits(true)
     }, [])
     // let result = firebaseStore.collection("users")

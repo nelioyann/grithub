@@ -29,17 +29,19 @@ const AuthContextProvider: React.FC = ({ children }) => {
     // }, [])
 
     useEffect(() => {
-        firebaseAuth.onAuthStateChanged((u) => {
+        return firebaseAuth.onAuthStateChanged((u) => {
             if (u) {
                 // var uid = user.uid;
                 // User logged in
-                // console.log(u);
+                console.log("you are logged in");
                 setUser(u)
+                setLoading(false)
                 
             } else{
                 // user logged out
+                setUser(null)
+                setLoading(false)
             }
-            setLoading(false)
         })
         // setLoading(false)
     }, [])
@@ -55,4 +57,9 @@ function useAuth() {
     return useContext(AuthContext)
 }
 
-export { AuthContextProvider, useAuth }
+// const auth = Gooimport { GoogleAuthProvider } from "firebase/auth";
+
+const provider = new firebase.auth.GoogleAuthProvider();
+
+
+export { AuthContextProvider, useAuth, provider }

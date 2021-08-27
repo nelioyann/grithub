@@ -42,7 +42,7 @@ export const MediumButton = styled(MediumParagraph)`
   `;
 export const LargeButton = styled(MediumButton)`
   font-size: 1.125rem;
-  min-width: 275px;
+  min-width: 150px;
   font-weight: var(--font-bold);
   line-height: 122%;
 `;
