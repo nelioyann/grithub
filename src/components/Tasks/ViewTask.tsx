@@ -1,4 +1,4 @@
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
+import { IonBackButton, IonButtons, IonCard, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
 import React from 'react'
 import { useParams } from 'react-router'
 import { IHabits, useHabits } from '../../Contexts/habitsProvider'
@@ -8,11 +8,11 @@ import "./ViewTask.css"
 
 type RouteParams = {
     id: string;
-  }
+}
 
 const ViewTask: React.FC = () => {
     const { id } = useParams<RouteParams>();
-    const {habits} = useHabits();
+    const { habits } = useHabits();
     const [habit] = habits.filter(habit => habit.id === id);
 
 
@@ -29,7 +29,7 @@ const ViewTask: React.FC = () => {
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
                     <IonTitle >
-                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>{habit.name}</Heading4>
+                        <Heading5 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>{habit.name}</Heading5>
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
@@ -37,6 +37,10 @@ const ViewTask: React.FC = () => {
                 <div className="page-wrapper ion-padding-horizontal">
 
                     <div className="page-wrapper-content ">
+                        <Heading5>Did you achieve your goal today ?</Heading5>
+                        <IonCard>
+
+                        </IonCard>
                         <Heading5>Yearly View</Heading5>
                         <div className="graph">
                             <ul className="months">
@@ -92,7 +96,7 @@ const ViewTask: React.FC = () => {
                                     let day = index % 31 == 0 ? "31" : (index % 31).toString().padStart(2, '0');
                                     let date = month + day;
                                     return (
-                                        <li className={defaultState.includes(date) ? "completed" : ""} key={"calendarSquare" + index} data-level="${level}" data-day={day} data-month={month}>
+                                        <li className={habit.dates.includes(date) ? "completed" : ""} key={"calendarSquare" + index} data-level="${level}" data-day={day} data-month={month}>
                                             {/* {defaultState.includes(date) ? day : ""} */}
                                         </li>
                                     )

@@ -1,0 +1,23 @@
+.weekly-graph{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin:0 0 1em 0;
+    padding: 0;
+    list-style: none;
+    
+}
+
+.weekly-graph .weekly-squares{
+    color: var(--ion-color-light);
+    background-color: var(--ion-color-dark);
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    font-weight: var(--font-bold);
+    border-radius: 2px;
+    text-align: center;
+}
+.weekly-graph .weekly-squares.completed{
+    background-color: var(--ion-color-secondary);
+}

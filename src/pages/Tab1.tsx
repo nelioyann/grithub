@@ -8,21 +8,20 @@ import React, { useContext } from 'react'
 import TaskItem from '../components/Tasks/TaskItem';
 import ViewTask from '../components/Tasks/ViewTask';
 import { useHabits } from '../Contexts/habitsProvider';
+import { getDateString } from '../components/Dates/DatesFunctions';
 
 
 const Tab1: React.FC = () => {
 
   const { name, nameSet } = useContext(NameContext);
   const {habits} = useHabits();
-  console.log("habits",habits)
-  const dummies = [{ name: "Programming", id: 1, dates: [20210723] }, { name: "Reading", id: 2, dates: [20210723] }]
-  let dummydate = Date.now();
-  // console.log(dummydate)
+  // console.log("habits",habits)
+
   return (
     <IonPage >
       {/* <Header name="Habits" icon={settingsOutline} iconTarget="/settings" /> */}
       <IonContent fullscreen >
-        <IonHeader className="ion-padding-vertical">
+        <IonHeader className="ion-padding-vertical" mode="md">
           <IonToolbar color="light">
             <IonTitle>
               <Heading4>

@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
 `
 export default GlobalStyle;
 
+interface ColoredProps{
+    color?: "primary" | "secondary" | "tertiary" | "medium"| "dark";
+}
+
 export const SmallParagraph = styled.p<ColoredProps>`
   font-size: 0.75rem;
   line-height: 150%;
@@ -43,9 +47,7 @@ export const LargeButton = styled(MediumButton)`
   line-height: 122%;
 `;
 
-interface ColoredProps{
-    color?: "primary" | "secondary" | "tertiary" | "medium"| "dark";
-}
+
 
 export const Heading4 = styled.h4<ColoredProps>`
     font-weight: var(--font-bold);

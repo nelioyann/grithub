@@ -4,7 +4,7 @@ import { useAuth } from './authProvider'
 
 export interface IHabits {
     name: string;
-    dates: number[];
+    dates: string[];
     id: string;
 }
 
