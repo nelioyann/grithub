@@ -47,7 +47,7 @@ const TaskItem: React.FC<IHabits> = ({ name, id, dates }) => {
 
     const handleChange = async () =>{
         setHabitChecked(!habitChecked)
-
+        
         
         
     }
@@ -56,7 +56,7 @@ const TaskItem: React.FC<IHabits> = ({ name, id, dates }) => {
             <div style={{display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center"}}>
 
                 <IonCheckbox mode="md" onClick={()=>handleChange()} checked={habitChecked}/>
-                <Heading6  className={habitChecked ? "ion-margin-horizontal strikethrough" : "ion-margin-horizontal"}>{name}</Heading6>
+                <Heading6 onClick={()=>handleChange()} className={habitChecked ? "ion-margin-horizontal strikethrough" : "ion-margin-horizontal"}>{name}</Heading6>
                 <IonButton fill="clear" routerLink={`/habit/${id}`}>
                     <IonIcon icon={informationCircle} />
                 </IonButton>
