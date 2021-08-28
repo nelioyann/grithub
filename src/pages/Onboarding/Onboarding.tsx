@@ -150,11 +150,11 @@ Next
                             </IonSlide>
 
                         </IonSlides>
-                        <MediumParagraph style={{margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-medium)"}}>{"Already have an account? "}
+                        <MediumParagraph style={{margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-medium-primary)"}}>{"Already have an account? "}
 
                             <IonRouterLink
                                 routerLink="/login"
-                                style={{textDecoration: "underline"}}
+                                style={{textDecoration: "underline", color:"var(--ion-color-tertiary)"}}
                             >
                                 {"Log in"}
                             </IonRouterLink>
@@ -178,7 +178,7 @@ Next
                             </IonButton>
                         </div>}
                         {currentIndex == 2 && <div className="ion-margin-top" style={{ zIndex: 99,  display: "flex", justifyContent: "space-between" }}>
-                            <IonButton style={{ maxWidth: "200px", "--background-hover-opacity": "0", visibility: "hidden" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
+                            <IonButton style={{ maxWidth: "200px", "--background-hover-opacity": "0", visibility: "hidden" }} color="dark" size="small" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
                                 <LargeButton>
 
                                     Skip

@@ -39,11 +39,11 @@ const New: React.FC = () => {
             {/* <Header name="Habits" icon={settingsOutline} iconTarget="/onboarding" /> */}
             <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
                 <IonToolbar color="light" >
-                    <IonButtons slot="start">
+                    <IonButtons slot="">
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
-                    <IonTitle slot="end">
-                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "left" }}>New habit</Heading4>
+                    <IonTitle slot="">
+                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>New habit</Heading4>
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
@@ -68,11 +68,11 @@ const New: React.FC = () => {
                                 I want to {newHabit.toLowerCase()} everyday.
                             </Heading3> */}
 
-                            <IonItem color="light" style={{ border: "2px solid var(--ion-color-primary)", borderRadius: "1em" }}>
+                            <IonItem color="light" style={{ borderLeft: "2px solid var(--ion-color-primary)", borderRadius: "0.3em" }}>
                                 <IonLabel position="floating">Habit name</IonLabel>
                                 <IonInput onIonChange={(e: any) => handleChange(e.detail.value)} value={newHabit}></IonInput>
                             </IonItem>
-                            <IonButton onClick={() => handleSubmit(newHabit)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" >
+                            <IonButton onClick={() => handleSubmit(newHabit)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
                                 <LargeButton style={{color: "var(--ion-color-light)"}}>
                                     Create habit
                                 </LargeButton>

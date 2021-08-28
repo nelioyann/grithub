@@ -91,7 +91,7 @@
     border-radius: 2px;
 }
 .squares li.completed {
-    background-color: var(--ion-color-secondary);
+    background-color: var(--ion-color-success);
 }
 
 .squares li[data-level="1"] {

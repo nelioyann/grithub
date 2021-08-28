@@ -1,5 +1,5 @@
 import { IonButton, IonCard, IonCheckbox, IonIcon, IonToggle } from '@ionic/react'
-import { calendar, informationCircle } from 'ionicons/icons'
+import { calendar, chevronForward, informationCircle } from 'ionicons/icons'
 import React, {useEffect, useState} from 'react'
 import { useAuth } from '../../Contexts/authProvider'
 import { IHabits } from '../../Contexts/habitsProvider'
@@ -52,13 +52,13 @@ const TaskItem: React.FC<IHabits> = ({ name, id, dates }) => {
         
     }
     return (
-        <IonCard mode="ios" className="ion-padding" color="light" style={{ border: "2px solid", marginLeft: "0", marginRight: "0"}}  >
+        <IonCard mode="ios" className="ion-padding" color="medium" style={{ border: "0px solid", marginLeft: "0", marginRight: "0"}}  >
             <div style={{display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center"}}>
 
                 <IonCheckbox mode="md" onClick={()=>handleChange()} checked={habitChecked}/>
                 <Heading6 onClick={()=>handleChange()} className={habitChecked ? "ion-margin-horizontal strikethrough" : "ion-margin-horizontal"}>{name}</Heading6>
                 <IonButton fill="clear" routerLink={`/habit/${id}`}>
-                    <IonIcon icon={informationCircle} />
+                    <IonIcon icon={chevronForward} />
                 </IonButton>
             </div>
             <div style={{ display: "flex", alignItems: "center"}}>

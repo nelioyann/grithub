@@ -39,3 +39,6 @@ ion-tab-button ion-label{
     font-size: 0.875rem;
     font-weight: var(--font-semibold);
 }
+ion-tab-button {
+    --color: var(--ion-color-medium-tint);
+}

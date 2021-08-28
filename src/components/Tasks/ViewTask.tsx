@@ -1,4 +1,5 @@
-import { IonBackButton, IonButton, IonButtons, IonCard, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
+import { IonBackButton, IonButton, IonButtons, IonCard, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react'
+import { trash } from 'ionicons/icons'
 import React from 'react'
 import { useHistory, useParams } from 'react-router'
 import { useAuth } from '../../Contexts/authProvider'
@@ -47,19 +48,24 @@ const ViewTask: React.FC = () => {
                     <IonTitle >
                         <Heading5 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>{habit?.name }</Heading5>
                     </IonTitle>
+                    <IonButtons slot="end">
+                        <IonButton onClick={() => handleRemove()} color="danger">
+                            <IonIcon icon={trash}/>
+                        </IonButton>
+                    </IonButtons>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen >
                 <div className="page-wrapper ion-padding-horizontal">
 
                     <div className="page-wrapper-content ">
-                        <Heading5>Did you achieve your goal today ?</Heading5>
-                        <IonCard>
+                        {/* <Heading5>Did you achieve your goal today ?</Heading5> */}
+                        {/* <IonCard>
                             Today
                         </IonCard>
-                        <IonButton onClick={() => handleRemove()} color="danger">
+                        <IonButton  color="danger">
                             Remove
-                        </IonButton>
+                        </IonButton> */}
                         <Heading5>Yearly View</Heading5>
                         <div className="graph">
                             <ul className="months">

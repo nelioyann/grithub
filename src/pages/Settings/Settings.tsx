@@ -56,8 +56,8 @@ const Settings: React.FC = () => {
                 <div className="page-wrapper ion-padding-horizontal">
 
                     <div className="page-wrapper-content" >
-                        <div >
-                            <IonNote >
+                        <div className="ion-margin-top">
+                            <IonNote style={{ color: "var(--ion-color-tertiary)"}}>
                                 Appearance
                             </IonNote>
                             <IonItem  color="light" lines="none">
@@ -74,7 +74,7 @@ const Settings: React.FC = () => {
                             </IonItem>
                         </div>
                         <div >
-                            <IonNote >
+                            <IonNote style={{ color: "var(--ion-color-tertiary)"}}>
                                 Profile
                             </IonNote>
                             <IonItem color="light" detail={true} button={true} routerLink="/name" lines="none">
@@ -97,7 +97,7 @@ const Settings: React.FC = () => {
                             </IonItem>
                         </div>
                         <div>
-                            <IonNote>About</IonNote>
+                            <IonNote style={{ color: "var(--ion-color-tertiary)"}}>About</IonNote>
                             <IonItem color="light" detail={true} button={true} lines="none">
                                 {/* <IonIcon slot="start" icon={person}></IonIcon> */}
                                 <IonLabel>
@@ -109,9 +109,13 @@ const Settings: React.FC = () => {
                                     Attributions
                                 </IonLabel>
                             </IonItem>
+                            <IonItem color="light" lines="none" button={true}>
+                                <IonLabel>
+                                Version: beta 1
+                                </IonLabel>
+                            </IonItem>
                         </div>
 
-                        <SmallParagraph style={{textAlign:"center"}}>Version: beta 1</SmallParagraph>
                     </div>
                 </div>
             </IonContent>

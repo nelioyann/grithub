@@ -83,11 +83,11 @@ const CreateAccountPage = () => {
               <IonButton onClick={doSignIn}>Create Account</IonButton>
               
             </div>
-            <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-medium)" }}>{"Already have an account? "}
+            <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-primary)" }}>{"Already have an account? "}
 
               <IonRouterLink
                 routerLink="/login"
-                style={{ textDecoration: "underline" }}
+                style={{ textDecoration: "underline", color:"var(--ion-color-tertiary)" }}
               >
                 {"Log in"}
               </IonRouterLink>

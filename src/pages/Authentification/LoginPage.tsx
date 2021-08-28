@@ -81,12 +81,12 @@ const LoginPage: React.FC = () => {
                                 <IonButton className="ion-margin-top" expand="block" onClick={doSignIn}>Login</IonButton>
                                 <IonButton className="ion-margin-top" expand="block" onClick={googleSignIn}>Sign in with Google</IonButton>
                             </div>
-                            <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-medium)" }} >
+                            <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-primary)" }} >
 
                                 {"Don't have an account ? "}
                                 <IonRouterLink
                                     routerLink="/create-account"
-                                    style={{ textDecoration: "underline" }}
+                                    style={{ textDecoration: "underline", color:"var(--ion-color-tertiary)" }}
                                 >
                                     {" Sign Up"}
                                 </IonRouterLink>
