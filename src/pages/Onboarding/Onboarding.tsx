@@ -185,7 +185,7 @@ Next
                                 </LargeButton>
 
                             </IonButton>
-                            <IonButton routerLink="/tabs/habits" style={{ maxWidth: "200px", "--background-hover-opacity": "0" }} size="large" expand="block" fill="clear" >
+                            <IonButton routerLink="/tabs/habits" style={{ maxWidth: "200px", "--background-hover-opacity": "0" }} size="small" expand="block" fill="clear" >
                                 <LargeButton>
 
                                     Start                        </LargeButton>

@@ -32,8 +32,9 @@ const Settings: React.FC = () => {
 
     }
 
-    const doLogout = () => {
-        logout();
+    const doLogout = async () => {
+        const result = await logout();
+        console.log(result)
         history.replace("/onboarding")
 
 
@@ -57,7 +58,7 @@ const Settings: React.FC = () => {
 
                     <div className="page-wrapper-content" >
                         <div className="ion-margin-top">
-                            <IonNote style={{ color: "var(--ion-color-tertiary)"}}>
+                            <IonNote style={{ color: "var(--ion-color-secondary)"}}>
                                 Appearance
                             </IonNote>
                             <IonItem  color="light" lines="none">
@@ -74,7 +75,7 @@ const Settings: React.FC = () => {
                             </IonItem>
                         </div>
                         <div >
-                            <IonNote style={{ color: "var(--ion-color-tertiary)"}}>
+                            <IonNote style={{ color: "var(--ion-color-secondary)"}}>
                                 Profile
                             </IonNote>
                             <IonItem color="light" detail={true} button={true} routerLink="/name" lines="none">
@@ -97,7 +98,7 @@ const Settings: React.FC = () => {
                             </IonItem>
                         </div>
                         <div>
-                            <IonNote style={{ color: "var(--ion-color-tertiary)"}}>About</IonNote>
+                            <IonNote style={{ color: "var(--ion-color-secondary)"}}>About</IonNote>
                             <IonItem color="light" detail={true} button={true} lines="none">
                                 {/* <IonIcon slot="start" icon={person}></IonIcon> */}
                                 <IonLabel>

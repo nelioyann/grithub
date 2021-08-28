@@ -4,13 +4,15 @@ import { firebase, firebaseAuth } from "../initFirebase"
 interface IContext {
     user: firebase.User | null;
     loading: boolean;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
     logout: () => void;
 }
 
 const AuthContext = createContext<IContext>({
     user: null,
     loading: true,
-    logout: () => { }
+    logout: () => { },
+    setLoading: () => { }
 })
 
 const AuthContextProvider: React.FC = ({ children }) => {
@@ -46,7 +48,7 @@ const AuthContextProvider: React.FC = ({ children }) => {
         // setLoading(false)
     }, [])
     return (
-        <AuthContext.Provider value={{ user, loading, logout: () => firebase.auth().signOut() }}>
+        <AuthContext.Provider value={{ user, loading, logout: () => firebase.auth().signOut(), setLoading }}>
             {children}
         </AuthContext.Provider>
     )

@@ -9,7 +9,7 @@ import { toast } from '../../components/Toasts/Toast';
 const New: React.FC = () => {
     const [newHabit, newhabitSet] = useState<string>("")
     const history = useHistory();
-    const { user } = useAuth()
+    const { user, setLoading } = useAuth()
 
     const handleChange = (habit: string) => {
         newhabitSet(habit)
@@ -19,6 +19,7 @@ const New: React.FC = () => {
         console.log("new")
         if (habit === "") return;
         try {
+            // setLoading(true)
             let result = await firebaseStore.collection("users")
                 .doc(user!.uid).collection("habits")
                 .add({
@@ -26,6 +27,8 @@ const New: React.FC = () => {
                     dates: []
                 })
                 console.log(result)
+                // setLoading(false)
+                toast("Added")
             history.replace("/tabs/habits")
 
         } catch (error) {

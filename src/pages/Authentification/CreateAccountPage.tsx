@@ -1,12 +1,13 @@
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonRouterLink, IonTitle, IonToolbar } from '@ionic/react';
-import { helpOutline } from 'ionicons/icons';
-import React, { useContext, useState } from 'react'
+import { IonButton, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonPage, IonRouterLink, IonTitle, IonToolbar } from '@ionic/react';
+import { helpOutline, logoGoogle } from 'ionicons/icons';
+import React, { useContext, useState, useRef, useEffect } from 'react'
 import { useHistory } from 'react-router';
 import Header from '../../components/Headers/Header';
 import { toast } from '../../components/Toasts/Toast';
+import { provider } from '../../Contexts/authProvider';
 import { NameContext } from '../../Contexts/NameContext';
 import { firebaseAuth, firebaseStore } from '../../initFirebase';
-import { Heading5, MediumParagraph } from '../../theme/globalStyles';
+import { Heading4, Heading5, LargeButton, MediumParagraph } from '../../theme/globalStyles';
 
 const CreateAccountPage = () => {
   const history = useHistory()
@@ -25,7 +26,8 @@ const CreateAccountPage = () => {
             username: name
           })
         console.log(cred)
-        history.replace("/tabs")
+        history.replace("/tabs/habits")
+
 
       }
     } catch (error) {
@@ -33,6 +35,36 @@ const CreateAccountPage = () => {
 
     }
   }
+  const googleSignIn = async () => {
+    try {
+      // const auth = new firebaseAuth.getAuth()
+      const result = await firebaseAuth.signInWithRedirect(provider);
+      console.log(result)
+
+
+    } catch (error) {
+      toast(error.message)
+
+    }
+  }
+  const anonSignIn = async () => {
+    try {
+      const result = await firebaseAuth.signInAnonymously();
+      console.log(result)
+      history.replace("/tabs/habits")
+
+
+    } catch (error) {
+      toast(error.message)
+
+    }
+  }
+
+  const gritHubLogo = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+      console.log("loaded", gritHubLogo)
+      gritHubLogo.current?.classList.add("logo_snake_animate")
+  }, [])
   return (
     <IonPage>
       <Header name="" icon={helpOutline} />
@@ -41,38 +73,63 @@ const CreateAccountPage = () => {
 
 
           <div className="page-wrapper-content ">
+            <div ref={gritHubLogo} className="logo_wrapper logo_snake_animate" style={{ display: 'grid', placeItems: "center" }}>
+              <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="150" height="150" fill="black" />
+                <path d="M72.5 112.5H35V38H114V56H58V94H86.5V112.5H114V75H91.5" stroke="#00FFA1" strokeWidth="10" />
+              </svg>
+
+              <Heading4 style={{ textAlign: 'center' }}>Grithub</Heading4>
+              <MediumParagraph>Build habits that stick</MediumParagraph>
+            </div>
+            <IonButton className="ion-margin-top" expand="block" onClick={googleSignIn}>
+              <IonIcon className="ion-padding-horizontal" icon={logoGoogle} />
+              <LargeButton style={{ color: 'var(--ion-color-medium)', textTransform: "initial" }}>
+
+                Sign up with Google
+              </LargeButton>
+            </IonButton>
+            <IonButton className="ion-margin-top" expand="block" fill="outline" onClick={anonSignIn}>
+              <IonIcon className="ion-padding-horizontal" icon={logoGoogle} />
+              <LargeButton style={{ textTransform: "initial" }}>
+
+                Continue as a guest
+              </LargeButton>
+            </IonButton>
+            <Heading4 style={{ textAlign: 'center', margin: "1em" }}>OR </Heading4>
+            {/* <Heading5>Log in with email </Heading5> */}
             <Heading5>Create an account </Heading5>
 
 
-            <IonItem>
-              <IonLabel >Email Address</IonLabel>
+            <IonItem color="medium">
+              <IonLabel position="stacked" >Email Address</IonLabel>
               <IonInput
                 type="email"
                 required={true}
-
+                placeholder="Enter your email address"
                 value={email}
                 onInput={(e: any) => emailSet(e.target.value)}
 
               />
             </IonItem>
-            <IonItem>
-              <IonLabel >Password</IonLabel>
+            <IonItem color="medium">
+              <IonLabel position="stacked" >Password</IonLabel>
               <IonInput
                 type="password"
                 required={true}
-
+                placeholder="Enter your password"
                 value={password}
                 onInput={(e: any) => passwordSet(e.target.value)}
 
               />
             </IonItem>
-            <IonItem>
-              <IonLabel >Username</IonLabel>
+            <IonItem color="medium">
+              <IonLabel position="stacked" >Username</IonLabel>
               <IonInput
                 type="text"
                 value={name}
                 required={true}
-
+                placeholder="Enter your username"
                 onInput={(e: any) => nameSet(e.target.value)}
 
               />
@@ -81,13 +138,13 @@ const CreateAccountPage = () => {
               style={{ justifyContent: "center", display: "flex", paddingTop: 8 }}
             >
               <IonButton onClick={doSignIn}>Create Account</IonButton>
-              
+
             </div>
             <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-primary)" }}>{"Already have an account? "}
 
               <IonRouterLink
                 routerLink="/login"
-                style={{ textDecoration: "underline", color:"var(--ion-color-tertiary)" }}
+                style={{ textDecoration: "underline", color: "var(--ion-color-tertiary)" }}
               >
                 {"Log in"}
               </IonRouterLink>

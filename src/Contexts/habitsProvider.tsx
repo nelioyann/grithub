@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { toast } from '../components/Toasts/Toast'
 import { firebaseStore } from '../initFirebase'
 import { useAuth } from './authProvider'
 
@@ -25,8 +26,9 @@ function useHabits() {
 }
 
 const HabitsContextProvider: React.FC = ({ children }) => {
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
     const [habits, setHabits] = useState<IHabits[]>([]);
+    // const {loading} = useAuth()
     const [loadingHabits, setLoadingHabits] = useState<boolean>(true);
 
     // useEffect(() => {
@@ -34,7 +36,7 @@ const HabitsContextProvider: React.FC = ({ children }) => {
         try{
             // If there is no user don't listen for data
             if(user === null) return
-            firebaseStore.collection("users")
+            const unsubscribe = firebaseStore.collection("users")
             .doc(user!.uid).collection("habits").onSnapshot((snapshot) => {
                 
                 setHabits(
@@ -47,8 +49,13 @@ const HabitsContextProvider: React.FC = ({ children }) => {
                     
                     
                 })
-            }catch(e){console.log(e.message)}
+                return () =>{
+                    unsubscribe()
+                }
+            }catch(e){
+                toast(e.message)}
             setLoadingHabits(true)
+            
     }, [])
     // let result = firebaseStore.collection("users")
     //     .doc(user!.uid).collection("habits").get().then(querySnapshot => {

@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { settingsOutline } from 'ionicons/icons';
 import ExploreContainer from '../components/ExploreContainer';
 import Header from '../components/Headers/Header';
@@ -8,9 +8,21 @@ import './Tab2.css';
 const Tab2: React.FC = () => {
   return (
     <IonPage >
-      <Header name="Community" icon={settingsOutline} iconTarget="/settings" />
+      <IonHeader className="ion-padding-vertical" mode="md">
+          <IonToolbar color="light">
+            <IonTitle>
+              <Heading4>
+                Community
+              </Heading4>
+            </IonTitle>
+            <IonButtons slot="end">
+              <IonButton fill="clear" color="dark" routerLink="/settings">
+                        <IonIcon icon={settingsOutline} />
+                    </IonButton>
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
       <IonContent fullscreen >
-        <Header name="Community" icon={settingsOutline} collapsible={true} iconTarget="/settings" />
         <div className="page-wrapper ion-padding-horizontal">
 
           <div className="page-wrapper-content ">

@@ -1,0 +1,42 @@
+.logo_wrapper path{
+    --value: 440;
+    /* opacity: 0; */
+    stroke-dasharray: var(--value);
+    stroke-dashoffset: var(--value);
+}
+
+.logo_snake_animate path{
+    animation: animate 5s linear forwards 300ms;
+
+}
+.logo_wrapper svg{
+    width: clamp(100px, 20vw, 15em); 
+    height: clamp(100px, 20vw, 15em);
+}
+
+@keyframes animate{
+    0%{
+        stroke-dashoffset: var(--value);
+        opacity: 0;
+    }
+    30%{
+        stroke-dashoffset: var(--value);
+        opacity: 1;
+        fill: rgba(0, 0, 0, 0);
+
+    }
+    90%{
+        stroke-dashoffset: 0;
+        opacity: 1;
+        fill: rgba(0, 0, 0, 0.3);
+
+
+    }
+    100%{
+        stroke-dashoffset: 0;
+        opacity: 1;
+        fill: rgba(0, 0, 0, 0.5);
+        
+
+    }
+}
