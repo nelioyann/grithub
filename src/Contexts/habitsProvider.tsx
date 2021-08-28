@@ -35,7 +35,13 @@ const HabitsContextProvider: React.FC = ({ children }) => {
     useEffect(() => {
         try{
             // If there is no user don't listen for data
-            if(user === null) return
+            if(user === null) {
+                
+                console.log("No user");
+                return
+            }
+            console.log("does it exist ?", firebaseStore.collection("users")
+            .doc(user!.uid).collection("habits").get())
             const unsubscribe = firebaseStore.collection("users")
             .doc(user!.uid).collection("habits").onSnapshot((snapshot) => {
                 
@@ -50,13 +56,14 @@ const HabitsContextProvider: React.FC = ({ children }) => {
                     
                 })
                 return () =>{
+                    console.log("unsubcribed")
                     unsubscribe()
                 }
             }catch(e){
                 toast(e.message)}
             setLoadingHabits(true)
             
-    }, [])
+    }, [user])
     // let result = firebaseStore.collection("users")
     //     .doc(user!.uid).collection("habits").get().then(querySnapshot => {
     //         querySnapshot.forEach((doc)=>{
