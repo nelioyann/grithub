@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState, useContext } from "react"
-import { firebase, firebaseAuth } from "../initFirebase"
+import { firebase, firebaseAuth } from "../initFirebase";
+import {useIonRouter} from '@ionic/react'
+
 
 interface IContext {
     user: firebase.User | null;
@@ -18,17 +20,19 @@ const AuthContext = createContext<IContext>({
 const AuthContextProvider: React.FC = ({ children }) => {
     const [user, setUser] = useState<firebase.User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const router = useIonRouter()
 
 
-    // useEffect(() => {
-    //     // Returns the user or null and triggers every time theres a change
-    //     const cancelAuthListener = firebaseAuth.onIdTokenChanged(u => {
-    //         setUser(u)
-    //         setLoading(false)
-    //     });
-    //     // Stop listening when th app unmount
-    //     return () => cancelAuthListener();
-    // }, [])
+    useEffect(() => {
+        console.log("something happened")
+        // Returns the user or null and triggers every time theres a change
+        // const cancelAuthListener = firebaseAuth.onIdTokenChanged(u => {
+            // setUser(u)
+            // setLoading(false)
+        // });
+        // Stop listening when th app unmount
+        // return () => cancelAuthListener();
+    }, [user])
 
     useEffect(() => {
         return firebaseAuth.onAuthStateChanged((u) => {
@@ -38,7 +42,6 @@ const AuthContextProvider: React.FC = ({ children }) => {
                 console.log("you are logged in");
                 setUser(u)
                 setLoading(false)
-                
             } else{
                 // user logged out
                 setUser(null)

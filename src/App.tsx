@@ -43,28 +43,28 @@ import DarkModeContextProvider from './Contexts/DarkModeContext';
 import NameContextProvider from './Contexts/NameContext';
 import LoginPage from './pages/Authentification/LoginPage';
 import CreateAccountPage from './pages/Authentification/CreateAccountPage';
-import {AuthContextProvider, useAuth, } from './Contexts/authProvider';
-import {HabitsContextProvider, useHabits } from './Contexts/habitsProvider';
+import { AuthContextProvider, useAuth, } from './Contexts/authProvider';
+import { HabitsContextProvider, useHabits } from './Contexts/habitsProvider';
 import { firebaseAuth } from './initFirebase';
 import { useEffect } from 'react';
 import ViewTask from './components/Tasks/ViewTask';
 import Attributions from './pages/Attributions/Attributions';
 
 const App: React.FC = () => {
-  const {loading} = useAuth()
+  const { loading } = useAuth()
   let isAuth = firebaseAuth.currentUser !== null;
 
   // console.log(loading)
 
-  if (loading){
-    return(
+  if (loading) {
+    return (
       <IonApp>
-        <IonLoading isOpen={loading} message="Loading..."/>
+        <IonLoading isOpen={loading} message="Loading..." />
       </IonApp>
     )
   }
 
-  
+
 
 
   return (<IonApp>
@@ -75,30 +75,34 @@ const App: React.FC = () => {
           <NameContextProvider>
             <HabitsContextProvider>
 
-            <Route exact={true}  path="/">
+              <Route exact={true} path="/">
 
-              <Redirect to="/onboarding" />
-            </Route>
-            {/* Important to keep these inlines for privating routes */}
-            <PrivateRoute path="/tabs" component={Tabs} />
-            
-            <Route path="/new" component={New} />
-            <Route path="/onboarding" component={Onboarding} />
-            <Route path="/settings" component={Settings} />
-            <PrivateRoute path="/attributions" component={Attributions} />
-              
-            <Route path="/habit/:id" exact={true} component={ViewTask}/>
-            <Route path="/name" exact={true} >
-              <Name />
-            </Route>
+                <Redirect to="/onboarding" />
+              </Route>
+              {/* Important to keep these inlines for privating routes */}
+              <PrivateRoute path="/tabs" component={Tabs} />
 
-            <Route path="/login" exact={true}>
-              {isAuth ? <Redirect to="/tabs/habits"/> : <LoginPage />}
-            </Route>
+              <Route path="/new" component={New} />
+              <Route path="/onboarding" exact={true}>
+                
+                {isAuth ? <Redirect to="/tabs/habits"/> : <Onboarding />}
+              </Route>
 
-            <Route path="/create-account" exact={true}>
-              <CreateAccountPage />
-            </Route>
+              <Route path="/settings" component={Settings} />
+              <PrivateRoute path="/attributions" component={Attributions} />
+
+              <Route path="/habit/:id" exact={true} component={ViewTask} />
+              <Route path="/name" exact={true} >
+                <Name />
+              </Route>
+
+              <Route path="/login" exact={true}>
+                {isAuth ? <Redirect to="/tabs/habits" /> : <LoginPage />}
+              </Route>
+
+              <Route path="/create-account" exact={true}>
+                <CreateAccountPage />
+              </Route>
             </HabitsContextProvider>
           </NameContextProvider>
         </DarkModeContextProvider>
@@ -111,22 +115,22 @@ const App: React.FC = () => {
 
 export default App;
 
-const PrivateRoute = ({component: Component, ...rest}:any) => {
+const PrivateRoute = ({ component: Component, ...rest }: any) => {
   // const {user, loading} = useAuth();
   const isAuth = firebaseAuth.currentUser !== null;
   // const isAuth = true
   // console.log(isAuth)
   // auth.session to get the current user's auth state
-  return(
-    <Route 
-    {...rest}
-      render={(props) => isAuth ? <Component {...props}/> : <Redirect to="/login"/>}
-      
-      />
+  return (
+    <Route
+      {...rest}
+      render={(props) => isAuth ? <Component {...props} /> : <Redirect to="/login" />}
+
+    />
   )
 }
 
-const Tabs: React.FC= () => {
+const Tabs: React.FC = () => {
   return (
     <IonTabs >
       <IonRouterOutlet>
@@ -140,12 +144,12 @@ const Tabs: React.FC= () => {
           <Redirect to="/tabs/habits" />
         </Route>
       </IonRouterOutlet>
-      <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px",  border: "none" }} slot="bottom" >
-        <IonTabButton  tab="tab1" href="/tabs/habits">
+      <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px", border: "none" }} slot="bottom" >
+        <IonTabButton tab="tab1" href="/tabs/habits">
           <IonIcon icon={apps} />
           <IonLabel>Habits</IonLabel>
         </IonTabButton>
-        <IonTabButton  tab="tab2" href="/tabs/community">
+        <IonTabButton tab="tab2" href="/tabs/community">
           <IonIcon icon={globeOutline} />
           <IonLabel>Feed</IonLabel>
         </IonTabButton>

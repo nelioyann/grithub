@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCard, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonNote, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { addCircle, addOutline, arrowForwardCircle, flag, settingsOutline } from 'ionicons/icons';
 import Header from '../components/Headers/Header';
 import { NameContext } from '../Contexts/NameContext';
@@ -9,6 +9,7 @@ import TaskItem from '../components/Tasks/TaskItem';
 import ViewTask from '../components/Tasks/ViewTask';
 import { useHabits } from '../Contexts/habitsProvider';
 import { getDateString } from '../components/Dates/DatesFunctions';
+import Avatar from "boring-avatars";
 
 
 const Tab1: React.FC = () => {
@@ -25,18 +26,25 @@ const Tab1: React.FC = () => {
           <IonToolbar color="light">
             <IonTitle>
               <Heading4>
-                Welcome back, {name != "" ? name : "Fellow Grithuber"}
+                Welcome back
               </Heading4>
             </IonTitle>
             <IonButtons slot="end">
               <IonButton routerLink="/settings">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <Avatar
+                  size={32}
+                  name={name != "" ? name : "Fellow Grithuber"}
+                  variant="beam"
+                  colors={["#366D9C", "#E05926", "#2FA377", "#EFA948", "#EF4949"]}
+                />
+                
+                {/* <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="32" height="32" rx="2.85714" fill="white" />
                   <rect width="32" height="32" rx="16" fill="white" />
                   <rect x="7.42857" y="18.8571" width="2.85714" height="2.85714" rx="1.42857" fill="black" />
                   <rect x="17.1429" y="18.8571" width="2.85714" height="2.85714" rx="1.42857" fill="black" />
                   <path d="M10.8571 25.1429H17.1429" stroke="black" strokeWidth="1.71429" strokeLinecap="round" />
-                </svg>
+                </svg> */}
               </IonButton>
             </IonButtons>
           </IonToolbar>
