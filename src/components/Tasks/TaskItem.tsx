@@ -56,10 +56,10 @@ const TaskItem: React.FC<IHabits> = ({ name, id, dates }) => {
         router.push(path, "forward")
     }
     return (
-        <IonCard mode="ios" className="ion-padding" color="medium" style={{ border: "0px solid", marginLeft: "0", marginRight: "0"}}  >
+        <IonCard mode="ios" className="ion-padding"   style={{ border: "2px solid var(--ion-color-medium)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent"}}  >
             <div style={{display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center"}}>
 
-                <IonCheckbox mode="md" onClick={()=>handleChange()} checked={habitChecked}/>
+                <IonCheckbox mode="ios" onClick={()=>handleChange()} checked={habitChecked}/>
                 <Heading6 onClick={()=>handleChange()} className={habitChecked ? "ion-margin-horizontal strikethrough" : "ion-margin-horizontal"}>{name}</Heading6>
                 <IonButton fill="clear" onClick ={ () => goToGraph(`/habit/${id}`)} >
                     <IonIcon icon={chevronForward} />

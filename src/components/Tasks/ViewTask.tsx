@@ -45,9 +45,8 @@ const ViewTask: React.FC = () => {
                     <IonButtons slot="">
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
-                    <IonTitle >
-                        <Heading5 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>{habit?.name }</Heading5>
-                    </IonTitle>
+                    {/* <IonTitle >
+                    </IonTitle> */}
                     <IonButtons slot="end">
                         <IonButton onClick={() => handleRemove()} color="danger">
                             <IonIcon icon={trash}/>
@@ -59,6 +58,8 @@ const ViewTask: React.FC = () => {
                 <div className="page-wrapper ion-padding-horizontal">
 
                     <div className="page-wrapper-content ">
+                    <Heading5 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>{habit?.name }</Heading5>
+
                         {/* <Heading5>Did you achieve your goal today ?</Heading5> */}
                         {/* <IonCard>
                             Today
@@ -122,7 +123,6 @@ const ViewTask: React.FC = () => {
                                     let date = month + day;
                                     return (
                                         <li className={habit.dates.includes(date) ? "completed" : ""} key={"calendarSquare" + index} data-level="${level}" data-day={day} data-month={month}>
-                                            {/* {defaultState.includes(date) ? day : ""} */}
                                         </li>
                                     )
                                 })}

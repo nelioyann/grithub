@@ -147,7 +147,7 @@ const Tabs: React.FC = () => {
       <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px", border: "none" }} slot="bottom" >
         <IonTabButton tab="tab1" href="/tabs/habits">
           <IonIcon icon={apps} />
-          <IonLabel>Habits</IonLabel>
+          <IonLabel>Today</IonLabel>
         </IonTabButton>
         <IonTabButton tab="tab2" href="/tabs/community">
           <IonIcon icon={globeOutline} />
