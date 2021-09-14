@@ -67,7 +67,7 @@ const CreateAccountPage = () => {
   }, [])
   return (
     <IonPage>
-      <Header name="" icon={helpOutline} />
+      {/* <Header name="" icon={helpOutline} /> */}
       <IonContent className="ion-padding">
         <div className="page-wrapper ion-padding-horizontal">
 

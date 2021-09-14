@@ -6,7 +6,7 @@
 }
 
 .logo_snake_animate path{
-    animation: animate 5s linear forwards 300ms;
+    animation: animate 3s ease-in-out forwards 100ms;
 
 }
 .logo_wrapper svg{

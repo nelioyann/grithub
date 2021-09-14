@@ -62,7 +62,7 @@ const LoginPage: React.FC = () => {
 
     return (
         <IonPage>
-            <Header name="" icon={helpOutline} />
+            {/* <Header name="" icon={helpOutline} /> */}
             <IonContent fullscreen>
                 <div className="page-wrapper ion-padding-horizontal">
 
