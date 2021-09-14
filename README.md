@@ -1,3 +1,4 @@
+![Onboarding](https://user-images.githubusercontent.com/17406287/133293831-1a7ad821-5c03-4f37-91ad-340e91a0bd17.png)
 
 # Grithub
 
