@@ -55,7 +55,7 @@ const New: React.FC = () => {
             toast("Added")
             history.replace("/tabs/habits")
 
-        } catch (error) {
+        } catch (error: any) {
             toast(error.message)
 
         }

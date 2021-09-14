@@ -19,7 +19,7 @@ const LoginPage: React.FC = () => {
             console.log(result)
             history.replace("/tabs/habits")
 
-        } catch (error) {
+        } catch (error: any) {
             toast(error.message)
 
         }
@@ -31,7 +31,7 @@ const LoginPage: React.FC = () => {
             console.log(result)
 
 
-        } catch (error) {
+        } catch (error: any) {
             toast(error.message)
 
         }
@@ -44,7 +44,7 @@ const LoginPage: React.FC = () => {
             history.replace("/tabs/habits")
 
 
-        } catch (error) {
+        } catch (error: any) {
             toast(error.message)
 
         }

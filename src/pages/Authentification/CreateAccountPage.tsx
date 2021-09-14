@@ -30,7 +30,7 @@ const CreateAccountPage = () => {
 
 
       }
-    } catch (error) {
+    } catch (error: any) {
       toast(error.message)
 
     }
@@ -42,7 +42,7 @@ const CreateAccountPage = () => {
       console.log(result)
 
 
-    } catch (error) {
+    } catch (error: any) {
       toast(error.message)
 
     }
@@ -54,7 +54,7 @@ const CreateAccountPage = () => {
       history.replace("/tabs/habits")
 
 
-    } catch (error) {
+    } catch (error: any) {
       toast(error.message)
 
     }
