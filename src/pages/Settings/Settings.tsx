@@ -1,4 +1,4 @@
-import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonIcon, IonItem, IonLabel, IonToggle, IonList, IonListHeader, IonNote } from '@ionic/react'
+import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonIcon, IonItem, IonLabel, IonToggle, IonList, IonListHeader, IonNote, useIonRouter } from '@ionic/react'
 import { bug, moon, person, settingsOutline } from 'ionicons/icons'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router'
@@ -10,7 +10,7 @@ import Avatar from "boring-avatars";
 import {NameContext} from '../../Contexts/NameContext'
 
 const Settings: React.FC = () => {
-
+    const router = useIonRouter()
     const history = useHistory()
     const { darkMode, darkModeSet } = useContext(DarkModeContext);
     const { logout } = useAuth()
@@ -38,7 +38,9 @@ const Settings: React.FC = () => {
     const doLogout = async () => {
         const result = await logout();
         console.log(result)
-        history.replace("/onboarding")
+        // history.replace("/onboarding")
+        console.log(router.routeInfo)
+        router.push('/onboarding', "forward", "push")
 
 
     }

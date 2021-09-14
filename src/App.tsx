@@ -151,7 +151,7 @@ const Tabs: React.FC = () => {
         </IonTabButton>
         <IonTabButton tab="tab2" href="/tabs/community">
           <IonIcon icon={globeOutline} />
-          <IonLabel>Feed</IonLabel>
+          <IonLabel>Stats</IonLabel>
         </IonTabButton>
 
       </IonTabBar>

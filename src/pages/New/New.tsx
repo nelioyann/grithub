@@ -5,16 +5,21 @@ import { useHistory } from 'react-router';
 import { firebaseStore } from '../../initFirebase';
 import { useAuth } from '../../Contexts/authProvider';
 import { toast } from '../../components/Toasts/Toast';
+import Picker from 'emoji-picker-react';
 
 const New: React.FC = () => {
     const [newHabit, newhabitSet] = useState<string>("")
     const history = useHistory();
     const { user, setLoading } = useAuth()
+    const [chosenEmoji, setChosenEmoji] = useState(null);
 
     const handleChange = (habit: string) => {
         newhabitSet(habit)
     }
-
+    const onEmojiClick = (event: any, emojiObject: any) => {
+        setChosenEmoji(emojiObject.emoji);
+        console.log(emojiObject?.emoji)
+      };
     const handleSubmit = async (habit: string) => {
         console.log("new")
         if (habit === "") return;
@@ -71,10 +76,12 @@ const New: React.FC = () => {
                                 I want to {newHabit.toLowerCase()} everyday.
                             </Heading3> */}
 
-                            <IonItem color="light" style={{ borderLeft: "2px solid var(--ion-color-primary)", borderRadius: "0.3em" }}>
+                            <IonItem color="light" style={{ border: "2px solid var(--ion-color-medium)", borderRadius: "0.3em" }}>
                                 <IonLabel position="floating">Habit name</IonLabel>
                                 <IonInput onIonChange={(e: any) => handleChange(e.detail.value)} value={newHabit}></IonInput>
                             </IonItem>
+                            {chosenEmoji}
+                            <Picker onEmojiClick={onEmojiClick} disableSkinTonePicker={true} native={true} disableSearchBar={true} pickerStyle={{ width: '100%' }} />
                             <IonButton onClick={() => handleSubmit(newHabit)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
                                 <LargeButton style={{color: "var(--ion-color-light)"}}>
                                     Create habit

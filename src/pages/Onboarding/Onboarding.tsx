@@ -80,20 +80,10 @@ const Onboarding: React.FC = () => {
 
                                         <img style={{ width: "clamp(100px, 100%, 300px)", filter: "contrast(0) brightness(4.5)" }} src={buildBricks} alt="Image of the theme" />
                                     </div>
-                                    {/* <Lottie isClickToPauseDisabled={true} options={stairsOptions} height={230} width={300} /> */}
-                                    {/* <Heading5 style={{ textTransform: "uppercase" }}>
-                                We can help <span style={{ color: "var(--ion-color-primary)" }}>you</span> to be a better version of <span style={{ color: "var(--ion-color-primary)" }}>yourself</span>.
-                            </Heading5> */}
+
 
                                 </div>
 
-                                {/* <IonButton fill="clear" color="primary" onClick={() => handleSwipeFinal()} >
-                        <MediumParagraph>
-                        
-                        Ignorer
-                        </MediumParagraph>
-                        
-                    </IonButton> */}
 
 
                             </IonSlide>
@@ -107,20 +97,10 @@ const Onboarding: React.FC = () => {
 
                                         <img style={{ width: "clamp(100px, 100%, 300px)", filter: "contrast(0) brightness(4.5)" }} src={reachGoal} alt="Image of the theme" />
                                     </div>
-                                    {/* <Lottie isClickToPauseDisabled={true} options={calendarOptions} height={230} width={300} /> */}
-                                    {/* <Heading5 style={{ textTransform: "uppercase" }}>
-                                We can help <span style={{ color: "var(--ion-color-primary)" }}>you</span> to be a better version of <span style={{ color: "var(--ion-color-primary)" }}>yourself</span>.
-                            </Heading5> */}
+
                                 </div>
 
-                                {/* <RowContainer>
 
-<IonButton onClick={() => handleSwipeNext()} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="clear" color="primary">
-<LargeButton>
-Next
-</LargeButton>
-</IonButton>
-</RowContainer> */}
 
                                 {/* <IonButton onClick={()=> handleSwipeNext()} size="large" expand="block" color="primary">Continuer</IonButton> */}
                             </IonSlide>
@@ -187,9 +167,7 @@ Next
                             </IonButton>
                             <IonButton routerLink="/tabs/habits" style={{ maxWidth: "200px", "--background-hover-opacity": "0" }} size="small" expand="block" fill="clear" >
                                 <LargeButton>
-
-                                    Start                        </LargeButton>
-
+                                    Get Started                        </LargeButton>
                             </IonButton>
                         </div>}
 

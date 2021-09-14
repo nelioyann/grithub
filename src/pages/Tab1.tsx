@@ -9,7 +9,6 @@ import TaskItem from '../components/Tasks/TaskItem';
 import ViewTask from '../components/Tasks/ViewTask';
 import { useHabits } from '../Contexts/habitsProvider';
 import { getDateString } from '../components/Dates/DatesFunctions';
-import Avatar from "boring-avatars";
 
 
 const Tab1: React.FC = () => {
@@ -24,21 +23,14 @@ const Tab1: React.FC = () => {
       <IonContent fullscreen >
         <IonHeader className="ion-padding-vertical" mode="md">
           <IonToolbar color="light">
-            <IonTitle>
+            <IonTitle style={{paddingLeft:0}}>
               <Heading4>
                 Welcome back
               </Heading4>
             </IonTitle>
             <IonButtons slot="end">
-              <IonButton routerLink="/settings">
-              <Avatar
-                  size={32}
-                  name={name != "" ? name : "Fellow Grithuber"}
-                  variant="beam"
-                  colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
-                />
-                
-                
+              <IonButton routerLink="/new" expand="block" fill="solid">
+                Add a new goal
               </IonButton>
             </IonButtons>
           </IonToolbar>
@@ -57,28 +49,9 @@ const Tab1: React.FC = () => {
             {habits && (habits.map(habit => {
               return (
                 <TaskItem key={habit.id} name={habit.name} id={habit.id} dates={habit.dates} />
-                // <IonCard mode="ios" className="ion-padding-horizontal" routerLink="/habit" color="light"  style={{ border: "2px solid"}} key={habit.id} button={true}>
-
-                //   <Heading5>{habit.name}</Heading5>
-                // </IonCard>
               )
             })) 
             }
-
-            {/* <IonCard mode="ios"  routerLink="/new" color="light"  > */}
-            <IonButton expand="block" routerLink="/new" fill="solid" style={{  marginLeft: "0", marginRight: "0" }}>
-              <div className="ion-padding ">
-
-              Add a new habit
-              </div>
-              <IonIcon  icon={flag} />
-            </IonButton>
-
-            {/* </IonCard> */}
-            {/* <ViewTask/> */}
-            {/* <IonFab vertical="bottom" horizontal="end" slot="fixed"> */}
-
-            {/* </IonFab> */}
           </div>
         </div>
       </IonContent>

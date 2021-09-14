@@ -5,15 +5,15 @@ import { LargeButton, ColumnContainer, MediumParagraph, Heading4 } from '../../t
 const Attributions: React.FC = () => {
     return (
         <IonPage >
-            <IonHeader  mode="ios" className="ion-padding-vertical ion-no-border">
+            <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
                 <IonToolbar color="light" >
                     <IonButtons slot="">
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
-                    <IonTitle>
-                    <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "left" }}>Attributions</Heading4>
-                        
-                        </IonTitle>
+                    <IonTitle slot="">
+                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>Attributions</Heading4>
+
+                    </IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen >
@@ -26,6 +26,12 @@ const Attributions: React.FC = () => {
                         </IonItem>
                         <IonItem color="light">
                             <MediumParagraph>Animations from LottieFiles</MediumParagraph>
+                        </IonItem>
+                        <IonItem color="light">
+                            <MediumParagraph>User Icons generated from Boring Avatars</MediumParagraph>
+                        </IonItem>
+                        <IonItem color="light">
+                            <MediumParagraph>Emoji Picker React</MediumParagraph>
                         </IonItem>
                     </div>
                 </div>

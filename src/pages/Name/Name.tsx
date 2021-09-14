@@ -1,10 +1,11 @@
-import { useIonRouter , IonPage, IonContent, IonInput, IonItem, IonLabel, IonButton, IonBackButton, IonButtons, IonHeader, IonToolbar } from '@ionic/react'
+import { useIonRouter, IonPage, IonContent, IonInput, IonItem, IonLabel, IonButton, IonBackButton, IonButtons, IonHeader, IonToolbar } from '@ionic/react'
 import React, { useContext, useState } from 'react'
 import { Heading4, LargeButton, ColumnContainer } from '../../theme/globalStyles'
 import Lottie from "react-lottie";
 import personnageAnimation from "./character.json"
 import { text } from 'ionicons/icons';
 import { NameContext } from '../../Contexts/NameContext';
+import Avatar from "boring-avatars";
 
 const characterOptions = { loop: true, animationData: personnageAnimation, autoplay: true }
 
@@ -30,7 +31,7 @@ const Name: React.FC = () => {
                     <IonButtons slot="">
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
-                    
+
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen >
@@ -43,19 +44,27 @@ const Name: React.FC = () => {
                             <Heading4 style={{ marginTop: "auto" }}>
                                 How should we refer to you ?
                             </Heading4>
+                            <div style={{ borderRadius: "50%", margin: "1em auto", width: "max-content" }}>
 
-                            <div style={{ filter: "invert(0.5)" }}>
+                                <Avatar
+                                    size={100}
+                                    name={nameInput != "" ? nameInput : name}
+                                    variant="beam"
+                                    colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
+                                />
+                            </div>
+                            {/* <div style={{ filter: "invert(0.5)" }}>
 
                                 <Lottie isClickToPauseDisabled={true} options={characterOptions} height={230} width={300} />
-                            </div>
+                            </div> */}
 
                             <IonItem color="light">
                                 <IonLabel position="floating">Preferred name</IonLabel>
                                 <IonInput onIonChange={(e) => handleChange(e)} value={nameInput}></IonInput>
                             </IonItem>
-                            <IonButton onClick={(e) => handleSave(e)}   style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="dark">
-                            {/* routerLink="/tabs/habits" */}
-                                <LargeButton style={{color: "var(--ion-color-light)"}}>
+                            <IonButton onClick={(e) => handleSave(e)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="dark">
+                                {/* routerLink="/tabs/habits" */}
+                                <LargeButton style={{ color: "var(--ion-color-light)" }}>
 
                                     Save
                                 </LargeButton>
