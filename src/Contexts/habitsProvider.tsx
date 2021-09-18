@@ -9,7 +9,7 @@ export interface IHabits {
     id: string;
 }
 
-interface IContext{
+interface IContext {
     habits: IHabits[],
     loadingHabits: boolean;
 }
@@ -33,36 +33,37 @@ const HabitsContextProvider: React.FC = ({ children }) => {
 
     // useEffect(() => {
     useEffect(() => {
-        try{
+        try {
             // If there is no user don't listen for data
-            if(user === null) {
-                
+            if (user === null) {
+
                 console.log("No user");
                 return
             }
             console.log("does it exist ?", firebaseStore.collection("users")
-            .doc(user!.uid).collection("habits").get())
+                .doc(user!.uid).collection("habits").get())
             const unsubscribe = firebaseStore.collection("users")
-            .doc(user!.uid).collection("habits").onSnapshot((snapshot) => {
-                
-                setHabits(
-                    snapshot.docs.map((doc) => ({
-                        id: doc.id,
-                        name: doc.data().name,
-                        dates: doc.data().dates
-                    }))
-                    )
-                    
-                    
+                .doc(user!.uid).collection("habits").onSnapshot((snapshot) => {
+
+                    setHabits(
+                        snapshot.docs.map((doc) => ({
+                            id: doc.id,
+                            name: doc.data().name,
+                            dates: doc.data().dates
+                        })))
+                    setLoadingHabits(false);
+
+
                 })
-                return () =>{
-                    console.log("unsubcribed")
-                    unsubscribe()
-                }
-            }catch(e){
-                toast(e.message)}
-            setLoadingHabits(true)
-            
+            return () => {
+                console.log("unsubcribed")
+                unsubscribe()
+            }
+        } catch (e) {
+            toast(e.message)
+        }
+        setLoadingHabits(false)
+
     }, [user])
     // let result = firebaseStore.collection("users")
     //     .doc(user!.uid).collection("habits").get().then(querySnapshot => {
@@ -95,7 +96,7 @@ const HabitsContextProvider: React.FC = ({ children }) => {
     // }), []
 
     return (
-        <HabitsContext.Provider value={{habits, loadingHabits}}>
+        <HabitsContext.Provider value={{ habits, loadingHabits }}>
             {children}
         </HabitsContext.Provider>
     )

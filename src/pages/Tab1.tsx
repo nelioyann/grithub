@@ -14,7 +14,7 @@ import { getDateString } from '../components/Dates/DatesFunctions';
 const Tab1: React.FC = () => {
 
   const { name, nameSet } = useContext(NameContext);
-  const { habits } = useHabits();
+  const { habits, loadingHabits } = useHabits();
   // console.log("habits",habits)
 
   return (
@@ -42,6 +42,7 @@ const Tab1: React.FC = () => {
             {/* <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
               You haven't set any habit yet
             </Heading5> */}
+            {loadingHabits && <p>Loading habits...</p>}
             {habits.length != 0 ? (<Heading5>
               Take a moment to tick off what you achieved today
               </Heading5>) :
