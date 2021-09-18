@@ -1,0 +1,38 @@
+
+.info__image{
+    width: clamp(100px, 15vw, 15em);
+    height: clamp(100px, 15vw, 15em);
+}
+.cls-3 {
+    fill: #ff3a2f;
+}
+
+.cls-7 {
+    fill: #142a3b;
+}
+
+.cls-10 {
+    fill: #ededed;
+}
+
+.cls-13 {
+    fill: #020403;
+    opacity: 0.35;
+}
+
+
+/* Task Modal Styling */
+.task-modal{
+    --height:50%;
+    --border-radius: 1rem 1rem 0 0;
+    --margin-top: auto;
+
+}
+
+.task-modal .modal-wrapper{
+    margin-top: auto;
+
+}
+.task-modal .modal-shadow{
+    bottom:0;
+}

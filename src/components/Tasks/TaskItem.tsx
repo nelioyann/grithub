@@ -2,7 +2,7 @@ import { IonButton, IonCard, IonCheckbox, IonIcon, IonToggle, useIonRouter } fro
 import { calendar, chevronForward, informationCircle } from 'ionicons/icons'
 import React, {useEffect, useState} from 'react'
 import { useAuth } from '../../Contexts/authProvider'
-import { IHabits } from '../../Contexts/habitsProvider'
+import { IHabit } from '../../Contexts/habitsProvider'
 import { firebaseStore, firebase, arrayUnion, arrayRemove } from '../../initFirebase'
 import { Heading6, RowContainer } from '../../theme/globalStyles'
 import { getDateString, incrementToday } from '../Dates/DatesFunctions'
@@ -11,7 +11,11 @@ import WeeklyCalendar from './WeeklyCalendar'
 import "./WeeklyCalendar.css"
 // import { updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 
-const TaskItem: React.FC<IHabits> = ({ name, id, dates }) => {
+interface IClickableHabit extends IHabit{
+    onClickHandler: (habit: IHabit) => void;
+}
+
+const TaskItem: React.FC<IClickableHabit> = ({ name, id, dates, onClickHandler }) => {
     let todayDateString = getDateString(incrementToday(0));
     const [habitChecked, setHabitChecked] = useState<boolean>(dates.includes(todayDateString))
 
@@ -37,7 +41,7 @@ const TaskItem: React.FC<IHabits> = ({ name, id, dates }) => {
                     })
     
                 }
-            }catch(error){
+            } catch(error){
                 toast(error.message)
     
             }
@@ -55,8 +59,9 @@ const TaskItem: React.FC<IHabits> = ({ name, id, dates }) => {
     const goToGraph = (path: string) =>{
         router.push(path, "forward")
     }
+
     return (
-        <IonCard mode="ios" className="ion-padding"   style={{ border: "2px solid var(--ion-color-medium)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent"}}  >
+        <IonCard mode="ios" button={true} className="ion-padding"  onClick={() => onClickHandler({ name, id, dates })} style={{ border: "2px solid var(--ion-color-medium)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent"}}  >
             <div style={{display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center"}}>
 
                 <IonCheckbox mode="ios" onClick={()=>handleChange()} checked={habitChecked}/>

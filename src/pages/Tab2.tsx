@@ -12,7 +12,7 @@ const Tab2: React.FC = () => {
           <IonToolbar color="light">
             <IonTitle>
               <Heading4>
-                Community
+                History
               </Heading4>
             </IonTitle>
             <IonButtons slot="end">
@@ -27,7 +27,7 @@ const Tab2: React.FC = () => {
 
           <div className="page-wrapper-content ">
             <Heading4 style={{marginTop: "5em", textAlign: "center" }}>
-              Coming soon
+              Coming soon...
             </Heading4>
           </div>
         </div>

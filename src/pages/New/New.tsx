@@ -12,7 +12,7 @@ const EmojiPicker: React.FC<{
 }> = ({ onSelected }) => {
     return (
 
-        <Picker onEmojiClick={onSelected} disableSkinTonePicker={true} disableSearchBar={true} pickerStyle={{ width: '100%', height: '100%' }} />
+        <Picker onEmojiClick={onSelected} disableSkinTonePicker={true} disableSearchBar={true} preload={true} pickerStyle={{ width: '100%', height: '100%' }} />
     )
 
 }
@@ -41,7 +41,10 @@ const New: React.FC = () => {
 
     const handleSubmit = async (habit: string) => {
         console.log("new")
-        if (habit === "") return;
+        if (habit === "") {
+            toast("Invalid entry")
+            return
+        };
         try {
             // setLoading(true)
             let result = await firebaseStore.collection("users")
@@ -70,7 +73,7 @@ const New: React.FC = () => {
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
                     <IonTitle slot="">
-                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>New habit</Heading4>
+                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>New goal</Heading4>
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
@@ -86,9 +89,9 @@ const New: React.FC = () => {
                             </Heading3> */}
 
                             <Heading6>Everyday, I want to</Heading6>
-                            <IonItem color="medium" style={{ border: "2px solid var(--ion-color-medium)", borderRadius: "0.3em" }}>
+                            <IonItem  >
                                 <IonLabel position="floating">Habit name</IonLabel>
-                                <IonInput onIonChange={(e: any) => handleChange(e.detail.value)} value={newHabit}></IonInput>
+                                <IonInput color="medium" onIonChange={(e: any) => handleChange(e.detail.value)} value={newHabit}></IonInput>
                             </IonItem>
                             <div className="ion-margin-vertical">
                                 <IonNote>

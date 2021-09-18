@@ -3,14 +3,14 @@ import { toast } from '../components/Toasts/Toast'
 import { firebaseStore } from '../initFirebase'
 import { useAuth } from './authProvider'
 
-export interface IHabits {
+export interface IHabit {
     name: string;
     dates: string[];
     id: string;
 }
 
 interface IContext {
-    habits: IHabits[],
+    habits: IHabit[],
     loadingHabits: boolean;
 }
 
@@ -27,7 +27,7 @@ function useHabits() {
 
 const HabitsContextProvider: React.FC = ({ children }) => {
     const { user, loading } = useAuth();
-    const [habits, setHabits] = useState<IHabits[]>([]);
+    const [habits, setHabits] = useState<IHabit[]>([]);
     // const {loading} = useAuth()
     const [loadingHabits, setLoadingHabits] = useState<boolean>(true);
 
