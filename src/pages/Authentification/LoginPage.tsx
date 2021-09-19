@@ -70,7 +70,7 @@ const LoginPage: React.FC = () => {
                     <div  className="page-wrapper-content ">
                         <div ref={gritHubLogo} className="logo_wrapper logo_snake_animate" style={{ display: 'grid', placeItems: "center" }}>
                             <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="150" height="150" fill="black" />
+                                <rect width="150" height="150"  />
                                 <path d="M72.5 112.5H35V38H114V56H58V94H86.5V112.5H114V75H91.5" stroke="#00FFA1" strokeWidth="10" />
                             </svg>
 
