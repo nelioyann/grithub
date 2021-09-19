@@ -1,4 +1,5 @@
 import React, {createContext, useEffect, useState} from "react"
+// import { StatusBar, Style } from '@capacitor/status-bar';
 
 export interface DarkModeContextProps {
     darkMode: boolean;
@@ -18,6 +19,8 @@ const DarkModeContextProvider:React.FC = (props) =>{
     useEffect(() => {
             // Listen for the toggle check/uncheck to toggle the dark class on the <body>
             document.body.classList.toggle('dark', darkMode);
+            // if(!darkMode) StatusBar.setStyle({ style: Style.Light });
+            // if(darkMode) StatusBar.setStyle({ style: Style.Dark });
             darkModeSet(darkMode)
     
     }, [])
