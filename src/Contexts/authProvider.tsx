@@ -24,7 +24,7 @@ const AuthContextProvider: React.FC = ({ children }) => {
 
 
     useEffect(() => {
-        console.log("something happened")
+        console.log("something happened to the user", user)
         // Returns the user or null and triggers every time theres a change
         // const cancelAuthListener = firebaseAuth.onIdTokenChanged(u => {
             // setUser(u)
@@ -39,7 +39,7 @@ const AuthContextProvider: React.FC = ({ children }) => {
             if (u) {
                 // var uid = user.uid;
                 // User logged in
-                console.log("you are logged in");
+                // console.log("you are logged in");
                 setUser(u)
                 setLoading(false)
             } else{

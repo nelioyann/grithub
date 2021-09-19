@@ -1,5 +1,5 @@
-import { IonButton, IonButtons, IonCard, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonItem, IonLabel, IonModal, IonNote, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
-import { add, addCircle, addOutline, arrowForwardCircle, bed, calendar, checkmarkCircle, checkmarkCircleOutline, flag, settingsOutline } from 'ionicons/icons';
+import { IonButton, IonButtons, IonCard, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonItem, IonLabel, IonModal, IonNote, IonPage, IonTitle, IonToolbar, useIonRouter, useIonViewDidEnter, useIonViewDidLeave, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react';
+import { add, addCircle, addOutline, arrowForwardCircle, bed, calendar, checkmarkCircle, checkmarkCircleOutline, createOutline, flag, settingsOutline } from 'ionicons/icons';
 import Header from '../components/Headers/Header';
 import { NameContext } from '../Contexts/NameContext';
 import { Heading4, Heading5 } from '../theme/globalStyles';
@@ -8,36 +8,114 @@ import React, { useContext, useEffect, useState } from 'react'
 import TaskItem from '../components/Tasks/TaskItem';
 import ViewTask from '../components/Tasks/ViewTask';
 import { useHabits, IHabit } from '../Contexts/habitsProvider';
-import { getDateString } from '../components/Dates/DatesFunctions';
+import { getDateString, incrementToday } from '../components/Dates/DatesFunctions';
+import { toast } from '../components/Toasts/Toast';
+import { useAuth } from '../Contexts/authProvider';
+import { firebaseStore, arrayUnion, arrayRemove } from '../initFirebase';
 
 
 const Tab1: React.FC = () => {
 
   const { name, nameSet } = useContext(NameContext);
   const { habits, loadingHabits } = useHabits();
+  let todayDateString = getDateString(incrementToday(0));
 
   const [showModal, setShowModal] = useState(false);
   const [selectedHabit, setSelectedHabit] = useState<IHabit>()
+  // State of the current habit
+  const [habitChecked, setHabitChecked] = useState<boolean | undefined>(selectedHabit?.dates.includes(todayDateString))
+  const [inView, setInView] = useState<boolean>(false);
 
-  const handleTaskSelection = (habit: IHabit) =>{
-    console.log(habit.name, "selected")
+
+  const handleTaskSelection = (habit: IHabit) => {
+    // console.log(habit.name, "selected")
     setSelectedHabit(habit)
     setShowModal(true)
+    console.log("New item selected", habitChecked, selectedHabit)
+
   }
 
-  const router = useIonRouter();
-    const goToGraph = (path: string) =>{
-        router.push(path, "forward")
-    }
+  const handleTaskCompletion = (id: string | undefined) => {
+    console.log("Handle COmpletion fired")
+    setHabitChecked(selectedHabit?.dates.includes(todayDateString));
 
-        // Modal cleanup
-    useEffect(() => {
-        console.log("Modal cleanup")
-        return () => setShowModal(false)
-    }, [])
+
+  }
+  const router = useIonRouter();
+  const goToGraph = (path: string) => {
+    router.push(path, "forward")
+  }
+
+  // Modal cleanup
+  useEffect(() => {
+    // console.log("Modal cleanup")
+    return () => setShowModal(false)
+  }, [])
 
   // console.log("habits",habits)
+  const { user } = useAuth()
+  // console.log()
 
+
+  useEffect(() => {
+    // console.log("trying to update")
+    // console.log("Will Mark as finished", habitChecked, selectedHabit)
+    if (!selectedHabit) {
+      // toast("An error occured, no update")
+      // console.log("Current habit and check", selectedHabit, habitChecked)
+      return
+    }
+    const updateArray = async () => {
+      try {
+        let ref = await firebaseStore.collection("users").doc(user!.uid)
+          .collection("habits").doc(selectedHabit?.id)
+        if (habitChecked) {
+          // If the habit is checked then uncheck it (remove it)
+          ref.update({
+            dates: arrayRemove(todayDateString)
+          })
+
+        } else {
+          ref.update({
+            dates: arrayUnion(todayDateString)
+          })
+
+        }
+      } catch (error) {
+        toast("error")
+
+      }
+    }
+    updateArray()
+    setShowModal(false)
+    setSelectedHabit(undefined)
+    setHabitChecked(undefined)
+  }, [habitChecked])
+
+
+
+
+
+//   useIonViewWillLeave(()=>{
+//     console.log("view will leave")
+//     setInView(false)
+
+// })
+//   useIonViewDidLeave(()=>{
+//     console.log("view did leave")
+
+//     // elTask?.current?.classList.remove("animated");
+    
+// })
+// useIonViewWillEnter(()=>{
+//     console.log("view will enter")
+//     // elTask?.current?.classList.add("animated");
+// })
+useIonViewDidEnter(()=>{
+    console.log("view did enter")
+    setInView(true)
+    // elTask?.current?.classList.add("animated");
+})
   return (
     <IonPage >
       {/* <Header name="Habits" icon={settingsOutline} iconTarget="/settings" /> */}
@@ -50,10 +128,13 @@ const Tab1: React.FC = () => {
               </Heading4>
             </IonTitle>
             <IonButtons slot="end">
-              <IonButton routerLink="/new" fill="outline">
-                <IonIcon icon={add}></IonIcon>
-                Add new
+              <IonButton  routerLink="/new" color="dark" fill="clear">
+                {/* <IonIcon icon={add}></IonIcon> */}
+                <IonIcon icon={createOutline}></IonIcon>
               </IonButton>
+              <IonButton fill="clear" color="dark" routerLink="/settings">
+                        <IonIcon icon={settingsOutline} />
+                    </IonButton>
             </IonButtons>
           </IonToolbar>
         </IonHeader>
@@ -87,7 +168,7 @@ const Tab1: React.FC = () => {
                     </g>
                   </svg>
                   <Heading5>You have no active goals</Heading5>
-                  <IonButton routerLink="/new" fill="solid">
+                  <IonButton routerLink="/new" fill="clear">
                     Add a new one
                   </IonButton>
                 </div>
@@ -97,9 +178,9 @@ const Tab1: React.FC = () => {
             {/* <Heading5>You have no active habits</Heading5> */}
             {habits && (
 
-              habits.map(habit => {
+              habits.map((habit, index) => {
                 return (
-                  <TaskItem onClickHandler={() => handleTaskSelection(habit)} key={habit.id} name={habit.name} id={habit.id} dates={habit.dates} />
+                  <TaskItem inView={inView} taskIndex={index} onClickHandler={() => handleTaskSelection(habit)} key={habit.id} id={habit.id} />
                 )
 
               }))
@@ -112,27 +193,27 @@ const Tab1: React.FC = () => {
               swipeToClose={true}
               mode="ios"
             >
-              <div className="ion-padding-horizontal" style={{width: '100%'}}>
+              <div className="ion-padding-horizontal" style={{ width: '100%' }}>
 
-                <div >
+                <div>
 
                   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <div style={{ height: "5px", width: "80px", backgroundColor: "var(--ion-color-medium)", margin: "1rem 0", borderRadius: "5px" }}></div>
                   </div>
-                    <Heading5>{selectedHabit?.name}</Heading5>
+                  <Heading5>{selectedHabit?.name}</Heading5>
 
-                    <IonItem button={true}>
-                      <IonIcon icon={checkmarkCircleOutline}></IonIcon>
-                      <IonLabel className="ion-padding">Mark as finished</IonLabel>
-                    </IonItem>
-                    <IonItem button={true}>
-                      <IonIcon icon={bed}></IonIcon>
-                      <IonLabel className="ion-padding">Mark as a break day </IonLabel>
-                    </IonItem>
-                    <IonItem button={true} onClick ={ () => goToGraph(`/habit/${selectedHabit?.id}`)}>
-                      <IonIcon icon={calendar}></IonIcon>
-                      <IonLabel className="ion-padding">View graph</IonLabel>
-                    </IonItem>
+                  <IonItem button={true} onClick={() => handleTaskCompletion(selectedHabit?.id)}>
+                    <IonIcon icon={checkmarkCircleOutline}></IonIcon>
+                    <IonLabel className="ion-padding">{ selectedHabit?.dates.includes(todayDateString) ? "UnMark as finished" : "Mark as completed" }</IonLabel>
+                  </IonItem>
+                  {/* <IonItem button={true}>
+                    <IonIcon icon={bed}></IonIcon>
+                    <IonLabel className="ion-padding">Mark as a break day </IonLabel>
+                  </IonItem> */}
+                  <IonItem button={true} onClick={() => goToGraph(`/habit/${selectedHabit?.id}`)}>
+                    <IonIcon icon={calendar}></IonIcon>
+                    <IonLabel className="ion-padding">View graph</IonLabel>
+                  </IonItem>
                 </div>
               </div>
 

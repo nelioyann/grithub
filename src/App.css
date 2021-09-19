@@ -1,29 +1,33 @@
-.page-wrapper-content, ion-toolbar{
-    width: clamp(15em, 100%, 45em) ;
+.page-wrapper-content,
+ion-toolbar {
+    width: clamp(15em, 100%, 45em);
     margin: 0 auto 0px !important;
-    
+
 }
 
 
-ion-header, ion-toolbar{
+ion-header,
+ion-toolbar {
     background-color: var(--ion-color-light);
 }
+
 /* ion-toolbar, ion-header, .header-collapse-condense ion-toolbar{
     --background: transparent;
 } */
 
-.page-wrapper{
+.page-wrapper {
     /* background: var(--ion-color-light); */
     display: flex;
     /* flex-direction: column; */
     align-items: stretch;
     min-height: 80vh;
 }
+
 /* .page-wrapper-content{
     height: 100%;
 } */
 
-.ion-page{
+.ion-page {
     align-items: center;
     /* background: var(--ion-color-light); */
 
@@ -31,14 +35,46 @@ ion-header, ion-toolbar{
 
 
 
-ion-col{
+ion-col {
     display: flex;
 }
 
-ion-tab-button ion-label{
+ion-tab-button ion-label {
     font-size: 0.875rem;
     font-weight: var(--font-semibold);
 }
+
 ion-tab-button {
     --color: var(--ion-color-medium-tint);
+}
+
+/* Animations & Page transitions */
+
+.animate-fade {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.6s ease 0.3s;
+    transition: opacity 0.6s ease 0.3s;
+}
+
+.animate-fade-up {
+    opacity: 0;
+    visibility: hidden;
+
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+    -webkit-transition: opacity 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s, -webkit-transform 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s;
+    transition: opacity 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s, -webkit-transform 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s;
+    transition: opacity 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s, transform 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s;
+    transition: opacity 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s, transform 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s, -webkit-transform 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s;
+}
+
+.animated {
+    opacity: 1;
+    visibility: visible;
+
+    -webkit-transform: none;
+    transform: none;
+    -webkit-transition-delay: 0.6s;
+    transition-delay: 0.6s;
 }

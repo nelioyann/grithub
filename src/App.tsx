@@ -10,7 +10,7 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { apps, ellipse, globeOutline, square, triangle } from 'ionicons/icons';
+import { apps, ellipse, globeOutline, square, statsChart, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -150,7 +150,7 @@ const Tabs: React.FC = () => {
           <IonLabel>Today</IonLabel>
         </IonTabButton>
         <IonTabButton tab="tab2" href="/tabs/community">
-          <IonIcon icon={globeOutline} />
+          <IonIcon icon={statsChart} />
           <IonLabel>Stats</IonLabel>
         </IonTabButton>
 

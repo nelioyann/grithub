@@ -29,7 +29,7 @@ const ViewTask: React.FC = () => {
             console.log(ref)
 
         } catch (err) {
-            console.log(err.message)
+            console.log("err.message")
         }
 
     }

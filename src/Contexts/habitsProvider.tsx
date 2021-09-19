@@ -60,7 +60,7 @@ const HabitsContextProvider: React.FC = ({ children }) => {
                 unsubscribe()
             }
         } catch (e) {
-            toast(e.message)
+            console.log("e.message")
         }
         setLoadingHabits(false)
 
