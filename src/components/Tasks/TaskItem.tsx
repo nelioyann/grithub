@@ -11,6 +11,7 @@ import WeeklyCalendar from './WeeklyCalendar'
 import "./WeeklyCalendar.css"
 // import { updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 
+
 interface IClickableHabit {
     id: string,
     inView: boolean,
