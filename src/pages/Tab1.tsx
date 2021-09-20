@@ -8,7 +8,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import TaskItem from '../components/Tasks/TaskItem';
 import ViewTask from '../components/Tasks/ViewTask';
 import { useHabits, IHabit } from '../Contexts/habitsProvider';
-import { getDateString, incrementToday } from '../components/Dates/DatesFunctions';
+import { getDateString, incrementToday, todayDate } from '../components/Dates/DatesFunctions';
 import { toast } from '../components/Toasts/Toast';
 import { useAuth } from '../Contexts/authProvider';
 import { firebaseStore, arrayUnion, arrayRemove } from '../initFirebase';
@@ -43,12 +43,13 @@ const Tab1: React.FC = () => {
   }
   const router = useIonRouter();
   const goToGraph = (path: string) => {
+    setShowModal(false);
     router.push(path, "forward")
   }
 
   // Modal cleanup
   useEffect(() => {
-    // console.log("Modal cleanup")
+    console.log("Modal cleanup")
     return () => setShowModal(false)
   }, [])
 
@@ -96,17 +97,17 @@ const Tab1: React.FC = () => {
 
 
 
-//   useIonViewWillLeave(()=>{
-//     console.log("view will leave")
-//     setInView(false)
+  useIonViewWillLeave(()=>{
+    console.log("view will leave")
+    setInView(false)
 
-// })
-//   useIonViewDidLeave(()=>{
-//     console.log("view did leave")
+})
+  useIonViewDidLeave(()=>{
+    console.log("view did leave")
 
-//     // elTask?.current?.classList.remove("animated");
+    // elTask?.current?.classList.remove("animated");
     
-// })
+})
 // useIonViewWillEnter(()=>{
 //     console.log("view will enter")
 //     // elTask?.current?.classList.add("animated");
@@ -124,7 +125,7 @@ useIonViewDidEnter(()=>{
           <IonToolbar color="light">
             <IonTitle >
               <Heading4>
-                Welcome back
+                {todayDate()}
               </Heading4>
             </IonTitle>
             <IonButtons slot="end">
@@ -145,8 +146,7 @@ useIonViewDidEnter(()=>{
             {/* <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
               You haven't set any habit yet
             </Heading5> */}
-            {loadingHabits && <p>Loading habits...</p>}
-            {habits.length != 0 ? (<Heading5>
+            { !loadingHabits && habits.length != 0 ? (<Heading5>
               Take a moment to tick off what you achieved today
             </Heading5>) :
               (
@@ -168,7 +168,7 @@ useIonViewDidEnter(()=>{
                     </g>
                   </svg>
                   <Heading5>You have no active goals</Heading5>
-                  <IonButton routerLink="/new" fill="clear">
+                  <IonButton routerLink="/new" fill="solid">
                     Add a new one
                   </IonButton>
                 </div>

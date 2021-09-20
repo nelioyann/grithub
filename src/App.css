@@ -40,13 +40,14 @@ ion-tab-button {
 /* Animations & Page transitions */
 
 .animate-fade {
-    opacity: 0;
+    /* opacity: 0;
     visibility: hidden;
     -webkit-transition: opacity 0.6s ease 0.3s;
-    transition: opacity 0.6s ease 0.3s;
+    transition: opacity 0.6s ease 0.3s; */
+    animation-name: fade;
 }
 
-.animate-fade-up {
+/* .animate-fade-up {
     opacity: 0;
     visibility: hidden;
 
@@ -56,14 +57,19 @@ ion-tab-button {
     transition: opacity 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s, -webkit-transform 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s;
     transition: opacity 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s, transform 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s;
     transition: opacity 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s, transform 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s, -webkit-transform 0.6s cubic-bezier(0.2, 0, 0.13, 1.5) 0.3s;
-}
+} */
 
 .animated {
-    opacity: 1;
-    visibility: visible;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
 
-    -webkit-transform: none;
-    transform: none;
-    -webkit-transition-delay: 0.6s;
-    transition-delay: 0.6s;
+
+@keyframes fade{
+    from {
+        opacity: 0
+    }
+    to{
+        opacity: 1;
+    }
 }

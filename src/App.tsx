@@ -80,14 +80,14 @@ const App: React.FC = () => {
                   <Redirect to="/onboarding" />
                 </Route>
                 {/* Important to keep these inlines for privating routes */}
-                <PrivateRoute path="/tabs" component={Tabs} />
-                <Route path="/new" component={New} />
+                <Route path="/tabs" component={Tabs} />
+                <Route exact={true} path="/new" component={New} />
                 <Route path="/onboarding" exact={true}>
                   {isAuth ? <Redirect to="/tabs/habits" /> : <Onboarding />}
                 </Route>
 
-                <Route path="/settings" component={Settings} />
-                <PrivateRoute path="/attributions" component={Attributions} />
+                <Route exact={true} path="/settings" component={Settings} />
+                <PrivateRoute exact={true} path="/attributions" component={Attributions} />
 
                 <Route path="/habit/:id" exact={true} component={ViewTask} />
                 <Route path="/name" exact={true} component={Name} />
@@ -143,15 +143,15 @@ const Tabs: React.FC = () => {
   return (
     <IonTabs >
       <IonRouterOutlet>
-        <PrivateRoute exact path="/tabs/habits">
+        <Route exact path="/tabs/habits">
           <Tab1 />
-        </PrivateRoute>
-        <PrivateRoute exact path="/tabs/community">
+        </Route>
+        <Route exact path="/tabs/community">
           <Tab2 />
-        </PrivateRoute>
-        <PrivateRoute exact path="/tabs">
+        </Route>
+        <Route exact path="/tabs">
           <Redirect to="/tabs/habits" />
-        </PrivateRoute>
+        </Route>
       </IonRouterOutlet>
       <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px" }} slot="bottom" >
         <IonTabButton tab="tab1" href="/tabs/habits">

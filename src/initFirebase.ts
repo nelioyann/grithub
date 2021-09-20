@@ -4,20 +4,13 @@ import "firebase/firestore"
 import "firebase/functions"
 
 
-// const config = {
-//     apiKey: process.env.REACT_APP_FIREBASE_CONFIG_API_KEY,
-//     projectId: process.env.REACT_APP_FIREBASE_CONFIG_PROJECT_ID,
-//     authDomain: process.env.REACT_APP_FIREBASE_CONFIG_AUTH_DOMAIN,
-// }
-
 const config = {
-    apiKey: "AIzaSyC78qJ3dKFn0MDwyirTPcK3isC9T_1yTdU",
-    authDomain: "grithub-5254d.firebaseapp.com",
-    projectId: "grithub-5254d",
-    storageBucket: "grithub-5254d.appspot.com",
-    messagingSenderId: "416816848828",
-    appId: "1:416816848828:web:e2750ef946f71ca59915b9"
+    apiKey: process.env.REACT_APP_FIREBASE_CONFIG_API_KEY,
+    projectId: process.env.REACT_APP_FIREBASE_CONFIG_PROJECT_ID,
+    authDomain: process.env.REACT_APP_FIREBASE_CONFIG_AUTH_DOMAIN,
 }
+
+
 
 // console.log(process.env.REACT_APP_FIREBASE_CONFIG_API_KEY)
 function initFirebase(){

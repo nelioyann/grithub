@@ -40,8 +40,8 @@ const HabitsContextProvider: React.FC = ({ children }) => {
                 console.log("No user");
                 return
             }
-            console.log("does it exist ?", firebaseStore.collection("users")
-                .doc(user!.uid).collection("habits").get())
+            // console.log("does it exist ?", firebaseStore.collection("users")
+            //     .doc(user!.uid).collection("habits").get())
             const unsubscribe = firebaseStore.collection("users")
                 .doc(user!.uid).collection("habits").onSnapshot((snapshot) => {
 
@@ -51,19 +51,21 @@ const HabitsContextProvider: React.FC = ({ children }) => {
                             name: doc.data().name,
                             dates: doc.data().dates
                         })))
-                    setLoadingHabits(false);
 
 
                 })
+        console.log("loading falsed")
+    setLoadingHabits(false)
+        
+
             return () => {
                 console.log("unsubcribed")
                 unsubscribe()
+
             }
         } catch (e) {
             console.log("e.message")
         }
-        setLoadingHabits(false)
-
     }, [user])
     // let result = firebaseStore.collection("users")
     //     .doc(user!.uid).collection("habits").get().then(querySnapshot => {
@@ -76,7 +78,10 @@ const HabitsContextProvider: React.FC = ({ children }) => {
     //         })
     // })
 
+// useEffect(() => {
+//     setLoadingHabits(false)
 
+// }, [habits])
 
     // console.log(result)
 
