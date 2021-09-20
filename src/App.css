@@ -5,31 +5,20 @@ ion-toolbar {
 
 }
 
-
 ion-header,
 ion-toolbar {
     background-color: var(--ion-color-light);
 }
 
-/* ion-toolbar, ion-header, .header-collapse-condense ion-toolbar{
-    --background: transparent;
-} */
-
 .page-wrapper {
-    /* background: var(--ion-color-light); */
     display: flex;
-    /* flex-direction: column; */
     align-items: stretch;
     min-height: 80vh;
 }
 
-/* .page-wrapper-content{
-    height: 100%;
-} */
 
 .ion-page {
     align-items: center;
-    /* background: var(--ion-color-light); */
 
 }
 

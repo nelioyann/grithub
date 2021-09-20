@@ -67,59 +67,68 @@ const App: React.FC = () => {
 
 
 
-  return (<IonApp>
-    <IonReactRouter>
-      {/* <IonTabs> */}
-      <IonRouterOutlet>
+  return (
+    <IonApp>
+      <IonReactRouter>
+        {/* <IonTabs> */}
         <DarkModeContextProvider>
           <NameContextProvider>
             <HabitsContextProvider>
 
-              <Route exact={true} path="/">
+              <IonRouterOutlet id="main">
+                <Route exact={true} path="/">
+                  <Redirect to="/onboarding" />
+                </Route>
+                {/* Important to keep these inlines for privating routes */}
+                <PrivateRoute path="/tabs" component={Tabs} />
+                <Route path="/new" component={New} />
+                <Route path="/onboarding" exact={true}>
+                  {isAuth ? <Redirect to="/tabs/habits" /> : <Onboarding />}
+                </Route>
 
-                <Redirect to="/onboarding" />
-              </Route>
-              {/* Important to keep these inlines for privating routes */}
-              <PrivateRoute path="/tabs" component={Tabs} />
+                <Route path="/settings" component={Settings} />
+                <PrivateRoute path="/attributions" component={Attributions} />
 
-              <Route path="/new" component={New} />
-              <Route path="/onboarding" exact={true}>
-                
-                {isAuth ? <Redirect to="/tabs/habits"/> : <Onboarding />}
-              </Route>
+                <Route path="/habit/:id" exact={true} component={ViewTask} />
+                <Route path="/name" exact={true} component={Name} />
 
-              <Route path="/settings" component={Settings} />
-              <PrivateRoute path="/attributions" component={Attributions} />
 
-              <Route path="/habit/:id" exact={true} component={ViewTask} />
-              <Route path="/name" exact={true} >
-                <Name />
-              </Route>
-
-              <Route path="/login" exact={true}>
-                {isAuth ? <Redirect to="/tabs/habits" /> : <LoginPage />}
-              </Route>
-
-              <Route path="/create-account" exact={true}>
-                <CreateAccountPage />
-              </Route>
+                <Route path="/login" exact={true}>
+                  {isAuth ? <Redirect to="/tabs/habits" /> : <LoginPage />}
+                </Route>
+                <Route path="/create-account" exact={true}>
+                  <CreateAccountPage />
+                </Route>
+              </IonRouterOutlet>
             </HabitsContextProvider>
           </NameContextProvider>
         </DarkModeContextProvider>
-      </IonRouterOutlet>
 
-      {/* </IonTabs> */}
-    </IonReactRouter>
-  </IonApp>)
+        {/* </IonTabs> */}
+      </IonReactRouter>
+    </IonApp>)
 };
 
 export default App;
 
+
+// const PrivateRout: React.FC<{
+//   component: React.FC,
+//   path: string,
+//   exact: boolean
+// }> = (props) => {
+//   const isAuth = firebaseAuth.currentUser !== null;
+//   return (
+//     isAuth ? (<Route path={props.path} exact={props.exact} component={props.component} />) :
+//       (<Redirect to="/login" />)
+
+//   )
+
+// }
+
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
   // const {user, loading} = useAuth();
   const isAuth = firebaseAuth.currentUser !== null;
-  // const isAuth = true
-  // console.log(isAuth)
   // auth.session to get the current user's auth state
   return (
     <Route
@@ -134,15 +143,15 @@ const Tabs: React.FC = () => {
   return (
     <IonTabs >
       <IonRouterOutlet>
-        <Route exact path="/tabs/habits">
+        <PrivateRoute exact path="/tabs/habits">
           <Tab1 />
-        </Route>
-        <Route exact path="/tabs/community">
+        </PrivateRoute>
+        <PrivateRoute exact path="/tabs/community">
           <Tab2 />
-        </Route>
-        <Route exact path="/tabs">
+        </PrivateRoute>
+        <PrivateRoute exact path="/tabs">
           <Redirect to="/tabs/habits" />
-        </Route>
+        </PrivateRoute>
       </IonRouterOutlet>
       <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px" }} slot="bottom" >
         <IonTabButton tab="tab1" href="/tabs/habits">
