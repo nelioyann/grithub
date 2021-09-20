@@ -25,7 +25,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+src/initFirebase.ts
+
 # Optional eslint cache
 .eslintcache
-src/initFirebase.ts
-src/initFirebase.ts
+
+/src/initFirebase.ts
