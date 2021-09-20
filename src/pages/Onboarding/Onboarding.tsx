@@ -11,6 +11,7 @@ import stairsAnimation from "./lottieFiles/stairs.json"
 import buildBricks from "./Images/02.png"
 import reachGoal from "./Images/09.png"
 import bulbPlant from "./Images/08.png"
+import { useDarkMode } from '../../Contexts/DarkModeContext';
 
 const newhabitsOptions = { loop: true, animationData: outilAnimation, autoplay: true }
 const calendarOptions = { loop: true, animationData: calendarAnimation, autoplay: true }
@@ -19,6 +20,9 @@ const stairsOptions = { loop: true, animationData: stairsAnimation, autoplay: tr
 const Onboarding: React.FC = () => {
     const [currentIndex, currentIndexSet] = useState(0)
     const onboardingSlides = useRef<HTMLIonSlidesElement>(null);
+    const { darkMode } = useDarkMode();
+
+    const themedImageFilter = darkMode ? "contrast(0) brightness(4.5)" : "contrast(1) brightness(0)";
 
     const router = useIonRouter();
 
@@ -66,7 +70,7 @@ const Onboarding: React.FC = () => {
                                     </Heading4>
                                     <div className="ion-padding ion-margin-vertical" style={{ display: "flex", justifyContent: "center" }}>
 
-                                        <img style={{ width: "clamp(100px, 100%, 300px)", filter: "contrast(0) brightness(4.5)" }} src={buildBricks} alt="Image of the theme" />
+                                        <img style={{ width: "clamp(100px, 100%, 400px)", filter: themedImageFilter }} src={buildBricks} alt="Image of the theme" />
                                     </div>
 
 
@@ -83,7 +87,7 @@ const Onboarding: React.FC = () => {
                                     </Heading4>
                                     <div className="ion-padding ion-margin-vertical" style={{ display: "flex", justifyContent: "center" }}>
 
-                                        <img style={{ width: "clamp(100px, 100%, 300px)", filter: "contrast(0) brightness(4.5)" }} src={reachGoal} alt="Image of the theme" />
+                                        <img style={{ width: "clamp(100px, 100%, 400px)", filter: themedImageFilter }} src={reachGoal} alt="Image of the theme" />
                                     </div>
 
                                 </div>
@@ -95,12 +99,12 @@ const Onboarding: React.FC = () => {
                             <IonSlide style={{ display: "flex", flexDirection: "column" }}>
                                 <div className="ion-padding-horizontal">
 
-                                    <Heading4 style={{ color: "var(--ion-color-dark)", padding: "1em", margin:"auto" }}>
+                                    <Heading4 style={{ color: "var(--ion-color-dark)", padding: "1em", margin: "auto" }}>
                                         Visualize your growth and maintain streaks
                                     </Heading4>
                                     <div className="ion-padding ion-margin-vertical" style={{ display: "flex", justifyContent: "center" }}>
 
-                                        <img style={{ width: "clamp(100px, 100%, 300px)", filter: "contrast(0) brightness(4.5)" }} src={bulbPlant} alt="Image of the theme" />
+                                        <img style={{ width: "clamp(100px, 100%, 400px)", filter: themedImageFilter }} src={bulbPlant} alt="Image of the theme" />
                                     </div>
 
                                 </div>
@@ -109,17 +113,17 @@ const Onboarding: React.FC = () => {
                             </IonSlide>
 
                         </IonSlides>
-                        <MediumParagraph style={{margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-medium-primary)"}}>{"Already have an account? "}
+                        <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-medium-primary)" }}>{"Already have an account? "}
 
                             <IonRouterLink
                                 routerLink="/login"
-                                style={{textDecoration: "underline", color:"var(--ion-color-tertiary)"}}
+                                style={{ textDecoration: "underline", color: "var(--ion-color-tertiary)" }}
                             >
                                 {"Log in"}
                             </IonRouterLink>
                         </MediumParagraph>
 
-                        {currentIndex != 2 && <div className="ion-margin-top" style={{ zIndex: 99,   display: "flex", justifyContent: "space-between"}}>
+                        {currentIndex != 2 && <div className="ion-margin-top" style={{ zIndex: 99, display: "flex", justifyContent: "space-between" }}>
 
                             <IonButton style={{ maxWidth: "200px", "--background-hover-opacity": "0" }} color="dark" size="small" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
                                 <LargeButton>
@@ -136,7 +140,7 @@ const Onboarding: React.FC = () => {
 
                             </IonButton>
                         </div>}
-                        {currentIndex == 2 && <div className="ion-margin-top" style={{ zIndex: 99,  display: "flex", justifyContent: "space-between" }}>
+                        {currentIndex == 2 && <div className="ion-margin-top" style={{ zIndex: 99, display: "flex", justifyContent: "space-between" }}>
                             <IonButton style={{ maxWidth: "200px", "--background-hover-opacity": "0", visibility: "hidden" }} color="dark" size="small" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
                                 <LargeButton>
 
@@ -144,7 +148,7 @@ const Onboarding: React.FC = () => {
                                 </LargeButton>
 
                             </IonButton>
-                            <IonButton onClick={() => router.push("/tabs/habits", "forward", "replace")}  style={{ maxWidth: "200px", "--background-hover-opacity": "0" }} size="small" expand="block" fill="clear" >
+                            <IonButton onClick={() => router.push("/login", "forward", "replace")} style={{ maxWidth: "200px", "--background-hover-opacity": "0" }} size="small" expand="block" fill="clear" >
                                 <LargeButton>
                                     Get Started                        </LargeButton>
                             </IonButton>

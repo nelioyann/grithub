@@ -98,16 +98,13 @@ const Tab1: React.FC = () => {
 
 
   useIonViewWillLeave(()=>{
-    console.log("view will leave")
+    // console.log("view will leave")
     setInView(false)
 
 })
-  useIonViewDidLeave(()=>{
-    console.log("view did leave")
-
-    // elTask?.current?.classList.remove("animated");
-    
-})
+//   useIonViewDidLeave(()=>{
+//     console.log("view did leave")
+// })
 // useIonViewWillEnter(()=>{
 //     console.log("view will enter")
 //     // elTask?.current?.classList.add("animated");

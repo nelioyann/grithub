@@ -22,7 +22,7 @@ interface IClickableHabit {
 const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, inView }) => {
     let todayDateString = getDateString(incrementToday(0));
     let delay = (taskIndex * 0.1) + "s"
-    console.log(delay)
+    // console.log(delay)
 
     const { habits } = useHabits();
     const [habit] = habits.filter(habit => habit.id === id);
@@ -33,9 +33,9 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
 
     const elTask = useRef<HTMLIonCardElement>(null);
 
-    useEffect(() => {
-        console.log("animated")
-    }, [inView])
+    // useEffect(() => {
+    //     console.log("animated")
+    // }, [inView])
     const handleChange = async () => {
         // console.log()
         return

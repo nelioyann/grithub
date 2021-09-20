@@ -1,4 +1,4 @@
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonButton, IonPage, IonIcon, IonRouterLink, IonCard } from '@ionic/react';
+import { IonHeader, useIonRouter, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonButton, IonPage, IonIcon, IonRouterLink, IonCard } from '@ionic/react';
 import { helpOutline, logoGoogle, logoGooglePlaystore, mailOutline, walk } from 'ionicons/icons';
 import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router';
@@ -12,12 +12,16 @@ const LoginPage: React.FC = () => {
     const history = useHistory()
     const [email, emailSet] = useState("");
     const [password, passwordSet] = useState("");
+    const router = useIonRouter();
+    const { setLoading } = useAuth()
+
+
     const doSignIn = async () => {
         try {
-
+            
             const result = await firebaseAuth.signInWithEmailAndPassword(email, password);
-            console.log(result)
-            history.replace("/tabs/habits")
+            // console.log(result)
+            router.push("/tabs/habits", "forward", "replace")
 
         } catch (error: any) {
             toast(error.message)
@@ -39,9 +43,11 @@ const LoginPage: React.FC = () => {
 
     const anonSignIn = async () => {
         try {
+            setLoading(true);
             const result = await firebaseAuth.signInAnonymously();
-            console.log(result)
-            history.replace("/tabs/habits")
+            // console.log(result)
+            // router.push("/tabs/habits", "forward", "replace")
+
 
 
         } catch (error: any) {
@@ -56,7 +62,7 @@ const LoginPage: React.FC = () => {
     // }
     const gritHubLogo = useRef<HTMLDivElement>(null)
     useEffect(() => {
-        console.log("loaded", gritHubLogo)
+        // console.log("loaded", gritHubLogo)
         gritHubLogo.current?.classList.add("logo_snake_animate")
     }, [])
 
@@ -64,15 +70,15 @@ const LoginPage: React.FC = () => {
         <IonPage>
             {/* <Header name="" icon={helpOutline} /> */}
             <IonContent fullscreen>
-                <div className="page-wrapper ion-padding-horizontal">
+                <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center' }}>
 
 
-                    <div  className="page-wrapper-content ">
+                    <div className="page-wrapper-content ">
                         <div ref={gritHubLogo} className="logo_wrapper logo_snake_animate" style={{ display: 'grid', placeItems: "center" }}>
                             <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="150" height="150"  />
-                                <path d="M72.5 112.5H35V38H114V56H58V94H86.5V112.5H114V75H91.5" stroke="#00FFA1" strokeWidth="10" />
+                                <path d="M72.5 112.5H35V38H114V56H58V94H86.5V112.5H114V75H91.5" stroke="#FF8700" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
+
 
                             <Heading4 style={{ textAlign: 'center' }}>Grithub</Heading4>
                             <MediumParagraph>Build habits that stick</MediumParagraph>

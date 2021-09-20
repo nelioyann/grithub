@@ -37,7 +37,7 @@ const HabitsContextProvider: React.FC = ({ children }) => {
             // If there is no user don't listen for data
             if (user === null) {
 
-                console.log("No user");
+                // console.log("No user");
                 return
             }
             // console.log("does it exist ?", firebaseStore.collection("users")
@@ -59,7 +59,7 @@ const HabitsContextProvider: React.FC = ({ children }) => {
         
 
             return () => {
-                console.log("unsubcribed")
+                console.log("unsubcribe habits")
                 unsubscribe()
 
             }

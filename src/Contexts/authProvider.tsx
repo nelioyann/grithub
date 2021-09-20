@@ -25,17 +25,10 @@ const AuthContextProvider: React.FC = ({ children }) => {
 
     useEffect(() => {
         console.log("something happened to the user", user)
-        // Returns the user or null and triggers every time theres a change
-        // const cancelAuthListener = firebaseAuth.onIdTokenChanged(u => {
-            // setUser(u)
-            // setLoading(false)
-        // });
-        // Stop listening when th app unmount
-        // return () => cancelAuthListener();
     }, [user])
 
     useEffect(() => {
-        return firebaseAuth.onAuthStateChanged((u) => {
+        const unsubscribe =  firebaseAuth.onAuthStateChanged((u) => {
             if (u) {
                 // var uid = user.uid;
                 // User logged in
@@ -48,6 +41,12 @@ const AuthContextProvider: React.FC = ({ children }) => {
                 setLoading(false)
             }
         })
+
+        return () => {
+            console.log("unsubcribe auth")
+            unsubscribe()
+
+        }
         // setLoading(false)
     }, [])
     return (

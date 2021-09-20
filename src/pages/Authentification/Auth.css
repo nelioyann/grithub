@@ -6,7 +6,7 @@
 }
 
 .logo_snake_animate path{
-    animation: animate 3s ease-in-out forwards 100ms;
+    animation: animate 3s ease-out forwards 1s;
 
 }
 .logo_wrapper svg{
@@ -17,26 +17,12 @@
 @keyframes animate{
     0%{
         stroke-dashoffset: var(--value);
-        opacity: 0;
+        
     }
-    30%{
-        stroke-dashoffset: var(--value);
-        opacity: 1;
-        fill: rgba(0, 0, 0, 0);
 
-    }
-    90%{
-        stroke-dashoffset: 0;
-        opacity: 1;
-        fill: rgba(0, 0, 0, 0.3);
-
-
-    }
     100%{
         stroke-dashoffset: 0;
-        opacity: 1;
-        fill: rgba(0, 0, 0, 0.5);
-        
+
 
     }
 }

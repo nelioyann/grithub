@@ -39,7 +39,7 @@ import Onboarding from './pages/Onboarding/Onboarding';
 import Name from './pages/Name/Name';
 import Settings from './pages/Settings/Settings';
 import New from './pages/New/New';
-import DarkModeContextProvider from './Contexts/DarkModeContext';
+import {DarkModeContextProvider} from './Contexts/DarkModeContext';
 import NameContextProvider from './Contexts/NameContext';
 import LoginPage from './pages/Authentification/LoginPage';
 import CreateAccountPage from './pages/Authentification/CreateAccountPage';
@@ -85,7 +85,9 @@ const App: React.FC = () => {
                 <Route path="/onboarding" exact={true}>
                   {isAuth ? <Redirect to="/tabs/habits" /> : <Onboarding />}
                 </Route>
-
+<Route path="/login" exact={true}>
+                  {isAuth ? <Redirect to="/tabs/habits" /> : <LoginPage />}
+                </Route>
                 <Route exact={true} path="/settings" component={Settings} />
                 <PrivateRoute exact={true} path="/attributions" component={Attributions} />
 
@@ -93,9 +95,7 @@ const App: React.FC = () => {
                 <Route path="/name" exact={true} component={Name} />
 
 
-                <Route path="/login" exact={true}>
-                  {isAuth ? <Redirect to="/tabs/habits" /> : <LoginPage />}
-                </Route>
+                
                 <Route path="/create-account" exact={true}>
                   <CreateAccountPage />
                 </Route>
@@ -143,9 +143,8 @@ const Tabs: React.FC = () => {
   return (
     <IonTabs >
       <IonRouterOutlet>
-        <Route exact path="/tabs/habits">
-          <Tab1 />
-        </Route>
+        <PrivateRoute exact path="/tabs/habits" component={Tab1} />
+          
         <Route exact path="/tabs/community">
           <Tab2 />
         </Route>

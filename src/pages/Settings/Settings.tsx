@@ -5,7 +5,7 @@ import { useHistory } from 'react-router'
 import Header from '../../components/Headers/Header'
 import { useAuth } from '../../Contexts/authProvider'
 import { DarkModeContext } from '../../Contexts/DarkModeContext'
-import { Heading2, Heading4, Heading5, MediumParagraph, SmallParagraph } from '../../theme/globalStyles'
+import { ColumnContainer, Heading2, Heading4, Heading5, MediumParagraph, SmallParagraph } from '../../theme/globalStyles'
 import Avatar from "boring-avatars";
 import {NameContext} from '../../Contexts/NameContext'
 
@@ -13,7 +13,7 @@ const Settings: React.FC = () => {
     const router = useIonRouter()
     const history = useHistory()
     const { darkMode, darkModeSet } = useContext(DarkModeContext);
-    const { logout } = useAuth()
+    const { logout, user } = useAuth()
 
     // console.log(darkMode)
     // Query for the toggle that is used to change between themes
@@ -37,10 +37,10 @@ const Settings: React.FC = () => {
 
     const doLogout = async () => {
         const result = await logout();
-        console.log(result)
+        // console.log(result)
         // history.replace("/onboarding")
-        console.log(router.routeInfo)
-        router.push('/onboarding', "forward", "push")
+        // console.log(router.routeInfo)
+        // router.push('/onboarding', "forward", "replace")
 
 
     }
@@ -63,7 +63,7 @@ const Settings: React.FC = () => {
 
                     <div className="page-wrapper-content" >
 
-                    <div style={{ borderRadius: "50%", margin: "1em auto", width: "max-content" }}>
+                    <ColumnContainer style={{ borderRadius: "50%", margin: "1em auto", width: "max-content", alignItems: "center"}}>
 
                         <Avatar
                             size={100}
@@ -71,7 +71,11 @@ const Settings: React.FC = () => {
                             variant="beam"
                             colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
                             />
-                            </div>
+                            <MediumParagraph>
+
+                            {user?.email}
+                            </MediumParagraph>
+                            </ColumnContainer>
                         <div className="ion-margin-top">
                             <IonNote style={{ color: "var(--ion-color-secondary)" }}>
                                 Appearance
