@@ -94,7 +94,7 @@ const LoginPage: React.FC = () => {
                             <IonIcon className="ion-padding-horizontal" icon={walk} />
                             <LargeButton style={{ textTransform: "initial" }}>
 
-                                Continue as a guest
+                                Try without an account
                             </LargeButton>
                         </IonButton>
                         <Heading4 style={{ textAlign: 'center', margin: "1em auto" }}>OR </Heading4>

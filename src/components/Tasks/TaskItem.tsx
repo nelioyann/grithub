@@ -10,6 +10,11 @@ import { toast } from '../Toasts/Toast'
 import WeeklyCalendar from './WeeklyCalendar'
 import "./WeeklyCalendar.css"
 // import { updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import Lottie from "react-lottie";
+import confettiAnimation from "./Animations/confetti.json"
+
+
+const confettiOptions = { loop: true, animationData: confettiAnimation, autoplay: true }
 
 
 interface IClickableHabit {
@@ -21,7 +26,7 @@ interface IClickableHabit {
 
 const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, inView }) => {
     let todayDateString = getDateString(incrementToday(0));
-    let delay = (taskIndex * 0.1) + "s"
+    let delay = (taskIndex * 0.3) + "s"
     // console.log(delay)
 
     const { habits } = useHabits();
@@ -47,20 +52,17 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
     }
 
     return (
-        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "ion-padding animate-fade animated" : "ion-padding animate-fade"} onClick={() => onClickHandler({ name, id, dates })} style={{ border: "2px solid var(--ion-color-medium)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent", transitionDelay: delay}}  >
+        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "ion-padding animate-fade-down animated" : "ion-padding animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ border: "2px solid var(--ion-color-medium)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent", animationDelay: delay, position: "relative" }}  >
+            {dates.includes(todayDateString) &&
+
+                <Lottie style={{ position: "absolute", top: "50%", left: "50%",transform: "translate(-50%, -50%)",  width: "100%",  height: "initial", zIndex: -1 }} isClickToPauseDisabled={true} options={confettiOptions}  />
+            }
             <div style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center" }}>
 
-                {/* <IonCheckbox mode="ios" onClick={()=>handleChange()} checked={habitChecked}/> */}
                 <Heading6 onClick={() => handleChange()} className={dates.includes(todayDateString) ? "ion-margin-horizontal strikethrough" : "ion-margin-horizontal"}>{name}</Heading6>
-                {/* <IonButton fill="clear" onClick ={ () => goToGraph(`/habit/${id}`)} >
-                    <IonIcon icon={chevronForward} />
-                </IonButton> */}
-            </div>
-            {/* <div style={{ display: "flex", alignItems: "center"}}>
-                <WeeklyCalendar dates={dates}/>
-            </div> */}
 
-            {/* <IonCardSubtitle>Streak: 000</IonCardSubtitle> */}
+            </div>
+ 
         </IonCard>
     )
 }

@@ -40,11 +40,10 @@ ion-tab-button {
 /* Animations & Page transitions */
 
 .animate-fade {
-    /* opacity: 0;
-    visibility: hidden;
-    -webkit-transition: opacity 0.6s ease 0.3s;
-    transition: opacity 0.6s ease 0.3s; */
     animation-name: fade;
+}
+.animate-fade-down {
+    animation-name: fade-down;
 }
 
 /* .animate-fade-up {
@@ -71,5 +70,16 @@ ion-tab-button {
     }
     to{
         opacity: 1;
+    }
+}
+@keyframes fade-down{
+    from {
+        opacity: 0;
+        transform: translateY(-1em);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+
     }
 }

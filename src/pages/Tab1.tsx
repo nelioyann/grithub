@@ -201,7 +201,7 @@ useIonViewDidEnter(()=>{
 
                   <IonItem button={true} onClick={() => handleTaskCompletion(selectedHabit?.id)}>
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
-                    <IonLabel className="ion-padding">{ selectedHabit?.dates.includes(todayDateString) ? "UnMark as finished" : "Mark as completed" }</IonLabel>
+                    <IonLabel className="ion-padding">{ selectedHabit?.dates.includes(todayDateString) ? "Uncheck" : "Mark as completed" }</IonLabel>
                   </IonItem>
                   {/* <IonItem button={true}>
                     <IonIcon icon={bed}></IonIcon>

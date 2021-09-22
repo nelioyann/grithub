@@ -44,7 +44,7 @@ const Name: React.FC = () => {
                             <Heading4 style={{ marginTop: "auto" }}>
                                 How should we refer to you ?
                             </Heading4>
-                            <div style={{ borderRadius: "50%", margin: "1em auto", width: "max-content" }}>
+                            <div style={{ borderRadius: "50%", margin: "1em auto", width: "max-content", overflow: "hidden" }}>
 
                                 <Avatar
                                     size={100}

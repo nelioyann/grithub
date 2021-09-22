@@ -103,7 +103,7 @@ const Settings: React.FC = () => {
                                     Change username
                                 </IonLabel>
                             </IonItem>
-                            <IonItem color="light" detail={true} button={true} lines="none">
+                            <IonItem color="light" detail={true} button={true} lines="none" href="https://grithub.fr/">
                                 {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
                                 <IonLabel>
                                     Report a problem
@@ -118,7 +118,7 @@ const Settings: React.FC = () => {
                         </div>
                         <div>
                             <IonNote style={{ color: "var(--ion-color-secondary)" }}>About</IonNote>
-                            <IonItem color="light" detail={true} button={true} lines="none">
+                            <IonItem color="light" detail={true} button={true} lines="none" href="https://grithub.fr/">
                                 {/* <IonIcon slot="start" icon={person}></IonIcon> */}
                                 <IonLabel>
                                     Terms of Use
@@ -131,7 +131,7 @@ const Settings: React.FC = () => {
                             </IonItem>
                             <IonItem color="light" lines="none" button={true}>
                                 <IonLabel>
-                                    Version: beta 1
+                                    Version: beta 
                                 </IonLabel>
                             </IonItem>
                         </div>

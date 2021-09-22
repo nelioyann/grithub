@@ -1,6 +1,6 @@
-import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonInput, IonItem, IonLabel, IonButton, IonChip, useIonModal, IonCard, IonNote } from '@ionic/react'
+import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonInput, IonItem, IonLabel, IonButton, IonChip, useIonModal, IonCard, IonNote, IonIcon } from '@ionic/react'
 import React, { useState } from 'react'
-import { ColumnContainer, Heading2, Heading3, Heading4, Heading5, Heading6, LargeButton, RowContainer } from '../../theme/globalStyles'
+import { ColumnContainer, Heading2, Heading3, Heading4, Heading5, Heading6, LargeButton, LargeParagraph, MediumParagraph, RowContainer } from '../../theme/globalStyles'
 import { useHistory } from 'react-router';
 import { firebaseStore } from '../../initFirebase';
 import { useAuth } from '../../Contexts/authProvider';
@@ -83,7 +83,7 @@ const New: React.FC = () => {
             <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
                 <IonToolbar color="light" >
                     <IonButtons slot="">
-                        <IonBackButton color="dark" text="" />
+                        <IonBackButton color="dark" text="" defaultHref='/'/>
                     </IonButtons>
                     <IonTitle slot="">
                         <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>New goal</Heading4>
@@ -101,8 +101,17 @@ const New: React.FC = () => {
                                 I want to {newHabit.toLowerCase()} everyday.
                             </Heading3> */}
 
-                            <Heading6>Habit name and Emoji</Heading6>
+                            <Heading4>Give your habit a name and symbol</Heading4>
+                            <IonCard className="ion-padding " style={{margin: "1em 0"}}>
 
+                            <MediumParagraph>
+                                💡 Be specific:
+                                <IonChip color="dark" outline={true} onClick={() => {handleChange("Exercise for 20 minutes"); setChosenEmoji("🤸‍♂️")}}>
+                                    <IonLabel >"Exercise for 20 minutes"</IonLabel>
+                                </IonChip>
+                                is better than "Exercise"
+                            </MediumParagraph>
+                            </IonCard>
                             <RowContainer>
                                 <IonCard
                                     onClick={() => presentPicker({
@@ -119,7 +128,7 @@ const New: React.FC = () => {
                                     <IonInput color="primary" onIonChange={(e: any) => handleChange(e.detail.value)} value={newHabit}></IonInput>
                                 </IonItem>
                             </RowContainer>
-                            <div className="ion-margin-vertical">
+                            {/* <div className="ion-margin-vertical">
                                 <IonNote>
 
                                     suggestions:
@@ -133,7 +142,7 @@ const New: React.FC = () => {
                                 <IonChip color="dark" outline={true} onClick={() => handleChange("Wake up before 6AM")}>
                                     <IonLabel  >Wake up before 6AM</IonLabel>
                                 </IonChip>
-                            </div>
+                            </div> */}
 
                             <IonButton onClick={() => handleSubmit(newHabit)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
                                 <LargeButton style={{ color: "var(--ion-color-light)" }}>
