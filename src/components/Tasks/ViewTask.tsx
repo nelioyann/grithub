@@ -1,4 +1,4 @@
-import { IonBackButton, IonButton, IonButtons, IonCard, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react'
+import { IonBackButton, IonButton, IonButtons, IonCard, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react'
 import { trash } from 'ionicons/icons'
 import React from 'react'
 import { useHistory, useParams } from 'react-router'
@@ -16,17 +16,21 @@ type RouteParams = {
 const ViewTask: React.FC = () => {
     const { id } = useParams<RouteParams>();
     const history = useHistory()
+    const router = useIonRouter()
 
     const { habits } = useHabits();
     const { user } = useAuth()
-    const [habit] = habits.filter(habit => habit.id === id);
-    if (!habit) history.replace("/tabs/habits")
+    const [habit] = habits.filter((habit: IHabit) => habit.id === id);
+
+
+    // if (!habit) history.replace("/tabs/habits")
     const handleRemove = async () => {
         try {
             console.log("delete it")
             let ref = await firebaseStore.collection("users").doc(user!.uid)
                 .collection("habits").doc(id).delete()
             console.log(ref)
+            router.push("/tabs/habits", "back", "pop")
 
         } catch (err) {
             console.log("err.message")
@@ -48,7 +52,7 @@ const ViewTask: React.FC = () => {
                     {/* <IonTitle >
                     </IonTitle> */}
                     <IonButtons slot="end">
-                        <IonButton onClick={() => handleRemove()} color="danger">
+                        <IonButton onClick={() => handleRemove()} >
                             <IonIcon icon={trash}/>
                         </IonButton>
                     </IonButtons>
@@ -117,7 +121,7 @@ const ViewTask: React.FC = () => {
                                 <li>31</li>
                             </ul>
                             <ul className="squares">
-                                {habit?.dates && calendarSquares.map((index, calendarSquare) => {
+                                {habit && habit?.dates && calendarSquares.map((index, calendarSquare) => {
                                     let month = Math.ceil(index / 31).toString().padStart(2, '0')
                                     let day = index % 31 == 0 ? "31" : (index % 31).toString().padStart(2, '0');
                                     let date = month + day;
