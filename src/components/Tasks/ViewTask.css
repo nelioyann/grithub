@@ -4,15 +4,15 @@
 
 :root {
     --square-size: clamp(14px, 4.5vw, 3rem);
-    --square-gap: clamp(8px , 0.2vw, 10px);
+    --square-gap: clamp(2px , 0.05vw, 10px);
     --week-width: calc(var(--square-size) + var(--square-gap));
 }
 
-.graph li{
+.yearGraph li{
     list-style-type: none;
     
 }
-.months {
+.yearGraph .months {
     grid-area: months;
     margin: 0;
     padding: 0;
@@ -24,19 +24,24 @@
     max-width: var(--square-size);
 } */
 
-.days {
+.yearGraph .months li {
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.yearGraph .days {
     grid-area: days;
     margin: 0;
     padding: 0;
 }
 
-.squares {
+.yearGraph .squares {
     grid-area: squares;
     margin: 0;
     padding: 0;
 }
 
-.graph {
+.yearGraph {
     width: 100%;
     padding: clamp(0.3rem, 1vw, 4rem);
     display: inline-grid;
@@ -49,14 +54,14 @@
 }
 
 
-.months,
-.days {
+.yearGraph .months,
+.yearGraph .days {
     color: var(--ion-color-dark);
     font-size: 0.7rem;
 
 }
 
-.months {
+.yearGraph .months {
     display: grid;
     grid-template-columns: repeat(12, var(--week-width));
     justify-content: space-between;
@@ -64,14 +69,25 @@
     /* gap: var(--square-gap); */
 }
 
-.days,
-.squares {
+.yearGraph .days,
+.yearGraph .squares {
     display: grid;
     grid-gap: var(--square-gap);
     grid-template-rows: repeat(31, var(--square-size));
 }
 
-.squares {
+.monthGraph .squares{
+    width: max-content;
+    padding: 1em;
+    margin: auto;
+    list-style-type: none;
+    --square-size: clamp(14px, 8vw, 5rem);
+    display: grid;
+    grid-gap: var(--square-gap);
+    grid-template-columns: repeat(7, var(--square-size));
+    grid-template-rows: repeat(5, var(--square-size));
+}
+.yearGraph .squares {
     grid-auto-flow: column;
     grid-auto-columns: var(--square-size);
     justify-content: space-between;
@@ -87,8 +103,10 @@
 }
 
 .squares li {
-    background-color: var(--ion-color-dark);
-    border-radius: 2px;
+    display: grid;
+    place-items: center;
+    background-color: var(--ion-color-medium);
+    border-radius: 0.3em;
 }
 .squares li.completed {
     background-color: var(--ion-color-success);
