@@ -10,8 +10,8 @@
 
 }
 .logo_wrapper svg{
-    width: clamp(100px, 20vw, 15em); 
-    height: clamp(100px, 20vw, 15em);
+    width: clamp(100px, 15vw, 15vh); 
+    height: clamp(100px, 15vw, 15vh);
 }
 
 @keyframes animate{
