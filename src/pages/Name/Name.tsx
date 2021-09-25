@@ -6,6 +6,8 @@ import personnageAnimation from "./character.json"
 import { text } from 'ionicons/icons';
 import { NameContext } from '../../Contexts/NameContext';
 import Avatar from "boring-avatars";
+import { firebaseStore } from '../../initFirebase';
+import { useAuth } from '../../Contexts/authProvider';
 
 const characterOptions = { loop: true, animationData: personnageAnimation, autoplay: true }
 
@@ -14,14 +16,21 @@ const Name: React.FC = () => {
     const router = useIonRouter();
     const { name, nameSet } = useContext(NameContext);
     // console.log(name)
+    const { user, loading } = useAuth();
+
     const [nameInput, nameInputSet] = useState<string>("")
     const handleChange = (e: any) => {
         nameInputSet(e.detail.value)
     }
 
-    const handleSave = (e: any) => {
+    const handleSave = async (e: any) => {
         console.log("handleObjective", nameInput)
-        nameSet(nameInput)
+        nameSet(nameInput);
+
+        let result = await firebaseStore.collection("users")
+                .doc(user!.uid).set({username: nameInput}, { merge: true })
+            console.log(result)
+            
         router.push("/tabs/habits", "forward", "push");
     }
     return (
@@ -53,6 +62,7 @@ const Name: React.FC = () => {
                                     colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
                                 />
                             </div>
+                            {name}
                             {/* <div style={{ filter: "invert(0.5)" }}>
 
                                 <Lottie isClickToPauseDisabled={true} options={characterOptions} height={230} width={300} />

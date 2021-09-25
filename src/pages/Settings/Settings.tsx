@@ -8,30 +8,31 @@ import { DarkModeContext } from '../../Contexts/DarkModeContext'
 import { ColumnContainer, Heading2, Heading4, Heading5, MediumParagraph, SmallParagraph } from '../../theme/globalStyles'
 import Avatar from "boring-avatars";
 import {NameContext} from '../../Contexts/NameContext'
+import { firebaseStore } from '../../initFirebase'
 
 const Settings: React.FC = () => {
     const router = useIonRouter()
     const history = useHistory()
+    const { user, setLoading, logout } = useAuth()
+
     const { darkMode, darkModeSet } = useContext(DarkModeContext);
-    const { logout, user } = useAuth()
 
     // console.log(darkMode)
     // Query for the toggle that is used to change between themes
     const darkToggle = useRef<HTMLIonToggleElement>(null);
     const { name, nameSet } = useContext(NameContext);
 
-    useEffect(() => {
-        //Listen for changes to the prefers-color-scheme media query
-        // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-        // darkModeSet(prefersDark.matches)
-        handleDarkMode(darkMode)
-    }, [darkMode])
+  
 
 
-    function handleDarkMode(checked: boolean): void {
+    async function handleDarkMode(checked: boolean) {
         // Listen for the toggle check/uncheck to toggle the dark class on the <body>
         document.body.classList.toggle('dark', checked);
-        darkModeSet(checked)
+        console.log("Please don't log")
+        let result = await firebaseStore.collection("users")
+                .doc(user!.uid).set({darkMode: checked}, { merge: true })
+            console.log(result)
+        // darkModeSet(checked)
 
     }
 
@@ -73,7 +74,7 @@ const Settings: React.FC = () => {
                             />
                             <MediumParagraph>
 
-                            {user?.email}
+                            {user?.email || "Guest"}
                             </MediumParagraph>
                             </ColumnContainer>
                         <div className="ion-margin-top">
