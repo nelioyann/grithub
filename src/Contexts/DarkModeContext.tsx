@@ -20,7 +20,7 @@ function useDarkMode() {
 const DarkModeContextProvider: React.FC = (props) => {
     const { user, loading } = useAuth();
 
-    const [darkMode, darkModeSet] = useState<boolean>(true);
+    const [darkMode, darkModeSet] = useState<boolean>(false);
 
     const defaultThemeMode: DarkModeContextProps = {
         darkMode: darkMode, darkModeSet: darkModeSet

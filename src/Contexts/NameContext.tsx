@@ -13,7 +13,7 @@ export interface NameContextProps {
 export const NameContext = createContext({} as NameContextProps)
 
 const NameContextProvider:React.FC = (props) =>{
-    const [name, nameSet] = useState("Grithuber");
+    const [name, nameSet] = useState("Stranger");
     const { user, loading } = useAuth();
 
     

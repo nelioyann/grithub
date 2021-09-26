@@ -38,7 +38,7 @@ import {
 } from "ionicons/icons";
 import Header from "../components/Headers/Header";
 import { NameContext } from "../Contexts/NameContext";
-import { Heading4, Heading5, MediumParagraph, MediumButton } from "../theme/globalStyles";
+import { Heading4, Heading5, MediumParagraph, MediumButton, Heading6 } from "../theme/globalStyles";
 import "./Tab1.css";
 import React, { useContext, useEffect, useState } from "react";
 import TaskItem from "../components/Tasks/TaskItem";
@@ -173,6 +173,7 @@ const Tab1: React.FC = () => {
             className="page-wrapper-content"
             style={{ position: "relative" }}
           >
+            <Heading6>Hey @{name}</Heading6>
             {loading === false && !user?.email && (
               <IonCard className="ion-padding ion-margin-vertical" color="tertiary">
                 <Heading5
@@ -181,10 +182,10 @@ const Tab1: React.FC = () => {
                   Join Grithub
                 </Heading5>
                 <MediumParagraph style={{ color: "var(--ion-color-tertiary-contrast)" }}>
-                  Create your Grithub account to enjoy personalized content and syncing across all of your devices 
+                  Create your Grithub account to enjoy personalized content and realtime syncing across all of your devices.
                 </MediumParagraph>
-                <IonButton color="light">
-                  <MediumButton>Create an account</MediumButton>
+                <IonButton mode="ios" color="light">
+                  <MediumButton>Sign Up</MediumButton>
                 </IonButton>
               </IonCard>
             )}
@@ -193,7 +194,7 @@ const Tab1: React.FC = () => {
             </Heading5> */}
             {/* { !loadingHabits && habits.length !== 0 && () } */}
             {habits && habits.length !== 0 && loadingHabits === false ? (
-              <>
+              <div style={{marginTop: "3em"}}>
                 <Heading5>
                   Take a moment to tick off what you achieved today
                 </Heading5>
@@ -208,7 +209,7 @@ const Tab1: React.FC = () => {
                     />
                   );
                 })}
-              </>
+              </div>
             ) : (
               <IonLoading
                 isOpen={loadingHabits}

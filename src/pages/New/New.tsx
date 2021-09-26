@@ -156,7 +156,7 @@ const New: React.FC = () => {
                 style={{ margin: "1em 0" }}
                 color="medium"
               >
-                <MediumParagraph>💡 Be specific:</MediumParagraph>
+                <Heading6>💡 Be specific</Heading6>
 
                 <MediumParagraph>
                   <IonChip

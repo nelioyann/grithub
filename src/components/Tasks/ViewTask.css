@@ -4,8 +4,9 @@
 
 :root {
     --square-size: clamp(14px, 4.5vw, 3rem);
-    --square-gap: clamp(2px , 0.05vw, 10px);
-    --week-width: calc(var(--square-size) + var(--square-gap));
+    /* --square-gap: clamp(2px , 0.05vw, 10px); */
+    --square-gap: 0.2em;
+    --month-width: calc(var(--square-size) + var(--square-gap));
 }
 
 .yearGraph li{
@@ -13,6 +14,7 @@
     
 }
 .yearGraph .months {
+    /* position: sticky; */
     grid-area: months;
     margin: 0;
     padding: 0;
@@ -31,6 +33,7 @@
 }
 .yearGraph .days {
     grid-area: days;
+    visibility: hidden;
     margin: 0;
     padding: 0;
 }
@@ -63,7 +66,7 @@
 
 .yearGraph .months {
     display: grid;
-    grid-template-columns: repeat(12, var(--week-width));
+    grid-template-columns: repeat(12, var(--month-width));
     justify-content: space-between;
     text-align: center;
     /* gap: var(--square-gap); */

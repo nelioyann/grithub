@@ -85,7 +85,10 @@ const Settings: React.FC = () => {
         {/* <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" /> */}
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content">
+            <div style={{display: "flex", justifyContent: "center"}}>
+
             <UserAvatar username={name} size={100} email={user?.email || ""} />
+            </div>
             <div className="ion-margin-top">
               <IonNote style={{ color: "var(--ion-color-secondary)" }}>
                 Profile

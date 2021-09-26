@@ -35,7 +35,7 @@ const Name: React.FC = () => {
             <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
                 <IonToolbar color="light" >
                     <IonButtons slot="">
-                        <IonBackButton color="dark" text="" />
+                        <IonBackButton color="dark" text="" defaultHref="/settings" />
                     </IonButtons>
 
                 </IonToolbar>
@@ -60,10 +60,7 @@ const Name: React.FC = () => {
                                     colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
                                 />
                             </div> */}
-                            <MediumParagraph>
-
-                            {name}
-                            </MediumParagraph>
+                            
                             {/* <div style={{ filter: "invert(0.5)" }}>
 
                                 <Lottie isClickToPauseDisabled={true} options={characterOptions} height={230} width={300} />
