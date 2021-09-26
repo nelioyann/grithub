@@ -73,7 +73,7 @@ const ViewTask: React.FC = () => {
   const yearlySquares = Array.from({ length: 12 * 31 }, (_, i) => i + 1);
   const monthlySquares = Array.from({ length: 31 }, (_, i) => i + 1);
 
-  console.log("Monthly", monthlySquares);
+//   console.log("Monthly", monthlySquares);
 
   let startDateReachedMonth = false;
   let todayReachedMonth = false;
@@ -156,13 +156,12 @@ const ViewTask: React.FC = () => {
                       monthlySquares.map((index, monthlySquare) => {
 
                         let month = getDateString(today,  "month");
-                        let day =
-                          index % 31 === 0
+                        let day = index % 31 === 0
                             ? "31"
                             : (index % 31).toString().padStart(2, "0");
                         let date = month + day;
-                        if (date === startDate) startDateReachedMonth = true;
-                        if (date === getDateString(today)) todayReachedMonth = true;
+                        if (parseInt(date) >= parseInt(startDate)) startDateReachedMonth = true;
+                        if (parseInt(date) >= parseInt(getDateString(today))) todayReachedMonth = true;
 
                         return (
                           <li
@@ -274,8 +273,8 @@ const ViewTask: React.FC = () => {
                             ? "31"
                             : (index % 31).toString().padStart(2, "0");
                         let date = month + day;
-                        if (date === startDate) startDateReachedYear = true;
-                        if (date === getDateString(today)) todayReachedYear = true;
+                        if (parseInt(date) >= parseInt(startDate)) startDateReachedYear = true;
+                        if (parseInt(date) >= parseInt(getDateString(today))) todayReachedYear = true;
                         return (
                           <li
                           className={habit.dates.includes(date) && startDateReachedYear ? "completed" : "uncompleted"}
