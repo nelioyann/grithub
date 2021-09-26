@@ -34,7 +34,7 @@ const NameContextProvider:React.FC = (props) =>{
               .doc(user!.uid)
               .onSnapshot((snapshot) => {
                   console.log("name context",snapshot.data()?.username)
-                  nameSet(snapshot.data()?.username)
+                  nameSet(snapshot.data()?.username || "Stranger")
               });
             return () => {
               console.log("unsubcribe name");

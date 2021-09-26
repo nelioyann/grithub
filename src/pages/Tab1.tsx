@@ -340,7 +340,7 @@ const Tab1: React.FC = () => {
 
                   <IonItem
                     button={true}
-                    color="medium"
+                    color="light"
                     onClick={() => handleTaskCompletion(selectedHabit?.id)}
                   >
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
@@ -356,7 +356,7 @@ const Tab1: React.FC = () => {
                   </IonItem> */}
                   <IonItem
                     button={true}
-                    color="medium"
+                    color="light"
 
                     onClick={() => goToGraph(`/habit/${selectedHabit?.id}`)}
                   >
