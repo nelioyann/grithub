@@ -15,6 +15,7 @@ import {
   IonCard,
   IonNote,
   IonIcon,
+  useIonRouter,
 } from "@ionic/react";
 import React, { useState } from "react";
 import {
@@ -77,7 +78,8 @@ const EmojiPicker: React.FC<{
 
 const New: React.FC = () => {
   const [newHabit, newhabitSet] = useState<string>("");
-  const history = useHistory();
+//   const history = useHistory();
+  const router = useIonRouter()
   const { user, setLoading } = useAuth();
   const [chosenEmoji, setChosenEmoji] = useState("🙂");
 
@@ -117,7 +119,7 @@ const New: React.FC = () => {
       console.log(result);
       // setLoading(false)
       toast("Added");
-      history.replace("/tabs/habits");
+      router.push("/tabs/habits", "back", "push");
     } catch (error) {
       toast(error.message);
     }
