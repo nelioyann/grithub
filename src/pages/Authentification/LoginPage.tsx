@@ -46,7 +46,7 @@ const LoginPage: React.FC = () => {
             setLoading(true);
             const result = await firebaseAuth.signInAnonymously();
             // console.log(result)
-            // router.push("/tabs/habits", "forward", "replace")
+            router.push("/tabs/habits", "forward", "replace")
 
 
 
