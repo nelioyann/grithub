@@ -1,22 +1,18 @@
 import { useIonRouter, IonPage, IonContent, IonInput, IonItem, IonLabel, IonButton, IonBackButton, IonButtons, IonHeader, IonToolbar } from '@ionic/react'
 import React, { useContext, useState } from 'react'
-import { Heading4, LargeButton, ColumnContainer } from '../../theme/globalStyles'
-import Lottie from "react-lottie";
-import personnageAnimation from "./character.json"
-import { text } from 'ionicons/icons';
+import { Heading4, LargeButton, ColumnContainer, MediumParagraph } from '../../theme/globalStyles'
 import { NameContext } from '../../Contexts/NameContext';
 import Avatar from "boring-avatars";
 import { firebaseStore } from '../../initFirebase';
 import { useAuth } from '../../Contexts/authProvider';
 
-const characterOptions = { loop: true, animationData: personnageAnimation, autoplay: true }
 
 
 const Name: React.FC = () => {
     const router = useIonRouter();
     const { name, nameSet } = useContext(NameContext);
     // console.log(name)
-    const { user, loading } = useAuth();
+    const { user } = useAuth();
 
     const [nameInput, nameInputSet] = useState<string>("")
     const handleChange = (e: any) => {
@@ -57,12 +53,15 @@ const Name: React.FC = () => {
 
                                 <Avatar
                                     size={100}
-                                    name={nameInput != "" ? nameInput : name}
+                                    name={nameInput !== "" ? nameInput : name}
                                     variant="beam"
                                     colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
                                 />
                             </div>
+                            <MediumParagraph>
+
                             {name}
+                            </MediumParagraph>
                             {/* <div style={{ filter: "invert(0.5)" }}>
 
                                 <Lottie isClickToPauseDisabled={true} options={characterOptions} height={230} width={300} />

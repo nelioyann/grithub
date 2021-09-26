@@ -33,19 +33,12 @@ const DarkModeContextProvider: React.FC = (props) => {
     }, [darkMode])
 
     useEffect(() => {
-        // if(!darkMode) StatusBar.setStyle({ style: Style.Light });
-        // if(darkMode) StatusBar.setStyle({ style: Style.Dark });
-        // darkModeSet(darkMode)
-
-
         try {
             // If there is no user don't listen for data
             if (user === null) {
               // console.log("No user");
               return;
             }
-            // console.log("does it exist ?", firebaseStore.collection("users")
-            //     .doc(user!.uid).collection("habits").get())
             const unsubscribe = firebaseStore
               .collection("users")
               .doc(user!.uid)
@@ -53,11 +46,8 @@ const DarkModeContextProvider: React.FC = (props) => {
                   console.log("darkmode context",snapshot.data()?.darkMode)
                   darkModeSet(snapshot.data()?.darkMode)
               });
-                console.log("loading falsed");
-            // setLoadingHabits(false);
-      
             return () => {
-              console.log("unsubcribe habits");
+              console.log("unsubcribe darkmode");
               unsubscribe();
             };
           } catch (e) {
