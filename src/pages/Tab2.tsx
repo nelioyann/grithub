@@ -17,7 +17,7 @@ const Tab2: React.FC = () => {
           <IonToolbar color="light">
             <IonTitle>
               <Heading4>
-                History
+                Progress
               </Heading4>
             </IonTitle>
             <IonButtons slot="end">

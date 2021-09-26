@@ -37,12 +37,12 @@ const Settings: React.FC = () => {
   const router = useIonRouter();
   const { user, logout } = useAuth();
 
-  const { darkMode} = useContext(DarkModeContext);
+  const { darkMode } = useContext(DarkModeContext);
 
   // console.log(darkMode)
   // Query for the toggle that is used to change between themes
   const darkToggle = useRef<HTMLIonToggleElement>(null);
-  const { name} = useContext(NameContext);
+  const { name } = useContext(NameContext);
 
   async function handleDarkMode(checked: boolean) {
     // Listen for the toggle check/uncheck to toggle the dark class on the <body>
@@ -69,7 +69,7 @@ const Settings: React.FC = () => {
       <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
         <IonToolbar color="light">
           <IonButtons slot="">
-            <IonBackButton color="dark" text="" defaultHref="/tabs/habits"/>
+            <IonBackButton color="dark" text="" defaultHref="/tabs/habits" />
           </IonButtons>
           <IonTitle slot="">
             <Heading4
@@ -84,27 +84,8 @@ const Settings: React.FC = () => {
         {/* <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" /> */}
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content">
-              <UserAvatar username={name} size={100} />
+            <UserAvatar username={name} size={100} email={user?.email || ""} />
             <div className="ion-margin-top">
-              <IonNote style={{ color: "var(--ion-color-secondary)" }}>
-                Appearance
-              </IonNote>
-              <IonItem color="light" lines="none">
-                {/* <IonIcon slot="start" icon={moon}></IonIcon> */}
-                <div>
-                  <IonLabel>Dark Mode</IonLabel>
-                  {/* <IonN>Turn on Dark Mode for a great viewing experience and battery saving.</IonN> */}
-                </div>
-                <IonToggle
-                  ref={darkToggle}
-                  checked={darkMode}
-                  id="themeToggle"
-                  slot="end"
-                  onIonChange={(e) => handleDarkMode(e.detail.checked)}
-                />
-              </IonItem>
-            </div>
-            <div>
               <IonNote style={{ color: "var(--ion-color-secondary)" }}>
                 Profile
               </IonNote>
@@ -137,6 +118,25 @@ const Settings: React.FC = () => {
               >
                 {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
                 <IonLabel>Logout</IonLabel>
+              </IonItem>
+            </div>
+            <div>
+              <IonNote style={{ color: "var(--ion-color-secondary)" }}>
+                Appearance
+              </IonNote>
+              <IonItem color="light" lines="none">
+                {/* <IonIcon slot="start" icon={moon}></IonIcon> */}
+                <div>
+                  <IonLabel>Dark Mode</IonLabel>
+                  {/* <IonN>Turn on Dark Mode for a great viewing experience and battery saving.</IonN> */}
+                </div>
+                <IonToggle
+                  ref={darkToggle}
+                  checked={darkMode}
+                  id="themeToggle"
+                  slot="end"
+                  onIonChange={(e) => handleDarkMode(e.detail.checked)}
+                />
               </IonItem>
             </div>
             <div>
