@@ -164,7 +164,7 @@ const New: React.FC = () => {
                     outline={true}
                     onClick={() => {
                       handleChange("Exercise for 20 minutes");
-                      setChosenEmoji("🤸‍♂");
+                      setChosenEmoji("🏋️");
                     }}
                   >
                     <IonLabel>"Exercise for 20 minutes"</IonLabel>

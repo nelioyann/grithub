@@ -17,7 +17,7 @@ import {
   IonSegment,
   IonSegmentButton,
 } from "@ionic/react";
-import { square, trash } from "ionicons/icons";
+import { square, squareOutline, trash } from "ionicons/icons";
 import React, { useRef, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { useAuth } from "../../Contexts/authProvider";
@@ -30,7 +30,9 @@ import {
   RowContainer,
   SmallParagraph,
 } from "../../theme/globalStyles";
+import { getDateString, todayDate } from "../Dates/DatesFunctions";
 import Header from "../Headers/Header";
+import { toast } from "../Toasts/Toast";
 import "./ViewTask.css";
 
 type RouteParams = {
@@ -45,6 +47,10 @@ const ViewTask: React.FC = () => {
   const { habits } = useHabits();
   const { user } = useAuth();
   const [habit] = habits.filter((habit: IHabit) => habit.id === id);
+  let today = new Date();
+
+
+  const startDate = habit?.dates && habit?.dates.length > 0 ? habit.dates[0]:  getDateString(today);
 
   // if (!habit) history.replace("/tabs/habits")
   const handleRemove = async () => {
@@ -63,14 +69,17 @@ const ViewTask: React.FC = () => {
     }
   };
 
-  const defaultState = ["0129", "0325", "0902", "0831"];
   // const yearlySquares = Array.from(Array(31 * 12).keys())
   const yearlySquares = Array.from({ length: 12 * 31 }, (_, i) => i + 1);
   const monthlySquares = Array.from({ length: 31 }, (_, i) => i + 1);
+
   console.log("Monthly", monthlySquares);
 
+  let startDateReachedMonth = false;
+  let todayReachedMonth = false;
 
-
+  let startDateReachedYear = false;
+  let todayReachedYear = false;
 
   // a ref variable to handle the current slider
   const slider = useRef<HTMLIonSlidesElement>(null);
@@ -85,8 +94,8 @@ const ViewTask: React.FC = () => {
   const handleSlideChange = async (event: any) => {
     let index: number = 0;
     await event.target.getActiveIndex().then((value: any) => (index = value));
-    setgraphViewSegment('' + index)
-  }
+    setgraphViewSegment("" + index);
+  };
   return (
     <IonPage>
       <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
@@ -121,47 +130,49 @@ const ViewTask: React.FC = () => {
                             Remove
                         </IonButton> */}
 
-            <IonSegment value={graphViewSegment} onIonChange={(e) =>
-                handleSegmentChange(e)
-              }
+            <IonSegment
+              value={graphViewSegment}
+              onIonChange={(e) => handleSegmentChange(e)}
             >
               <IonSegmentButton value="0">
-                <IonLabel>Monthly</IonLabel>
+                <IonLabel>This Month</IonLabel>
               </IonSegmentButton>
               <IonSegmentButton value="1">
-                <IonLabel>Yearly</IonLabel>
+                <IonLabel>This Year</IonLabel>
               </IonSegmentButton>
             </IonSegment>
 
-            <IonSlides onIonSlideDidChange={(e) => handleSlideChange(e)} ref={slider}>
+            <IonSlides
+              onIonSlideDidChange={(e) => handleSlideChange(e)}
+              ref={slider}
+            >
               <IonSlide>
                 {/* <IonCard> */}
-                <Heading5>This Month</Heading5>
+                    <Heading5>{todayDate("month")}</Heading5>
                 <div className="monthGraph">
                   <ul className="squares">
                     {habit &&
                       habit?.dates &&
                       monthlySquares.map((index, monthlySquare) => {
-                        let month = "09";
-                        //   let month = Math.ceil(index / 31)
-                        //     .toString()
-                        //     .padStart(2, "0");
+
+                        let month = getDateString(today,  "month");
                         let day =
                           index % 31 === 0
                             ? "31"
                             : (index % 31).toString().padStart(2, "0");
                         let date = month + day;
+                        if (date === startDate) startDateReachedMonth = true;
+                        if (date === getDateString(today)) todayReachedMonth = true;
+
                         return (
                           <li
-                            className={
-                              habit.dates.includes(date) ? "completed" : ""
-                            }
+                            className={habit.dates.includes(date) && startDateReachedMonth ? "completed" : "uncompleted"}
                             key={"calendarSquare" + index}
-                            data-level="${level}"
+                            data-level={startDateReachedMonth && !todayReachedMonth ? "tracked" : "untracked"}
                             data-day={day}
                             data-month={month}
                           >
-                            <SmallParagraph style={{ margin: 0 }}>
+                            <SmallParagraph style={{ margin: 0, color: "inherit" }}>
                               {monthlySquare + 1}
                             </SmallParagraph>
                           </li>
@@ -173,28 +184,27 @@ const ViewTask: React.FC = () => {
                     style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
                   >
                     <RowContainer>
-                      <IonIcon icon={square}></IonIcon>
+                      <IonIcon color="tertiary" icon={square}></IonIcon>
                       <SmallParagraph style={{ paddingLeft: "0.3em" }}>
                         Completed
                       </SmallParagraph>
                     </RowContainer>
-                    <RowContainer>
-                      <IonIcon icon={square}></IonIcon>
+                    {/* <RowContainer>
+                      <IonIcon color="tertiary"  icon={squareOutline}></IonIcon>
                       <SmallParagraph style={{ paddingLeft: "0.3em" }}>
                         Today
                       </SmallParagraph>
-                    </RowContainer>
-
+                    </RowContainer> */}
                     <RowContainer>
-                      <IonIcon icon={square}></IonIcon>
+                      <IonIcon color="tertiary" icon={squareOutline}></IonIcon>
                       <SmallParagraph style={{ paddingLeft: "0.3em" }}>
                         Not Completed
                       </SmallParagraph>
                     </RowContainer>
                     <RowContainer>
-                      <IonIcon icon={square}></IonIcon>
+                      <IonIcon color="medium" icon={square}></IonIcon>
                       <SmallParagraph style={{ paddingLeft: "0.3em" }}>
-                        Not Tracked
+                        Not tracked
                       </SmallParagraph>
                     </RowContainer>
                   </div>
@@ -264,17 +274,17 @@ const ViewTask: React.FC = () => {
                             ? "31"
                             : (index % 31).toString().padStart(2, "0");
                         let date = month + day;
+                        if (date === startDate) startDateReachedYear = true;
+                        if (date === getDateString(today)) todayReachedYear = true;
                         return (
                           <li
-                            className={
-                              habit.dates.includes(date) ? "completed" : ""
-                            }
+                          className={habit.dates.includes(date) && startDateReachedYear ? "completed" : "uncompleted"}
                             key={"calendarSquare" + index}
-                            data-level="${level}"
+                            data-level={startDateReachedYear && !todayReachedYear ? "tracked" : "untracked"}
                             data-day={day}
                             data-month={month}
                           >
-                            <SmallParagraph style={{ margin: 0 }}>
+                            <SmallParagraph style={{ margin: 0, color: "inherit" }}>
                               {index % 31 === 0
                                 ? "31"
                                 : (index % 31).toString()}

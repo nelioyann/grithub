@@ -16,7 +16,7 @@ const Tab2: React.FC = () => {
       <IonHeader className="ion-padding-vertical" mode="md">
           <IonToolbar color="light">
             <IonTitle>
-              <Heading4>
+              <Heading4 style={{ color: "var(--ion-color-primary)"}}>
                 Progress
               </Heading4>
             </IonTitle>

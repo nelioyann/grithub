@@ -151,7 +151,7 @@ const Tab1: React.FC = () => {
         <IonHeader className="ion-padding-vertical" mode="md">
           <IonToolbar color="light">
             <IonTitle>
-              <Heading4>{todayDate()}</Heading4>
+              <Heading4 style={{ color: "var(--ion-color-primary)"}}>{todayDate()}</Heading4>
             </IonTitle>
             <IonButtons slot="end">
               <IonButton routerLink="/new" color="dark" fill="clear">
@@ -175,7 +175,7 @@ const Tab1: React.FC = () => {
           >
             <Heading6>Hey @{name}</Heading6>
             {loading === false && !user?.email && (
-              <IonCard className="ion-padding ion-margin-vertical" color="tertiary">
+              <IonCard style={{marginLeft: "0", marginRight: "0"}} className="ion-padding ion-margin-vertical" color="tertiary">
                 <Heading5
                   style={{ color: "var(--ion-color-tertiary-contrast)" }}
                 >
@@ -184,8 +184,8 @@ const Tab1: React.FC = () => {
                 <MediumParagraph style={{ color: "var(--ion-color-tertiary-contrast)" }}>
                   Create your Grithub account to enjoy personalized content and realtime syncing across all of your devices.
                 </MediumParagraph>
-                <IonButton mode="ios" color="light">
-                  <MediumButton>Sign Up</MediumButton>
+                <IonButton routerLink="/settings" mode="ios" color="light">
+                  <MediumButton>Go to settings</MediumButton>
                 </IonButton>
               </IonCard>
             )}
@@ -336,10 +336,11 @@ const Tab1: React.FC = () => {
                       }}
                     ></div>
                   </div>
-                  <Heading5>{selectedHabit?.name}</Heading5>
+                  <Heading5 style={{textAlign: "center", margin: "2em 0"}}>{selectedHabit?.name}</Heading5>
 
                   <IonItem
                     button={true}
+                    color="medium"
                     onClick={() => handleTaskCompletion(selectedHabit?.id)}
                   >
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
@@ -355,10 +356,12 @@ const Tab1: React.FC = () => {
                   </IonItem> */}
                   <IonItem
                     button={true}
+                    color="medium"
+
                     onClick={() => goToGraph(`/habit/${selectedHabit?.id}`)}
                   >
                     <IonIcon icon={calendar}></IonIcon>
-                    <IonLabel className="ion-padding">View graph</IonLabel>
+                    <IonLabel className="ion-padding">View history</IonLabel>
                   </IonItem>
                 </div>
               </div>
