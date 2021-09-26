@@ -1,149 +1,176 @@
-import { IonPage, IonContent, IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar, IonIcon, IonItem, IonLabel, IonToggle, IonList, IonListHeader, IonNote, useIonRouter } from '@ionic/react'
-import { bug, moon, person, settingsOutline } from 'ionicons/icons'
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { useHistory } from 'react-router'
-import Header from '../../components/Headers/Header'
-import { useAuth } from '../../Contexts/authProvider'
-import { DarkModeContext } from '../../Contexts/DarkModeContext'
-import { ColumnContainer, Heading2, Heading4, Heading5, MediumParagraph, SmallParagraph } from '../../theme/globalStyles'
-import Avatar from "boring-avatars";
-import {NameContext} from '../../Contexts/NameContext'
-import { firebaseStore } from '../../initFirebase'
+import {
+  IonPage,
+  IonContent,
+  IonBackButton,
+  IonButtons,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonToggle,
+  IonList,
+  IonListHeader,
+  IonNote,
+  useIonRouter,
+} from "@ionic/react";
+import { bug, moon, person, settingsOutline } from "ionicons/icons";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router";
+import Header from "../../components/Headers/Header";
+import { useAuth } from "../../Contexts/authProvider";
+import { DarkModeContext } from "../../Contexts/DarkModeContext";
+import {
+  ColumnContainer,
+  Heading2,
+  Heading4,
+  Heading5,
+  MediumParagraph,
+  SmallParagraph,
+} from "../../theme/globalStyles";
+import { NameContext } from "../../Contexts/NameContext";
+import { firebaseStore } from "../../initFirebase";
+import UserAvatar from "../../components/Avatar/Avatar";
 
 const Settings: React.FC = () => {
-    const router = useIonRouter()
-    const history = useHistory()
-    const { user, setLoading, logout } = useAuth()
+  const router = useIonRouter();
+  const { user, logout } = useAuth();
 
-    const { darkMode, darkModeSet } = useContext(DarkModeContext);
+  const { darkMode} = useContext(DarkModeContext);
 
-    // console.log(darkMode)
-    // Query for the toggle that is used to change between themes
-    const darkToggle = useRef<HTMLIonToggleElement>(null);
-    const { name, nameSet } = useContext(NameContext);
+  // console.log(darkMode)
+  // Query for the toggle that is used to change between themes
+  const darkToggle = useRef<HTMLIonToggleElement>(null);
+  const { name} = useContext(NameContext);
 
-  
+  async function handleDarkMode(checked: boolean) {
+    // Listen for the toggle check/uncheck to toggle the dark class on the <body>
+    document.body.classList.toggle("dark", checked);
+    console.log("Please don't log");
+    let result = await firebaseStore
+      .collection("users")
+      .doc(user!.uid)
+      .set({ darkMode: checked }, { merge: true });
+    console.log(result);
+    // darkModeSet(checked)
+  }
 
+  const doLogout = async () => {
+    const result = await logout();
+    // console.log(result)
+    // history.replace("/onboarding")
+    // console.log(router.routeInfo)
+    // router.push('/onboarding', "forward", "replace")
+  };
 
-    async function handleDarkMode(checked: boolean) {
-        // Listen for the toggle check/uncheck to toggle the dark class on the <body>
-        document.body.classList.toggle('dark', checked);
-        console.log("Please don't log")
-        let result = await firebaseStore.collection("users")
-                .doc(user!.uid).set({darkMode: checked}, { merge: true })
-            console.log(result)
-        // darkModeSet(checked)
-
-    }
-
-    const doLogout = async () => {
-        const result = await logout();
-        // console.log(result)
-        // history.replace("/onboarding")
-        // console.log(router.routeInfo)
-        // router.push('/onboarding', "forward", "replace")
-
-
-    }
-
-    return (
-        <IonPage >
-            <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
-                <IonToolbar color="light" >
-                    <IonButtons slot="">
-                        <IonBackButton color="dark" text="" />
-                    </IonButtons>
-                    <IonTitle slot="">
-                        <Heading4 style={{ color: "var(--ion-color-primary)", textAlign: "center" }}>Settings</Heading4>
-                    </IonTitle>
-                </IonToolbar>
-            </IonHeader>
-            <IonContent fullscreen >
-                {/* <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" /> */}
-                <div className="page-wrapper ion-padding-horizontal">
-
-                    <div className="page-wrapper-content" >
-
-                    <ColumnContainer style={{ borderRadius: "50%", margin: "1em auto", width: "max-content", alignItems: "center"}}>
-
-                        <Avatar
-                            size={100}
-                            name={name != "" ? name : "Fellow Grithuber"}
-                            variant="beam"
-                            colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
-                            />
-                            <MediumParagraph>
-
-                            {user?.email || "Guest"}
-                            </MediumParagraph>
-                            </ColumnContainer>
-                        <div className="ion-margin-top">
-                            <IonNote style={{ color: "var(--ion-color-secondary)" }}>
-                                Appearance
-                            </IonNote>
-                            <IonItem color="light" lines="none">
-                                {/* <IonIcon slot="start" icon={moon}></IonIcon> */}
-                                <div>
-                                    <IonLabel>
-
-                                        Dark Mode
-                                    </IonLabel>
-                                    {/* <IonN>Turn on Dark Mode for a great viewing experience and battery saving.</IonN> */}
-
-                                </div>
-                                <IonToggle ref={darkToggle} checked={darkMode} id="themeToggle" slot="end" onIonChange={e => handleDarkMode(e.detail.checked)} />
-                            </IonItem>
-                        </div>
-                        <div >
-                            <IonNote style={{ color: "var(--ion-color-secondary)" }}>
-                                Profile
-                            </IonNote>
-                            <IonItem color="light" detail={true} button={true} routerLink="/name" lines="none">
-                                {/* <IonIcon slot="start" icon={person}></IonIcon> */}
-                                <IonLabel>
-                                    Change username
-                                </IonLabel>
-                            </IonItem>
-                            <IonItem color="light" detail={true} button={true} lines="none" href="https://grithub.fr/">
-                                {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
-                                <IonLabel>
-                                    Report a problem
-                                </IonLabel>
-                            </IonItem>
-                            <IonItem color="light" detail={true} button={true} onClick={doLogout} lines="none">
-                                {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
-                                <IonLabel>
-                                    Logout
-                                </IonLabel>
-                            </IonItem>
-                        </div>
-                        <div>
-                            <IonNote style={{ color: "var(--ion-color-secondary)" }}>About</IonNote>
-                            <IonItem color="light" detail={true} button={true} lines="none" href="https://grithub.fr/">
-                                {/* <IonIcon slot="start" icon={person}></IonIcon> */}
-                                <IonLabel>
-                                    Terms of Use
-                                </IonLabel>
-                            </IonItem>
-                            <IonItem color="light" routerLink="/attributions" detail={true} button={true} lines="none">
-                                <IonLabel>
-                                    Attributions
-                                </IonLabel>
-                            </IonItem>
-                            <IonItem color="light" lines="none" button={true}>
-                                <IonLabel>
-                                    Version: beta 
-                                </IonLabel>
-                            </IonItem>
-                        </div>
-
-                    </div>
+  return (
+    <IonPage>
+      <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
+        <IonToolbar color="light">
+          <IonButtons slot="">
+            <IonBackButton color="dark" text="" defaultHref="/tabs/habits"/>
+          </IonButtons>
+          <IonTitle slot="">
+            <Heading4
+              style={{ color: "var(--ion-color-primary)", textAlign: "center" }}
+            >
+              Settings
+            </Heading4>
+          </IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen>
+        {/* <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" /> */}
+        <div className="page-wrapper ion-padding-horizontal">
+          <div className="page-wrapper-content">
+              <UserAvatar username={name} size={100} />
+            <div className="ion-margin-top">
+              <IonNote style={{ color: "var(--ion-color-secondary)" }}>
+                Appearance
+              </IonNote>
+              <IonItem color="light" lines="none">
+                {/* <IonIcon slot="start" icon={moon}></IonIcon> */}
+                <div>
+                  <IonLabel>Dark Mode</IonLabel>
+                  {/* <IonN>Turn on Dark Mode for a great viewing experience and battery saving.</IonN> */}
                 </div>
-            </IonContent>
-        </IonPage>
-    )
-}
+                <IonToggle
+                  ref={darkToggle}
+                  checked={darkMode}
+                  id="themeToggle"
+                  slot="end"
+                  onIonChange={(e) => handleDarkMode(e.detail.checked)}
+                />
+              </IonItem>
+            </div>
+            <div>
+              <IonNote style={{ color: "var(--ion-color-secondary)" }}>
+                Profile
+              </IonNote>
+              <IonItem
+                color="light"
+                detail={true}
+                button={true}
+                routerLink="/name"
+                lines="none"
+              >
+                {/* <IonIcon slot="start" icon={person}></IonIcon> */}
+                <IonLabel>Change username</IonLabel>
+              </IonItem>
+              <IonItem
+                color="light"
+                detail={true}
+                button={true}
+                lines="none"
+                href="https://grithub.fr/"
+              >
+                {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
+                <IonLabel>Report a problem</IonLabel>
+              </IonItem>
+              <IonItem
+                color="light"
+                detail={true}
+                button={true}
+                onClick={doLogout}
+                lines="none"
+              >
+                {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
+                <IonLabel>Logout</IonLabel>
+              </IonItem>
+            </div>
+            <div>
+              <IonNote style={{ color: "var(--ion-color-secondary)" }}>
+                About
+              </IonNote>
+              <IonItem
+                color="light"
+                detail={true}
+                button={true}
+                lines="none"
+                href="https://grithub.fr/"
+              >
+                {/* <IonIcon slot="start" icon={person}></IonIcon> */}
+                <IonLabel>Terms of Use</IonLabel>
+              </IonItem>
+              <IonItem
+                color="light"
+                routerLink="/attributions"
+                detail={true}
+                button={true}
+                lines="none"
+              >
+                <IonLabel>Attributions</IonLabel>
+              </IonItem>
+              <IonItem color="light" lines="none" button={true}>
+                <IonLabel>Version: beta</IonLabel>
+              </IonItem>
+            </div>
+          </div>
+        </div>
+      </IonContent>
+    </IonPage>
+  );
+};
 
-export default Settings
-
-
+export default Settings;

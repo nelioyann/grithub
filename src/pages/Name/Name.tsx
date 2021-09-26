@@ -5,6 +5,7 @@ import { NameContext } from '../../Contexts/NameContext';
 import Avatar from "boring-avatars";
 import { firebaseStore } from '../../initFirebase';
 import { useAuth } from '../../Contexts/authProvider';
+import UserAvatar from '../../components/Avatar/Avatar';
 
 
 
@@ -49,7 +50,8 @@ const Name: React.FC = () => {
                             <Heading4 style={{ marginTop: "auto" }}>
                                 How should we refer to you ?
                             </Heading4>
-                            <div style={{ borderRadius: "50%", margin: "1em auto", width: "max-content", overflow: "hidden" }}>
+                            <UserAvatar username={nameInput} size={100}/>
+                            {/* <div style={{ borderRadius: "50%", margin: "1em auto", width: "max-content", overflow: "hidden" }}>
 
                                 <Avatar
                                     size={100}
@@ -57,7 +59,7 @@ const Name: React.FC = () => {
                                     variant="beam"
                                     colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
                                 />
-                            </div>
+                            </div> */}
                             <MediumParagraph>
 
                             {name}

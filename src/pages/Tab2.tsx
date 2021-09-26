@@ -1,10 +1,8 @@
 import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonPage, IonProgressBar, IonTitle, IonToolbar } from '@ionic/react';
 import { settingsOutline } from 'ionicons/icons';
-import ExploreContainer from '../components/ExploreContainer';
-import Header from '../components/Headers/Header';
 import { Heading4 } from '../theme/globalStyles';
 import './Tab2.css';
-import { useHabits, IHabit } from '../Contexts/habitsProvider';
+import { useHabits} from '../Contexts/habitsProvider';
 import { getDateString, incrementToday } from '../components/Dates/DatesFunctions';
 
 const Tab2: React.FC = () => {
