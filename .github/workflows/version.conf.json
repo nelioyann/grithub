@@ -1,0 +1,19 @@
+{   
+    "scheme": "org_semantic",
+    "versionFile": "./package.json",
+    "files": ["./package-lock.json"],
+    "rules": [
+        {
+            "trigger":"commit",
+            "branch": "master",
+            "bump": "build",
+            "tag": true
+        },
+        {
+            "trigger": "manual",
+            "bump": "minor",
+            "reset": "build",
+            "tag": true
+        }
+    ]
+}
