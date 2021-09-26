@@ -1,7 +1,7 @@
 
 .info__image{
-    width: clamp(100px, 15vw, 15em);
-    height: clamp(100px, 15vw, 15em);
+    width: clamp(100px, 15vw, 20vh);
+    height: clamp(100px, 15vw, 20vh);
 }
 .cls-3 {
     fill: #ff3a2f;

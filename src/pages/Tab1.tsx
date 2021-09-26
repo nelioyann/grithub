@@ -173,7 +173,7 @@ const Tab1: React.FC = () => {
             className="page-wrapper-content"
             style={{ position: "relative" }}
           >
-            <Heading6>Hey @{name}</Heading6>
+            {!loading && <Heading6>Hey @{name}</Heading6>}
             {loading === false && !user?.email && (
               <IonCard style={{marginLeft: "0", marginRight: "0"}} className="ion-padding ion-margin-vertical" color="tertiary">
                 <Heading5
@@ -304,8 +304,11 @@ const Tab1: React.FC = () => {
                   </g>
                 </svg>
                 <Heading5>You have no active goals</Heading5>
-                <IonButton routerLink="/new" fill="solid">
+                <IonButton mode="ios" routerLink="/new" fill="solid">
+                  <MediumButton>
+
                   Add a new one
+                  </MediumButton>
                 </IonButton>
               </div>
             )}
@@ -350,10 +353,7 @@ const Tab1: React.FC = () => {
                         : "Mark as completed"}
                     </IonLabel>
                   </IonItem>
-                  {/* <IonItem button={true}>
-                    <IonIcon icon={bed}></IonIcon>
-                    <IonLabel className="ion-padding">Mark as a break day </IonLabel>
-                  </IonItem> */}
+                  
                   <IonItem
                     button={true}
                     color="light"
