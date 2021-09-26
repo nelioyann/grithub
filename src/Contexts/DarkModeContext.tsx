@@ -44,7 +44,7 @@ const DarkModeContextProvider: React.FC = (props) => {
               .doc(user!.uid)
               .onSnapshot((snapshot) => {
                   console.log("darkmode context",snapshot.data()?.darkMode)
-                  darkModeSet(snapshot.data()?.darkMode)
+                  darkModeSet(snapshot.data()?.darkMode === undefined ? false : snapshot.data()?.darkMode)
               });
             return () => {
               console.log("unsubcribe darkmode");

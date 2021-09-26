@@ -46,6 +46,7 @@ const Settings: React.FC = () => {
 
   async function handleDarkMode(checked: boolean) {
     // Listen for the toggle check/uncheck to toggle the dark class on the <body>
+    if (checked === undefined) return;
     document.body.classList.toggle("dark", checked);
     console.log("Please don't log");
     let result = await firebaseStore

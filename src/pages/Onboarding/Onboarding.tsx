@@ -70,7 +70,7 @@ const Onboarding: React.FC = () => {
                                     </Heading4>
                                     <div className="ion-padding ion-margin-vertical" style={{ display: "flex", justifyContent: "center" }}>
 
-                                        <img style={{ width: "clamp(100px, 100%, 400px)", filter: themedImageFilter }} src={buildBricks} alt="Image of the theme" />
+                                        <img style={{ width: "clamp(100px, 100%, 40vh)", pointerEvents: "none", filter: themedImageFilter }} src={buildBricks} alt="Image of building bricks" />
                                     </div>
 
 
@@ -87,7 +87,7 @@ const Onboarding: React.FC = () => {
                                     </Heading4>
                                     <div className="ion-padding ion-margin-vertical" style={{ display: "flex", justifyContent: "center" }}>
 
-                                        <img style={{ width: "clamp(100px, 100%, 400px)", filter: themedImageFilter }} src={reachGoal} alt="Image of the theme" />
+                                        <img style={{ width: "clamp(100px, 100%, 40vh)", pointerEvents: "none", filter: themedImageFilter }} src={reachGoal} alt="Image of the theme" />
                                     </div>
 
                                 </div>
@@ -104,7 +104,7 @@ const Onboarding: React.FC = () => {
                                     </Heading4>
                                     <div className="ion-padding ion-margin-vertical" style={{ display: "flex", justifyContent: "center" }}>
 
-                                        <img style={{ width: "clamp(100px, 100%, 400px)", filter: themedImageFilter }} src={bulbPlant} alt="Image of the theme" />
+                                        <img style={{ width: "clamp(100px, 100%, 40vh)", pointerEvents: "none", filter: themedImageFilter }} src={bulbPlant} alt="Image of the theme" />
                                     </div>
 
                                 </div>

@@ -90,7 +90,8 @@ const Tab1: React.FC = () => {
   }, []);
 
   // console.log("habits",habits)
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+
   // console.log()
 
   useEffect(() => {
@@ -172,6 +173,11 @@ const Tab1: React.FC = () => {
             className="page-wrapper-content"
             style={{ position: "relative" }}
           >
+
+            { loading === false && !user?.email && 
+            (
+              <span>You are a guest</span>
+            )}
             {/* <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
               You haven't set any habit yet
             </Heading5> */}
@@ -195,7 +201,7 @@ const Tab1: React.FC = () => {
               </>
             ) : (<IonLoading isOpen={loadingHabits} message="Retrieving data"></IonLoading>)}
 
-            {/* :
+            { habits && habits.length === 0 && loadingHabits === false &&
               (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <svg className="info__image" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="60" height="61" viewBox="0 0 60 61">
@@ -220,7 +226,7 @@ const Tab1: React.FC = () => {
                   </IonButton>
                 </div>
 
-              ) */}
+              ) }
 
             <IonModal
               isOpen={showModal}
