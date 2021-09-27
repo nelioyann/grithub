@@ -117,7 +117,7 @@ const Onboarding: React.FC = () => {
 
                             <IonRouterLink
                                 routerLink="/login"
-                                style={{ textDecoration: "underline", color: "var(--ion-color-tertiary)" }}
+                                style={{ textDecoration: "underline", color: "var(--ion-color-primary)" }}
                             >
                                 {"Log in"}
                             </IonRouterLink>
@@ -141,13 +141,13 @@ const Onboarding: React.FC = () => {
                             </IonButton>
                         </div>}
                         {currentIndex == 2 && <div className="ion-margin-top" style={{ zIndex: 99, display: "flex", justifyContent: "space-between" }}>
-                            <IonButton style={{ maxWidth: "200px", "--background-hover-opacity": "0", visibility: "hidden" }} color="dark" size="small" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
+                            {/* <IonButton style={{ maxWidth: "200px", "--background-hover-opacity": "0", visibility: "hidden" }} color="dark" size="small" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
                                 <LargeButton>
 
                                     Skip
                                 </LargeButton>
 
-                            </IonButton>
+                            </IonButton> */}
                             <IonButton onClick={() => router.push("/login", "forward", "replace")} style={{ maxWidth: "200px", "--background-hover-opacity": "0" }} size="small" expand="block" fill="clear" >
                                 <LargeButton>
                                     Get Started                        </LargeButton>

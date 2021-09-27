@@ -203,13 +203,11 @@ const New: React.FC = () => {
                       cssClass: "emoji-modal",
                     })
                   }
-                  button={true}
-                  color="medium"
                   style={{
                     width: "max-content",
-                    fontSize: "1.5rem",
-                    padding: "0.5em",
-                    margin: "0 1em 0 0",
+                    fontSize: "1rem",
+                    padding: "0",
+                    backgroundColor: "var(--ion-color-light)"
                   }}
                 >
                   {chosenEmoji}

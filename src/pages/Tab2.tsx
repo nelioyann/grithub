@@ -4,6 +4,7 @@ import { Heading4 } from '../theme/globalStyles';
 import './Tab2.css';
 import { useHabits} from '../Contexts/habitsProvider';
 import { getDateString, incrementToday } from '../components/Dates/DatesFunctions';
+import WeeklyProgression from '../components/WeeklyProgression/WeeklyProgression';
 
 const Tab2: React.FC = () => {
   const { habits, loadingHabits } = useHabits();
@@ -32,12 +33,13 @@ const Tab2: React.FC = () => {
 
           <div className="page-wrapper-content ">
             <Heading4 style={{margin: "5em auto 1em", textAlign: "center" }}>
-              Today completion
+              Last 7 days
             </Heading4>
             {!loadingHabits && 
             <div style={{textAlign: "center"}}>
-            <IonProgressBar className="ion-margin-vertical" style={{padding: "0.5em", borderRadius: "5em"}} color="primary" value={completedHabits / totalHabits }></IonProgressBar>
-              {completedHabits}/{totalHabits} completed habits today
+              <WeeklyProgression />
+            {/* <IonProgressBar className="ion-margin-vertical" style={{padding: "0.5em", borderRadius: "5em"}} color="primary" value={completedHabits / totalHabits }></IonProgressBar>
+              {completedHabits}/{totalHabits} completed habits today */}
             </div>
             }
           </div>

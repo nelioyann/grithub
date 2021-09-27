@@ -87,7 +87,7 @@ const Settings: React.FC = () => {
           <div className="page-wrapper-content">
             <div style={{display: "flex", justifyContent: "center"}}>
 
-            <UserAvatar username={name} size={100} email={user?.email || ""} />
+            <UserAvatar username={name} size={70} email={user?.email || ""} />
             </div>
             <div className="ion-margin-top">
               <IonNote style={{ color: "var(--ion-color-secondary)" }}>
@@ -143,7 +143,7 @@ const Settings: React.FC = () => {
                 />
               </IonItem>
             </div>
-            <div>
+            <div style={{marginBottom: "4em"}}>
               <IonNote style={{ color: "var(--ion-color-secondary)" }}>
                 About
               </IonNote>

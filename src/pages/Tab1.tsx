@@ -151,7 +151,7 @@ const Tab1: React.FC = () => {
         <IonHeader className="ion-padding-vertical" mode="md">
           <IonToolbar color="light">
             <IonTitle>
-              <Heading4 style={{ color: "var(--ion-color-primary)"}}>{todayDate()}</Heading4>
+              <Heading4 style={{ color: "var(--ion-color-primary)"}}>Hey @{name}</Heading4>
             </IonTitle>
             <IonButtons slot="end">
               <IonButton routerLink="/new" color="dark" fill="clear">
@@ -173,7 +173,7 @@ const Tab1: React.FC = () => {
             className="page-wrapper-content"
             style={{ position: "relative" }}
           >
-            {!loading && <Heading6>Hey @{name}</Heading6>}
+            {!loading && <Heading6>{todayDate()}</Heading6>}
             {loading === false && !user?.email && (
               <IonCard style={{marginLeft: "0", marginRight: "0"}} className="ion-padding ion-margin-vertical" color="tertiary">
                 <Heading5
@@ -194,7 +194,7 @@ const Tab1: React.FC = () => {
             </Heading5> */}
             {/* { !loadingHabits && habits.length !== 0 && () } */}
             {habits && habits.length !== 0 && loadingHabits === false ? (
-              <div style={{marginTop: "3em"}}>
+              <div style={{margin: "5em 0"}}>
                 <Heading5>
                   Take a moment to tick off what you achieved today
                 </Heading5>

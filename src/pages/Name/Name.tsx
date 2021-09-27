@@ -45,7 +45,7 @@ const Name: React.FC = () => {
                 <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center' }}>
 
                     <div className="page-wrapper-content">
-                        <ColumnContainer style={{ marginTop: "2em" }} >
+                        <ColumnContainer style={{ margin: "4em 0" }} >
 
                             <UserAvatar username={nameInput} size={100}/>
                             <Heading4 style={{ marginTop: "auto" }}>

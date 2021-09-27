@@ -85,7 +85,7 @@ const CreateAccountPage = () => {
               <Heading4 style={{ textAlign: 'center' }}>Grithub</Heading4>
               <MediumParagraph>Build habits that stick</MediumParagraph>
             </div>
-            
+
             <IonButton className="ion-margin-top" expand="block" onClick={googleSignIn}>
               <IonIcon className="ion-padding-horizontal" icon={logoGoogle} />
               <LargeButton style={{ color: 'var(--ion-color-medium)', textTransform: "initial" }}>
@@ -100,61 +100,61 @@ const CreateAccountPage = () => {
                 Continue as a guest
               </LargeButton>
             </IonButton> */}
-            <Heading4 style={{ textAlign: 'center', margin: "1em" }}>OR </Heading4>
+            <Heading4 style={{ textAlign: 'center', margin: "1em auto" }}>OR </Heading4>
             {/* <Heading5>Log in with email </Heading5> */}
 
             <Heading5>Create an account </Heading5>
             <IonCard>
 
-            <IonItem color="medium">
-              <IonLabel position="stacked" >Email Address</IonLabel>
-              <IonInput
-                type="email"
-                required={true}
-                placeholder="Enter your email address"
-                value={email}
-                onInput={(e: any) => emailSet(e.target.value)}
-                
+              <IonItem color="medium">
+                <IonLabel position="stacked" >Email Address</IonLabel>
+                <IonInput
+                  type="email"
+                  required={true}
+                  placeholder="Enter your email address"
+                  value={email}
+                  onInput={(e: any) => emailSet(e.target.value)}
+
                 />
-            </IonItem>
-            <IonItem color="medium">
-              <IonLabel position="stacked" >Password</IonLabel>
-              <IonInput
-                type="password"
-                required={true}
-                placeholder="Enter your password"
-                value={password}
-                onInput={(e: any) => passwordSet(e.target.value)}
-                
+              </IonItem>
+              <IonItem color="medium">
+                <IonLabel position="stacked" >Password</IonLabel>
+                <IonInput
+                  type="password"
+                  required={true}
+                  placeholder="Enter your password"
+                  value={password}
+                  onInput={(e: any) => passwordSet(e.target.value)}
+
                 />
-            </IonItem>
-            <IonItem color="medium">
-              <IonLabel position="stacked" >Username</IonLabel>
-              <IonInput
-                type="text"
-                value={name}
-                required={true}
-                placeholder="Enter your username"
-                onInput={(e: any) => nameSet(e.target.value)}
-                
+              </IonItem>
+              <IonItem color="medium">
+                <IonLabel position="stacked" >Username</IonLabel>
+                <IonInput
+                  type="text"
+                  value={name}
+                  required={true}
+                  placeholder="Enter your username"
+                  onInput={(e: any) => nameSet(e.target.value)}
+
                 />
-            </IonItem>
-            <div
-              style={{ justifyContent: "center", display: "flex", paddingTop: 8 }}
+              </IonItem>
+              <div
+                style={{ justifyContent: "center", display: "flex", paddingTop: 8 }}
               >
-              <IonButton onClick={doSignUp}>Create Account</IonButton>
+                <IonButton onClick={doSignUp}>Create Account</IonButton>
 
-            </div>
-            <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-primary)" }}>{"Already have an account? "}
+              </div>
+              <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center"}}>{"Already have an account? "}
 
-              <IonRouterLink
-                routerLink="/login"
-                style={{ textDecoration: "underline", color: "var(--ion-color-tertiary)" }}
+                <IonRouterLink
+                  routerLink="/login"
+                  style={{ textDecoration: "underline", color: "var(--ion-color-primary)" }}
                 >
-                {"Log in"}
-              </IonRouterLink>
-            </MediumParagraph>
-                </IonCard>
+                  {"Log in"}
+                </IonRouterLink>
+              </MediumParagraph>
+            </IonCard>
           </div>
         </div>
       </IonContent>

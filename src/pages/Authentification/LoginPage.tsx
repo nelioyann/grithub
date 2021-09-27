@@ -100,7 +100,7 @@ const LoginPage: React.FC = () => {
                         <Heading4 style={{ textAlign: 'center', margin: "1em auto" }}>OR </Heading4>
                         <Heading5>Log in with email </Heading5>
 
-                        <IonCard color="light" className="">
+                        <IonCard >
 
                             <IonItem color="medium">
                                 {/* <IonIcon icon={mailOutline}/> */}
@@ -130,12 +130,12 @@ const LoginPage: React.FC = () => {
                             <div style={{ justifyContent: "center", display: "flex", paddingTop: 8 }}>
                                 <IonButton className="ion-margin-top" expand="block" onClick={doSignIn}>Login</IonButton>
                             </div>
-                            <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-primary)" }} >
+                            <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center" }} >
 
                                 {"Don't have an account ? "}
                                 <IonRouterLink
                                     routerLink="/create-account"
-                                    style={{ textDecoration: "underline", color: "var(--ion-color-tertiary)" }}
+                                    style={{ textDecoration: "underline", color: "var(--ion-color-primary)" }}
                                 >
                                     {" Sign Up"}
                                 </IonRouterLink>
