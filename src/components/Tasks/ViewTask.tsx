@@ -116,23 +116,10 @@ const ViewTask: React.FC = () => {
       <IonContent fullscreen>
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content ">
-            {/* <Heading5
-              style={{ color: "var(--ion-color-dark)", textAlign: "center" }}
-            >
-              {habit?.name}
-            </Heading5> */}
-
-            {/* <Heading5>Did you achieve your goal today ?</Heading5> */}
-            {/* <IonCard>
-                            Today
-                        </IonCard>
-                        <IonButton  color="danger">
-                            Remove
-                        </IonButton> */}
-
             <IonSegment
               value={graphViewSegment}
               onIonChange={(e) => handleSegmentChange(e)}
+              className="ion-margin-vertical"
             >
               <IonSegmentButton value="0">
                 <IonLabel>This Month</IonLabel>

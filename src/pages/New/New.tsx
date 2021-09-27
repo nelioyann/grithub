@@ -36,6 +36,7 @@ import { useAuth } from "../../Contexts/authProvider";
 import { toast } from "../../components/Toasts/Toast";
 import Picker from "emoji-picker-react";
 import "./New.css";
+import { close, closeCircle, helpOutline } from "ionicons/icons";
 
 const EmojiPicker: React.FC<{
   onSelected: () => void;
@@ -61,7 +62,7 @@ const EmojiPicker: React.FC<{
           }}
         ></div>
       </div>
-      <Heading5 className="ion-padding-horizontal" style={{textAlign: "center"}}>Emoji Picker</Heading5>
+      <Heading5 className="ion-padding-horizontal" style={{ textAlign: "center" }}>Emoji Picker</Heading5>
 
       <Picker
         onEmojiClick={onSelected}
@@ -76,9 +77,11 @@ const EmojiPicker: React.FC<{
   );
 };
 
+
+
 const New: React.FC = () => {
   const [newHabit, newhabitSet] = useState<string>("");
-//   const history = useHistory();
+  //   const history = useHistory();
   const router = useIonRouter()
   const { user, setLoading } = useAuth();
   const [chosenEmoji, setChosenEmoji] = useState("🙂");
@@ -91,14 +94,25 @@ const New: React.FC = () => {
   const handleEmojiDismiss = () => {
     dismissPicker();
   };
+  
 
   const [presentPicker, dismissPicker] = useIonModal(EmojiPicker, {
     onSelected: handleEmojiSelection,
   });
+
+
   const handleChange = (habit: string) => {
     newhabitSet(habit);
   };
-
+  const handleHelpDismiss = () => {
+    dismissHelp();
+  };
+  const [presentHelp, dismissHelp] = useIonModal(HelpCard, {
+    handleChange: handleChange,
+    setChosenEmoji: setChosenEmoji, 
+    handleHelpDismiss: handleHelpDismiss
+  })
+  
   const handleSubmit = async (habit: string) => {
     console.log("new");
     if (habit === "") {
@@ -120,7 +134,7 @@ const New: React.FC = () => {
       // setLoading(false)
       toast("Added");
       router.push("/tabs/habits", "back", "push");
-    } catch (error) {
+    } catch (error: any) {
       toast(error.message);
     }
     // console.log(user!.uid)
@@ -140,18 +154,24 @@ const New: React.FC = () => {
               New goal
             </Heading4>
           </IonTitle>
+          <IonButtons slot="end">
+            <IonButton onClick={() => presentHelp()} color="dark" fill="clear">
+
+              <IonIcon icon={helpOutline}></IonIcon>
+            </IonButton>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         {/* <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" /> */}
-        <div className="page-wrapper ion-padding-horizontal">
+        <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center' }}>
           <div className="page-wrapper-content ">
             <ColumnContainer style={{ marginTop: "4em" }}>
               {/* <Heading3 style={{ color: "var(--ion-color-primary)", textAlign: "center" }}>
                                 I want to {newHabit.toLowerCase()} everyday.
                             </Heading3> */}
 
-              <IonCard
+              {/* <IonCard
                 className="ion-padding "
                 style={{ margin: "1em 0" }}
                 color="medium"
@@ -171,7 +191,7 @@ const New: React.FC = () => {
                   </IonChip>
                   is better than "Exercise"
                 </MediumParagraph>
-              </IonCard>
+              </IonCard> */}
               <Heading4>Give your habit a name and pick an emoji</Heading4>
 
               <RowContainer>
@@ -245,3 +265,53 @@ const New: React.FC = () => {
 };
 
 export default New;
+
+
+const HelpCard: React.FC<{
+  handleChange: (habit: string) => void,
+  setChosenEmoji: (emoji: string) => void,
+  handleHelpDismiss: () => void,
+}> = (({ handleChange, setChosenEmoji, handleHelpDismiss }) => {
+  return (
+    <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center', justifyContent: 'center'}}>
+      <div className="page-wrapper-content ">
+        <Heading4>Recommendations for setting habits</Heading4>
+        <IonCard
+          className="ion-padding "
+          style={{ margin: "1em 0" }}
+          
+        >
+          <Heading6>💡 Be specific</Heading6>
+
+          <MediumParagraph>
+            <IonChip
+              color="dark"
+              outline={true}
+              onClick={() => {
+                handleChange("Exercise for 20 minutes");
+                setChosenEmoji("🏋️");
+              }}
+            >
+              <IonLabel>Exercise for 20 minutes</IonLabel>
+            </IonChip>
+            is better than "Exercise"
+          </MediumParagraph>
+        </IonCard>
+        <IonCard
+          className="ion-padding "
+          style={{ margin: "1em 0" }}
+          
+        >
+          <Heading6>🐌 Start Slow</Heading6>
+
+          <MediumParagraph>
+            There is nothing wrong in setting achievable goals from the start
+          </MediumParagraph>
+        </IonCard>
+        <IonButton fill="clear" color="dark" onClick={() => handleHelpDismiss()} style={{ margin: "auto", width: "100%",}}>
+              <IonIcon style={{ fontSize: "2rem"}} icon={closeCircle}></IonIcon>
+        </IonButton>
+      </div>
+    </div>
+  )
+})

@@ -343,7 +343,8 @@ const Tab1: React.FC = () => {
 
                   <IonItem
                     button={true}
-                    color="light"
+                    style={{"--background": "transparent"}}
+
                     onClick={() => handleTaskCompletion(selectedHabit?.id)}
                   >
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
@@ -356,8 +357,7 @@ const Tab1: React.FC = () => {
                   
                   <IonItem
                     button={true}
-                    color="light"
-
+                    style={{"--background": "transparent"}}
                     onClick={() => goToGraph(`/habit/${selectedHabit?.id}`)}
                   >
                     <IonIcon icon={calendar}></IonIcon>

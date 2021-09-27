@@ -51,11 +51,13 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
         router.push(path, "forward")
     }
 
+
+
     return (
-        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "ion-padding animate-fade-down animated" : "ion-padding animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ border: "1px solid var(--ion-color-medium-tint)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent", animationDelay: delay, position: "relative" }}  >
+        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "ion-padding animate-fade-down animated" : "ion-padding animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ border: "1px solid var(--ion-color-medium-tint)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
             {dates.includes(todayDateString) &&
 
-                <Lottie style={{ position: "absolute", top: "50%", left: "50%",transform: "translate(-50%, -50%)",  width: "100%",  height: "initial", zIndex: -1 }} isClickToPauseDisabled={true} options={confettiOptions}  />
+                <Lottie style={{ position: "absolute", top: "50%", left: "50%",transform: "translate(-50%, -50%)",  width: "100%",  height: "initial", zIndex: -1}} isClickToPauseDisabled={true} options={confettiOptions}  />
             }
             <div style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center" }}>
 

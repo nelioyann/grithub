@@ -47,26 +47,12 @@ const Name: React.FC = () => {
                     <div className="page-wrapper-content">
                         <ColumnContainer style={{ marginTop: "2em" }} >
 
+                            <UserAvatar username={nameInput} size={100}/>
                             <Heading4 style={{ marginTop: "auto" }}>
                                 How should we refer to you ?
                             </Heading4>
-                            <UserAvatar username={nameInput} size={100}/>
-                            {/* <div style={{ borderRadius: "50%", margin: "1em auto", width: "max-content", overflow: "hidden" }}>
 
-                                <Avatar
-                                    size={100}
-                                    name={nameInput !== "" ? nameInput : name}
-                                    variant="beam"
-                                    colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
-                                />
-                            </div> */}
-                            
-                            {/* <div style={{ filter: "invert(0.5)" }}>
-
-                                <Lottie isClickToPauseDisabled={true} options={characterOptions} height={230} width={300} />
-                            </div> */}
-
-                            <IonItem color="light">
+                            <IonItem className="ion-margin-vertical">
                                 <IonLabel position="floating">Preferred name</IonLabel>
                                 <IonInput onIonChange={(e) => handleChange(e)} value={nameInput}></IonInput>
                             </IonItem>
