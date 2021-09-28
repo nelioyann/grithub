@@ -1,4 +1,29 @@
-/* .weekly-progression{
-    display: flex;
-    justify-content: space-between;
-} */
+.weekly-progression-outer{
+    /* background-color: var(--ion-color-dark); */
+    /* padding: 0.2em 0; */
+    border: 1px solid var(--ion-color-medium-tint);
+    margin: 2em auto;
+    height: 30em;
+
+
+}
+
+
+.weekly-progression-inner{
+    margin: 0em auto;
+    max-width: 15em;
+    transform-origin: center center;
+    transform: rotate(270deg) ;
+}
+
+.weekly-progression-inner ion-progress-bar::part(progress),
+.weekly-progression-inner ion-progress-bar::part(track){
+    border-radius:2em;
+}
+
+.weekly-progression-inner .progress-label{
+    padding: 0px;
+    transform-origin: center;
+    transform: rotate(90deg);
+
+}

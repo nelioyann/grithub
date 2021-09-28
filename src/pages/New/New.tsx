@@ -192,9 +192,9 @@ const New: React.FC = () => {
                   is better than "Exercise"
                 </MediumParagraph>
               </IonCard> */}
-              <Heading4>Give your habit a name and pick an emoji</Heading4>
+              <Heading4 >Give your habit a name and pick an emoji</Heading4>
 
-              <RowContainer>
+              <RowContainer className="ion-margin-vertical">
                 <IonCard
                   onClick={() =>
                     presentPicker({

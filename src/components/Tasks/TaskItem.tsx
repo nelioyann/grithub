@@ -1,10 +1,10 @@
-import { IonButton, IonCard, IonCheckbox, IonIcon, IonToggle, useIonRouter, useIonViewDidEnter, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react'
-import { calendar, chevronForward, informationCircle } from 'ionicons/icons'
+import { IonButton, IonCard, IonCheckbox, IonIcon, IonNote, IonToggle, useIonRouter, useIonViewDidEnter, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react'
+import { calendar, chevronForward, informationCircle, repeat } from 'ionicons/icons'
 import React, { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../../Contexts/authProvider'
 import { IHabit, useHabits } from '../../Contexts/habitsProvider'
 import { firebaseStore, firebase, arrayUnion, arrayRemove } from '../../initFirebase'
-import { Heading6, RowContainer } from '../../theme/globalStyles'
+import { ColumnContainer, Heading5, Heading6, RowContainer, SmallParagraph } from '../../theme/globalStyles'
 import { getDateString, incrementToday } from '../Dates/DatesFunctions'
 import { toast } from '../Toasts/Toast'
 import WeeklyCalendar from './WeeklyCalendar'
@@ -57,14 +57,17 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
         <IonCard ref={elTask} mode="ios" button={true} className={inView ? "ion-padding animate-fade-down animated" : "ion-padding animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ border: "1px solid var(--ion-color-medium-tint)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
             {dates.includes(todayDateString) &&
 
-                <Lottie style={{ position: "absolute", top: "50%", left: "50%",transform: "translate(-50%, -50%)",  width: "100%",  height: "initial", zIndex: -1}} isClickToPauseDisabled={true} options={confettiOptions}  />
+                <Lottie style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "100%", height: "initial", zIndex: -1 }} isClickToPauseDisabled={true} options={confettiOptions} />
             }
-            <div style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center" }}>
+            <ColumnContainer className="ion-margin-horizontal" >
 
-                <Heading6 onClick={() => handleChange()} className={dates.includes(todayDateString) ? "ion-margin-horizontal strikethrough" : "ion-margin-horizontal"}>{name}</Heading6>
+                <Heading5 onClick={() => handleChange()} className={dates.includes(todayDateString) ? "" : ""}>{name}</Heading5>
+                <IonNote className="ion-margin-horizontal" style={{display: "flex", alignItems: "center"}}>
+                    <IonIcon color="dark" icon={repeat}></IonIcon>
+                    <SmallParagraph style={{margin: "0 0 0 8px"}}>repeat every day</SmallParagraph>
+                </IonNote>
+            </ColumnContainer>
 
-            </div>
- 
         </IonCard>
     )
 }

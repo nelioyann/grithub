@@ -52,6 +52,7 @@ import {
 import { toast } from "../components/Toasts/Toast";
 import { useAuth } from "../Contexts/authProvider";
 import { firebaseStore, arrayUnion, arrayRemove } from "../initFirebase";
+import WeeklyProgression from "../components/WeeklyProgression/WeeklyProgression";
 
 const Tab1: React.FC = () => {
   const { name, nameSet } = useContext(NameContext);
@@ -75,6 +76,7 @@ const Tab1: React.FC = () => {
 
   const handleTaskCompletion = (id: string | undefined) => {
     console.log("Handle COmpletion fired");
+    if(!selectedHabit?.dates.includes(todayDateString)) toast("Congratulations!") // Why thee not worketh as thee should, why ?
     setHabitChecked(selectedHabit?.dates.includes(todayDateString));
   };
   const router = useIonRouter();
@@ -173,7 +175,7 @@ const Tab1: React.FC = () => {
             className="page-wrapper-content"
             style={{ position: "relative" }}
           >
-            {!loading && <Heading6>{todayDate()}</Heading6>}
+            {loadingHabits === false && <Heading6>{todayDate()}</Heading6>}
             {loading === false && !user?.email && (
               <IonCard style={{marginLeft: "0", marginRight: "0"}} className="ion-padding ion-margin-vertical" color="tertiary">
                 <Heading5
@@ -193,7 +195,12 @@ const Tab1: React.FC = () => {
               You haven't set any habit yet
             </Heading5> */}
             {/* { !loadingHabits && habits.length !== 0 && () } */}
-            {habits && habits.length !== 0 && loadingHabits === false ? (
+            {!loadingHabits && 
+            <div style={{textAlign: "center"}}>
+              <WeeklyProgression />
+            </div>
+            }
+            {habits && habits.length !== 0 && loadingHabits === false && (
               <div style={{margin: "5em 0"}}>
                 <Heading5>
                   Take a moment to tick off what you achieved today
@@ -210,14 +217,9 @@ const Tab1: React.FC = () => {
                   );
                 })}
               </div>
-            ) : (
-              <IonLoading
-                isOpen={loadingHabits}
-                message="Retrieving data"
-              ></IonLoading>
-            )}
+            ) }
 
-            {habits && habits.length === 0 && loadingHabits === false && (
+            {loadingHabits === false && habits && habits.length === 0 && (
               <div
                 style={{
                   display: "flex",
@@ -226,7 +228,7 @@ const Tab1: React.FC = () => {
                   margin: "1em 0"
                 }}
               >
-                <svg
+                {/* <svg
                   className="info__image"
                   xmlns="http://www.w3.org/2000/svg"
                   preserveAspectRatio="xMidYMid"
@@ -302,7 +304,7 @@ const Tab1: React.FC = () => {
                       fillRule="evenodd"
                     />
                   </g>
-                </svg>
+                </svg> */}
                 <Heading5>You have no active goals</Heading5>
                 <IonButton mode="ios" routerLink="/new" fill="solid">
                   <MediumButton>
@@ -312,7 +314,7 @@ const Tab1: React.FC = () => {
                 </IonButton>
               </div>
             )}
-
+            
             <IonModal
               isOpen={showModal}
               cssClass="task-modal"

@@ -32,14 +32,10 @@ const Tab2: React.FC = () => {
         <div className="page-wrapper ion-padding-horizontal">
 
           <div className="page-wrapper-content ">
-            <Heading4 style={{margin: "5em auto 1em", textAlign: "center" }}>
-              Last 7 days
-            </Heading4>
+            
             {!loadingHabits && 
             <div style={{textAlign: "center"}}>
               <WeeklyProgression />
-            {/* <IonProgressBar className="ion-margin-vertical" style={{padding: "0.5em", borderRadius: "5em"}} color="primary" value={completedHabits / totalHabits }></IonProgressBar>
-              {completedHabits}/{totalHabits} completed habits today */}
             </div>
             }
           </div>
