@@ -10,7 +10,7 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { apps, statsChart} from 'ionicons/icons';
+import { apps, statsChart } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 
@@ -38,7 +38,7 @@ import Onboarding from './pages/Onboarding/Onboarding';
 import Name from './pages/Name/Name';
 import Settings from './pages/Settings/Settings';
 import New from './pages/New/New';
-import {DarkModeContextProvider} from './Contexts/DarkModeContext';
+import { DarkModeContextProvider } from './Contexts/DarkModeContext';
 import NameContextProvider from './Contexts/NameContext';
 import LoginPage from './pages/Authentification/LoginPage';
 import CreateAccountPage from './pages/Authentification/CreateAccountPage';
@@ -50,7 +50,8 @@ import ViewTask from './components/Tasks/ViewTask';
 import Attributions from './pages/Attributions/Attributions';
 
 const App: React.FC = () => {
-  const { loading } = useAuth()
+  const { loading } = useAuth();
+  const { habits, loadingHabits } = useHabits();
   let isAuth = firebaseAuth.currentUser !== null;
 
   // console.log(loading)
@@ -58,7 +59,7 @@ const App: React.FC = () => {
   if (loading) {
     return (
       <IonApp>
-        <IonLoading isOpen={loading} message="Loading..." />
+        <IonLoading isOpen={loading === loadingHabits === true} message="Loading..." />
       </IonApp>
     )
   }
@@ -84,7 +85,7 @@ const App: React.FC = () => {
                 <Route path="/onboarding" exact={true}>
                   {isAuth ? <Redirect to="/tabs/habits" /> : <Onboarding />}
                 </Route>
-<Route path="/login" exact={true}>
+                <Route path="/login" exact={true}>
                   {isAuth ? <Redirect to="/tabs/habits" /> : <LoginPage />}
                 </Route>
                 <Route exact={true} path="/settings" component={Settings} />
@@ -94,7 +95,7 @@ const App: React.FC = () => {
                 <Route path="/name" exact={true} component={Name} />
 
 
-                
+
                 <Route path="/create-account" exact={true}>
                   <CreateAccountPage />
                 </Route>
@@ -143,8 +144,8 @@ const Tabs: React.FC = () => {
     <IonTabs >
       <IonRouterOutlet>
         <PrivateRoute exact path="/tabs/habits" component={Tab1} />
-          
-        <Route exact path="/tabs/community">
+
+        <Route exact path="/tabs/stats">
           <Tab2 />
         </Route>
         <Route exact path="/tabs">
@@ -156,7 +157,7 @@ const Tabs: React.FC = () => {
           <IonIcon icon={apps} />
           <IonLabel>Today</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab2" href="/tabs/community">
+        <IonTabButton tab="tab2" href="/tabs/stats">
           <IonIcon icon={statsChart} />
           <IonLabel>Stats</IonLabel>
         </IonTabButton>

@@ -30,7 +30,7 @@ const WeeklyProgression = () => {
                     return (
                         <RowContainer key={dateString}>
                             <SmallParagraph className="progress-label" >{dateString}</SmallParagraph>
-                            <IonProgressBar color={achieved / totalHabits >= 0.5 ? "success" : "danger"}   style={{ padding: "0.5em", borderRadius: "5em"}} value={achieved / totalHabits}></IonProgressBar>
+                            <IonProgressBar color={achieved / totalHabits >= 0.5 ? "success" : "danger"}   style={{ padding: "0.3em", borderRadius: "5em"}} value={achieved / totalHabits}></IonProgressBar>
                         </RowContainer>
                     )
 

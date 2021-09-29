@@ -150,14 +150,13 @@ const Tab1: React.FC = () => {
   return (
     <IonPage>
       {/* <Header name="Habits" icon={settingsOutline} iconTarget="/settings" /> */}
-        <IonHeader className="ion-padding-vertical" mode="md">
+        <IonHeader className="ion-padding-vertical" >
           <IonToolbar color="light">
             <IonTitle>
               <Heading4 style={{ color: "var(--ion-color-primary)"}}>Hey @{name}</Heading4>
             </IonTitle>
             <IonButtons slot="end">
               <IonButton routerLink="/new" color="dark" fill="clear">
-                {/* <IonIcon icon={add}></IonIcon> */}
                 <IonIcon icon={createOutline}></IonIcon>
               </IonButton>
               <IonButton fill="clear" color="dark" routerLink="/settings">
@@ -167,6 +166,7 @@ const Tab1: React.FC = () => {
           </IonToolbar>
         </IonHeader>
       <IonContent fullscreen>
+      
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center" }}

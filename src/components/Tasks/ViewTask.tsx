@@ -50,7 +50,7 @@ const ViewTask: React.FC = () => {
   let today = new Date();
 
 
-  const startDate = habit?.dates && habit?.dates.length > 0 ? habit.dates[0]:  getDateString(today);
+  const startDate = habit?.dates && habit?.dates.length > 0 ? habit.dates[0] : getDateString(today);
 
   // if (!habit) history.replace("/tabs/habits")
   const handleRemove = async () => {
@@ -73,7 +73,7 @@ const ViewTask: React.FC = () => {
   const yearlySquares = Array.from({ length: 12 * 31 }, (_, i) => i + 1);
   const monthlySquares = Array.from({ length: 31 }, (_, i) => i + 1);
 
-//   console.log("Monthly", monthlySquares);
+  //   console.log("Monthly", monthlySquares);
 
   let startDateReachedMonth = false;
   let todayReachedMonth = false;
@@ -116,36 +116,40 @@ const ViewTask: React.FC = () => {
       <IonContent fullscreen>
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content ">
-            <IonSegment
-              value={graphViewSegment}
-              onIonChange={(e) => handleSegmentChange(e)}
-              className="ion-margin-vertical"
-            >
-              <IonSegmentButton value="0">
-                <IonLabel>This Month</IonLabel>
-              </IonSegmentButton>
-              <IonSegmentButton value="1">
-                <IonLabel>This Year</IonLabel>
-              </IonSegmentButton>
-            </IonSegment>
+
+          
+
+              <IonSegment
+                value={graphViewSegment}
+                onIonChange={(e) => handleSegmentChange(e)}
+              >
+                <IonSegmentButton value="0">
+                  <IonLabel>This Month</IonLabel>
+                </IonSegmentButton>
+                <IonSegmentButton value="1">
+                  <IonLabel>This Year</IonLabel>
+                </IonSegmentButton>
+              </IonSegment>
+           
 
             <IonSlides
               onIonSlideDidChange={(e) => handleSlideChange(e)}
               ref={slider}
+              className="ion-margin-vertical"
             >
               <IonSlide>
                 {/* <IonCard> */}
-                    <Heading5>{todayDate("month")}</Heading5>
+                <Heading5>{todayDate("month")}</Heading5>
                 <div className="monthGraph">
                   <ul className="squares">
                     {habit &&
                       habit?.dates &&
                       monthlySquares.map((index, monthlySquare) => {
 
-                        let month = getDateString(today,  "month");
+                        let month = getDateString(today, "month");
                         let day = index % 31 === 0
-                            ? "31"
-                            : (index % 31).toString().padStart(2, "0");
+                          ? "31"
+                          : (index % 31).toString().padStart(2, "0");
                         let date = month + day;
                         if (parseInt(date) >= parseInt(startDate)) startDateReachedMonth = true;
                         if (parseInt(date) >= parseInt(getDateString(today))) todayReachedMonth = true;
@@ -264,13 +268,13 @@ const ViewTask: React.FC = () => {
                         if (parseInt(date) >= parseInt(getDateString(today))) todayReachedYear = true;
                         return (
                           <li
-                          className={habit.dates.includes(date) && startDateReachedYear ? "completed" : "uncompleted"}
+                            className={habit.dates.includes(date) && startDateReachedYear ? "completed" : "uncompleted"}
                             key={"calendarSquare" + index}
                             data-level={startDateReachedYear && !todayReachedYear ? "tracked" : "untracked"}
                             data-day={day}
                             data-month={month}
                           >
-                            <SmallParagraph style={{ margin: 0, color: "inherit" }}>
+                            <SmallParagraph style={{ margin: 0, color: "inherit", padding: "0" }}>
                               {index % 31 === 0
                                 ? "31"
                                 : (index % 31).toString()}
