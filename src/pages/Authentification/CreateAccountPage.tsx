@@ -106,7 +106,7 @@ const CreateAccountPage = () => {
             <Heading5>Create an account </Heading5>
             <IonCard>
 
-              <IonItem color="medium">
+              <IonItem color="">
                 <IonLabel position="stacked" >Email Address</IonLabel>
                 <IonInput
                   type="email"
@@ -117,7 +117,7 @@ const CreateAccountPage = () => {
 
                 />
               </IonItem>
-              <IonItem color="medium">
+              <IonItem color="">
                 <IonLabel position="stacked" >Password</IonLabel>
                 <IonInput
                   type="password"
@@ -128,7 +128,7 @@ const CreateAccountPage = () => {
 
                 />
               </IonItem>
-              <IonItem color="medium">
+              <IonItem color="">
                 <IonLabel position="stacked" >Username</IonLabel>
                 <IonInput
                   type="text"

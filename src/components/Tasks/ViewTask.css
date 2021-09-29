@@ -3,7 +3,7 @@
 /* Grid-related CSS */
 
 :root {
-    --square-size: clamp(14px, 4.5vw, 3rem);
+    --square-size: clamp(15px, 4.8vw, 3rem);
     /* --square-gap: clamp(2px , 0.05vw, 10px); */
     --square-gap: 0.2em;
     --month-width: calc(var(--square-size) + var(--square-gap));
@@ -71,7 +71,6 @@
     grid-template-columns: repeat(12, var(--month-width));
     justify-content: space-between;
     text-align: center;
-    /* gap: var(--square-gap); */
 }
 
 .yearGraph .days,
@@ -124,7 +123,7 @@
 }
 
 .squares li.uncompleted[data-level="tracked"] {
-    border: 2px solid var(--ion-color-tertiary);
+    border: 1px solid var(--ion-color-tertiary);
 
 }
 .squares li.uncompleted[data-level="untracked"] {

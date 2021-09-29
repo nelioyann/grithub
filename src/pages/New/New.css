@@ -4,7 +4,9 @@
     --height:90%;
 
 }
-
+.emoji-search{
+    background-color: var(--ion-color-medium);
+}
 .emoji-modal .modal-wrapper{
     margin-top: auto;
 

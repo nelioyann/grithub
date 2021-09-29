@@ -102,7 +102,7 @@ const LoginPage: React.FC = () => {
 
                         <IonCard >
 
-                            <IonItem color="medium">
+                            <IonItem color="">
                                 {/* <IonIcon icon={mailOutline}/> */}
                                 <IonLabel position="stacked">
                                     Email
@@ -116,7 +116,7 @@ const LoginPage: React.FC = () => {
 
                                 />
                             </IonItem>
-                            <IonItem color="medium">
+                            <IonItem color="">
                                 <IonLabel position="stacked">Password</IonLabel>
                                 <IonInput
                                     type="password"

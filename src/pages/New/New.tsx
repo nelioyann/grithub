@@ -170,33 +170,28 @@ const New: React.FC = () => {
         >
           <div className="page-wrapper-content ">
             <ColumnContainer style={{ marginTop: "4em" }}>
-              {/* <Heading3 style={{ color: "var(--ion-color-primary)", textAlign: "center" }}>
-                                I want to {newHabit.toLowerCase()} everyday.
-                            </Heading3> */}
+ 
+              
 
-              {/* <IonCard
-                className="ion-padding "
-                style={{ margin: "1em 0" }}
-                color="medium"
-              >
-                <Heading6>💡 Be specific</Heading6>
-
-                <MediumParagraph>
-                  <IonChip
-                    color="dark"
-                    outline={true}
-                    onClick={() => {
-                      handleChange("Exercise for 20 minutes");
-                      setChosenEmoji("🏋️");
-                    }}
-                  >
-                    <IonLabel>"Exercise for 20 minutes"</IonLabel>
-                  </IonChip>
-                  is better than "Exercise"
-                </MediumParagraph>
-              </IonCard> */}
               <div className="ion-margin-vertical">
-                <Heading4>1. Pick an emoji </Heading4>
+                <Heading4>Name your habit </Heading4>
+
+                <div>
+                  <IonItem style={{ width: "100%" }}>
+                    <IonLabel position="stacked">Everyday, I will...</IonLabel>
+                    <IonInput
+                      color="primary"
+                      onIonChange={(e: any) => handleChange(e.detail.value)}
+                      value={newHabit}
+                      placeholder="Make my bed"
+
+                    ></IonInput>
+                  </IonItem>
+                </div>
+              </div>
+
+              <div className="ion-margin-vertical">
+                <Heading4>Pick an emoji </Heading4>
                 <IonButton
                   onClick={() =>
                     presentPicker({
@@ -219,23 +214,6 @@ const New: React.FC = () => {
                   {chosenEmoji} Open emoji picker
                 </IonButton>
               </div>
-
-              <div className="ion-margin-vertical">
-                <Heading4>2. Give your habit a name </Heading4>
-
-                <div>
-                  <IonItem style={{ width: "100%" }}>
-                    <IonLabel position="floating">Everyday, I will...</IonLabel>
-                    <IonInput
-                      color="primary"
-                      onIonChange={(e: any) => handleChange(e.detail.value)}
-                      value={newHabit}
-                    ></IonInput>
-                  </IonItem>
-                </div>
-              </div>
-
-
               <IonButton
                 onClick={() => handleSubmit(newHabit)}
                 style={{
