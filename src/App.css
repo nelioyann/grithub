@@ -28,13 +28,33 @@ ion-col {
     display: flex;
 }
 
+ion-tabs{
+    background-color: var(--ion-color-light);
+}
+ion-tab-bar{
+    border-radius: 1em ;
+}
+ion-tab-button, ion-tab-button ion-label {
+    transition: 300ms cubic-bezier(.17,.67,.43,1.35);
+
+
+}
 ion-tab-button ion-label {
+    opacity: 0;
     font-size: 0.875rem;
     font-weight: var(--font-semibold);
 }
 
 ion-tab-button {
     --color: var(--ion-color-medium-tint);
+    transform: translateY(0.5em);
+}
+ion-tab-button.tab-selected {
+    transform: translateY(0);
+
+}
+ion-tab-button.tab-selected ion-label{
+    opacity: 1;
 }
 
 /* Animations & Page transitions */
