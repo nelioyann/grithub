@@ -57,7 +57,7 @@ const Onboarding: React.FC = () => {
         <IonPage>
 
             <IonContent fullscreen >
-                <div className="page-wrapper" style={{ alignItems: 'end' }}>
+                <div className="page-wrapper" style={{ alignItems: 'center', minHeight: '100vh'}}>
                     <div className="page-wrapper-content" >
 
                         <IonSlides ref={onboardingSlides} style={{ width: "100%", "--bullet-background": "var(--ion-color-dark)" }} mode="ios" pager={true} options={slideOpts} onIonSlideDidChange={(e) => handleSlideChange(e)}>
@@ -123,7 +123,7 @@ const Onboarding: React.FC = () => {
                             </IonRouterLink>
                         </MediumParagraph>
 
-                        {currentIndex != 2 && <div className="ion-margin-top" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "space-between" }}>
+                        {currentIndex != 2 && <div className="ion-margin-vertical" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "space-between" }}>
 
                             <IonButton style={{ "--background-hover-opacity": "0" }} color="dark" size="small" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
                                 <LargeButton>
@@ -138,7 +138,7 @@ const Onboarding: React.FC = () => {
 
                             </IonButton>
                         </div>}
-                        {currentIndex == 2 && <div className="ion-margin-top" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "right" }}>
+                        {currentIndex == 2 && <div className="ion-margin-vertical" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "right" }}>
                             <IonButton onClick={() => router.push("/login", "forward", "replace")} style={{ "--background-hover-opacity": "0" }} size="small" expand="block" fill="clear" >
                                 <LargeButton>
                                     Get Started

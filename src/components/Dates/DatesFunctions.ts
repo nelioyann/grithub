@@ -1,11 +1,13 @@
 export function getDateString(
   dateValue: Date,
-  filter: "full" | "day" | "month" = "full"
+  filter: "full" | "day" | "month" = "full",
+  forHuman: boolean = false
 ) {
   let dd = String(dateValue.getDate()).padStart(2, "0"),
     mm = String(dateValue.getMonth() + 1).padStart(2, "0");
   if (filter === "day") return dd;
   if (filter === "month") return mm;
+  if(forHuman) return dd + "/" + mm;
   return mm + dd;
 }
 

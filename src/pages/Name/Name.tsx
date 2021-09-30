@@ -1,4 +1,4 @@
-import { useIonRouter, IonPage, IonContent, IonInput, IonItem, IonLabel, IonButton, IonBackButton, IonButtons, IonHeader, IonToolbar } from '@ionic/react'
+import { useIonRouter, IonPage, IonContent, IonInput, IonItem, IonLabel, IonButton, IonBackButton, IonButtons, IonHeader, IonToolbar, IonTitle } from '@ionic/react'
 import React, { useContext, useState } from 'react'
 import { Heading4, LargeButton, ColumnContainer, MediumParagraph } from '../../theme/globalStyles'
 import { NameContext } from '../../Contexts/NameContext';
@@ -25,9 +25,9 @@ const Name: React.FC = () => {
         nameSet(nameInput);
 
         let result = await firebaseStore.collection("users")
-                .doc(user!.uid).set({username: nameInput}, { merge: true })
-            console.log(result)
-            
+            .doc(user!.uid).set({ username: nameInput }, { merge: true })
+        console.log(result)
+
         router.push("/tabs/habits", "forward", "push");
     }
     return (
@@ -37,7 +37,9 @@ const Name: React.FC = () => {
                     <IonButtons slot="">
                         <IonBackButton color="dark" text="" defaultHref="/settings" />
                     </IonButtons>
-
+                    <IonTitle slot="">
+                        <Heading4 style={{ color: "var(--ion-color-primary)", textAlign: "center" }}>Username</Heading4>
+                    </IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen >
@@ -47,7 +49,7 @@ const Name: React.FC = () => {
                     <div className="page-wrapper-content">
                         <ColumnContainer style={{ margin: "4em 0" }} >
 
-                            <UserAvatar username={nameInput} size={100}/>
+                            <UserAvatar username={nameInput} size={100} />
                             <Heading4 style={{ marginTop: "auto" }}>
                                 How should we refer to you ?
                             </Heading4>

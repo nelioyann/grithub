@@ -10,7 +10,7 @@ export interface IAvatar {
 }
 const UserAvatar: React.FC<IAvatar> = ({ username, size, email }) => {
   return (
-    <IonCard className="ion-padding" style={{ width: "max-content" }}>
+    <IonCard className="ion-padding" style={{ width: "max-content", margin: "1em auto"}}>
       <ColumnContainer
         style={{
           borderRadius: "50%",
@@ -22,13 +22,13 @@ const UserAvatar: React.FC<IAvatar> = ({ username, size, email }) => {
       >
         <Avatar
           size={size}
-          name={username !== "" ? username : "Grithuber"}
+          name={username !== "" ? username : "Stranger"}
           variant="beam"
           colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
         />
       </ColumnContainer>
       <MediumParagraph style={{ marginBottom: "0" }}>
-        Username: {username !== "" ? username : "Guest"}
+        Username: {username !== "" ? username : "Stranger"}
       </MediumParagraph>
       {email && (
         <MediumParagraph>

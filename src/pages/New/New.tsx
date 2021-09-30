@@ -27,6 +27,7 @@ import {
   Heading6,
   LargeButton,
   LargeParagraph,
+  MediumButton,
   MediumParagraph,
   RowContainer,
 } from "../../theme/globalStyles";
@@ -211,7 +212,10 @@ const New: React.FC = () => {
                   fill={"outline"}
                   color="primary"
                 >
-                  {chosenEmoji} Open emoji picker
+                  <MediumButton>
+
+                  {chosenEmoji} Set a different emoji
+                  </MediumButton>
                 </IonButton>
               </div>
               <IonButton

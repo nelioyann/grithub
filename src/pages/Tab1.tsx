@@ -150,7 +150,7 @@ const Tab1: React.FC = () => {
   return (
     <IonPage>
       {/* <Header name="Habits" icon={settingsOutline} iconTarget="/settings" /> */}
-        <IonHeader className="ion-padding-vertical" >
+        <IonHeader className="ion-padding-vertical" mode="md">
           <IonToolbar color="light">
             <IonTitle>
               <Heading4 style={{ color: "var(--ion-color-primary)"}}>Hey @{name}</Heading4>

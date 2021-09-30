@@ -17,6 +17,7 @@ const WeeklyProgression = () => {
                 {weekdays.map((weekday, index) => {
                     let increment = (index - 6);
                     let dateString = (getDateString(incrementToday(increment)));
+                    let dateStringForHuman = (getDateString(incrementToday(increment), "full", true));
                     let achieved = 0;
                     let totalHabits = 0; //habits whose first date are superior to dateString
                     {
@@ -29,7 +30,7 @@ const WeeklyProgression = () => {
                     totalHabits = totalHabits === 0 ? 1 : totalHabits;
                     return (
                         <RowContainer key={dateString}>
-                            <SmallParagraph className="progress-label" >{dateString}</SmallParagraph>
+                            <SmallParagraph className="progress-label" >{dateStringForHuman}</SmallParagraph>
                             <IonProgressBar color={achieved / totalHabits >= 0.5 ? "success" : "danger"}   style={{ padding: "0.3em", borderRadius: "5em"}} value={achieved / totalHabits}></IonProgressBar>
                         </RowContainer>
                     )

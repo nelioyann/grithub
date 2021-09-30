@@ -1,7 +1,7 @@
 {   
     "scheme": "org_semantic",
     "versionFile": "./package.json",
-    "files": ["./package-lock.json", "./README.md"],
+    "files": ["./package-lock.json", "./README.md", "./src/pages/Settings/Settings.tsx"],
     "rules": [
         {
             "trigger":"commit",
