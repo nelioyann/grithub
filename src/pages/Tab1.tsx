@@ -17,6 +17,7 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  useIonAlert,
   useIonRouter,
   useIonViewDidEnter,
   useIonViewDidLeave,
@@ -35,6 +36,7 @@ import {
   createOutline,
   flag,
   settingsOutline,
+  trash,
 } from "ionicons/icons";
 import Header from "../components/Headers/Header";
 import { NameContext } from "../Contexts/NameContext";
@@ -59,6 +61,7 @@ const Tab1: React.FC = () => {
   const { habits, loadingHabits } = useHabits();
   let todayDateString = getDateString(incrementToday(0));
 
+  const [presentWarning] = useIonAlert();
   const [showModal, setShowModal] = useState(false);
   const [selectedHabit, setSelectedHabit] = useState<IHabit>();
   // State of the current habit
@@ -74,6 +77,22 @@ const Tab1: React.FC = () => {
     console.log("New item selected", habitChecked, selectedHabit);
   };
 
+  const handleRemove = async (id: string | undefined) => {
+    setShowModal(false);
+    try {
+      console.log("delete it");
+      let ref = await firebaseStore
+        .collection("users")
+        .doc(user!.uid)
+        .collection("habits")
+        .doc(id)
+        .delete();
+      console.log(ref);
+      // router.push("/tabs/habits", "back", "pop");
+    } catch (err) {
+      console.log("err.message");
+    }
+  };
   const handleTaskCompletion = (id: string | undefined) => {
     console.log("Handle COmpletion fired");
     if(!selectedHabit?.dates.includes(todayDateString)) toast("Congratulations!") // Why thee not worketh as thee should, why ?
@@ -364,6 +383,26 @@ const Tab1: React.FC = () => {
                   >
                     <IonIcon icon={calendar}></IonIcon>
                     <IonLabel className="ion-padding">View history</IonLabel>
+                  </IonItem>
+                  <IonItem
+                    button={true}
+                    style={{"--background": "transparent"}}
+                    onClick={() => {
+                      setShowModal(false);
+                    presentWarning({
+                      cssClass: "warning-alert",
+                      header: "Delete",
+                      message: "Are you sure you want to permanently delete this habit ?",
+                      buttons:[
+                        "Cancel",
+                        {text: "Yes", handler: () => {
+                          handleRemove(selectedHabit?.id);
+                        }}
+                      ]
+                    })}}
+                  >
+                    <IonIcon icon={trash}></IonIcon>
+                    <IonLabel className="ion-padding">Delete Habit</IonLabel>
                   </IonItem>
                 </div>
               </div>

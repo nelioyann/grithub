@@ -53,21 +53,7 @@ const ViewTask: React.FC = () => {
   const startDate = habit?.dates && habit?.dates.length > 0 ? habit.dates[0] : getDateString(today);
 
   // if (!habit) history.replace("/tabs/habits")
-  const handleRemove = async () => {
-    try {
-      console.log("delete it");
-      let ref = await firebaseStore
-        .collection("users")
-        .doc(user!.uid)
-        .collection("habits")
-        .doc(id)
-        .delete();
-      console.log(ref);
-      router.push("/tabs/habits", "back", "pop");
-    } catch (err) {
-      console.log("err.message");
-    }
-  };
+
 
   // const yearlySquares = Array.from(Array(31 * 12).keys())
   const yearlySquares = Array.from({ length: 12 * 31 }, (_, i) => i + 1);
@@ -106,11 +92,7 @@ const ViewTask: React.FC = () => {
           <IonTitle>
             <Heading6>{habit?.name}</Heading6>
           </IonTitle>
-          <IonButtons slot="end">
-            <IonButton onClick={() => handleRemove()}>
-              <IonIcon icon={trash} />
-            </IonButton>
-          </IonButtons>
+          
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
