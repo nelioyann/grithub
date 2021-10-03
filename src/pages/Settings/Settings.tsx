@@ -90,7 +90,7 @@ const Settings: React.FC = () => {
             <UserAvatar username={name} size={70} email={user?.email || ""} />
             </div>
             <div className="ion-margin-top">
-              <IonNote style={{ color: "var(--ion-color-secondary)" }}>
+              <IonNote style={{ color: "var(--ion-color-primary)" }}>
                 Profile
               </IonNote>
               <IonItem
@@ -125,7 +125,7 @@ const Settings: React.FC = () => {
               </IonItem>
             </div>
             <div>
-              <IonNote style={{ color: "var(--ion-color-secondary)" }}>
+              <IonNote style={{ color: "var(--ion-color-primary)" }}>
                 Appearance
               </IonNote>
               <IonItem color="light" lines="none">
@@ -144,7 +144,7 @@ const Settings: React.FC = () => {
               </IonItem>
             </div>
             <div style={{marginBottom: "4em"}}>
-              <IonNote style={{ color: "var(--ion-color-secondary)" }}>
+              <IonNote style={{ color: "var(--ion-color-primary)" }}>
                 About
               </IonNote>
               <IonItem
