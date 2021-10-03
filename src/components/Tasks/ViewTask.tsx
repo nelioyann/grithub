@@ -32,6 +32,7 @@ import {
 } from "../../theme/globalStyles";
 import { getDateString, todayDate } from "../Dates/DatesFunctions";
 import Header from "../Headers/Header";
+import MonthlyGraph from "../MonthlyProgression/MonthlyGraph";
 import { toast } from "../Toasts/Toast";
 import "./ViewTask.css";
 
@@ -120,68 +121,10 @@ const ViewTask: React.FC = () => {
               className="ion-margin-vertical"
             >
               <IonSlide>
-                {/* <IonCard> */}
-                <Heading5>{todayDate("month")}</Heading5>
-                <div className="monthGraph">
-                  <ul className="squares">
-                    {habit &&
-                      habit?.dates &&
-                      monthlySquares.map((index, monthlySquare) => {
+              <Heading5>{todayDate("month")}</Heading5>
 
-                        let month = getDateString(today, "month");
-                        let day = index % 31 === 0
-                          ? "31"
-                          : (index % 31).toString().padStart(2, "0");
-                        let date = month + day;
-                        if (parseInt(date) >= parseInt(startDate)) startDateReachedMonth = true;
-                        if (parseInt(date) >= parseInt(getDateString(today))) todayReachedMonth = true;
-
-                        return (
-                          <li
-                            className={habit.dates.includes(date) && startDateReachedMonth ? "completed" : "uncompleted"}
-                            key={"calendarSquare" + index}
-                            data-level={startDateReachedMonth && !todayReachedMonth ? "tracked" : "untracked"}
-                            data-day={day}
-                            data-month={month}
-                          >
-                            <SmallParagraph style={{ margin: 0, color: "inherit" }}>
-                              {monthlySquare + 1}
-                            </SmallParagraph>
-                          </li>
-                        );
-                      })}
-                  </ul>
-                  <div
-                    className="helperGraph ion-padding"
-                    style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
-                  >
-                    <RowContainer>
-                      <IonIcon color="tertiary" icon={square}></IonIcon>
-                      <SmallParagraph style={{ paddingLeft: "0.3em" }}>
-                        Completed
-                      </SmallParagraph>
-                    </RowContainer>
-                    {/* <RowContainer>
-                      <IonIcon color="tertiary"  icon={squareOutline}></IonIcon>
-                      <SmallParagraph style={{ paddingLeft: "0.3em" }}>
-                        Today
-                      </SmallParagraph>
-                    </RowContainer> */}
-                    <RowContainer>
-                      <IonIcon color="tertiary" icon={squareOutline}></IonIcon>
-                      <SmallParagraph style={{ paddingLeft: "0.3em" }}>
-                        Not Completed
-                      </SmallParagraph>
-                    </RowContainer>
-                    <RowContainer>
-                      <IonIcon color="medium" icon={square}></IonIcon>
-                      <SmallParagraph style={{ paddingLeft: "0.3em" }}>
-                        Not tracked
-                      </SmallParagraph>
-                    </RowContainer>
-                  </div>
-                </div>
-                {/* </IonCard> */}
+              <MonthlyGraph habit={habit} />
+                
               </IonSlide>
               <IonSlide>
                 {/* <IonCard> */}

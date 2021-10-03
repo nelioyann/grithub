@@ -85,7 +85,7 @@ const LoginPage: React.FC = () => {
                         </div>
                         <IonButton className="ion-margin-top" expand="block" onClick={googleSignIn}>
                             <IonIcon className="ion-padding-horizontal" icon={logoGoogle} />
-                            <LargeButton style={{ color: 'var(--ion-color-medium)', textTransform: "initial" }}>
+                            <LargeButton style={{ textTransform: "initial" }}>
 
                                 Sign in with Google
                             </LargeButton>
@@ -128,7 +128,7 @@ const LoginPage: React.FC = () => {
                                 />
                             </IonItem>
                             <div style={{ justifyContent: "center", display: "flex", paddingTop: 8 }}>
-                                <IonButton className="ion-margin-top" expand="block" onClick={doSignIn}>Login</IonButton>
+                                <IonButton className="ion-margin-top"  expand="block" onClick={doSignIn}>Login</IonButton>
                             </div>
                             <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center" }} >
 

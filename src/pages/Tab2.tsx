@@ -5,6 +5,7 @@ import './Tab2.css';
 import { useHabits} from '../Contexts/habitsProvider';
 import { getDateString, incrementToday } from '../components/Dates/DatesFunctions';
 import WeeklyProgression from '../components/WeeklyProgression/WeeklyProgression';
+import MonthlyGraphs from '../components/MonthlyProgression/MonthlyGraphs';
 
 const Tab2: React.FC = () => {
   const { habits, loadingHabits } = useHabits();
@@ -38,6 +39,7 @@ const Tab2: React.FC = () => {
               <WeeklyProgression />
             </div>
             }
+            <MonthlyGraphs habits={habits} />
           </div>
         </div>
       </IonContent>

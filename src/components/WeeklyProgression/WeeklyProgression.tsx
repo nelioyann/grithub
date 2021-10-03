@@ -11,7 +11,7 @@ const WeeklyProgression = () => {
     return (
         <IonCard mode="ios" color="light"  className="weekly-progression-outer">
             <Heading4 style={{margin: "1em auto", textAlign: "center" }}>
-              Last 7 days
+              Completion rate over last 7 days
             </Heading4>
             <div className="weekly-progression-inner">
                 {weekdays.map((weekday, index) => {

@@ -35,6 +35,7 @@ import {
   checkmarkCircleOutline,
   createOutline,
   flag,
+  pencil,
   settingsOutline,
   trash,
 } from "ionicons/icons";
@@ -42,7 +43,7 @@ import Header from "../components/Headers/Header";
 import { NameContext } from "../Contexts/NameContext";
 import { Heading4, Heading5, MediumParagraph, MediumButton, Heading6 } from "../theme/globalStyles";
 import "./Tab1.css";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import TaskItem from "../components/Tasks/TaskItem";
 import ViewTask from "../components/Tasks/ViewTask";
 import { useHabits, IHabit } from "../Contexts/habitsProvider";
@@ -60,6 +61,7 @@ const Tab1: React.FC = () => {
   const { name, nameSet } = useContext(NameContext);
   const { habits, loadingHabits } = useHabits();
   let todayDateString = getDateString(incrementToday(0));
+  const pageRef = useRef<HTMLElement>()
 
   const [presentWarning] = useIonAlert();
   const [showModal, setShowModal] = useState(false);
@@ -167,7 +169,7 @@ const Tab1: React.FC = () => {
     // elTask?.current?.classList.add("animated");
   });
   return (
-    <IonPage>
+    <IonPage ref={pageRef}>
       {/* <Header name="Habits" icon={settingsOutline} iconTarget="/settings" /> */}
         <IonHeader className="ion-padding-vertical" mode="md">
           <IonToolbar color="light">
@@ -340,6 +342,8 @@ const Tab1: React.FC = () => {
               onDidDismiss={() => setShowModal(false)}
               swipeToClose={true}
               mode="ios"
+              presentingElement = {pageRef.current}
+
             >
               <div className="ion-padding-horizontal" style={{ width: "100%" }}>
                 <div>
@@ -383,6 +387,15 @@ const Tab1: React.FC = () => {
                   >
                     <IonIcon icon={calendar}></IonIcon>
                     <IonLabel className="ion-padding">View history</IonLabel>
+                  </IonItem>
+                  <IonItem
+                    button={true}
+                    disabled={true}
+                    style={{"--background": "transparent"}}
+                    onClick={() => console.log(`/habit/${selectedHabit?.id}`)}
+                  >
+                    <IonIcon icon={pencil}></IonIcon>
+                    <IonLabel className="ion-padding">Edit title</IonLabel>
                   </IonItem>
                   <IonItem
                     button={true}

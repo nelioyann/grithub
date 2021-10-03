@@ -118,6 +118,7 @@ http://ionicframework.com/docs/theming/ */
   --font-bold: 700;
   --font-semibold: 600;
   --font-regular: 400;
+  
 }
 
 
@@ -276,4 +277,6 @@ body.dark {
   --ion-tab-bar-background: #1f1f1f;
 
   --ion-card-background: #1e1e1e;
+
+  
 }

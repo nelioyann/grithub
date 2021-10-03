@@ -54,14 +54,14 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
 
 
     return (
-        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "ion-padding animate-fade-down animated" : "ion-padding animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ border: "1px solid var(--ion-color-medium-tint)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
+        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "ion-padding animate-fade-down animated" : "ion-padding animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ border: dates.includes(todayDateString) ? "2px solid var(--ion-color-success)" : "1px solid var(--ion-color-medium-tint)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
             {dates.includes(todayDateString) &&
 
                 <Lottie style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "100%", height: "initial", zIndex: -1 }} isClickToPauseDisabled={true} options={confettiOptions} />
             }
             <ColumnContainer className="ion-margin-horizontal" >
 
-                <Heading5 onClick={() => handleChange()} className={dates.includes(todayDateString) ? "" : ""}>{name}</Heading5>
+                <Heading5 onClick={() => handleChange()} className={dates.includes(todayDateString) ? "task-completed" : ""}>{name}</Heading5>
                 <IonNote className="ion-margin-horizontal" style={{display: "flex", alignItems: "center"}}>
                     <IonIcon color="dark" icon={repeat}></IonIcon>
                     <SmallParagraph style={{margin: "0 0 0 8px"}}>repeat every day</SmallParagraph>

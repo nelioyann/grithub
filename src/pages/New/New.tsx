@@ -17,7 +17,7 @@ import {
   IonIcon,
   useIonRouter,
 } from "@ionic/react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   ColumnContainer,
   Heading2,
@@ -85,10 +85,10 @@ const EmojiPicker: React.FC<{
 
 const New: React.FC = () => {
   const [newHabit, newhabitSet] = useState<string>("");
-  //   const history = useHistory();
   const router = useIonRouter();
   const { user, setLoading } = useAuth();
   const [chosenEmoji, setChosenEmoji] = useState("🙂");
+  const pageRef = useRef<HTMLElement>()
 
   const handleEmojiSelection = (event: any, emojiObject: any) => {
     setChosenEmoji(emojiObject.emoji);
@@ -142,7 +142,7 @@ const New: React.FC = () => {
     // console.log(user!.uid)
   };
   return (
-    <IonPage>
+    <IonPage ref={pageRef}>
       {/* <Header name="Habits" icon={settingsOutline} iconTarget="/onboarding" /> */}
       <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
         <IonToolbar color="light">
@@ -157,7 +157,11 @@ const New: React.FC = () => {
             </Heading4>
           </IonTitle>
           <IonButtons slot="end">
-            <IonButton onClick={() => presentHelp()} color="dark" fill="clear">
+            <IonButton onClick={() => presentHelp({
+              mode: "ios",
+              swipeToClose: true,
+              presentingElement: pageRef.current
+            })} color="dark" fill="clear">
               <IonIcon icon={helpOutline}></IonIcon>
             </IonButton>
           </IonButtons>
@@ -171,8 +175,8 @@ const New: React.FC = () => {
         >
           <div className="page-wrapper-content ">
             <ColumnContainer style={{ marginTop: "4em" }}>
- 
-              
+
+
 
               <div className="ion-margin-vertical">
                 <Heading4>Name your habit </Heading4>
@@ -199,6 +203,8 @@ const New: React.FC = () => {
                       swipeToClose: true,
                       mode: "ios",
                       cssClass: "emoji-modal",
+                      presentingElement: pageRef.current
+
                     })
                   }
                   style={{
@@ -214,7 +220,7 @@ const New: React.FC = () => {
                 >
                   <MediumButton>
 
-                  {chosenEmoji} Set a different emoji
+                    {chosenEmoji} Set a different emoji
                   </MediumButton>
                 </IonButton>
               </div>
@@ -255,12 +261,12 @@ const HelpCard: React.FC<{
       className="page-wrapper ion-padding-horizontal"
       style={{ alignItems: "center", justifyContent: "center" }}
     >
-      <div className="page-wrapper-content" style={{textAlign: "center"}}>
+      <div className="page-wrapper-content" style={{ textAlign: "center" }}>
         <Heading4>Recommendations for setting a good habit name</Heading4>
         <IonCard className="ion-padding " style={{ margin: "1em 0" }}>
-          <Heading6>💡 Be specific</Heading6>
+          <Heading6>📝 Specific</Heading6>
 
-          <MediumParagraph>
+          {/* <MediumParagraph>
             <IonChip
               color="dark"
               outline={true}
@@ -273,14 +279,27 @@ const HelpCard: React.FC<{
               <IonLabel>Exercise for 20 minutes</IonLabel>
             </IonChip>
             is better than "Exercise"
-          </MediumParagraph>
+          </MediumParagraph> */}
         </IonCard>
         <IonCard className="ion-padding " style={{ margin: "1em 0" }}>
-          <Heading6>🐌 Start Slow</Heading6>
+          <Heading6>📏 Measurable</Heading6>
 
-          <MediumParagraph>
+        </IonCard>
+        <IonCard className="ion-padding " style={{ margin: "1em 0" }}>
+          <Heading6>🎯 Achievable</Heading6>
+
+          {/* <MediumParagraph>
             There is nothing wrong in setting achievable goals from the start
-          </MediumParagraph>
+          </MediumParagraph> */}
+        </IonCard>
+        
+        <IonCard className="ion-padding " style={{ margin: "1em 0" }}>
+          <Heading6>👌 Relevant</Heading6>
+
+        </IonCard>
+        <IonCard className="ion-padding " style={{ margin: "1em 0" }}>
+          <Heading6>⏳ Time Bound</Heading6>
+
         </IonCard>
         <IonButton
           fill="clear"
