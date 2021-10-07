@@ -147,7 +147,7 @@ const Onboarding: React.FC = () => {
                                         </LargeButton>
 
                                     </IonButton>
-                                    <IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
+                                    <IonButton onClick={() => router.push("/login", "forward", "replace")} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
                                         <LargeButton>
                                             Start
                                         </LargeButton>
