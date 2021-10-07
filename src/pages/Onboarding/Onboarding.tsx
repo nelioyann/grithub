@@ -78,15 +78,15 @@ const Onboarding: React.FC = () => {
                                         <img style={{ width: "clamp(100px, 100%, 34vh)", pointerEvents: "none", filter: themedImageFilter }} src={newHabitMockup} alt="Image of building bricks" />
                                     </div>
                                 </div>
-                                <div className="ion-margin-vertical" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "space-between" }}>
+                                <div className="ion-margin-vertical ion-padding-horizontal" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "space-between" }}>
 
-                                    <IonButton style={{ "--background-hover-opacity": "0" }} color="dark" size="small" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
+                                    <IonButton style={{ "--background-hover-opacity": "0" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
                                         <LargeButton>
                                             Skip
                                         </LargeButton>
 
                                     </IonButton>
-                                    <IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="small" expand="block" fill="clear" >
+                                    <IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
                                         <LargeButton>
                                             Next
                                         </LargeButton>
@@ -113,21 +113,21 @@ const Onboarding: React.FC = () => {
                                         <img style={{ width: "clamp(100px, 100%, 34vh)", pointerEvents: "none", filter: themedImageFilter }} src={dailyHabitsMockup} alt="Image of the theme" />
                                     </div>
                                 </div>
-                                <div className="ion-margin-vertical" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "space-between" }}>
+                                <div className="ion-margin-vertical ion-padding-horizontal" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "space-between" }}>
 
-                                    <IonButton style={{ "--background-hover-opacity": "0" }} color="dark" size="small" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
-                                        <LargeButton>
-                                            Skip
-                                        </LargeButton>
+<IonButton style={{ "--background-hover-opacity": "0" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
+    <LargeButton>
+        Skip
+    </LargeButton>
 
-                                    </IonButton>
-                                    <IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="small" expand="block" fill="clear" >
-                                        <LargeButton>
-                                            Next
-                                        </LargeButton>
+</IonButton>
+<IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
+    <LargeButton>
+        Next
+    </LargeButton>
 
-                                    </IonButton>
-                                </div>
+</IonButton>
+</div>
                             </IonSlide>
 
                             <IonSlide style={{ display: "flex", flexDirection: "column" }}>
@@ -139,13 +139,28 @@ const Onboarding: React.FC = () => {
                                         <img style={{ width: "clamp(100px, 100%, 34vh)", pointerEvents: "none", filter: themedImageFilter }} src={monthGraphMockup} alt="Image of the theme" />
                                     </div>
                                 </div>
-                                <div className="ion-margin-vertical" style={{ display: "grid", justifyContent: "right" }}>
+                                <div className="ion-margin-vertical ion-padding-horizontal" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "space-between" }}>
+
+                                    <IonButton style={{ "--background-hover-opacity": "0" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
+                                        <LargeButton>
+                                            Skip
+                                        </LargeButton>
+
+                                    </IonButton>
+                                    <IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
+                                        <LargeButton>
+                                            Start
+                                        </LargeButton>
+
+                                    </IonButton>
+                                </div>
+                                {/* <div className="ion-margin-vertical" style={{ display: "grid", justifyContent: "right" }}>
                                     <IonButton onClick={() => router.push("/login", "forward", "replace")} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" color="primary" fill="solid">
                                         <LargeButton>
                                             Get Started
                                         </LargeButton>
                                     </IonButton>
-                                </div>
+                                </div> */}
                             </IonSlide>
 
                         </IonSlides>
