@@ -9,6 +9,7 @@ import {
   IonFabButton,
   IonHeader,
   IonIcon,
+  IonInput,
   IonItem,
   IonLabel,
   IonLoading,
@@ -41,7 +42,7 @@ import {
 } from "ionicons/icons";
 import Header from "../components/Headers/Header";
 import { NameContext } from "../Contexts/NameContext";
-import { Heading4, Heading5, MediumParagraph, MediumButton, Heading6 } from "../theme/globalStyles";
+import { Heading4, Heading5, MediumParagraph, MediumButton, Heading6, LargeButton } from "../theme/globalStyles";
 import "./Tab1.css";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import TaskItem from "../components/Tasks/TaskItem";
@@ -64,23 +65,52 @@ const Tab1: React.FC = () => {
   const pageRef = useRef<HTMLElement>()
 
   const [presentWarning] = useIonAlert();
-  const [showModal, setShowModal] = useState(false);
+  const [showOptionsModal, setShowOptionsModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const [selectedHabit, setSelectedHabit] = useState<IHabit>();
+  const [editedHabitName, setEditedHabitName] = useState("");
   // State of the current habit
   const [habitChecked, setHabitChecked] = useState<boolean | undefined>(
-    selectedHabit?.dates.includes(todayDateString)
+    selectedHabit?.dates?.includes(todayDateString)
   );
   const [inView, setInView] = useState<boolean>(false);
 
   const handleTaskSelection = (habit: IHabit) => {
     // console.log(habit.name, "selected")
     setSelectedHabit(habit);
-    setShowModal(true);
-    console.log("New item selected", habitChecked, selectedHabit);
+    setShowOptionsModal(true);
+    // console.log("New item selected", habitChecked, selectedHabit);
+  };
+  const handleTaskEdition = (id: string | undefined) => {
+    setShowOptionsModal(false);
+    setEditedHabitName(selectedHabit?.name || "")
+    setShowEditModal(true)
+    // console.log(habit.name, "selected")
+    // setSelectedHabit(habit);
+    console.log("New item selected", id);
   };
 
+  const handleEditChange = async (e: any) => {
+    e.preventDefault();
+    let id = selectedHabit?.id;
+    try {
+
+      // let result = await firebaseStore.collection("users")
+      //       .doc(user!.uid).set({ username: nameInput }, { merge: true })
+      let ref = await firebaseStore
+        .collection("users")
+        .doc(user!.uid)
+        .collection("habits")
+        .doc(id).set({ name: editedHabitName }, { merge: true })
+    } catch (err) {
+      console.log(err)
+    }
+    setShowEditModal(false)
+    toast("Habit edited successfully")
+  }
+
   const handleRemove = async (id: string | undefined) => {
-    setShowModal(false);
+    setShowOptionsModal(false);
     try {
       console.log("delete it");
       let ref = await firebaseStore
@@ -97,19 +127,19 @@ const Tab1: React.FC = () => {
   };
   const handleTaskCompletion = (id: string | undefined) => {
     console.log("Handle COmpletion fired");
-    if(!selectedHabit?.dates.includes(todayDateString)) toast("Congratulations!") // Why thee not worketh as thee should, why ?
+    if (!selectedHabit?.dates.includes(todayDateString)) toast("Congratulations!") // Why thee not worketh as thee should, why ?
     setHabitChecked(selectedHabit?.dates.includes(todayDateString));
   };
   const router = useIonRouter();
   const goToGraph = (path: string) => {
-    setShowModal(false);
+    setShowOptionsModal(false);
     router.push(path, "forward");
   };
 
   // Modal cleanup
   useEffect(() => {
     console.log("Modal cleanup");
-    return () => setShowModal(false);
+    return () => setShowOptionsModal(false);
   }, []);
 
   // console.log("habits",habits)
@@ -147,7 +177,7 @@ const Tab1: React.FC = () => {
       }
     };
     updateArray();
-    setShowModal(false);
+    setShowOptionsModal(false);
     setSelectedHabit(undefined);
     setHabitChecked(undefined);
   }, [habitChecked]);
@@ -171,23 +201,23 @@ const Tab1: React.FC = () => {
   return (
     <IonPage ref={pageRef}>
       {/* <Header name="Habits" icon={settingsOutline} iconTarget="/settings" /> */}
-        <IonHeader className="ion-padding-vertical" mode="md">
-          <IonToolbar color="light">
-            <IonTitle>
-              <Heading4 style={{ color: "var(--ion-color-primary)"}}>Hey @{name}</Heading4>
-            </IonTitle>
-            <IonButtons slot="end">
-              <IonButton routerLink="/new" color="dark" fill="clear">
-                <IonIcon icon={createOutline}></IonIcon>
-              </IonButton>
-              <IonButton fill="clear" color="dark" routerLink="/settings">
-                <IonIcon icon={settingsOutline} />
-              </IonButton>
-            </IonButtons>
-          </IonToolbar>
-        </IonHeader>
+      <IonHeader className="ion-padding-vertical" mode="md">
+        <IonToolbar color="light">
+          <IonTitle>
+            <Heading4 style={{ color: "var(--ion-color-primary)" }}>Hey @{name}</Heading4>
+          </IonTitle>
+          <IonButtons slot="end">
+            <IonButton routerLink="/new" color="dark" fill="clear">
+              <IonIcon icon={createOutline}></IonIcon>
+            </IonButton>
+            <IonButton fill="clear" color="dark" routerLink="/settings">
+              <IonIcon icon={settingsOutline} />
+            </IonButton>
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
       <IonContent fullscreen>
-      
+
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center" }}
@@ -198,7 +228,7 @@ const Tab1: React.FC = () => {
           >
             {loadingHabits === false && <Heading6>{todayDate()}</Heading6>}
             {loading === false && !user?.email && (
-              <IonCard style={{marginLeft: "0", marginRight: "0"}} className="ion-padding ion-margin-vertical" color="tertiary">
+              <IonCard style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="tertiary">
                 <Heading5
                   style={{ color: "var(--ion-color-tertiary-contrast)" }}
                 >
@@ -216,13 +246,13 @@ const Tab1: React.FC = () => {
               You haven't set any habit yet
             </Heading5> */}
             {/* { !loadingHabits && habits.length !== 0 && () } */}
-            {!loadingHabits && 
-            <div style={{textAlign: "center"}}>
-              <WeeklyProgression />
-            </div>
+            {!loadingHabits &&
+              <div style={{ textAlign: "center" }}>
+                <WeeklyProgression />
+              </div>
             }
             {habits && habits.length !== 0 && loadingHabits === false && (
-              <div style={{margin: "5em 0"}}>
+              <div style={{ margin: "5em 0" }}>
                 <Heading5>
                   Take a moment to tick off what you achieved today
                 </Heading5>
@@ -238,7 +268,7 @@ const Tab1: React.FC = () => {
                   );
                 })}
               </div>
-            ) }
+            )}
 
             {loadingHabits === false && habits && habits.length === 0 && (
               <div
@@ -330,19 +360,42 @@ const Tab1: React.FC = () => {
                 <IonButton mode="ios" routerLink="/new" fill="solid">
                   <MediumButton>
 
-                  Add a new one
+                    Add a new one
                   </MediumButton>
                 </IonButton>
               </div>
             )}
-            
             <IonModal
-              isOpen={showModal}
-              cssClass="task-modal"
-              onDidDismiss={() => setShowModal(false)}
+              isOpen={showEditModal}
+              cssClass="edit-modal"
+              onDidDismiss={() => setShowEditModal(false)}
               swipeToClose={true}
               mode="ios"
-              presentingElement = {pageRef.current}
+            // presentingElement={pageRef.current}
+            >
+              <Heading5 style={{ textAlign: "center", margin: "2em 0" }}>Choose a new habit name</Heading5>
+
+              <form onSubmit={(e) => handleEditChange(e)} className="ion-padding-horizontal" style={{ width: "100%" }}>
+                <IonItem className="ion-margin-vertical">
+                  <IonLabel position="floating">Habit Name</IonLabel>
+                  <IonInput onIonChange={(e) => setEditedHabitName(e.detail.value || "")} value={editedHabitName}></IonInput>
+                </IonItem>
+                <IonButton type="submit" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
+                  <LargeButton style={{ color: "var(--ion-color-light)" }}>
+                    Save
+                  </LargeButton>
+
+                </IonButton>
+              </form>
+
+            </IonModal>
+            <IonModal
+              isOpen={showOptionsModal}
+              cssClass="task-modal"
+              onDidDismiss={() => setShowOptionsModal(false)}
+              swipeToClose={true}
+              mode="ios"
+              presentingElement={pageRef.current}
 
             >
               <div className="ion-padding-horizontal" style={{ width: "100%" }}>
@@ -364,11 +417,11 @@ const Tab1: React.FC = () => {
                       }}
                     ></div>
                   </div>
-                  <Heading5 style={{textAlign: "center", margin: "2em 0"}}>{selectedHabit?.name}</Heading5>
+                  <Heading5 style={{ textAlign: "center", margin: "2em 0" }}>{selectedHabit?.name}</Heading5>
 
                   <IonItem
                     button={true}
-                    style={{"--background": "transparent"}}
+                    style={{ "--background": "transparent" }}
 
                     onClick={() => handleTaskCompletion(selectedHabit?.id)}
                   >
@@ -379,10 +432,10 @@ const Tab1: React.FC = () => {
                         : "Mark as completed"}
                     </IonLabel>
                   </IonItem>
-                  
+
                   <IonItem
                     button={true}
-                    style={{"--background": "transparent"}}
+                    style={{ "--background": "transparent" }}
                     onClick={() => goToGraph(`/habit/${selectedHabit?.id}`)}
                   >
                     <IonIcon icon={calendar}></IonIcon>
@@ -390,29 +443,32 @@ const Tab1: React.FC = () => {
                   </IonItem>
                   <IonItem
                     button={true}
-                    disabled={true}
-                    style={{"--background": "transparent"}}
-                    onClick={() => console.log(`/habit/${selectedHabit?.id}`)}
+                    disabled={false}
+                    style={{ "--background": "transparent" }}
+                    onClick={() => handleTaskEdition(selectedHabit?.id)}
                   >
                     <IonIcon icon={pencil}></IonIcon>
                     <IonLabel className="ion-padding">Edit title</IonLabel>
                   </IonItem>
                   <IonItem
                     button={true}
-                    style={{"--background": "transparent"}}
+                    style={{ "--background": "transparent" }}
                     onClick={() => {
-                      setShowModal(false);
-                    presentWarning({
-                      cssClass: "warning-alert",
-                      header: "Delete",
-                      message: "Are you sure you want to permanently delete this habit ?",
-                      buttons:[
-                        "Cancel",
-                        {text: "Yes", handler: () => {
-                          handleRemove(selectedHabit?.id);
-                        }}
-                      ]
-                    })}}
+                      setShowOptionsModal(false);
+                      presentWarning({
+                        cssClass: "warning-alert",
+                        header: "Delete",
+                        message: "Are you sure you want to permanently delete this habit ?",
+                        buttons: [
+                          "Cancel",
+                          {
+                            text: "Yes", handler: () => {
+                              handleRemove(selectedHabit?.id);
+                            }
+                          }
+                        ]
+                      })
+                    }}
                   >
                     <IonIcon icon={trash}></IonIcon>
                     <IonLabel className="ion-padding">Delete Habit</IonLabel>

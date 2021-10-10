@@ -30,12 +30,22 @@
 
 }
 
-.task-modal .modal-wrapper{
+.task-modal .modal-wrapper,
+.edit-modal .modal-wrapper{
     margin-top: auto;
-
+    
 }
 .task-modal .modal-shadow{
     bottom:0;
 }
 
+.edit-modal{
+    --height:20%;
+    --min-height: 350px;
+    --border-radius: 1rem 1rem 0 0;
+    --margin-top: auto;
+}
+.edit-modal .ion-page{
+    justify-content: center;
+}
 

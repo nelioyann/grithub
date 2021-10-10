@@ -9,9 +9,9 @@ const WeeklyProgression = () => {
     let weekdays = ["M", "T", "W", "T", "F", "S", "S"]
 
     return (
-        <IonCard mode="ios" color="light"  className="weekly-progression-outer">
-            <Heading4 style={{margin: "1em auto", textAlign: "center" }}>
-              Completion rate over last 7 days
+        <IonCard mode="ios" color="light" className="weekly-progression-outer">
+            <Heading4 style={{ margin: "1em auto", textAlign: "center" }}>
+                Completion rate over last 7 days
             </Heading4>
             <div className="weekly-progression-inner">
                 {weekdays.map((weekday, index) => {
@@ -22,7 +22,8 @@ const WeeklyProgression = () => {
                     let totalHabits = 0; //habits whose first date are superior to dateString
                     {
                         habits.forEach((habit) => {
-                            if (habit.dates.includes(dateString)) achieved += 1;
+                            if(!habit.dates) return
+                            if ( habit.dates.includes(dateString)) achieved += 1;
                             if (parseInt(habit.dates[0]) <= parseInt(dateString)) totalHabits += 1
                         })
                     }
@@ -31,7 +32,7 @@ const WeeklyProgression = () => {
                     return (
                         <RowContainer key={dateString}>
                             <SmallParagraph className="progress-label" >{dateStringForHuman}</SmallParagraph>
-                            <IonProgressBar color={achieved / totalHabits >= 0.5 ? "success" : "medium"}   style={{ padding: "0.3em", borderRadius: "5em"}} value={achieved / totalHabits}></IonProgressBar>
+                            <IonProgressBar color={achieved / totalHabits >= 0.5 ? "success" : "medium"} style={{ padding: "0.3em", borderRadius: "5em" }} value={achieved / totalHabits}></IonProgressBar>
                         </RowContainer>
                     )
 

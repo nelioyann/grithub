@@ -9,9 +9,9 @@ import MonthlyGraphs from '../components/MonthlyProgression/MonthlyGraphs';
 
 const Tab2: React.FC = () => {
   const { habits, loadingHabits } = useHabits();
-  let todayDateString = getDateString(incrementToday(0));
-  const totalHabits = habits.length
-  const completedHabits = habits.filter(habit => habit.dates.includes(todayDateString)).length
+  // let todayDateString = getDateString(incrementToday(0));
+  // const totalHabits = habits.length
+  // const completedHabits = habits.filter(habit => habit.dates.includes(todayDateString)).length
 
   return (
     <IonPage >

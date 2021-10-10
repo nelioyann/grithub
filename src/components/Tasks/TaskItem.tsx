@@ -31,9 +31,10 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
 
     const { habits } = useHabits();
     const [habit] = habits.filter(habit => habit.id === id);
-    const { name, dates } = habit;
+    let { name, dates } = habit;
+    if(!dates) dates = []
 
-    const [habitChecked, setHabitChecked] = useState<boolean>(dates.includes(todayDateString))
+    const [habitChecked, setHabitChecked] = useState<boolean>(dates.includes(todayDateString));
 
 
     const elTask = useRef<HTMLIonCardElement>(null);
