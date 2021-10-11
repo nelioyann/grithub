@@ -11,7 +11,7 @@ const WeeklyProgression = () => {
     return (
         <IonCard mode="ios" color="light" className="weekly-progression-outer">
             <Heading4 style={{ margin: "1em auto", textAlign: "center" }}>
-                Completion rate over last 7 days
+                Last 7 days
             </Heading4>
             <div className="weekly-progression-inner">
                 {weekdays.map((weekday, index) => {
@@ -29,6 +29,7 @@ const WeeklyProgression = () => {
                     }
                     // if empty chnage the value to get empty bars
                     totalHabits = totalHabits === 0 ? 1 : totalHabits;
+                    achieved = achieved === 0 ? totalHabits/10 : achieved; // Hack to never show a value of 0 in the progress bar
                     return (
                         <RowContainer key={dateString}>
                             <SmallParagraph className="progress-label" >{dateStringForHuman}</SmallParagraph>

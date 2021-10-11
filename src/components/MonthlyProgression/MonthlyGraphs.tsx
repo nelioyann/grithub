@@ -1,7 +1,7 @@
-import { IonSlides, IonSlide, IonCard } from '@ionic/react'
+import { IonSlides, IonSlide, IonCard, IonButton } from '@ionic/react'
 import React from 'react'
 import { IHabit } from '../../Contexts/habitsProvider'
-import { Heading4 } from '../../theme/globalStyles'
+import { Heading4, Heading5, LargeParagraph, MediumButton } from '../../theme/globalStyles'
 import MonthlyGraph from './MonthlyGraph'
 
 export interface IMonthlyGraphs {
@@ -15,19 +15,31 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
 
     }
     return (
-                <IonCard mode="ios" color="light" style={{border: "1px solid var(--ion-color-medium-tint)", margin: "2em 0"}}>
+        <IonCard mode="ios" color="light" style={{ border: "1px solid var(--ion-color-medium-tint)", margin: "2em 0" }}>
             <Heading4 style={{ margin: "1em auto", textAlign: "center" }}>
                 This Month
             </Heading4>
-            <IonSlides options={sliderOptions} pager={true}>
-                {habits.map((habit) => (
-                    <IonSlide>
-                        <MonthlyGraph habit={habit} />
+            {habits.length != 0 ? (
+                <IonSlides options={sliderOptions} pager={true}>
+                    {habits.map((habit) => (
+                        <IonSlide>
+                            <MonthlyGraph habit={habit} />
 
-                    </IonSlide>
-                ))}
-            </IonSlides>
-                </IonCard>
+                        </IonSlide>
+                    ))}
+                </IonSlides>
+            ) : (
+                <div className="ion-padding" style={{ display: "flex", justifyContent: "center", flexDirection: "column"}}>
+                    <LargeParagraph style={{ textAlign: 'center' }}>No active goals</LargeParagraph>
+                    <IonButton mode="ios" routerLink="/new" fill="solid">
+                        <MediumButton>
+
+                            Add a new one
+                        </MediumButton>
+                    </IonButton>
+                </div>
+            )}
+        </IonCard>
     )
 }
 
