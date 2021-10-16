@@ -83,14 +83,14 @@ const LoginPage: React.FC = () => {
                             <Heading4 style={{ textAlign: 'center' }}>Grithub</Heading4>
                             <MediumParagraph>Build habits that stick</MediumParagraph>
                         </div>
-                        <IonButton className="ion-margin-top" expand="block" onClick={googleSignIn}>
+                        <IonButton className="ion-margin-top" size="large" expand="block" onClick={googleSignIn}>
                             <IonIcon className="ion-padding-horizontal" icon={logoGoogle} />
                             <LargeButton style={{ textTransform: "initial" }}>
 
                                 Sign in with Google
                             </LargeButton>
                         </IonButton>
-                        <IonButton className="ion-margin-top" expand="block" fill="outline" onClick={anonSignIn}>
+                        <IonButton className="ion-margin-top" expand="block" size="large" fill="outline" onClick={anonSignIn}>
                             <IonIcon className="ion-padding-horizontal" icon={walk} />
                             <LargeButton style={{ textTransform: "initial" }}>
 
@@ -128,7 +128,11 @@ const LoginPage: React.FC = () => {
                                 />
                             </IonItem>
                             <div style={{ justifyContent: "center", display: "flex", paddingTop: 8 }}>
-                                <IonButton className="ion-margin-top"  expand="block" onClick={doSignIn}>Login</IonButton>
+                                <IonButton className="ion-margin-top" size="large"  expand="block" onClick={doSignIn}>
+                                    <LargeButton>
+                                    Login
+                                    </LargeButton>
+                                </IonButton>
                             </div>
                             <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center" }} >
 
