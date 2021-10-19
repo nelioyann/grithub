@@ -17,7 +17,7 @@ import confettiAnimation from "./Animations/confetti.json"
 const confettiOptions = { loop: true, animationData: confettiAnimation, autoplay: true }
 
 
-interface IClickableHabit {
+export interface IClickableHabit {
     id: string,
     inView: boolean,
     taskIndex: number,
@@ -62,7 +62,7 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
             }
             <ColumnContainer className="ion-margin-horizontal" >
 
-                <Heading5 onClick={() => handleChange()} className={dates.includes(todayDateString) ? "task-completed" : ""}>{name}</Heading5>
+                <Heading5 onClick={() => handleChange()} style={{textAlign: "left"}} className={dates.includes(todayDateString) ? "task-completed" : ""}>{name}</Heading5>
                 <IonNote className="ion-margin-horizontal" style={{display: "flex", alignItems: "center"}}>
                     <IonIcon color="dark" icon={repeat}></IonIcon>
                     <SmallParagraph style={{margin: "0 0 0 8px"}}>repeat every day</SmallParagraph>

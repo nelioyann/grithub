@@ -58,6 +58,7 @@ import { useAuth } from "../Contexts/authProvider";
 import { firebaseStore, arrayUnion, arrayRemove } from "../initFirebase";
 import WeeklyProgression from "../components/WeeklyProgression/WeeklyProgression";
 import MonthlyGraphs from "../components/MonthlyProgression/MonthlyGraphs";
+import SegmentedTasks from "../components/Tasks/SegmentedTasks";
 
 const Tab1: React.FC = () => {
   const { name, nameSet } = useContext(NameContext);
@@ -247,7 +248,8 @@ const Tab1: React.FC = () => {
               You haven't set any habit yet
             </Heading5> */}
             {/* { !loadingHabits && habits.length !== 0 && () } */}
-            {habits && habits.length !== 0 && loadingHabits === false && (
+            <SegmentedTasks inView={inView} onClickHandler={handleTaskSelection}/>
+            {/* {habits && habits.length !== 0 && loadingHabits === false && (
               <div style={{ margin: "5em 0" }}>
                 <Heading5>
                   Take a moment to tick off what you achieved today
@@ -264,7 +266,7 @@ const Tab1: React.FC = () => {
                   );
                 })}
               </div>
-            )}
+            )} */}
             {!loadingHabits &&
               <div style={{ textAlign: "center" }}>
                 <MonthlyGraphs habits={habits} />
