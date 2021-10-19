@@ -154,6 +154,15 @@ const CreateAccountPage = () => {
                   {"Log in"}
                 </IonRouterLink>
               </MediumParagraph>
+              <MediumParagraph style={{margin: "16px", textAlign: "center"}}>
+                {"By creating an account you agree to our "}
+                <IonRouterLink href="https://grithub.fr/terms">
+                    Privacy Policy
+                </IonRouterLink> {"and "}
+                <IonRouterLink href="https://grithub.fr/terms">
+                    Terms of use
+                </IonRouterLink>
+              </MediumParagraph>
             </IonCard>
           </div>
         </div>

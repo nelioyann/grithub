@@ -29,11 +29,11 @@ const WeeklyProgression = () => {
                     }
                     // if empty chnage the value to get empty bars
                     totalHabits = totalHabits === 0 ? 1 : totalHabits;
-                    achieved = achieved === 0 ? totalHabits/10 : achieved; // Hack to never show a value of 0 in the progress bar
+                    achieved = achieved === 0 ? totalHabits/20 : achieved; // Hack to never show a value of 0 in the progress bar
                     return (
                         <RowContainer key={dateString}>
                             <SmallParagraph className="progress-label" >{dateStringForHuman}</SmallParagraph>
-                            <IonProgressBar color={achieved / totalHabits >= 0.5 ? "success" : "medium"} style={{ padding: "0.3em", borderRadius: "5em" }} value={achieved / totalHabits}></IonProgressBar>
+                            <IonProgressBar color="success" style={{ padding: "0.3em", borderRadius: "5em" }} value={achieved / totalHabits}></IonProgressBar>
                         </RowContainer>
                     )
 

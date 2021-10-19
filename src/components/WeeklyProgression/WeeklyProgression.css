@@ -20,7 +20,9 @@
 .weekly-progression-inner ion-progress-bar::part(track){
     border-radius:2em;
 }
-
+.weekly-progression-inner ion-progress-bar::part(track){
+    background-color: transparent;
+}
 .weekly-progression-inner .progress-label{
     padding: 0px;
     transform-origin: center;

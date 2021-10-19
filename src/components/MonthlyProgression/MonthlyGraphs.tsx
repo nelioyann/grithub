@@ -14,6 +14,7 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
         slidesPerView: 1,
 
     }
+    // const {habits} = useHabits()
     return (
         <IonCard mode="ios" color="light" style={{ border: "1px solid var(--ion-color-medium-tint)", margin: "2em 0" }}>
             <Heading4 style={{ margin: "1em auto", textAlign: "center" }}>
@@ -33,7 +34,6 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
                     <LargeParagraph style={{ textAlign: 'center' }}>No active goals</LargeParagraph>
                     <IonButton mode="ios" routerLink="/new" fill="solid">
                         <MediumButton>
-
                             Add a new one
                         </MediumButton>
                     </IonButton>

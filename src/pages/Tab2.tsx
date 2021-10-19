@@ -19,7 +19,7 @@ const Tab2: React.FC = () => {
           <IonToolbar color="light">
             <IonTitle>
               <Heading4 style={{ color: "var(--ion-color-primary)"}}>
-                Progress
+                Statistics
               </Heading4>
             </IonTitle>
             <IonButtons slot="end">
