@@ -248,6 +248,11 @@ const Tab1: React.FC = () => {
               You haven't set any habit yet
             </Heading5> */}
             {/* { !loadingHabits && habits.length !== 0 && () } */}
+            {!loadingHabits &&
+              <div style={{ textAlign: "center" }}>
+                <MonthlyGraphs habits={habits} />
+              </div>
+            }
             <SegmentedTasks inView={inView} onClickHandler={handleTaskSelection}/>
             {/* {habits && habits.length !== 0 && loadingHabits === false && (
               <div style={{ margin: "5em 0" }}>
@@ -267,12 +272,7 @@ const Tab1: React.FC = () => {
                 })}
               </div>
             )} */}
-            {!loadingHabits &&
-              <div style={{ textAlign: "center" }}>
-                <MonthlyGraphs habits={habits} />
-
-              </div>
-            }
+            
             
 
             <IonModal
@@ -349,7 +349,7 @@ const Tab1: React.FC = () => {
                     onClick={() => goToGraph(`/habit/${selectedHabit?.id}`)}
                   >
                     <IonIcon icon={calendar}></IonIcon>
-                    <IonLabel className="ion-padding">View history</IonLabel>
+                    <IonLabel className="ion-padding">View Yearly Graph</IonLabel>
                   </IonItem>
                   <IonItem
                     button={true}

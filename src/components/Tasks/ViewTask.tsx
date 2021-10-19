@@ -121,12 +121,7 @@ const ViewTask: React.FC = () => {
               ref={slider}
               className="ion-margin-vertical"
             >
-              <IonSlide>
-              <Heading5>{todayDate("month")}</Heading5>
-
-              <MonthlyGraph habit={habit} />
-                
-              </IonSlide>
+              
               <IonSlide>
                 {/* <IonCard> */}
                 <Heading5>Yearly View</Heading5>
@@ -211,6 +206,12 @@ const ViewTask: React.FC = () => {
                   </ul>
                 </div>
                 {/* </IonCard> */}
+              </IonSlide>
+              <IonSlide>
+              <Heading5>{todayDate("month")}</Heading5>
+
+              <MonthlyGraph habit={habit} />
+                
               </IonSlide>
             </IonSlides>
           </div>
