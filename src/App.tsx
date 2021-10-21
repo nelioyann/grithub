@@ -141,28 +141,28 @@ const PrivateRoute = ({ component: Component, ...rest }: any) => {
 
 const Tabs: React.FC = () => {
   return (
-    <IonTabs >
-      <IonRouterOutlet>
         <PrivateRoute exact path="/tabs/habits" component={Tab1} />
+    // <IonTabs >
+    //   <IonRouterOutlet>
 
-        <Route exact path="/tabs/stats">
-          <Tab2 />
-        </Route>
-        <Route exact path="/tabs">
-          <Redirect to="/tabs/habits" />
-        </Route>
-      </IonRouterOutlet>
-      <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px" }} slot="bottom" >
-        <IonTabButton tab="tab1" href="/tabs/habits">
-          <IonIcon icon={apps} />
-          <IonLabel>Today</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="tab2" href="/tabs/stats">
-          <IonIcon icon={statsChart} />
-          <IonLabel>Stats</IonLabel>
-        </IonTabButton>
+    //     <Route exact path="/tabs/stats">
+    //       <Tab2 />
+    //     </Route>
+    //     <Route exact path="/tabs">
+    //       <Redirect to="/tabs/habits" />
+    //     </Route>
+    //   </IonRouterOutlet>
+    //   <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px" }} slot="bottom" >
+    //     <IonTabButton tab="tab1" href="/tabs/habits">
+    //       <IonIcon icon={apps} />
+    //       <IonLabel>Today</IonLabel>
+    //     </IonTabButton>
+    //     <IonTabButton tab="tab2" href="/tabs/stats">
+    //       <IonIcon icon={statsChart} />
+    //       <IonLabel>Stats</IonLabel>
+    //     </IonTabButton>
 
-      </IonTabBar>
-    </IonTabs>
+    //   </IonTabBar>
+    // </IonTabs>
   )
 }

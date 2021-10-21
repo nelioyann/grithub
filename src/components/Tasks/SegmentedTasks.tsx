@@ -59,7 +59,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                 ref={slider}
                 className="ion-margin-vertical"
                 >
-                    <IonSlide>
+                    <IonSlide className="ion-padding">
                         {!loadingHabits && (
                             incompletedHabits.length > 0 ?
                                 (incompletedHabits.map((habit, index) => (
@@ -73,10 +73,16 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     </IonSlide>
                     <IonSlide>
                         {!loadingHabits && (
-                            completedHabits.map((habit, index) => (
+                            completedHabits.length > 0 ? 
+                            (completedHabits.map((habit, index) => (
                                 <TaskItem id={habit.id} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
-                            ))
-                        )}
+                            )))
+                            :
+                            (
+                                <>Nothing done today</>
+
+                            )
+                        ) }
                     </IonSlide>
                 </IonSlides>
             </div>)}

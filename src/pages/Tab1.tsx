@@ -230,7 +230,7 @@ const Tab1: React.FC = () => {
           >
             {loadingHabits === false && <Heading6>{todayDate()}</Heading6>}
             {loading === false && !user?.email && (
-              <IonCard style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="tertiary">
+              <IonCard style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="primary">
                 <Heading5
                   style={{ color: "var(--ion-color-tertiary-contrast)" }}
                 >
@@ -248,6 +248,11 @@ const Tab1: React.FC = () => {
               You haven't set any habit yet
             </Heading5> */}
             {/* { !loadingHabits && habits.length !== 0 && () } */}
+            {!loadingHabits && 
+            <div style={{textAlign: "center"}}>
+              <WeeklyProgression />
+            </div>
+            }
             {!loadingHabits &&
               <div style={{ textAlign: "center" }}>
                 <MonthlyGraphs habits={habits} />
