@@ -65,7 +65,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     className="ion-margin-vertical"
                 >
                     <IonSlide >
-                        <IonCard className="ion-padding" mode="ios">
+                        <IonCard className="ion-padding" mode="ios" style={{backgroundColor: "transparent"}}>
                             {!loadingHabits && (
                                 incompletedHabits.length > 0 ?
                                     (incompletedHabits.map((habit, index) => (
@@ -86,7 +86,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                         </IonCard>
                     </IonSlide>
                     <IonSlide >
-                        <IonCard className="ion-padding" mode="ios">
+                        <IonCard className="ion-padding" mode="ios" style={{backgroundColor: "transparent"}}>
 
                             {!loadingHabits && (
                                 completedHabits.length > 0 ?
