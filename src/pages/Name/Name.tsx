@@ -58,7 +58,7 @@ const Name: React.FC = () => {
                                 <IonLabel position="floating">Preferred name</IonLabel>
                                 <IonInput onIonChange={(e) => handleChange(e)} value={nameInput}></IonInput>
                             </IonItem>
-                            <IonButton onClick={(e) => handleSave(e)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="dark">
+                            <IonButton onClick={(e) => handleSave(e)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
                                 {/* routerLink="/tabs/habits" */}
                                 <LargeButton style={{ color: "var(--ion-color-light)" }}>
 

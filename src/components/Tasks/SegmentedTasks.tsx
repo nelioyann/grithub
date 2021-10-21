@@ -1,9 +1,15 @@
-import { IonSlides, IonSlide, IonLabel, IonSegment, IonSegmentButton } from '@ionic/react';
+import { IonSlides, IonSlide, IonLabel, IonSegment, IonSegmentButton, IonCard } from '@ionic/react';
 import React, { useRef, useState } from 'react'
 import { IHabit, useHabits } from '../../Contexts/habitsProvider';
-import { Heading5 } from '../../theme/globalStyles';
+import { Heading5, Heading6 } from '../../theme/globalStyles';
 import { getDateString, incrementToday } from '../Dates/DatesFunctions';
 import TaskItem from './TaskItem';
+import Lottie from "react-lottie";
+import completedAnimation from "./Animations/completed.json"
+import loadingAnimation from "./Animations/loading.json"
+const completedOptions = { loop: true, animationData: completedAnimation, autoplay: true }
+const loadingOptions = { loop: true, animationData: loadingAnimation, autoplay: true }
+
 
 
 export interface ISegmentedTasks {
@@ -16,7 +22,6 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
     const { habits, loadingHabits } = useHabits();
     const completedHabits = habits.filter(habit => habit.dates.includes(todayDateString))
     const incompletedHabits = habits.filter(habit => !habit.dates.includes(todayDateString))
-
 
     // a ref variable to handle the current slider
     const slider = useRef<HTMLIonSlidesElement>(null);
@@ -40,49 +45,67 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
             </Heading5>
             <div >
 
-            <IonSegment
-                value={taskViewSegment}
-                onIonChange={(e) => handleSegmentChange(e)}
-                mode="ios"
+                <IonSegment
+                    value={taskViewSegment}
+                    onIonChange={(e) => handleSegmentChange(e)}
+                    mode="ios"
                 >
-                <IonSegmentButton value="0">
-                    <IonLabel>To do</IonLabel>
-                </IonSegmentButton>
-                <IonSegmentButton value="1">
-                    <IonLabel>Achieved</IonLabel>
-                </IonSegmentButton>
-            </IonSegment>
-                </div>
+                    <IonSegmentButton value="0">
+                        <IonLabel>To do</IonLabel>
+                    </IonSegmentButton>
+                    <IonSegmentButton value="1">
+                        <IonLabel>Achieved</IonLabel>
+                    </IonSegmentButton>
+                </IonSegment>
+            </div>
             {!loadingHabits && (<div>
-                <IonSlides 
-                onIonSlideDidChange={(e) => handleSlideChange(e)}
-                ref={slider}
-                className="ion-margin-vertical"
+                <IonSlides
+                    onIonSlideDidChange={(e) => handleSlideChange(e)}
+                    ref={slider}
+                    className="ion-margin-vertical"
                 >
-                    <IonSlide className="ion-padding">
-                        {!loadingHabits && (
-                            incompletedHabits.length > 0 ?
-                                (incompletedHabits.map((habit, index) => (
-                                    <TaskItem id={habit.id} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
-                                )))
-                                :
-                                (
-                                    <>Nothing left to do</>
-                                )
-                        )}
-                    </IonSlide>
-                    <IonSlide>
-                        {!loadingHabits && (
-                            completedHabits.length > 0 ? 
-                            (completedHabits.map((habit, index) => (
-                                <TaskItem id={habit.id} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
-                            )))
-                            :
-                            (
-                                <>Nothing done today</>
+                    <IonSlide >
+                        <IonCard className="ion-padding" mode="ios">
+                            {!loadingHabits && (
+                                incompletedHabits.length > 0 ?
+                                    (incompletedHabits.map((habit, index) => (
+                                        <TaskItem id={habit.id} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                    )))
+                                    :
+                                    (
+                                        <>
+                                            <Heading6>
 
-                            )
-                        ) }
+                                                Seems like there's nothing left to do today
+                                            </Heading6>
+                                            <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
+                                        </>
+
+                                    )
+                            )}
+                        </IonCard>
+                    </IonSlide>
+                    <IonSlide >
+                        <IonCard className="ion-padding" mode="ios">
+
+                            {!loadingHabits && (
+                                completedHabits.length > 0 ?
+                                    (completedHabits.map((habit, index) => (
+                                        <TaskItem id={habit.id} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                    )))
+                                    :
+                                    (
+                                        <>
+                                            <Heading6>
+
+                                                Seems like you haven't done anything yet today
+                                            </Heading6>
+                                            <Lottie isClickToPauseDisabled={true} options={loadingOptions} height={230} width={300} />
+                                        </>
+
+                                    )
+                            )}
+                        </IonCard>
                     </IonSlide>
                 </IonSlides>
             </div>)}
