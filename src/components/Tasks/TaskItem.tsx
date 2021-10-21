@@ -62,7 +62,7 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
             }
             <ColumnContainer className="ion-margin-horizontal" >
 
-                <Heading5 onClick={() => handleChange()} style={{textAlign: "left"}} className={dates.includes(todayDateString) ? "task-completed" : ""}>{name}</Heading5>
+                <Heading6 onClick={() => handleChange()} style={{textAlign: "left"}} className={dates.includes(todayDateString) ? "task-completed" : ""}>{name}</Heading6>
                 <IonNote className="ion-margin-horizontal" style={{display: "flex", alignItems: "center"}}>
                     <IonIcon color="dark" icon={repeat}></IonIcon>
                     <SmallParagraph style={{margin: "0 0 0 8px"}}>repeat every day</SmallParagraph>

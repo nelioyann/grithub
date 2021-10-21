@@ -108,7 +108,7 @@ const Settings: React.FC = () => {
                 detail={true}
                 button={true}
                 lines="none"
-                href="https://grithub.fr/"
+                href="https://yannicknana.fr/#contact"
               >
                 {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
                 <IonLabel>Report a problem</IonLabel>
