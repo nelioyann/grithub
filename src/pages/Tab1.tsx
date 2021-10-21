@@ -55,12 +55,15 @@ import {
 } from "../components/Dates/DatesFunctions";
 import { toast } from "../components/Toasts/Toast";
 import { useAuth } from "../Contexts/authProvider";
+
+
 import { firebaseStore, arrayUnion, arrayRemove } from "../initFirebase";
 import WeeklyProgression from "../components/WeeklyProgression/WeeklyProgression";
 import MonthlyGraphs from "../components/MonthlyProgression/MonthlyGraphs";
 import SegmentedTasks from "../components/Tasks/SegmentedTasks";
 
 const Tab1: React.FC = () => {
+
   const { name, nameSet } = useContext(NameContext);
   const { habits, loadingHabits } = useHabits();
   let todayDateString = getDateString(incrementToday(0));
@@ -248,11 +251,14 @@ const Tab1: React.FC = () => {
               You haven't set any habit yet
             </Heading5> */}
             {/* { !loadingHabits && habits.length !== 0 && () } */}
-            {!loadingHabits && 
+            {!loadingHabits && (
             <div style={{textAlign: "center"}}>
               <WeeklyProgression />
-            </div>
+            </div>)
             }
+
+                            {/* <Lottie isClickToPauseDisabled={true} options={stairsOptions} height={230} width={300} /> */}
+
             {!loadingHabits &&
               <div style={{ textAlign: "center" }}>
                 <MonthlyGraphs habits={habits} />
