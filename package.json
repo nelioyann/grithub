@@ -1,6 +1,6 @@
 {
   "name": "grithub",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "private": true,
   "dependencies": {
     "@capacitor/android": "^3.1.2",
