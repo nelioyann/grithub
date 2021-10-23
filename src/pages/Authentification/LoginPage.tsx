@@ -1,5 +1,5 @@
 import { IonHeader, useIonRouter, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonButton, IonPage, IonIcon, IonRouterLink, IonCard } from '@ionic/react';
-import { helpOutline, logoGoogle, logoGooglePlaystore, mailOutline, walk } from 'ionicons/icons';
+import { helpOutline, logoGoogle, logoGooglePlaystore, mail, mailOutline, walk } from 'ionicons/icons';
 import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router';
 import Header from '../../components/Headers/Header';
@@ -68,34 +68,31 @@ const LoginPage: React.FC = () => {
 
     return (
         <IonPage>
-            {/* <Header name="" icon={helpOutline} /> */}
+            <Header name="Log in"  />
             <IonContent fullscreen>
                 <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center' }}>
 
 
                     <div className="page-wrapper-content ">
-                        <div ref={gritHubLogo} className="logo_wrapper logo_snake_animate" style={{ display: 'grid', placeItems: "center" }}>
-                            <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M72.5 112.5H35V38H114V56H58V94H86.5V112.5H114V75H91.5" stroke="#FF8700" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
 
-
-                            <Heading4 style={{ textAlign: 'center' }}>Grithub</Heading4>
-                            <MediumParagraph>Build habits that stick</MediumParagraph>
-                        </div>
-                        <IonButton className="ion-margin-top" size="large" expand="block" onClick={googleSignIn}>
-                            <IonIcon className="ion-padding-horizontal" icon={logoGoogle} />
-                            <LargeButton style={{ textTransform: "initial" }}>
-
+                        <IonButton fill="outline" style={{"--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--border-color": "#4c8bf5", "--color": "#fff", }} className="ion-margin-top" size="large" expand="block" onClick={googleSignIn}>
+                            <IonIcon className="ion-padding-horizontal" icon={logoGoogle} style={{  "color": "#4c8bf5" }}/>
+                            <MediumButton style={{ textTransform: "initial", "color": "#4c8bf5" }}>
                                 Sign in with Google
-                            </LargeButton>
+                            </MediumButton>
                         </IonButton>
-                        <IonButton className="ion-margin-top" expand="block" size="large" fill="outline" onClick={anonSignIn}>
+                        <IonButton color="primary" fill="solid" style={{"--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--color": "#fff", }} className="ion-margin-top" size="large" expand="block" >
+                            <IonIcon className="ion-padding-horizontal" icon={mail}  style={{  "color": "#fff" }}/>
+                            <MediumButton style={{ textTransform: "initial", "color": "#fff" }}>
+                            Log in with email
+                            </MediumButton>
+                        </IonButton>
+                        <IonButton style={{"--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" onClick={anonSignIn} fill="outline">
                             <IonIcon className="ion-padding-horizontal" icon={walk} />
-                            <LargeButton style={{ textTransform: "initial" }}>
+                            <MediumButton style={{ textTransform: "initial" }}>
 
-                                Try without an account
-                            </LargeButton>
+                                Skip login
+                            </MediumButton>
                         </IonButton>
                         <Heading4 style={{ textAlign: 'center', margin: "1em auto" }}>OR </Heading4>
                         <Heading5>Log in with email </Heading5>
@@ -103,7 +100,6 @@ const LoginPage: React.FC = () => {
                         <IonCard >
 
                             <IonItem color="">
-                                {/* <IonIcon icon={mailOutline}/> */}
                                 <IonLabel position="stacked">
                                     Email
                                 </IonLabel>

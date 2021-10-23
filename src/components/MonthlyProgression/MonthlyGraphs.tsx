@@ -1,4 +1,5 @@
-import { IonSlides, IonSlide, IonCard, IonButton } from '@ionic/react'
+import { IonSlides, IonSlide, IonCard, IonButton, IonIcon } from '@ionic/react'
+import { add, addCircleOutline } from 'ionicons/icons'
 import React from 'react'
 import { IHabit } from '../../Contexts/habitsProvider'
 import { Heading4, Heading5, LargeParagraph, MediumButton } from '../../theme/globalStyles'
@@ -30,9 +31,11 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
                     ))}
                 </IonSlides>
             ) : (
-                <div className="ion-padding" style={{ display: "flex", justifyContent: "center", flexDirection: "column"}}>
+                <div className="ion-padding" style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
                     <LargeParagraph style={{ textAlign: 'center' }}>No active goals</LargeParagraph>
                     <IonButton mode="ios" routerLink="/new" fill="solid">
+
+                        <IonIcon icon={addCircleOutline}></IonIcon>
                         <MediumButton>
                             Add a new one
                         </MediumButton>

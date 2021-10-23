@@ -10,7 +10,7 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { apps, statsChart } from 'ionicons/icons';
+import { calendarOutline, settingsOutline, statsChartOutline } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 
@@ -88,7 +88,7 @@ const App: React.FC = () => {
                 <Route path="/login" exact={true}>
                   {isAuth ? <Redirect to="/tabs/habits" /> : <LoginPage />}
                 </Route>
-                <Route exact={true} path="/settings" component={Settings} />
+                {/* <Route exact={true} path="/tabs/settings" component={Settings} /> */}
                 <PrivateRoute exact={true} path="/attributions" component={Attributions} />
 
                 <Route path="/habit/:id" exact={true} component={ViewTask} />
@@ -141,28 +141,35 @@ const PrivateRoute = ({ component: Component, ...rest }: any) => {
 
 const Tabs: React.FC = () => {
   return (
-        <PrivateRoute exact path="/tabs/habits" component={Tab1} />
-    // <IonTabs >
-    //   <IonRouterOutlet>
+    <IonTabs >
+      <IonRouterOutlet>
 
-    //     <Route exact path="/tabs/stats">
-    //       <Tab2 />
-    //     </Route>
-    //     <Route exact path="/tabs">
-    //       <Redirect to="/tabs/habits" />
-    //     </Route>
-    //   </IonRouterOutlet>
-    //   <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px" }} slot="bottom" >
-    //     <IonTabButton tab="tab1" href="/tabs/habits">
-    //       <IonIcon icon={apps} />
-    //       <IonLabel>Today</IonLabel>
-    //     </IonTabButton>
-    //     <IonTabButton tab="tab2" href="/tabs/stats">
-    //       <IonIcon icon={statsChart} />
-    //       <IonLabel>Stats</IonLabel>
-    //     </IonTabButton>
+      <PrivateRoute exact path="/tabs/habits" component={Tab1} />
+        <Route exact path="/tabs/stats">
+          <Tab2 />
+        </Route>
+        <Route exact path="/tabs/settings">
+          <Settings />
+        </Route>
+        <Route exact path="/tabs">
+          <Redirect to="/tabs/habits" />
+        </Route>
+      </IonRouterOutlet>
+      <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px" }} slot="bottom" >
+        <IonTabButton layout="icon-start" tab="tab1" href="/tabs/habits">
+          <IonIcon icon={calendarOutline} />
+          <IonLabel>Today</IonLabel>
+        </IonTabButton>
+        <IonTabButton layout="icon-start" tab="tab2" href="/tabs/stats">
+          <IonIcon icon={statsChartOutline} />
+          <IonLabel>Stats</IonLabel>
+        </IonTabButton>
+        <IonTabButton layout="icon-start" tab="tab3" href="/tabs/settings">
+          <IonIcon icon={settingsOutline} />
+          <IonLabel>Settings</IonLabel>
+        </IonTabButton>
 
-    //   </IonTabBar>
-    // </IonTabs>
+      </IonTabBar>
+    </IonTabs>
   )
 }

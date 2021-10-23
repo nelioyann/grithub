@@ -154,13 +154,6 @@ const Onboarding: React.FC = () => {
 
                                     </IonButton>
                                 </div>
-                                {/* <div className="ion-margin-vertical" style={{ display: "grid", justifyContent: "right" }}>
-                                    <IonButton onClick={() => router.push("/login", "forward", "replace")} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" color="primary" fill="solid">
-                                        <LargeButton>
-                                            Get Started
-                                        </LargeButton>
-                                    </IonButton>
-                                </div> */}
                             </IonSlide>
 
                         </IonSlides>

@@ -14,6 +14,7 @@ import {
   IonListHeader,
   IonNote,
   useIonRouter,
+  IonButton,
 } from "@ionic/react";
 import { bug, moon, person, settingsOutline } from "ionicons/icons";
 import React, { useContext, useEffect, useRef, useState } from "react";
@@ -67,18 +68,21 @@ const Settings: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
+      <IonHeader mode="md" className="ion-padding-vertical ion-no-border">
         <IonToolbar color="light">
-          <IonButtons slot="">
-            <IonBackButton color="dark" text="" defaultHref="/tabs/habits" />
-          </IonButtons>
-          <IonTitle slot="">
+          <IonTitle >
             <Heading4
-              style={{ color: "var(--ion-color-primary)", textAlign: "center" }}
+              style={{ color: "var(--ion-color-primary)" }}
             >
               Settings
             </Heading4>
           </IonTitle>
+          {/* <IonButtons slot="end">
+            <IonButton routerLink="/new" color="primary" mode="ios" fill="outline">
+              <IonIcon icon={createOutline}></IonIcon>
+            </IonButton>
+     
+          </IonButtons> */}
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>

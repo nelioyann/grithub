@@ -37,7 +37,7 @@ import { useAuth } from "../../Contexts/authProvider";
 import { toast } from "../../components/Toasts/Toast";
 import Picker from "emoji-picker-react";
 import "./New.css";
-import { close, closeCircle, helpOutline } from "ionicons/icons";
+import { close, closeCircle, helpOutline, thumbsDownOutline, thumbsUpOutline } from "ionicons/icons";
 
 const EmojiPicker: React.FC<{
   onSelected: () => void;
@@ -87,7 +87,7 @@ const New: React.FC = () => {
   const [newHabit, newhabitSet] = useState<string>("");
   const router = useIonRouter();
   const { user, setLoading } = useAuth();
-  const [chosenEmoji, setChosenEmoji] = useState("🙂");
+  const [chosenEmoji, setChosenEmoji] = useState("🎯");
   const pageRef = useRef<HTMLElement>()
 
   const handleEmojiSelection = (event: any, emojiObject: any) => {
@@ -153,7 +153,7 @@ const New: React.FC = () => {
             <Heading4
               style={{ color: "var(--ion-color-dark)", textAlign: "center" }}
             >
-              New goal
+              New habit
             </Heading4>
           </IonTitle>
           <IonButtons slot="end">
@@ -183,7 +183,7 @@ const New: React.FC = () => {
 
                 <div>
                   <IonItem style={{ width: "100%" }}>
-                    <IonLabel position="stacked">Everyday, I will...</IonLabel>
+                    <IonLabel position="stacked">{chosenEmoji} Everyday, I will...</IonLabel>
                     <IonInput
                       color="primary"
                       onIonChange={(e: any) => handleChange(e.detail.value)}
@@ -196,8 +196,9 @@ const New: React.FC = () => {
               </div>
 
               <div className="ion-margin-vertical">
-                <Heading4>Pick an emoji </Heading4>
+                {/* <Heading4>Pick an emoji </Heading4> */}
                 <IonButton
+                  mode="ios"
                   onClick={() =>
                     presentPicker({
                       swipeToClose: true,
@@ -220,7 +221,7 @@ const New: React.FC = () => {
                 >
                   <MediumButton>
 
-                    {chosenEmoji} Set a different emoji
+                    Change this emoji : {chosenEmoji}
                   </MediumButton>
                 </IonButton>
               </div>
@@ -244,8 +245,8 @@ const New: React.FC = () => {
             </ColumnContainer>
           </div>
         </div>
-      </IonContent>
-    </IonPage>
+      </IonContent >
+    </IonPage >
   );
 };
 
@@ -258,46 +259,55 @@ const HelpCard: React.FC<{
 }> = ({ handleChange, setChosenEmoji, handleHelpDismiss }) => {
   return (
     <div
-      className="page-wrapper ion-padding-horizontal"
-      style={{ alignItems: "center", justifyContent: "center" }}
+      className="page-wrapper ion-padding"
+      style={{ alignItems: "center" }}
     >
       <div className="page-wrapper-content" style={{ textAlign: "center" }}>
-        <Heading4>Recommendations for setting a good habit name</Heading4>
-        <IonCard className="ion-padding " style={{ margin: "1em 0" }}>
-          <Heading6>📝 Specific</Heading6>
+        <Heading5>A well defined habit should be</Heading5>
+        <IonCard style={{ margin: "0.5em 0", padding: "4px 8px" }}>
+          <RowContainer style={{justifyContent: "space-between"}}>
 
-          {/* <MediumParagraph>
-            <IonChip
-              color="dark"
-              outline={true}
-              onClick={() => {
-                handleChange("Exercise for 20 minutes");
-                setChosenEmoji("🏋️");
-                handleHelpDismiss()
-              }}
-            >
-              <IonLabel>Exercise for 20 minutes</IonLabel>
-            </IonChip>
-            is better than "Exercise"
-          </MediumParagraph> */}
+            <Heading6>📝 Specific</Heading6>
+            <ColumnContainer style={{ paddingLeft: "4px 8px" }}>
+              <IonChip color="danger">
+                <IonIcon icon={thumbsDownOutline} />
+                <IonLabel>Wake up early</IonLabel>
+              </IonChip>
+              <IonChip color="success">
+                <IonIcon icon={thumbsUpOutline} />
+                <IonLabel>Wake up at 6AM</IonLabel>
+              </IonChip>
+            </ColumnContainer>
+          </RowContainer>
         </IonCard>
-        <IonCard className="ion-padding " style={{ margin: "1em 0" }}>
-          <Heading6>📏 Measurable</Heading6>
-
+        <IonCard style={{ margin: "0.5em 0", padding: "4px 8px" }}>
+          <RowContainer style={{justifyContent: "space-between"}}>
+            <Heading6>📏 Measurable</Heading6>
+            <ColumnContainer style={{ paddingLeft: "4px 8px" }}>
+              <IonChip color="danger">
+                <IonIcon icon={thumbsDownOutline} />
+                <IonLabel>Run</IonLabel>
+              </IonChip>
+              <IonChip color="success">
+                <IonIcon icon={thumbsUpOutline} />
+                <IonLabel>Run 3 miles</IonLabel>
+              </IonChip>
+            </ColumnContainer>
+          </RowContainer>
         </IonCard>
-        <IonCard className="ion-padding " style={{ margin: "1em 0" }}>
+        <IonCard style={{ margin: "0.5em 0", padding: "4px 8px" }}>
           <Heading6>🎯 Achievable</Heading6>
 
           {/* <MediumParagraph>
             There is nothing wrong in setting achievable goals from the start
           </MediumParagraph> */}
         </IonCard>
-        
-        <IonCard className="ion-padding " style={{ margin: "1em 0" }}>
+
+        <IonCard style={{ margin: "0.5em 0", padding: "4px" }}>
           <Heading6>👌 Relevant</Heading6>
 
         </IonCard>
-        <IonCard className="ion-padding " style={{ margin: "1em 0" }}>
+        <IonCard style={{ margin: "0.5em 0", padding: "4px" }}>
           <Heading6>⏳ Time Bound</Heading6>
 
         </IonCard>

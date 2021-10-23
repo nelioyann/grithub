@@ -28,6 +28,7 @@ import {
 import {
   add,
   addCircle,
+  addCircleOutline,
   addOutline,
   arrowForwardCircle,
   bed,
@@ -42,7 +43,7 @@ import {
 } from "ionicons/icons";
 import Header from "../components/Headers/Header";
 import { NameContext } from "../Contexts/NameContext";
-import { Heading4, Heading5, MediumParagraph, MediumButton, Heading6, LargeButton } from "../theme/globalStyles";
+import { Heading4, Heading5, MediumParagraph, MediumButton, Heading6, LargeButton, SmallParagraph } from "../theme/globalStyles";
 import "./Tab1.css";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import TaskItem from "../components/Tasks/TaskItem";
@@ -99,9 +100,6 @@ const Tab1: React.FC = () => {
     e.preventDefault();
     let id = selectedHabit?.id;
     try {
-
-      // let result = await firebaseStore.collection("users")
-      //       .doc(user!.uid).set({ username: nameInput }, { merge: true })
       let ref = await firebaseStore
         .collection("users")
         .doc(user!.uid)
@@ -209,15 +207,15 @@ const Tab1: React.FC = () => {
       <IonHeader className="ion-padding-vertical" mode="md">
         <IonToolbar color="light">
           <IonTitle>
-            <Heading4 style={{ color: "var(--ion-color-primary)" }}>Hey @{name}</Heading4>
+            <Heading4 style={{ color: "var(--ion-color-primary)" }}>Dashboard</Heading4>
           </IonTitle>
           <IonButtons slot="end">
-            <IonButton routerLink="/new" color="dark" fill="clear">
-              <IonIcon icon={createOutline}></IonIcon>
+            <IonButton routerLink="/new" color="primary" mode="ios" fill="clear">
+              <IonIcon icon={addCircle}></IonIcon>
             </IonButton>
-            <IonButton fill="clear" color="dark" routerLink="/settings">
+            {/* <IonButton fill="clear" color="dark" routerLink="/settings">
               <IonIcon icon={settingsOutline} />
-            </IonButton>
+            </IonButton> */}
           </IonButtons>
         </IonToolbar>
       </IonHeader>
@@ -231,60 +229,36 @@ const Tab1: React.FC = () => {
             className="page-wrapper-content"
             style={{ position: "relative" }}
           >
-            {loadingHabits === false && <Heading6>{todayDate()}</Heading6>}
+            {loadingHabits === false && <Heading6>Today, {todayDate()}</Heading6>}
             {loading === false && !user?.email && (
-              <IonCard style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="primary">
-                <Heading5
+              <IonCard mode="ios" style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
+                <Heading6
                   style={{ color: "var(--ion-color-tertiary-contrast)" }}
                 >
-                  Join Grithub
-                </Heading5>
-                <MediumParagraph style={{ color: "var(--ion-color-tertiary-contrast)" }}>
+                  You are using the app as a guest
+                </Heading6>
+                <SmallParagraph style={{ color: "var(--ion-color-tertiary-contrast)" }}>
                   Create your Grithub account to enjoy personalized content and realtime syncing across all of your devices.
-                </MediumParagraph>
-                <IonButton routerLink="/settings" mode="ios" color="light">
+                </SmallParagraph>
+                {/* <IonButton routerLink="/settings" mode="ios" color="light">
                   <MediumButton>Go to settings</MediumButton>
-                </IonButton>
+                </IonButton> */}
               </IonCard>
             )}
-            {/* <Heading5 style={{ marginTop: "3em", textAlign: "center" }}>
-              You haven't set any habit yet
-            </Heading5> */}
-            {/* { !loadingHabits && habits.length !== 0 && () } */}
-            {!loadingHabits && (
-            <div style={{textAlign: "center"}}>
-              <WeeklyProgression />
-            </div>)
+            <SegmentedTasks inView={inView} onClickHandler={handleTaskSelection} />
+
+            {/* {!loadingHabits && (
+              <div style={{ textAlign: "center" }}>
+                <WeeklyProgression />
+              </div>)
             }
-
-                            {/* <Lottie isClickToPauseDisabled={true} options={stairsOptions} height={230} width={300} /> */}
-
             {!loadingHabits &&
               <div style={{ textAlign: "center" }}>
                 <MonthlyGraphs habits={habits} />
               </div>
-            }
-            <SegmentedTasks inView={inView} onClickHandler={handleTaskSelection}/>
-            {/* {habits && habits.length !== 0 && loadingHabits === false && (
-              <div style={{ margin: "5em 0" }}>
-                <Heading5>
-                  Take a moment to tick off what you achieved today
-                </Heading5>
-                {habits.map((habit, index) => {
-                  return (
-                    <TaskItem
-                      inView={inView}
-                      taskIndex={index}
-                      onClickHandler={() => handleTaskSelection(habit)}
-                      key={habit.id}
-                      id={habit.id}
-                    />
-                  );
-                })}
-              </div>
-            )} */}
-            
-            
+            } */}
+
+
 
             <IonModal
               isOpen={showEditModal}

@@ -39,7 +39,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
         settaskViewSegment("" + index);
     };
     return (
-        <>
+        <div className="ion-padding-vertical">
             <Heading5 className="ion-margin-vertical">
                 Take a moment to tick off what you achieved today
             </Heading5>
@@ -65,7 +65,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     className="ion-margin-vertical"
                 >
                     <IonSlide >
-                        <IonCard className="ion-padding" mode="ios" style={{backgroundColor: "transparent", padding: "8px"}}>
+                        <div className="ion-padding ion-no-border"  style={{backgroundColor: "transparent", padding: "8px"}}>
                             {!loadingHabits && (
                                 incompletedHabits.length > 0 ?
                                     (incompletedHabits.map((habit, index) => (
@@ -83,10 +83,10 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
 
                                     )
                             )}
-                        </IonCard>
+                        </div>
                     </IonSlide>
                     <IonSlide >
-                        <IonCard  mode="ios" style={{backgroundColor: "transparent", padding: "8px"}}>
+                        <div  style={{backgroundColor: "transparent", padding: "8px"}}>
 
                             {!loadingHabits && (
                                 completedHabits.length > 0 ?
@@ -105,11 +105,11 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
 
                                     )
                             )}
-                        </IonCard>
+                        </div>
                     </IonSlide>
                 </IonSlides>
             </div>)}
-        </>
+        </div>
     )
 }
 

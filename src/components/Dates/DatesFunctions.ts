@@ -22,6 +22,6 @@ export function todayDate(filter: "full" | "day" | "month" = "full") {
   var yyyy = today.getFullYear();
   if (filter === "month") return mm;
 
-  return(`${mm} ${dd}, ${yyyy}`);
+  return(`${mm} ${dd}`);
 }
 
