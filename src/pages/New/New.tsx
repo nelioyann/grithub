@@ -183,9 +183,9 @@ const New: React.FC = () => {
 
                 <div>
                   <IonItem style={{ width: "100%" }}>
-                    <IonLabel position="stacked">{chosenEmoji} Everyday, I will...</IonLabel>
+                    <IonLabel position="floating">{chosenEmoji} Everyday, I will...</IonLabel>
                     <IonInput
-                      color="primary"
+                      
                       onIonChange={(e: any) => handleChange(e.detail.value)}
                       value={newHabit}
                       placeholder="Make my bed"

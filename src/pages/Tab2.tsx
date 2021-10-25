@@ -22,11 +22,11 @@ const Tab2: React.FC = () => {
                 Statistics
               </Heading4>
             </IonTitle>
-            <IonButtons slot="end">
+            {/* <IonButtons slot="end">
               <IonButton fill="clear" color="dark" routerLink="/settings">
                         <IonIcon icon={settingsOutline} />
                     </IonButton>
-            </IonButtons>
+            </IonButtons> */}
           </IonToolbar>
         </IonHeader>
       <IonContent fullscreen >

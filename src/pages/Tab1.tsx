@@ -210,8 +210,9 @@ const Tab1: React.FC = () => {
             <Heading4 style={{ color: "var(--ion-color-primary)" }}>Dashboard</Heading4>
           </IonTitle>
           <IonButtons slot="end">
-            <IonButton routerLink="/new" color="primary" mode="ios" fill="clear">
+            <IonButton style={{"--border-radius": "0.5em"}} routerLink="/new" color="primary" mode="ios" fill="outline">
               <IonIcon icon={addCircle}></IonIcon>
+              <IonLabel>New habit</IonLabel>
             </IonButton>
             {/* <IonButton fill="clear" color="dark" routerLink="/settings">
               <IonIcon icon={settingsOutline} />
@@ -233,11 +234,11 @@ const Tab1: React.FC = () => {
             {loading === false && !user?.email && (
               <IonCard mode="ios" style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
                 <Heading6
-                  style={{ color: "var(--ion-color-tertiary-contrast)" }}
+                  
                 >
                   You are using the app as a guest
                 </Heading6>
-                <SmallParagraph style={{ color: "var(--ion-color-tertiary-contrast)" }}>
+                <SmallParagraph >
                   Create your Grithub account to enjoy personalized content and realtime syncing across all of your devices.
                 </SmallParagraph>
                 {/* <IonButton routerLink="/settings" mode="ios" color="light">
@@ -353,6 +354,7 @@ const Tab1: React.FC = () => {
                       presentWarning({
                         cssClass: "warning-alert",
                         header: "Delete",
+                        mode: "ios",
                         message: "Are you sure you want to permanently delete this habit ?",
                         buttons: [
                           "Cancel",

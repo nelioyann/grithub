@@ -2,7 +2,6 @@
 ion-toolbar {
     width: clamp(15em, 100%, 45em);
     margin: 0 auto 0px !important;
-
 }
 
 ion-header,
@@ -19,7 +18,6 @@ ion-toolbar {
 
 .ion-page {
     align-items: center;
-
 }
 
 
