@@ -182,7 +182,7 @@ const New: React.FC = () => {
                 <Heading4>Name your habit </Heading4>
 
                 <div>
-                  <IonItem style={{ width: "100%" }}>
+                  <IonItem style={{ width: "100%", borderRadius: "1em" }}>
                     <IonLabel position="floating">{chosenEmoji} Everyday, I will...</IonLabel>
                     <IonInput
                       
