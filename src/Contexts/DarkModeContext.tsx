@@ -29,7 +29,8 @@ const DarkModeContextProvider: React.FC = (props) => {
     useEffect(()=>{
         // Listen for the toggle check/uncheck to toggle the dark class on the <body>
         document.body.classList.toggle('dark', darkMode);
-        console.log("Effect dark mode")
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", darkMode ? "#000000" : "#ffffff");
+        // console.log("Effect dark mode", darkMode);
     }, [darkMode])
 
     useEffect(() => {
