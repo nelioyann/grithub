@@ -48,6 +48,7 @@ import { firebaseAuth } from './initFirebase';
 import { useEffect } from 'react';
 import ViewTask from './components/Tasks/ViewTask';
 import Attributions from './pages/Attributions/Attributions';
+import Loader from './pages/Loader/Loader';
 
 const App: React.FC = () => {
   const { loading } = useAuth();
@@ -59,7 +60,8 @@ const App: React.FC = () => {
   if (loading) {
     return (
       <IonApp>
-        <IonLoading isOpen={loading === loadingHabits === true} message="Loading..." />
+        {/* <IonLoading isOpen={loading === loadingHabits === true} message="Loading..." /> */}
+        {loadingHabits && <Loader/>}
       </IonApp>
     )
   }
