@@ -3,28 +3,23 @@ import styled, {createGlobalStyle} from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 *{
-
     margin: 0;
-    padding: 0;
-    
+    padding: 0;  
 }
 `
 export default GlobalStyle;
 
 interface ColoredProps{
-    color?: "primary" | "secondary" | "tertiary" | "medium"| "dark";
+    color?: "primary" | "secondary" | "tertiary" | "medium"| "dark" | "light";
 }
 
 export const SmallParagraph = styled.p<ColoredProps>`
   font-size: 0.75rem;
   line-height: 150%;
-  color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
-
+  color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark-shade)` };
   /* --ionicon-stroke-width: 64px; */
   white-space: normal;
   font-weight: var(--font-bold);
-
-  /* display: inline-block; */
 `;
 export const MediumParagraph = styled(SmallParagraph)`
 
