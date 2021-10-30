@@ -1,4 +1,5 @@
 import {
+  IonBadge,
   IonButton,
   IonButtons,
   IonCard,
@@ -39,11 +40,12 @@ import {
   flag,
   pencil,
   settingsOutline,
+  todayOutline,
   trash,
 } from "ionicons/icons";
 import Header from "../components/Headers/Header";
 import { NameContext } from "../Contexts/NameContext";
-import { Heading4, Heading5, MediumParagraph, MediumButton, Heading6, LargeButton, SmallParagraph } from "../theme/globalStyles";
+import { Heading4, Heading5, MediumParagraph, MediumButton, Heading6, LargeButton, SmallParagraph, LargeParagraph, ColumnContainer } from "../theme/globalStyles";
 import "./Tab1.css";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import TaskItem from "../components/Tasks/TaskItem";
@@ -122,14 +124,14 @@ const Tab1: React.FC = () => {
         .collection("habits")
         .doc(id)
         .delete();
-      console.log(ref);
+      // console.log(ref);
       // router.push("/tabs/habits", "back", "pop");
     } catch (err) {
       console.log("err.message");
     }
   };
   const handleTaskCompletion = (id: string | undefined) => {
-    console.log("Handle COmpletion fired");
+    // console.log("Handle COmpletion fired");
     if (!selectedHabit?.dates.includes(todayDateString)) toast("Congratulations!") // Why thee not worketh as thee should, why ?
     setHabitChecked(selectedHabit?.dates.includes(todayDateString));
   };
@@ -141,7 +143,7 @@ const Tab1: React.FC = () => {
 
   // Modal cleanup
   useEffect(() => {
-    console.log("Modal cleanup");
+    // console.log("Modal cleanup");
     return () => setShowOptionsModal(false);
   }, []);
 
@@ -197,7 +199,7 @@ const Tab1: React.FC = () => {
   //     // elTask?.current?.classList.add("animated");
   // })
   useIonViewDidEnter(() => {
-    console.log("view did enter");
+    // console.log("view did enter");
     setInView(true);
     // elTask?.current?.classList.add("animated");
   });
@@ -210,7 +212,7 @@ const Tab1: React.FC = () => {
             <Heading4 style={{ color: "var(--ion-color-primary)" }}>Dashboard</Heading4>
           </IonTitle>
           <IonButtons slot="end">
-            <IonButton style={{"--border-radius": "0.5em"}} routerLink="/new" color="primary" mode="ios" fill="outline">
+            <IonButton style={{ "--border-radius": "0.5em" }} routerLink="/new" color="primary" mode="ios" fill="outline">
               <IonIcon icon={addCircle}></IonIcon>
               <IonLabel>New habit</IonLabel>
             </IonButton>
@@ -230,11 +232,17 @@ const Tab1: React.FC = () => {
             className="page-wrapper-content"
             style={{ position: "relative" }}
           >
-            {loadingHabits === false && <Heading6>Today, {todayDate()}</Heading6>}
+            {loadingHabits === false && <IonCard className="ion-margin-vertical" mode="md" color="medium" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", width: "max-content", alignItems: "center" }}>
+              <IonIcon icon={todayOutline} style={{ fontSize: "2em" }} />
+              <MediumParagraph>
+                Today - {todayDate()}
+
+              </MediumParagraph>
+            </IonCard>}
             {loading === false && !user?.email && (
               <IonCard mode="ios" style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
                 <Heading6
-                  
+
                 >
                   You are using the app as a guest
                 </Heading6>
@@ -246,18 +254,32 @@ const Tab1: React.FC = () => {
                 </IonButton> */}
               </IonCard>
             )}
-            <SegmentedTasks inView={inView} onClickHandler={handleTaskSelection} />
 
-            {/* {!loadingHabits && (
-              <div style={{ textAlign: "center" }}>
-                <WeeklyProgression />
-              </div>)
+            {!loadingHabits && (
+              habits.length === 0 ? (
+                <ColumnContainer style={{ gap: "1em" }}>
+                  
+                  <div>
+                    <span style={{color: "var(--ion-color-primary)"}}>Grithub </span>
+                     helps you keep track of your habits.
+                  </div>
+
+
+                  <IonButton mode="ios" routerLink="/new" style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
+                    <LargeButton>
+                      Start tracking
+                    </LargeButton>
+
+                  </IonButton>
+                </ColumnContainer>
+              )
+                :
+                (
+                  <SegmentedTasks inView={inView} onClickHandler={handleTaskSelection} />
+                )
+            )
             }
-            {!loadingHabits &&
-              <div style={{ textAlign: "center" }}>
-                <MonthlyGraphs habits={habits} />
-              </div>
-            } */}
+
 
 
 

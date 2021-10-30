@@ -34,8 +34,9 @@ const Tab2: React.FC = () => {
 
           <div className="page-wrapper-content ">
 
-            {!loadingHabits ?
-              (<>
+            {!loadingHabits &&
+               
+               habits.length !== 0 ? (<>
                 <div style={{ textAlign: "center" }}>
                   <WeeklyProgression />
                 </div>
@@ -48,7 +49,7 @@ const Tab2: React.FC = () => {
                   <LargeParagraph style={{ textAlign: 'center' }}>No active goals</LargeParagraph>
                   <IonButton mode="ios" routerLink="/new" fill="solid">
 
-                    <IonIcon icon={addCircleOutline}></IonIcon>
+                    <IonIcon color="dark" icon={addCircleOutline}></IonIcon>
                     <MediumButton>
                       Add a new one
                     </MediumButton>

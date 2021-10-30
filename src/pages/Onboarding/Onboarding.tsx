@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { IonButton, IonButtons, IonContent, IonHeader, IonModal, IonPage, IonRouterLink, IonSlide, IonSlides, IonToolbar, useIonRouter } from '@ionic/react'
 import { Heading4, Heading5, LargeParagraph, LargeButton, MediumParagraph, RowContainer, Heading3, SmallParagraph } from '../../theme/globalStyles';
-import Button from '../../components/Buttons/Button';
+import {Button} from '../../components/Buttons/Button';
 import "./Onboarding.css";
 import Lottie from "react-lottie";
 import outilAnimation from "./lottieFiles/newhabits.json"
@@ -115,19 +115,28 @@ const Onboarding: React.FC = () => {
                                 </div>
                                 <div className="ion-margin-vertical ion-padding-horizontal" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "space-between" }}>
 
-<IonButton style={{ "--background-hover-opacity": "0" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
-    <LargeButton>
-        Skip
-    </LargeButton>
+                                    <IonButton style={{ "--background-hover-opacity": "0" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
+                                        <LargeButton>
+                                            Skip
+                                        </LargeButton>
 
-</IonButton>
-<IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
-    <LargeButton>
-        Next
-    </LargeButton>
+                                    </IonButton>
+                                    <IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
+                                        <LargeButton>
+                                            Next
+                                        </LargeButton>
 
-</IonButton>
-</div>
+                                    </IonButton>
+                                </div>
+                                <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-medium-primary)" }}>{"Already have an account? "}
+
+                                    <IonRouterLink
+                                        routerLink="/login"
+                                        style={{ textDecoration: "underline", color: "var(--ion-color-primary)" }}
+                                    >
+                                        {"Log in"}
+                                    </IonRouterLink>
+                                </MediumParagraph>
                             </IonSlide>
 
                             <IonSlide style={{ display: "flex", flexDirection: "column" }}>
@@ -154,6 +163,15 @@ const Onboarding: React.FC = () => {
 
                                     </IonButton>
                                 </div>
+                                <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-medium-primary)" }}>{"Already have an account? "}
+
+                                    <IonRouterLink
+                                        routerLink="/login"
+                                        style={{ textDecoration: "underline", color: "var(--ion-color-primary)" }}
+                                    >
+                                        {"Log in"}
+                                    </IonRouterLink>
+                                </MediumParagraph>
                             </IonSlide>
 
                         </IonSlides>

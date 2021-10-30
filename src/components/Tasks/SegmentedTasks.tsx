@@ -39,7 +39,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
         settaskViewSegment("" + index);
     };
     return (
-        <div className="ion-padding-vertical">
+         <div className="ion-padding-vertical">
             <Heading5 className="ion-margin-vertical">
                 Take a moment to tick off what you achieved today
             </Heading5>
@@ -69,7 +69,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                             {!loadingHabits && (
                                 incompletedHabits.length > 0 ?
                                     (incompletedHabits.map((habit, index) => (
-                                        <TaskItem id={habit.id} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                        <TaskItem id={habit.id} key={`incompletedhabits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
                                     )))
                                     :
                                     (
@@ -91,7 +91,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                             {!loadingHabits && (
                                 completedHabits.length > 0 ?
                                     (completedHabits.map((habit, index) => (
-                                        <TaskItem id={habit.id} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                        <TaskItem id={habit.id} taskIndex={index} key={`completedhabits${index}`} inView={inView} onClickHandler={() => onClickHandler(habit)} />
                                     )))
                                     :
                                     (
