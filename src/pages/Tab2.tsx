@@ -46,7 +46,7 @@ const Tab2: React.FC = () => {
               :
               (
                 <div className="ion-padding" style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-                  <LargeParagraph style={{ textAlign: 'center' }}>No active goals</LargeParagraph>
+                  <LargeParagraph style={{ textAlign: 'center' }}>No active habits</LargeParagraph>
                   <IonButton mode="ios" routerLink="/new" fill="solid">
 
                     <IonIcon color="dark" icon={addCircleOutline}></IonIcon>

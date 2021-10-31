@@ -57,11 +57,13 @@ const App: React.FC = () => {
 
   // console.log(loading)
 
-  if (loading) {
+  if (loading|| isAuth && loadingHabits) {
+    console.log(loading, isAuth, loadingHabits);
     return (
       <IonApp>
         {/* <IonLoading isOpen={loading === loadingHabits === true} message="Loading..." /> */}
-        {loadingHabits && <Loader/>}
+
+        <Loader/>
       </IonApp>
     )
   }

@@ -33,17 +33,14 @@ const NameContextProvider:React.FC = (props) =>{
               .collection("users")
               .doc(user!.uid)
               .onSnapshot((snapshot) => {
-                  console.log("name context",snapshot.data()?.username)
                   nameSet(snapshot.data()?.username || "Stranger")
               });
             return () => {
-              console.log("unsubcribe name");
               unsubscribe();
             };
           } catch (e) {
             console.log("e.message");
           }
-          console.log("finally")
           
 
     }, [user])
