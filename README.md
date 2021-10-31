@@ -5,4 +5,4 @@
 
 An everyday Habit Tracker for achieving your long term goals. Inspired by Simone Giertz Everyday Calendar & the Github commit system.
 
-Current Version: `v0.0.35`
+Current Version: `v0.0.36`
