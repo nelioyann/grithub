@@ -1,9 +1,8 @@
-![Onboarding](https://user-images.githubusercontent.com/17406287/133293831-1a7ad821-5c03-4f37-91ad-340e91a0bd17.png)
+![3](https://user-images.githubusercontent.com/17406287/139571504-274c7d76-4858-4840-989f-01c942b56ab4.png)
+
 
 # Grithub
 
-An everyday Grit Calendar for achieving your daily habits
-
-Inspired by Simone Giertz Everyday Calendar & the Github commit system
+An everyday Habit Tracker for achieving your long term goals. Inspired by Simone Giertz Everyday Calendar & the Github commit system.
 
 Current Version: `v0.0.35`
