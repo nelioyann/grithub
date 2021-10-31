@@ -37,7 +37,7 @@ const LoginPage: React.FC = () => {
         try {
             // const auth = new firebaseAuth.getAuth()
             const result = await firebaseAuth.signInWithRedirect(provider);
-            console.log(result)
+            // console.log(result)
 
 
         } catch (error: any) {
@@ -51,7 +51,7 @@ const LoginPage: React.FC = () => {
             setLoading(true);
             const result = await firebaseAuth.signInAnonymously();
             // console.log(result)
-            router.push("/tabs/habits", "forward", "replace")
+            // router.push("/tabs/habits", "forward", "replace")
 
 
 

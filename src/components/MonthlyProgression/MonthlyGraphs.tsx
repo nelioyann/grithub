@@ -23,8 +23,8 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
             </Heading4>
             {habits.length != 0 ? (
                 <IonSlides options={sliderOptions} pager={true}>
-                    {habits.map((habit) => (
-                        <IonSlide>
+                    {habits.map((habit, index) => (
+                        <IonSlide key={`slide=graph=${index}`}>
                             <MonthlyGraph habit={habit} />
 
                         </IonSlide>
@@ -32,7 +32,7 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
                 </IonSlides>
             ) : (
                 <div className="ion-padding" style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-                    <LargeParagraph style={{ textAlign: 'center' }}>No active goals</LargeParagraph>
+                    <LargeParagraph style={{ textAlign: 'center' }}>No active habits</LargeParagraph>
                     <IonButton mode="ios" routerLink="/new" fill="solid">
 
                         <IonIcon icon={addCircleOutline}></IonIcon>

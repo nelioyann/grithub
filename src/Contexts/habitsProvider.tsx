@@ -12,13 +12,15 @@ export interface IHabit {
 interface IContext {
   habits: IHabit[];
   loadingHabits: boolean;
+  setLoadingHabits: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // const HabitsContext
 
 const HabitsContext = createContext<IContext>({
   habits: [],
-  loadingHabits: true,
+  loadingHabits: false,
+  setLoadingHabits: () => { }
 });
 
 function useHabits() {
@@ -29,18 +31,20 @@ const HabitsContextProvider: React.FC = ({ children }) => {
   const { user, loading } = useAuth();
   const [habits, setHabits] = useState<IHabit[]>([]);
   // const {loading} = useAuth()
-  const [loadingHabits, setLoadingHabits] = useState<boolean>(true);
+  const [loadingHabits, setLoadingHabits] = useState<boolean>(false);
 
   // useEffect(() => {
   useEffect(() => {
     try {
       // If there is no user don't listen for data
       if (user === null) {
-        // console.log("No user");
+        console.log("No user");
         return;
       }
       // console.log("does it exist ?", firebaseStore.collection("users")
       //     .doc(user!.uid).collection("habits").get())
+      setLoadingHabits(true);
+
       const unsubscribe = firebaseStore
         .collection("users")
         .doc(user!.uid)
@@ -54,11 +58,11 @@ const HabitsContextProvider: React.FC = ({ children }) => {
             }))
           );
         });
-      console.log("loading falsed");
+        console.log('before falsing loadhabits')
       setLoadingHabits(false);
 
       return () => {
-        console.log("unsubcribe habits");
+        console.log("unsub habit pro")
         unsubscribe();
       };
     } catch (e) {
@@ -99,7 +103,7 @@ const HabitsContextProvider: React.FC = ({ children }) => {
   // }), []
 
   return (
-    <HabitsContext.Provider value={{ habits, loadingHabits }}>
+    <HabitsContext.Provider value={{ habits, loadingHabits, setLoadingHabits }}>
       {children}
     </HabitsContext.Provider>
   );

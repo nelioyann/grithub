@@ -23,9 +23,9 @@ const AuthContextProvider: React.FC = ({ children }) => {
     const router = useIonRouter()
 
 
-    useEffect(() => {
-        console.log("something happened to the user", user)
-    }, [user])
+    // useEffect(() => {
+    //     console.log("something happened to the user", user)
+    // }, [user])
 
     useEffect(() => {
         const unsubscribe =  firebaseAuth.onAuthStateChanged((u) => {
@@ -43,7 +43,7 @@ const AuthContextProvider: React.FC = ({ children }) => {
         })
 
         return () => {
-            console.log("unsubcribe auth")
+            // console.log("unsubcribe auth")
             unsubscribe()
 
         }

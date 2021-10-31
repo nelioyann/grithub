@@ -38,6 +38,7 @@ import { toast } from "../../components/Toasts/Toast";
 import Picker from "emoji-picker-react";
 import "./New.css";
 import { close, closeCircle, helpOutline, thumbsDownOutline, thumbsUpOutline } from "ionicons/icons";
+import { useHabits } from "../../Contexts/habitsProvider";
 
 const EmojiPicker: React.FC<{
   onSelected: () => void;
@@ -87,6 +88,8 @@ const New: React.FC = () => {
   const [newHabit, newhabitSet] = useState<string>("");
   const router = useIonRouter();
   const { user, setLoading } = useAuth();
+  const { setLoadingHabits } = useHabits();
+
   const [chosenEmoji, setChosenEmoji] = useState("🎯");
   const pageRef = useRef<HTMLElement>()
 
@@ -122,7 +125,7 @@ const New: React.FC = () => {
       return;
     }
     try {
-      // setLoading(true)
+      setLoadingHabits(true)
       let emojiedHabit = chosenEmoji + " " + habit;
       let result = await firebaseStore
         .collection("users")
@@ -139,6 +142,9 @@ const New: React.FC = () => {
     } catch (error: any) {
       toast(error.message);
     }
+    // console.log("can I false here")
+    setLoadingHabits(false)
+
     // console.log(user!.uid)
   };
   return (

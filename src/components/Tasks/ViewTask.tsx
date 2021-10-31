@@ -105,7 +105,6 @@ const ViewTask: React.FC = () => {
               <IonSegment
                 value={graphViewSegment}
                 onIonChange={(e) => handleSegmentChange(e)}
-                mode="ios"
               >
                 <IonSegmentButton value="0">
                   <IonLabel>This Month</IonLabel>
