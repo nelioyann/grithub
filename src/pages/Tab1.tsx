@@ -34,6 +34,7 @@ import {
   arrowForwardCircle,
   bed,
   calendar,
+  checkboxOutline,
   checkmarkCircle,
   checkmarkCircleOutline,
   createOutline,
@@ -232,13 +233,27 @@ const Tab1: React.FC = () => {
             className="page-wrapper-content"
             style={{ position: "relative" }}
           >
-            {loadingHabits === false && <IonCard className="ion-margin-vertical" mode="md" color="medium" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", width: "max-content", alignItems: "center" }}>
-              <IonIcon icon={todayOutline} style={{ fontSize: "2em" }} />
-              <MediumParagraph>
-                Today - {todayDate()}
+            {loadingHabits === false &&
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr"}}>
 
-              </MediumParagraph>
-            </IonCard>}
+              <IonCard className="ion-margin-vertical" mode="md" color="medium" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <IonIcon icon={todayOutline} style={{ fontSize: "2em" }} />
+                <MediumParagraph>
+                  Today - {todayDate()}
+
+                </MediumParagraph>
+              </IonCard>
+              <IonCard className="ion-margin-vertical" mode="md" color="medium" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <IonIcon icon={checkboxOutline} style={{ fontSize: "2em" }} />
+                <MediumParagraph>
+                  {habits.filter(habit => habit.dates.includes(todayDateString)).length}
+                  /
+                  {habits.length}
+                  {" completed"}
+                </MediumParagraph>
+              </IonCard>
+              </div>
+              }
             {loading === false && !user?.email && (
               <IonCard mode="ios" style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
                 <Heading6
@@ -258,10 +273,10 @@ const Tab1: React.FC = () => {
             {!loadingHabits && (
               habits.length === 0 ? (
                 <ColumnContainer style={{ gap: "1em" }}>
-                  
+
                   <div>
-                    <span style={{color: "var(--ion-color-primary)"}}>Grithub </span>
-                     helps you keep track of your habits.
+                    <span style={{ color: "var(--ion-color-primary)" }}>Grithub </span>
+                    helps you keep track of your habits.
                   </div>
 
 
