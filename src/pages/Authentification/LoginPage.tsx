@@ -57,8 +57,8 @@ const LoginPage: React.FC = () => {
 
         } catch (error: any) {
             toast(error.message)
-
         }
+        dismissEmailLogin()
     }
 
     // const {user} = useAuth();
