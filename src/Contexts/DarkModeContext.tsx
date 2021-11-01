@@ -18,7 +18,7 @@ function useDarkMode() {
 
 
 const DarkModeContextProvider: React.FC = (props) => {
-    const { user, loading } = useAuth();
+    const { user, setLoading } = useAuth();
 
     const [darkMode, darkModeSet] = useState<boolean>(false);
 
@@ -27,10 +27,12 @@ const DarkModeContextProvider: React.FC = (props) => {
     }
 
     useEffect(()=>{
+      setLoading(true)
         // Listen for the toggle check/uncheck to toggle the dark class on the <body>
         document.body.classList.toggle('dark', darkMode);
         document.querySelector('meta[name="theme-color"]')?.setAttribute("content", darkMode ? "#000000" : "#ffffff");
         // console.log("Effect dark mode", darkMode);
+        setLoading(false)
     }, [darkMode])
 
     useEffect(() => {

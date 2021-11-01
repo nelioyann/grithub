@@ -48,5 +48,32 @@
   "Scope": "/",
   "display": "standalone",
   "theme_color": "#FF8700",
-  "background_color": "#FF8700"
+  "background_color": "#FF8700",
+  "screenshots": [
+    {
+      "src": "assets/screenshots/profile.png",
+      "sizes": "1242x2688",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/screenshots/interface.png",
+      "sizes": "1242x2688",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/screenshots/addHabits.png",
+      "sizes": "1242x2688",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/screenshots/checked.png",
+      "sizes": "1242x2688",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/screenshots/visualize.png",
+      "sizes": "1242x2688",
+      "type": "image/png"
+    }
+  ]
 }

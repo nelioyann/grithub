@@ -26,6 +26,8 @@ const LoginPage: React.FC = () => {
 
             const result = await firebaseAuth.signInWithEmailAndPassword(email, password);
             // console.log(result)
+        dismissEmailLogin()
+
             router.push("/tabs/habits", "forward", "replace")
 
         } catch (error: any) {
@@ -57,7 +59,6 @@ const LoginPage: React.FC = () => {
 
         } catch (error: any) {
             toast(error.message)
-
         }
     }
 
