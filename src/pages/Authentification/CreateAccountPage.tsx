@@ -43,21 +43,14 @@ const CreateAccountPage = () => {
       // const auth = new firebaseAuth.getAuth()
       const result = await firebaseAuth.signInWithRedirect(provider);
       console.log(result)
-
-
     } catch (error: any) {
       toast(error.message)
-
     }
   }
   const anonSignIn = async () => {
     try {
       setLoading(true);
       const result = await firebaseAuth.signInAnonymously();
-      // console.log(result)
-      // history.replace("/tabs/habits")
-
-
     } catch (error: any) {
       toast(error.message)
 
@@ -77,31 +70,10 @@ const CreateAccountPage = () => {
 
 
           <div className="page-wrapper-content ">
-            <div ref={gritHubLogo} className="logo_wrapper logo_snake_animate" style={{ display: 'grid', placeItems: "center" }}>
-              <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M72.5 112.5H35V38H114V56H58V94H86.5V112.5H114V75H91.5" stroke="#FF8700" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            
 
-              <Heading4 style={{ textAlign: 'center' }}>Grithub</Heading4>
-              <MediumParagraph>Build habits that stick</MediumParagraph>
-            </div>
+        
 
-            <IonButton className="ion-margin-top" expand="block" onClick={googleSignIn}>
-              <IonIcon className="ion-padding-horizontal" icon={logoGoogle} />
-              <LargeButton style={{ color: 'var(--ion-color-medium)', textTransform: "initial" }}>
-
-                Sign up with Google
-              </LargeButton>
-            </IonButton>
-            {/* <IonButton className="ion-margin-top" expand="block" fill="outline" onClick={anonSignIn}>
-              <IonIcon className="ion-padding-horizontal" icon={walk} />
-              <LargeButton style={{ textTransform: "initial" }}>
-
-                Continue as a guest
-              </LargeButton>
-            </IonButton> */}
-            <Heading4 style={{ textAlign: 'center', margin: "1em auto" }}>OR </Heading4>
-            {/* <Heading5>Log in with email </Heading5> */}
 
             <Heading5>Create an account </Heading5>
             <IonCard>
@@ -114,7 +86,6 @@ const CreateAccountPage = () => {
                   placeholder="Enter your email address"
                   value={email}
                   onInput={(e: any) => emailSet(e.target.value)}
-
                 />
               </IonItem>
               <IonItem color="">

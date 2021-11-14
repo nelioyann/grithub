@@ -23,16 +23,11 @@ const LoginPage: React.FC = () => {
 
     const doSignIn = async () => {
         try {
-
             const result = await firebaseAuth.signInWithEmailAndPassword(email, password);
-            // console.log(result)
         dismissEmailLogin()
-
             router.push("/tabs/habits", "forward", "replace")
-
         } catch (error: any) {
             toast(error.message)
-
         }
     }
     const googleSignIn = async () => {
@@ -40,8 +35,6 @@ const LoginPage: React.FC = () => {
             // const auth = new firebaseAuth.getAuth()
             const result = await firebaseAuth.signInWithRedirect(provider);
             // console.log(result)
-
-
         } catch (error: any) {
             toast(error.message)
 
@@ -52,11 +45,6 @@ const LoginPage: React.FC = () => {
         try {
             setLoading(true);
             const result = await firebaseAuth.signInAnonymously();
-            // console.log(result)
-            // router.push("/tabs/habits", "forward", "replace")
-
-
-
         } catch (error: any) {
             toast(error.message)
         }

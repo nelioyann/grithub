@@ -36,7 +36,7 @@ import UserAvatar from "../../components/Avatar/Avatar";
 
 const Settings: React.FC = () => {
   const router = useIonRouter();
-  const { user, logout } = useAuth();
+  const { user, logout, setLoading } = useAuth();
 
   const { darkMode } = useContext(DarkModeContext);
 
