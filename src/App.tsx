@@ -49,6 +49,7 @@ import { useEffect } from 'react';
 import ViewTask from './components/Tasks/ViewTask';
 import Attributions from './pages/Attributions/Attributions';
 import Loader from './pages/Loader/Loader';
+import Alan from './components/AI/Alan';
 
 const App: React.FC = () => {
   const { loading } = useAuth();
@@ -56,7 +57,6 @@ const App: React.FC = () => {
   let isAuth = firebaseAuth.currentUser !== null;
 
   // console.log(loading)
-
   if (loading|| isAuth && loadingHabits) {
     console.log(loading, isAuth, loadingHabits);
     return (
@@ -78,12 +78,14 @@ const App: React.FC = () => {
         <DarkModeContextProvider>
           <NameContextProvider>
             <HabitsContextProvider>
+            <Alan />
 
               <IonRouterOutlet id="main">
                 <Route exact={true} path="/">
                   <Redirect to="/onboarding" />
                 </Route>
                 {/* Important to keep these inlines for privating routes */}
+                
                 <Route path="/tabs" component={Tabs} />
                 <Route exact={true} path="/new" component={New} />
                 <Route path="/onboarding" exact={true}>
