@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useRef } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import { useHabits, IHabit } from "../../Contexts/habitsProvider";
 import { useIonRouter } from "@ionic/react";
@@ -8,12 +8,12 @@ import {
     todayDate,
   } from "../Dates/DatesFunctions";
 
-const Alan = () => {
-  let { habits, loadingHabits } = useHabits();
-  console.log("Alan component", habits);
+const Alan = ({habits}) => {
+  let {  loadingHabits } = useHabits();
+  console.log("Alan component", habits, loadingHabits);
   let [count, setCount] = useState(0);
-  const [alanInstance, setAlanInstance] = useState()
-    
+//   const [alanInstance, setAlanInstance] = useState()
+const alanInstance = useRef(null)
 
 //   useEffect(() => {
 //     setCount(habits.length);
@@ -34,8 +34,9 @@ console.log(todayDateString)
     if(filter === "total") count = habits.length;
     if(filter === "completed") count = habits.filter(habit => habit.dates.includes(todayDateString)).length;
     if(filter === "uncompleted") count = habits.filter(habit => !habit.dates.includes(todayDateString)).length;
-    // console.log(count)
-    alanInstance.callProjectApi("countTotalHabits", { count });
+    console.log(alanInstance)
+    console.log(habits)
+    alanInstance.current.callProjectApi("countTotalHabits", { count, filter });
   };
 
   const enumerateHabits = (filter = "total") => {
@@ -45,24 +46,30 @@ console.log(todayDateString)
   }
 
   useEffect(() => {
-    if(habits === []) return
-    setAlanInstance(alanBtn({
-        key: "25a5adef91d2241ab59513153e5683ec2e956eca572e1d8b807a3e2338fdd0dc/stage",
-        onCommand: (commandData) => {
-            if (commandData.command === "go:back") {
-                router.goBack();
-            }
-            if (commandData.command === "navigation") {
-                router.push(tabs[commandData.tabNumber], "forward", "replace");
-            }
-            if (commandData.command === "count:completed") {
-                countTotalHabits("completed");
-            }
-            if (commandData.command === "count:total") {
-                countTotalHabits("total");
-            }
-        },
-    }))
+      if(loadingHabits) return
+    if(!alanInstance.current){
+
+        alanInstance.current = alanBtn({
+            key: "25a5adef91d2241ab59513153e5683ec2e956eca572e1d8b807a3e2338fdd0dc/stage",
+            onCommand: (commandData) => {
+                if (commandData.command === "go:back") {
+                    router.goBack();
+                }
+                if (commandData.command === "navigation") {
+                    router.push(tabs[commandData.tabNumber], "forward", "replace");
+                }
+                if (commandData.command === "count:completed") {
+                    countTotalHabits("completed");
+                }
+                if (commandData.command === "count:uncompleted") {
+                    countTotalHabits("uncompleted");
+                }
+                if (commandData.command === "count:total") {
+                    countTotalHabits("total");
+                }
+            },
+        })
+    }
 }, [habits]);
   return <div>Alan</div>;
 };

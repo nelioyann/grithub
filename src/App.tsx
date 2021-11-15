@@ -78,7 +78,7 @@ const App: React.FC = () => {
         <DarkModeContextProvider>
           <NameContextProvider>
             <HabitsContextProvider>
-            <Alan />
+            {/* {habits.length > 0 && <Alan habits={habits}/>} */}
 
               <IonRouterOutlet id="main">
                 <Route exact={true} path="/">
