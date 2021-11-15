@@ -34,7 +34,7 @@ console.log(todayDateString)
     if(filter === "total") count = habits.length;
     if(filter === "completed") count = habits.filter(habit => habit.dates.includes(todayDateString)).length;
     if(filter === "uncompleted") count = habits.filter(habit => !habit.dates.includes(todayDateString)).length;
-    console.log(count)
+    // console.log(count)
     alanInstance.callProjectApi("countTotalHabits", { count });
   };
 
