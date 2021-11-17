@@ -49,7 +49,6 @@ import { useEffect } from 'react';
 import ViewTask from './components/Tasks/ViewTask';
 import Attributions from './pages/Attributions/Attributions';
 import Loader from './pages/Loader/Loader';
-import Alan from './components/AI/Alan';
 
 const App: React.FC = () => {
   const { loading } = useAuth();

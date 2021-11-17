@@ -8,8 +8,8 @@ import {
     todayDate,
   } from "../Dates/DatesFunctions";
 
-const Alan = ({habits}) => {
-  let {  loadingHabits } = useHabits();
+const Alan = ({ username}) => {
+  let {  habits, loadingHabits } = useHabits();
   console.log("Alan component", habits, loadingHabits);
   let [count, setCount] = useState(0);
 //   const [alanInstance, setAlanInstance] = useState()
@@ -37,8 +37,10 @@ console.log(todayDateString)
     console.log(alanInstance)
     console.log(habits)
     alanInstance.current.callProjectApi("countTotalHabits", { count, filter });
-  };
-
+};
+const greetUser = () =>{
+      alanInstance.current.callProjectApi("greetUser", { username });
+  }
   const enumerateHabits = (filter = "total") => {
     let habitNames;
     if (filter == "total") habitNames = habits.reduce((habitNames, habit) => [...habitNames, habit.name], [])
@@ -56,7 +58,7 @@ console.log(todayDateString)
                     router.goBack();
                 }
                 if (commandData.command === "navigation") {
-                    router.push(tabs[commandData.tabNumber], "forward", "replace");
+                    router.push(tabs[commandData.tabNumber], "forward", "push");
                 }
                 if (commandData.command === "count:completed") {
                     countTotalHabits("completed");
@@ -67,11 +69,17 @@ console.log(todayDateString)
                 if (commandData.command === "count:total") {
                     countTotalHabits("total");
                 }
+                if (commandData.command === "greet:user") {
+                    greetUser()
+                }
+                
             },
+            
         })
     }
+    
 }, [habits]);
-  return <div>Alan</div>;
+  return <div></div>;
 };
 
 export default Alan;
