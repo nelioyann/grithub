@@ -16,7 +16,7 @@ const Alan = () => {
   const { handleDarkMode, darkMode } = useDarkMode();
   const {name} = useUsername()
   console.log("Alan component", habits, loadingHabits);
-  let [count, setCount] = useState(0);
+  // let [count, setCount] = useState(0);
   //   const [alanInstance, setAlanInstance] = useState()
   const alanInstance = useRef(null);
 

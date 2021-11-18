@@ -45,7 +45,7 @@ import {
   trash,
 } from "ionicons/icons";
 import Header from "../components/Headers/Header";
-import { NameContext } from "../Contexts/NameContext";
+import { NameContext, useUsername } from "../Contexts/NameContext";
 import { Heading4, Heading5, MediumParagraph, MediumButton, Heading6, LargeButton, SmallParagraph, LargeParagraph, ColumnContainer } from "../theme/globalStyles";
 import "./Tab1.css";
 import React, { useContext, useEffect, useRef, useState } from "react";
@@ -69,7 +69,7 @@ import Alan from "../components/AI/Alan";
 
 const Tab1: React.FC = () => {
 
-  const { name, nameSet } = useContext(NameContext);
+  const { name, nameSet } = useUsername();
   const { habits, loadingHabits } = useHabits();
   let todayDateString = getDateString(incrementToday(0));
   const pageRef = useRef<HTMLElement>()
@@ -225,7 +225,7 @@ const Tab1: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-      {habits && <Alan/>}
+      {habits.length > 0 && name && <Alan/>}
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center" }}
