@@ -1,6 +1,8 @@
 import { React, useEffect, useState, useRef } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import { useHabits, IHabit } from "../../Contexts/habitsProvider";
+import { useDarkMode } from "../../Contexts/DarkModeContext";
+
 import { useIonRouter } from "@ionic/react";
 import {
     getDateString,
@@ -9,16 +11,14 @@ import {
   } from "../Dates/DatesFunctions";
 
 const Alan = ({ username}) => {
-  let {  habits, loadingHabits } = useHabits();
+  const {  habits, loadingHabits } = useHabits();
+  const {handleDarkMode, darkMode} = useDarkMode();
   console.log("Alan component", habits, loadingHabits);
   let [count, setCount] = useState(0);
 //   const [alanInstance, setAlanInstance] = useState()
 const alanInstance = useRef(null)
 
-//   useEffect(() => {
-//     setCount(habits.length);
-//     console.log("From use efefetx", habits);
-//   }, [habits]);
+
 let todayDateString = getDateString(incrementToday(0));
 console.log(todayDateString)
   const router = useIonRouter();
@@ -36,7 +36,7 @@ console.log(todayDateString)
     if(filter === "uncompleted") count = habits.filter(habit => !habit.dates.includes(todayDateString)).length;
     console.log(alanInstance)
     console.log(habits)
-    alanInstance.current.callProjectApi("countTotalHabits", { count, filter });
+    alanInstance.current.callProjectApi("countHabits", { count, filter });
 };
 const greetUser = () =>{
       alanInstance.current.callProjectApi("greetUser", { username });
@@ -44,7 +44,14 @@ const greetUser = () =>{
   const enumerateHabits = (filter = "total") => {
     let habitNames;
     if (filter == "total") habitNames = habits.reduce((habitNames, habit) => [...habitNames, habit.name], [])
+    alanInstance.current.callProjectApi("enumerateHabits", {habitNames: habitNames.join(",")});
     console.log(habitNames) 
+  }
+  const turnDarkMode = (target) => {
+      console.log("Received from Alan", target)
+      ["hello", "prout"].map(word => alanInstance.current.playText(word))
+    //   if (target === darkMode) alanInstance.current.playText("It looks like that is already the case")
+      handleDarkMode(target)
   }
 
   useEffect(() => {
@@ -71,6 +78,12 @@ const greetUser = () =>{
                 }
                 if (commandData.command === "greet:user") {
                     greetUser()
+                }
+                if (commandData.command === "toggle:darkMode") {
+                    turnDarkMode(commandData.target)
+                }
+                if (commandData.command === "enumerate:habits") {
+                    enumerateHabits(commandData.filter)
                 }
                 
             },
