@@ -48,7 +48,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                 <IonSegment
                     value={taskViewSegment}
                     onIonChange={(e) => handleSegmentChange(e)}
-                    
+                    mode="ios"
                 >
                     <IonSegmentButton value="0">
                         <IonLabel>To do</IonLabel>
