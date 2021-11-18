@@ -2,6 +2,7 @@ import { React, useEffect, useState, useRef } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import { useHabits, IHabit } from "../../Contexts/habitsProvider";
 import { useDarkMode } from "../../Contexts/DarkModeContext";
+import { useUsername } from "../../Contexts/NameContext";
 
 import { useIonRouter } from "@ionic/react";
 import {
@@ -10,9 +11,10 @@ import {
   todayDate,
 } from "../Dates/DatesFunctions";
 
-const Alan = ({ username }) => {
+const Alan = () => {
   const { habits, loadingHabits } = useHabits();
   const { handleDarkMode, darkMode } = useDarkMode();
+  const {name} = useUsername()
   console.log("Alan component", habits, loadingHabits);
   let [count, setCount] = useState(0);
   //   const [alanInstance, setAlanInstance] = useState()
@@ -44,7 +46,7 @@ const Alan = ({ username }) => {
     alanInstance.current.callProjectApi("countHabits", { count, filter });
   };
   const greetUser = () => {
-    alanInstance.current.callProjectApi("greetUser", { username });
+    alanInstance.current.callProjectApi("greetUser", { name });
   };
   const enumerateHabits = (filter = "total") => {
     let habitNames;
@@ -97,7 +99,7 @@ const Alan = ({ username }) => {
         },
       });
     }
-  }, [habits]);
+  }, [habits, name]);
   return <div></div>;
 };
 

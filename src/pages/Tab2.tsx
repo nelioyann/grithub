@@ -37,9 +37,9 @@ const Tab2: React.FC = () => {
             {!loadingHabits &&
                
                habits.length !== 0 ? (<>
-                <div style={{ textAlign: "center" }}>
+                {/* <div style={{ textAlign: "center" }}>
                   <WeeklyProgression />
-                </div>
+                </div> */}
                 <MonthlyGraphs habits={habits} />
 
               </>)

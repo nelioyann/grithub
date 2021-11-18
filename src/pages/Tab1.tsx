@@ -214,7 +214,7 @@ const Tab1: React.FC = () => {
             <Heading4 style={{ color: "var(--ion-color-primary)" }}>Dashboard</Heading4>
           </IonTitle>
           <IonButtons slot="end">
-            <IonButton style={{ "--border-radius": "0.5em" }} routerLink="/new" color="primary" mode="ios" fill="outline">
+            <IonButton disabled={habits && habits.length >= 5} style={{ "--border-radius": "0.5em" }} routerLink="/new" color="primary" mode="ios" fill="outline">
               <IonIcon icon={addCircle}></IonIcon>
               <IonLabel>New habit</IonLabel>
             </IonButton>
@@ -225,7 +225,7 @@ const Tab1: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-      {habits.length > 0 && <Alan username={name}/>}
+      {habits && <Alan/>}
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center" }}
@@ -356,11 +356,11 @@ const Tab1: React.FC = () => {
                   <IonItem
                     button={true}
                     style={{ "--background": "transparent" }}
-
+                      
                     onClick={() => handleTaskCompletion(selectedHabit?.id)}
                   >
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
-                    <IonLabel className="ion-padding">
+                    <IonLabel  className="ion-padding">
                       {selectedHabit?.dates.includes(todayDateString)
                         ? "Uncheck"
                         : "Mark as completed"}
@@ -405,8 +405,8 @@ const Tab1: React.FC = () => {
                       })
                     }}
                   >
-                    <IonIcon icon={trash}></IonIcon>
-                    <IonLabel className="ion-padding">Delete Habit</IonLabel>
+                    <IonIcon color="danger" icon={trash}></IonIcon>
+                    <IonLabel color="danger" className="ion-padding">Delete Habit</IonLabel>
                   </IonItem>
                 </div>
               </div>

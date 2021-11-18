@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from "react"
+import React, {createContext, useState, useEffect, useContext} from "react"
 import { useAuth } from "./authProvider";
 import { firebaseStore } from "../initFirebase";
 
@@ -9,6 +9,9 @@ export interface NameContextProps {
 
 }
 
+function useUsername(){
+  return useContext(NameContext)
+}
 
 export const NameContext = createContext({} as NameContextProps)
 
@@ -51,4 +54,4 @@ const NameContextProvider:React.FC = (props) =>{
     )
 }
 
-export default NameContextProvider;
+export {useUsername, NameContextProvider};

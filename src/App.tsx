@@ -39,7 +39,7 @@ import Name from './pages/Name/Name';
 import Settings from './pages/Settings/Settings';
 import New from './pages/New/New';
 import { DarkModeContextProvider } from './Contexts/DarkModeContext';
-import NameContextProvider from './Contexts/NameContext';
+import {NameContextProvider} from './Contexts/NameContext';
 import LoginPage from './pages/Authentification/LoginPage';
 import CreateAccountPage from './pages/Authentification/CreateAccountPage';
 import { AuthContextProvider, useAuth, } from './Contexts/authProvider';
