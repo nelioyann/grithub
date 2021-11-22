@@ -214,7 +214,7 @@ const Tab1: React.FC = () => {
             <Heading4 style={{ color: "var(--ion-color-primary)" }}>Dashboard</Heading4>
           </IonTitle>
           <IonButtons slot="end">
-            <IonButton disabled={habits && habits.length >= 5} style={{ "--border-radius": "0.5em" }} routerLink="/new" color="primary" mode="ios" fill="outline">
+            <IonButton style={{ "--border-radius": "0.5em" }} routerLink="/new" color="primary" mode="ios" fill="outline">
               <IonIcon icon={addCircle}></IonIcon>
               <IonLabel>New habit</IonLabel>
             </IonButton>
