@@ -6,6 +6,7 @@ import { useHabits } from '../Contexts/habitsProvider';
 import { getDateString, incrementToday } from '../components/Dates/DatesFunctions';
 import WeeklyProgression from '../components/WeeklyProgression/WeeklyProgression';
 import MonthlyGraphs from '../components/MonthlyProgression/MonthlyGraphs';
+import WeeklyChart from '../components/Charts/WeeklyChart';
 
 const Tab2: React.FC = () => {
   const { habits, loadingHabits } = useHabits();
@@ -37,9 +38,10 @@ const Tab2: React.FC = () => {
             {!loadingHabits &&
                
                habits.length !== 0 ? (<>
-                <div style={{ textAlign: "center" }}>
+                {/* <div style={{ textAlign: "center" }}>
                   <WeeklyProgression />
-                </div>
+                </div> */}
+                <WeeklyChart habits={habits}/>
                 <MonthlyGraphs habits={habits} />
 
               </>)
