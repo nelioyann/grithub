@@ -66,7 +66,7 @@ const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
     let data = {
         labels: weekdays,
         datasets: [{
-            label: '',
+            label: 'Completion rate %',
             data: getvalues(habits),
             backgroundColor: "rgba(0, 255, 162, 0.2)",
             borderColor: "rgb(0, 255, 162)",
