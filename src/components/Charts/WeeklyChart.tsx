@@ -10,7 +10,8 @@ export interface IWeeklyChart {
     habits: IHabit[];
 }
 const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
-    let weekdays = ["M", "T", "W", "T", "F", "S", "S"];
+    // let weekdays = ["M", "T", "W", "T", "F", "S", "S"];
+    let weekdays = ["*", "*", "*", "*", "*", "*", "*"];
     let weekTotal = 0;
     let getvalues = (habits: IHabit[]) => {
         let values = weekdays.map((weekday, index) => {
@@ -43,15 +44,14 @@ const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
             
             xAxes: {
                 title:{
-                    display: true, 
+                    display: false, 
                     text: "Last 7 days"
                 }
             },
             yAxes: {
-                min: 0,
                 max: 100,
                 title:{
-                    display: true, 
+                    display: false, 
                     text: "%"
                 }
             }
@@ -66,20 +66,24 @@ const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
     let data = {
         labels: weekdays,
         datasets: [{
-            label: 'Completion rate %',
+            label: 'Habit completion rate %',
             data: getvalues(habits),
             backgroundColor: "rgba(0, 255, 162, 0.2)",
             borderColor: "rgb(0, 255, 162)",
-            borderWidth: 2
+            borderWidth: 1,
+            fill: true,
+            tension: 0.5
         }]
     }
     return (
-        <IonCard mode="ios" color="light">
-            <Heading5 style={{ margin: "1em auto", textAlign: "center" }}>
-                Completed in the last 7 days
+        <>
+            <Heading5 style={{ margin: "1em auto", textAlign: "center", color: "var(--ion-color-primary)" }}>
+                Last 7 days
             </Heading5>
+        <IonCard mode="ios" color="light" style={{margin: "2em 0", border: "1px solid var(--ion-color-medium-tint)"}}>
             <Line data={data} options={options} />
         </IonCard>
+        </>
     )
 }
 

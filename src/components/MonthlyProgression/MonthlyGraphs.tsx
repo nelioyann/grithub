@@ -3,6 +3,7 @@ import { add, addCircleOutline } from 'ionicons/icons'
 import React from 'react'
 import { IHabit } from '../../Contexts/habitsProvider'
 import { Heading4, Heading5, LargeParagraph, MediumButton } from '../../theme/globalStyles'
+import { todayDate } from '../Dates/DatesFunctions'
 import MonthlyGraph from './MonthlyGraph'
 
 export interface IMonthlyGraphs {
@@ -18,13 +19,13 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
     // const {habits} = useHabits()
     return (
         <IonCard mode="ios" color="light" style={{  margin: "3em 0" }}>
-            <Heading4 style={{ margin: "1em auto", textAlign: "center" }}>
-                This Month
-            </Heading4>
+            <Heading5 style={{ margin: "1em auto", textAlign: "center", color: "var(--ion-color-primary)"}}>
+            {todayDate("month")}
+            </Heading5>
             {habits.length != 0 ? (
                 <IonSlides options={sliderOptions} pager={true}>
                     {habits.map((habit, index) => (
-                        <IonSlide key={`slide=graph=${index}`}>
+                        <IonSlide key={`slide=graph=${index}`} >
                             <MonthlyGraph habit={habit} />
 
                         </IonSlide>

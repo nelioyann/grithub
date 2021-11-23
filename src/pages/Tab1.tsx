@@ -234,16 +234,16 @@ const Tab1: React.FC = () => {
             style={{ position: "relative" }}
           >
             {loadingHabits === false &&
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr"}}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", margin: "1em 0"}}>
 
-              <IonCard className="ion-margin-vertical" mode="md" color="medium" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <IonCard className="ion-margin-vertical" mode="md" color="medium" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)" }}>
                 <IonIcon icon={todayOutline} style={{ fontSize: "2em" }} />
                 <MediumParagraph>
-                  Today - {todayDate()}
+                  {todayDate()}
 
                 </MediumParagraph>
               </IonCard>
-              <IonCard className="ion-margin-vertical" mode="md" color="medium" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <IonCard className="ion-margin-vertical" mode="md" color="medium" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)" }}>
                 <IonIcon icon={checkboxOutline} style={{ fontSize: "2em" }} />
                 <MediumParagraph>
                   {habits.filter(habit => habit.dates.includes(todayDateString)).length}
