@@ -1,7 +1,7 @@
 .page-wrapper-content,
 ion-toolbar {
     /* width: clamp(15em, 100%, 45em); */
-    width: clamp(15em, 100%, 75em);
+    width: clamp(15em, 100%, 70em);
     margin: 0 auto 0px !important;
 }
 

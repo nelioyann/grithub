@@ -90,12 +90,12 @@ const Settings: React.FC = () => {
           <div className="page-wrapper-content">
             <div style={{display: "flex", justifyContent: "center"}}>
 
-            <UserAvatar username={name} size={70} email={user?.email || ""} />
             </div>
             <div className="ion-margin-top">
               <IonNote style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase"}}>
                 Profile
               </IonNote>
+            <UserAvatar username={name} size={70} email={user?.email || ""} />
               <IonItem
                 color="light"
                 detail={true}
