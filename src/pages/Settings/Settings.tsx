@@ -170,7 +170,7 @@ const Settings: React.FC = () => {
                 <IonLabel>Attributions</IonLabel>
               </IonItem>
               <IonItem color="light" lines="none" button={true}>
-                <IonLabel>Version: v0.1.6 </IonLabel>
+                <IonLabel>Version: v0.1.7 </IonLabel>
               </IonItem>
             </div>
           </div>
