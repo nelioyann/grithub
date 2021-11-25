@@ -39,7 +39,7 @@ import Name from './pages/Name/Name';
 import Settings from './pages/Settings/Settings';
 import New from './pages/New/New';
 import { DarkModeContextProvider } from './Contexts/DarkModeContext';
-import NameContextProvider from './Contexts/NameContext';
+import { NameContextProvider } from './Contexts/NameContext';
 import LoginPage from './pages/Authentification/LoginPage';
 import CreateAccountPage from './pages/Authentification/CreateAccountPage';
 import { AuthContextProvider, useAuth, } from './Contexts/authProvider';
@@ -49,6 +49,7 @@ import { useEffect } from 'react';
 import ViewTask from './components/Tasks/ViewTask';
 import Attributions from './pages/Attributions/Attributions';
 import Loader from './pages/Loader/Loader';
+import Alan from './components/AI/Alan';
 
 const App: React.FC = () => {
   const { loading } = useAuth();
@@ -56,14 +57,13 @@ const App: React.FC = () => {
   let isAuth = firebaseAuth.currentUser !== null;
 
   // console.log(loading)
-
-  if (loading|| isAuth && loadingHabits) {
+  if (loading || isAuth && loadingHabits) {
     console.log(loading, isAuth, loadingHabits);
     return (
       <IonApp>
         {/* <IonLoading isOpen={loading === loadingHabits === true} message="Loading..." /> */}
 
-        <Loader/>
+        <Loader />
       </IonApp>
     )
   }
@@ -78,12 +78,14 @@ const App: React.FC = () => {
         <DarkModeContextProvider>
           <NameContextProvider>
             <HabitsContextProvider>
+              {/* {habits.length > 0 && <Alan habits={habits}/>} */}
 
               <IonRouterOutlet id="main">
                 <Route exact={true} path="/">
                   <Redirect to="/onboarding" />
                 </Route>
                 {/* Important to keep these inlines for privating routes */}
+
                 <Route path="/tabs" component={Tabs} />
                 <Route exact={true} path="/new" component={New} />
                 <Route path="/onboarding" exact={true}>
@@ -104,6 +106,11 @@ const App: React.FC = () => {
                   <CreateAccountPage />
                 </Route>
               </IonRouterOutlet>
+              <Route path="/" exact={false}>
+                { <Alan />}
+
+              </Route>
+
             </HabitsContextProvider>
           </NameContextProvider>
         </DarkModeContextProvider>
@@ -148,7 +155,7 @@ const Tabs: React.FC = () => {
     <IonTabs >
       <IonRouterOutlet>
 
-      <PrivateRoute exact path="/tabs/habits" component={Tab1} />
+        <PrivateRoute exact path="/tabs/habits" component={Tab1} />
         <Route exact path="/tabs/stats">
           <Tab2 />
         </Route>

@@ -45,7 +45,7 @@ import {
   trash,
 } from "ionicons/icons";
 import Header from "../components/Headers/Header";
-import { NameContext } from "../Contexts/NameContext";
+import { NameContext, useUsername } from "../Contexts/NameContext";
 import { Heading4, Heading5, MediumParagraph, MediumButton, Heading6, LargeButton, SmallParagraph, LargeParagraph, ColumnContainer } from "../theme/globalStyles";
 import "./Tab1.css";
 import React, { useContext, useEffect, useRef, useState } from "react";
@@ -65,10 +65,11 @@ import { firebaseStore, arrayUnion, arrayRemove } from "../initFirebase";
 import WeeklyProgression from "../components/WeeklyProgression/WeeklyProgression";
 import MonthlyGraphs from "../components/MonthlyProgression/MonthlyGraphs";
 import SegmentedTasks from "../components/Tasks/SegmentedTasks";
+import Alan from "../components/AI/Alan";
 
 const Tab1: React.FC = () => {
 
-  const { name, nameSet } = useContext(NameContext);
+  const { name, nameSet } = useUsername();
   const { habits, loadingHabits } = useHabits();
   let todayDateString = getDateString(incrementToday(0));
   const pageRef = useRef<HTMLElement>()
@@ -224,7 +225,7 @@ const Tab1: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-
+      {/* {habits.length > 0 && name && <Alan/>} */}
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center" }}
@@ -355,11 +356,11 @@ const Tab1: React.FC = () => {
                   <IonItem
                     button={true}
                     style={{ "--background": "transparent" }}
-
+                      
                     onClick={() => handleTaskCompletion(selectedHabit?.id)}
                   >
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
-                    <IonLabel className="ion-padding">
+                    <IonLabel  className="ion-padding">
                       {selectedHabit?.dates.includes(todayDateString)
                         ? "Uncheck"
                         : "Mark as completed"}
@@ -404,8 +405,8 @@ const Tab1: React.FC = () => {
                       })
                     }}
                   >
-                    <IonIcon icon={trash}></IonIcon>
-                    <IonLabel className="ion-padding">Delete Habit</IonLabel>
+                    <IonIcon color="danger" icon={trash}></IonIcon>
+                    <IonLabel color="danger" className="ion-padding">Delete Habit</IonLabel>
                   </IonItem>
                 </div>
               </div>

@@ -21,7 +21,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router";
 import Header from "../../components/Headers/Header";
 import { useAuth } from "../../Contexts/authProvider";
-import { DarkModeContext } from "../../Contexts/DarkModeContext";
+import { useDarkMode } from "../../Contexts/DarkModeContext";
 import {
   ColumnContainer,
   Heading2,
@@ -38,24 +38,13 @@ const Settings: React.FC = () => {
   const router = useIonRouter();
   const { user, logout, setLoading } = useAuth();
 
-  const { darkMode } = useContext(DarkModeContext);
-
+  const {handleDarkMode, darkMode} = useDarkMode()
   // console.log(darkMode)
   // Query for the toggle that is used to change between themes
   const darkToggle = useRef<HTMLIonToggleElement>(null);
   const { name } = useContext(NameContext);
 
-  async function handleDarkMode(checked: boolean) {
-    // Listen for the toggle check/uncheck to toggle the dark class on the <body>
-    if (checked === undefined) return;
-    document.body.classList.toggle("dark", checked);
-    let result = await firebaseStore
-      .collection("users")
-      .doc(user!.uid)
-      .set({ darkMode: checked }, { merge: true });
-    console.log(result);
-    // darkModeSet(checked)
-  }
+  
 
   const doLogout = async () => {
     const result = await logout();

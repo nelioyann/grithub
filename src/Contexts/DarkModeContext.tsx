@@ -7,6 +7,7 @@ import { firebaseStore } from "../initFirebase";
 export interface DarkModeContextProps {
     darkMode: boolean;
     darkModeSet: React.Dispatch<React.SetStateAction<boolean>>;
+    handleDarkMode: (checked: boolean) => void;
 }
 
 
@@ -22,9 +23,25 @@ const DarkModeContextProvider: React.FC = (props) => {
 
     const [darkMode, darkModeSet] = useState<boolean>(false);
 
-    const defaultThemeMode: DarkModeContextProps = {
-        darkMode: darkMode, darkModeSet: darkModeSet
+    
+
+    async function handleDarkMode(checked: boolean) {
+      // Listen for the toggle check/uncheck to toggle the dark class on the <body>
+      if (checked === undefined) return;
+      
+      document.body.classList.toggle("dark", checked);
+      let result = await firebaseStore
+        .collection("users")
+        .doc(user!.uid)
+        .set({ darkMode: checked }, { merge: true });
+      console.log(result);
+      // darkModeSet(checked)
     }
+
+
+    const defaultThemeMode: DarkModeContextProps = {
+      darkMode: darkMode, darkModeSet: darkModeSet, handleDarkMode: handleDarkMode
+  }
 
     useEffect(()=>{
       setLoading(true)
@@ -46,7 +63,6 @@ const DarkModeContextProvider: React.FC = (props) => {
               .collection("users")
               .doc(user!.uid)
               .onSnapshot((snapshot) => {
-                  // console.log("darkmode context",snapshot.data()?.darkMode)
                   darkModeSet(snapshot.data()?.darkMode === undefined ? false : snapshot.data()?.darkMode)
               });
             return () => {
