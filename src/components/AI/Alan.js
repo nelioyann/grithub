@@ -67,7 +67,7 @@ const Alan = () => {
   };
 
   useEffect(() => {
-    if (loadingHabits) return;
+    if (habits.length === 0) return;
     if (!alanInstance.current) {
       alanInstance.current = alanBtn({
         key: "25a5adef91d2241ab59513153e5683ec2e956eca572e1d8b807a3e2338fdd0dc/stage",

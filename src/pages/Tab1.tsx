@@ -225,7 +225,7 @@ const Tab1: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-      {habits.length > 0 && name && <Alan/>}
+      {/* {habits.length > 0 && name && <Alan/>} */}
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center" }}
