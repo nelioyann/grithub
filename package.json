@@ -1,6 +1,6 @@
 {
   "name": "grithub",
-  "version": "0.1.4",
+  "version": "0.1.7",
   "private": true,
   "dependencies": {
     "@alan-ai/alan-sdk-web": "^1.8.28",
@@ -20,10 +20,12 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "boring-avatars": "^1.5.8",
+    "chart.js": "^3.6.0",
     "emoji-picker-react": "^3.4.8",
     "firebase": "^8.9.1",
     "ionicons": "^5.4.0",
     "react": "^17.0.1",
+    "react-chartjs-2": "^3.3.0",
     "react-dom": "^17.0.1",
     "react-lottie": "^1.2.3",
     "react-router": "^5.2.0",

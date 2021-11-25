@@ -1,4 +1,4 @@
-import { IonIcon } from '@ionic/react';
+import { IonCard, IonIcon } from '@ionic/react';
 import { today, square, squareOutline } from 'ionicons/icons';
 import React from 'react'
 import { IHabit } from '../../Contexts/habitsProvider';
@@ -16,7 +16,7 @@ const MonthlyGraph: React.FC<IMonthlyGraph> = ({ habit }) => {
     let startDateReachedMonth = false;
     let todayReachedMonth = false;
     return (
-        <div>
+        <IonCard mode="ios" color="light" style={{margin: "2em 0", border: "1px solid var(--ion-color-medium-tint)"}}>
             {/* <Heading5>{todayDate("month")}</Heading5> */}
             <Heading6>{habit.name}</Heading6>
             <div className="monthGraph">
@@ -72,7 +72,7 @@ const MonthlyGraph: React.FC<IMonthlyGraph> = ({ habit }) => {
                     </RowContainer>
                 </div>
             </div>
-        </div>
+        </IonCard>
     )
 }
 
