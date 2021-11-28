@@ -16,7 +16,7 @@ function useUsername(){
 export const NameContext = createContext({} as NameContextProps)
 
 const NameContextProvider:React.FC = (props) =>{
-    const [name, nameSet] = useState("Stranger");
+    const [name, nameSet] = useState("");
     const { user, loading } = useAuth();
 
     

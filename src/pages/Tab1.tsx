@@ -238,14 +238,14 @@ const Tab1: React.FC = () => {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", margin: "1em 0"}}>
 
               <IonCard className="ion-margin-vertical" mode="md" color="medium" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)" }}>
-                <IonIcon icon={todayOutline} style={{ fontSize: "2em" }} />
+                <IonIcon  icon={todayOutline} style={{ fontSize: "2em", color: "var(--ion-color-dark-tint)" }} />
                 <MediumParagraph>
                   {todayDate()}
 
                 </MediumParagraph>
               </IonCard>
               <IonCard className="ion-margin-vertical" mode="md" color="medium" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)" }}>
-                <IonIcon icon={checkboxOutline} style={{ fontSize: "2em" }} />
+                <IonIcon icon={checkboxOutline} style={{ fontSize: "2em", color: "var(--ion-color-dark-tint)" }} />
                 <MediumParagraph>
                   {habits.filter(habit => habit.dates.includes(todayDateString)).length}
                   /
@@ -265,9 +265,6 @@ const Tab1: React.FC = () => {
                 <SmallParagraph >
                   Create your Grithub account to enjoy personalized content and realtime syncing across all of your devices.
                 </SmallParagraph>
-                {/* <IonButton routerLink="/settings" mode="ios" color="light">
-                  <MediumButton>Go to settings</MediumButton>
-                </IonButton> */}
               </IonCard>
             )}
 

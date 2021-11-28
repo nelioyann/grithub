@@ -6,7 +6,7 @@ import { useHabits } from '../Contexts/habitsProvider';
 import { getDateString, incrementToday } from '../components/Dates/DatesFunctions';
 import WeeklyProgression from '../components/WeeklyProgression/WeeklyProgression';
 import MonthlyGraphs from '../components/MonthlyProgression/MonthlyGraphs';
-import WeeklyChart from '../components/Charts/WeeklyChart';
+import {WeeklyChart} from '../components/Charts/WeeklyChart';
 
 const Tab2: React.FC = () => {
   const { habits, loadingHabits } = useHabits();

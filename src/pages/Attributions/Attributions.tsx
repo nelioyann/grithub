@@ -22,16 +22,19 @@ const Attributions: React.FC = () => {
 
                     <div className="page-wrapper-content">
                         <IonItem color="light">
-                            <MediumParagraph>Illustration from absurd.design</MediumParagraph>
+                            <MediumParagraph>Illustrations: absurd.design</MediumParagraph>
                         </IonItem>
                         <IonItem color="light">
-                            <MediumParagraph>Animations from LottieFiles</MediumParagraph>
+                            <MediumParagraph>Animations: LottieFiles</MediumParagraph>
                         </IonItem>
                         <IonItem color="light">
-                            <MediumParagraph>User Icons generated from Boring Avatars</MediumParagraph>
+                            <MediumParagraph>User Icons: Boring Avatars</MediumParagraph>
                         </IonItem>
                         <IonItem color="light">
                             <MediumParagraph>Emoji Picker React</MediumParagraph>
+                        </IonItem>
+                        <IonItem color="light">
+                            <MediumParagraph>Voice Assistant: Alan AI</MediumParagraph>
                         </IonItem>
                     </div>
                 </div>

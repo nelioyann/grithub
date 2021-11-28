@@ -10,12 +10,13 @@ import {
   incrementToday,
   todayDate,
 } from "../Dates/DatesFunctions";
+import { getWeeklyValues } from "../Charts/WeeklyChart";
 
 const Alan = () => {
   const { habits, loadingHabits } = useHabits();
   const { handleDarkMode, darkMode } = useDarkMode();
   const {name} = useUsername()
-  console.log("Alan component", habits, loadingHabits);
+  console.log("Alan component", habits, loadingHabits, {name});
   // let [count, setCount] = useState(0);
   //   const [alanInstance, setAlanInstance] = useState()
   const alanInstance = useRef(null);
@@ -48,6 +49,18 @@ const Alan = () => {
   const greetUser = () => {
     alanInstance.current.callProjectApi("greetUser", { name });
   };
+  
+  
+  const summarizeHabits = () => {
+    let currentWeekValues = getWeeklyValues(habits)?.values,
+    previousWeekValues = getWeeklyValues(habits, 2)?.values;
+    let currentWeekAverage = parseInt(currentWeekValues.reduce((total, value) => total + value/7)) || 0;
+    let previousWeekAverage = parseInt(previousWeekValues.reduce((total, value) => total + value/7)) || 0;
+    let isImproving = currentWeekAverage > previousWeekAverage;
+    let difference = parseInt(currentWeekAverage - previousWeekAverage)
+    alanInstance.current.callProjectApi("summarizeHabits", { name, currentWeekAverage, previousWeekAverage, isImproving, difference });
+
+  }
   const enumerateHabits = (filter = "total") => {
     let habitNames;
     if (filter == "total")
@@ -67,10 +80,12 @@ const Alan = () => {
   };
 
   useEffect(() => {
-    if (habits.length === 0) return;
+    if (habits.length === 0 || name === "") return;
     if (!alanInstance.current) {
       alanInstance.current = alanBtn({
         key: "25a5adef91d2241ab59513153e5683ec2e956eca572e1d8b807a3e2338fdd0dc/stage",
+        right: "2em",
+        bottom: "80px",
         onCommand: (commandData) => {
           if (commandData.command === "go:back") {
             router.goBack();
@@ -95,6 +110,9 @@ const Alan = () => {
           }
           if (commandData.command === "enumerate:habits") {
             enumerateHabits(commandData.filter);
+          }
+          if (commandData.command === "summarize:habits") {
+            summarizeHabits()
           }
         },
       });

@@ -18,7 +18,7 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
     }
     // const {habits} = useHabits()
     return (
-        <IonCard mode="ios" color="light" style={{  margin: "3em 0" }}>
+        <div style={{  margin: "3em 0" }}>
             <Heading5 style={{ margin: "1em auto", textAlign: "center", color: "var(--ion-color-primary)"}}>
             {todayDate("month")}
             </Heading5>
@@ -43,7 +43,7 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
                     </IonButton>
                 </div>
             )}
-        </IonCard>
+        </div>
     )
 }
 

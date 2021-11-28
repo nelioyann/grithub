@@ -61,7 +61,7 @@ const MonthlyGraph: React.FC<IMonthlyGraph> = ({ habit }) => {
                     <RowContainer>
                         <IonIcon color="tertiary" icon={squareOutline}></IonIcon>
                         <SmallParagraph style={{ paddingLeft: "0.3em" }}>
-                            Not Completed
+                            Incompleted
                         </SmallParagraph>
                     </RowContainer>
                     <RowContainer>
