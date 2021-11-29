@@ -51,9 +51,12 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     mode="ios"
                 >
                     <IonSegmentButton value="0">
-                        <IonLabel>To do</IonLabel>
+                        <IonLabel>All</IonLabel>
                     </IonSegmentButton>
                     <IonSegmentButton value="1">
+                        <IonLabel>To do</IonLabel>
+                    </IonSegmentButton>
+                    <IonSegmentButton value="2">
                         <IonLabel>Achieved</IonLabel>
                     </IonSegmentButton>
                 </IonSegment>
@@ -64,6 +67,27 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     ref={slider}
                     className="ion-margin-vertical"
                 >
+                    <IonSlide >
+                        <div className="ion-padding ion-no-border"  style={{backgroundColor: "transparent", padding: "8px"}}>
+                            {!loadingHabits && (
+                                habits.length > 0 ?
+                                    (habits.map((habit, index) => (
+                                        <TaskItem id={habit.id} key={`habits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                    )))
+                                    :
+                                    (
+                                        <>
+                                            <Heading6>
+
+                                                No habits
+                                            </Heading6>
+                                            <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
+                                        </>
+
+                                    )
+                            )}
+                        </div>
+                    </IonSlide>
                     <IonSlide >
                         <div className="ion-padding ion-no-border"  style={{backgroundColor: "transparent", padding: "8px"}}>
                             {!loadingHabits && (

@@ -73,11 +73,29 @@ const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
         datasets: [{
             label: 'Habit completion rate %',
             data: values,
-            backgroundColor: "rgba(0, 255, 162, 0.2)",
-            borderColor: "rgb(0, 255, 162)",
-            borderWidth: 1,
+            backgroundColor: [
+                "rgba(0, 255, 162, 0.2)",
+                "rgba(0, 255, 162, 0.2)",
+                "rgba(0, 255, 162, 0.2)",
+                "rgba(0, 255, 162, 0.2)",
+                "rgba(0, 255, 162, 0.2)",
+                "rgba(0, 255, 162, 0.2)",
+                "rgba(255, 135, 0, 0.2)",
+            ],
+            borderColor: [
+                "rgb(0, 255, 162)",
+                "rgb(0, 255, 162)",
+                "rgb(0, 255, 162)",
+                "rgb(0, 255, 162)",
+                "rgb(0, 255, 162)",
+                "rgb(0, 255, 162)",
+                "rgb(255, 135, 0)",
+            ],
+            borderWidth: 1.5,
             fill: true,
-            tension: 0.5
+            tension: 0.5,
+            minBarLength: 5,
+            borderRadius: 5
         }]
     }
     return (

@@ -25,7 +25,7 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
             {habits.length != 0 ? (
                 <IonSlides options={sliderOptions} pager={true}>
                     {habits.map((habit, index) => (
-                        <IonSlide key={`slide=graph=${index}`} >
+                        <IonSlide className="ion-padding-horizontal" key={`slide=graph=${index}`} >
                             <MonthlyGraph habit={habit} />
 
                         </IonSlide>
