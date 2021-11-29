@@ -54,10 +54,12 @@ const Alan = () => {
   const summarizeHabits = () => {
     let currentWeekValues = getWeeklyValues(habits)?.values,
     previousWeekValues = getWeeklyValues(habits, 2)?.values;
-    let currentWeekAverage = parseInt(currentWeekValues.reduce((total, value) => total + value/7)) || 0;
-    let previousWeekAverage = parseInt(previousWeekValues.reduce((total, value) => total + value/7)) || 0;
+    console.log({currentWeekValues})
+    let currentWeekAverage = parseInt(currentWeekValues.reduce((total, value) => total + value)/7) || 0;
+    let previousWeekAverage = parseInt(previousWeekValues.reduce((total, value) => total + value)/7) || 0;
     let isImproving = currentWeekAverage > previousWeekAverage;
     let difference = parseInt(currentWeekAverage - previousWeekAverage)
+    console.log({currentWeekAverage, previousWeekAverage})
     alanInstance.current.callProjectApi("summarizeHabits", { name, currentWeekAverage, previousWeekAverage, isImproving, difference });
 
   }
