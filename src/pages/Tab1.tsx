@@ -20,6 +20,7 @@ import {
   IonTitle,
   IonToolbar,
   useIonAlert,
+  useIonModal,
   useIonRouter,
   useIonViewDidEnter,
   useIonViewDidLeave,
@@ -65,9 +66,10 @@ import { firebaseStore, arrayUnion, arrayRemove } from "../initFirebase";
 import WeeklyProgression from "../components/WeeklyProgression/WeeklyProgression";
 import MonthlyGraphs from "../components/MonthlyProgression/MonthlyGraphs";
 import SegmentedTasks from "../components/Tasks/SegmentedTasks";
-import Alan from "../components/AI/Alan";
 
 const Tab1: React.FC = () => {
+
+
 
   const { name, nameSet } = useUsername();
   const { habits, loadingHabits } = useHabits();
@@ -75,6 +77,8 @@ const Tab1: React.FC = () => {
   const pageRef = useRef<HTMLElement>()
 
   const [presentWarning] = useIonAlert();
+
+
   const [showOptionsModal, setShowOptionsModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedHabit, setSelectedHabit] = useState<IHabit>();

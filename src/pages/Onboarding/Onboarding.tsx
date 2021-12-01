@@ -3,7 +3,6 @@ import { IonButton, IonButtons, IonContent, IonHeader, IonModal, IonPage, IonRou
 import { Heading4, Heading5, LargeParagraph, LargeButton, MediumParagraph, RowContainer, Heading3, SmallParagraph } from '../../theme/globalStyles';
 import {Button} from '../../components/Buttons/Button';
 import "./Onboarding.css";
-import Lottie from "react-lottie";
 import outilAnimation from "./lottieFiles/newhabits.json"
 import calendarAnimation from "./lottieFiles/calendar.json"
 import stairsAnimation from "./lottieFiles/stairs.json"

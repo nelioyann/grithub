@@ -3,8 +3,10 @@ import alanBtn from "@alan-ai/alan-sdk-web";
 import { useHabits, IHabit } from "../../Contexts/habitsProvider";
 import { useDarkMode } from "../../Contexts/DarkModeContext";
 import { useUsername } from "../../Contexts/NameContext";
+import Examples from "./Examples";
 
-import { useIonRouter } from "@ionic/react";
+
+import { useIonRouter, useIonModal } from "@ionic/react";
 import {
   getDateString,
   incrementToday,
@@ -15,12 +17,12 @@ import { getWeeklyValues } from "../Charts/WeeklyChart";
 const Alan = () => {
   const { habits, loadingHabits } = useHabits();
   const { handleDarkMode, darkMode } = useDarkMode();
-  const {name} = useUsername()
-  console.log("Alan component", habits, loadingHabits, {name});
+  const { name } = useUsername();
+  console.log("Alan component", habits, loadingHabits, { name });
   // let [count, setCount] = useState(0);
   //   const [alanInstance, setAlanInstance] = useState()
   const alanInstance = useRef(null);
-
+  const [showExamples, dismissExamples] = useIonModal(Examples);
   let todayDateString = getDateString(incrementToday(0));
   console.log(todayDateString);
   const router = useIonRouter();
@@ -49,20 +51,42 @@ const Alan = () => {
   const greetUser = () => {
     alanInstance.current.callProjectApi("greetUser", { name });
   };
-  
-  
+
   const summarizeHabits = () => {
     let currentWeekValues = getWeeklyValues(habits)?.values,
-    previousWeekValues = getWeeklyValues(habits, 2)?.values;
-    console.log({currentWeekValues})
-    let currentWeekAverage = parseInt(currentWeekValues.reduce((total, value) => total + value)/7) || 0;
-    let previousWeekAverage = parseInt(previousWeekValues.reduce((total, value) => total + value)/7) || 0;
+      previousWeekValues = getWeeklyValues(habits, 2)?.values;
+    console.log({ currentWeekValues });
+    let currentWeekAverage =
+      parseInt(currentWeekValues.reduce((total, value) => total + value) / 7) ||
+      0;
+    let previousWeekAverage =
+      parseInt(
+        previousWeekValues.reduce((total, value) => total + value) / 7
+      ) || 0;
     let isImproving = currentWeekAverage > previousWeekAverage;
-    let difference = parseInt(currentWeekAverage - previousWeekAverage)
-    console.log({currentWeekAverage, previousWeekAverage})
-    alanInstance.current.callProjectApi("summarizeHabits", { name, currentWeekAverage, previousWeekAverage, isImproving, difference });
+    let difference = parseInt(currentWeekAverage - previousWeekAverage);
+    console.log({ currentWeekAverage, previousWeekAverage });
+    alanInstance.current.callProjectApi("summarizeHabits", {
+      name,
+      currentWeekAverage,
+      previousWeekAverage,
+      isImproving,
+      difference,
+    });
+  };
 
-  }
+  const handleShowExamples = () => {
+    showExamples({
+      swipeToClose: true,
+      mode: "ios",
+      cssClass: "task-modal"
+
+    });
+  };
+  const handleHideExamples = () => {
+    dismissExamples();
+  };
+
   const enumerateHabits = (filter = "total") => {
     let habitNames;
     if (filter == "total")
@@ -77,7 +101,8 @@ const Alan = () => {
   };
   const turnDarkMode = (target) => {
     console.log("Received from Alan", target);
-    if (target === darkMode) alanInstance.current.playText("It looks like that is already the case");
+    if (target === darkMode)
+      alanInstance.current.playText("It looks like that is already the case");
     handleDarkMode(target);
   };
 
@@ -114,7 +139,13 @@ const Alan = () => {
             enumerateHabits(commandData.filter);
           }
           if (commandData.command === "summarize:habits") {
-            summarizeHabits()
+            summarizeHabits();
+          }
+          if (commandData.command === "show:examples") {
+            handleShowExamples();
+          }
+          if (commandData.command === "hide:examples") {
+            handleHideExamples();
           }
         },
       });
