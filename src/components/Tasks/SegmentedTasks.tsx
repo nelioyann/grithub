@@ -1,4 +1,4 @@
-import { IonSlides, IonSlide, IonLabel, IonSegment, IonSegmentButton, IonCard } from '@ionic/react';
+import { IonSlides, IonSlide, IonLabel, IonSegment, IonSegmentButton, IonCard, IonBadge, IonChip } from '@ionic/react';
 import React, { useRef, useState } from 'react'
 import { IHabit, useHabits } from '../../Contexts/habitsProvider';
 import { Heading5, Heading6 } from '../../theme/globalStyles';
@@ -39,7 +39,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
         settaskViewSegment("" + index);
     };
     return (
-         <div className="ion-padding-vertical">
+        <div className="ion-padding-vertical">
             <Heading5 className="ion-margin-vertical">
                 Take a moment to tick off what you achieved today
             </Heading5>
@@ -51,13 +51,29 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     mode="ios"
                 >
                     <IonSegmentButton value="0">
-                        <IonLabel>All</IonLabel>
+
+                        <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                            <IonBadge mode="ios" color="dark">
+                                {habits?.length || 0}
+                            </IonBadge>
+                            <span>All</span>
+                        </IonLabel>
                     </IonSegmentButton>
                     <IonSegmentButton value="1">
-                        <IonLabel>To do</IonLabel>
+                    <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                            <IonBadge mode="ios" color="danger">
+                                {incompletedHabits?.length || 0}
+                            </IonBadge>
+                            <span>To do</span>
+                        </IonLabel>
                     </IonSegmentButton>
                     <IonSegmentButton value="2">
-                        <IonLabel>Achieved</IonLabel>
+                    <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                            <IonBadge mode="ios" color="success">
+                                {completedHabits?.length || 0}
+                            </IonBadge>
+                            <span>Done</span>
+                        </IonLabel>
                     </IonSegmentButton>
                 </IonSegment>
             </div>
@@ -68,7 +84,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     className="ion-margin-vertical"
                 >
                     <IonSlide >
-                        <div className="ion-padding ion-no-border"  style={{backgroundColor: "transparent", padding: "8px"}}>
+                        <div className="ion-padding ion-no-border" style={{ backgroundColor: "transparent", padding: "8px" }}>
                             {!loadingHabits && (
                                 habits.length > 0 ?
                                     (habits.map((habit, index) => (
@@ -89,7 +105,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                         </div>
                     </IonSlide>
                     <IonSlide >
-                        <div className="ion-padding ion-no-border"  style={{backgroundColor: "transparent", padding: "8px"}}>
+                        <div className="ion-padding ion-no-border" style={{ backgroundColor: "transparent", padding: "8px" }}>
                             {!loadingHabits && (
                                 incompletedHabits.length > 0 ?
                                     (incompletedHabits.map((habit, index) => (
@@ -110,12 +126,12 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                         </div>
                     </IonSlide>
                     <IonSlide >
-                        <div  style={{backgroundColor: "transparent", padding: "8px"}}>
+                        <div style={{ backgroundColor: "transparent", padding: "8px" }}>
 
                             {!loadingHabits && (
                                 completedHabits.length > 0 ?
                                     (completedHabits.map((habit, index) => (
-                                        <TaskItem id={habit.id} taskIndex={index} key={`completedhabits${index}`} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                        <TaskItem confetti={true} id={habit.id} taskIndex={index} key={`completedhabits${index}`} inView={inView} onClickHandler={() => onClickHandler(habit)} />
                                     )))
                                     :
                                     (

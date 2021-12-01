@@ -18,7 +18,7 @@ const MonthlyGraph: React.FC<IMonthlyGraph> = ({ habit }) => {
     return (
         <IonCard mode="ios" color="light" style={{margin: "2em 0", border: "1px solid var(--ion-color-medium-tint)"}}>
             {/* <Heading5>{todayDate("month")}</Heading5> */}
-            <Heading6>{habit.name}</Heading6>
+            <Heading6>{habit?.name}</Heading6>
             <div className="monthGraph">
                 <ul className="squares">
                     {habit &&

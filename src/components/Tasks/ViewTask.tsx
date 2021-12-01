@@ -103,6 +103,7 @@ const ViewTask: React.FC = () => {
           
 
               <IonSegment
+              mode="ios"
                 value={graphViewSegment}
                 onIonChange={(e) => handleSegmentChange(e)}
               >

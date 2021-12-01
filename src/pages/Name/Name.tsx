@@ -49,7 +49,7 @@ const Name: React.FC = () => {
                     <div className="page-wrapper-content">
                         <ColumnContainer style={{ margin: "4em 0" }} >
 
-                            <UserAvatar username={nameInput} size={100} />
+                            <UserAvatar username={name} size={100} />
                             <Heading4 style={{ marginTop: "auto" }}>
                                 How should we refer to you ?
                             </Heading4>
