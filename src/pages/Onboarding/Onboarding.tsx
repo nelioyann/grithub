@@ -71,13 +71,12 @@ const Onboarding: React.FC = () => {
 
                                 <div className="ion-padding-horizontal">
                                     <Heading4 style={{ color: "var(--ion-color-dark)", padding: "1em 0", margin: "auto" }}>
-                                        Create healthy habits and achieve your goals
+                                        Add good habits for achieving your goals
                                     </Heading4>
                                     <div className="ion-padding " style={{ display: "flex", justifyContent: "center" }}>
                                         <img style={{ width: "clamp(100px, 100%, 34vh)", pointerEvents: "none", filter: themedImageFilter }} src={newHabitMockup} alt="Image of building bricks" />
                                     </div>
-                                </div>
-                                <div className="ion-margin-vertical ion-padding-horizontal" style={{ zIndex: 99, display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "space-between" }}>
+                                <div className="ion-margin-vertical " style={{ display: "grid", gridTemplateColumns: "1fr 1fr", justifyContent: "space-between"}}>
 
                                     <IonButton style={{ "--background-hover-opacity": "0" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
                                         <LargeButton>
@@ -85,12 +84,13 @@ const Onboarding: React.FC = () => {
                                         </LargeButton>
 
                                     </IonButton>
-                                    <IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
+                                    <IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="clear" >
                                         <LargeButton>
                                             Next
                                         </LargeButton>
 
                                     </IonButton>
+                                </div>
                                 </div>
                                 <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center", color: "var(--ion-color-medium-primary)" }}>{"Already have an account? "}
 
@@ -120,7 +120,7 @@ const Onboarding: React.FC = () => {
                                         </LargeButton>
 
                                     </IonButton>
-                                    <IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
+                                    <IonButton onClick={() => handleSwipeNext()} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="clear" >
                                         <LargeButton>
                                             Next
                                         </LargeButton>
@@ -155,7 +155,7 @@ const Onboarding: React.FC = () => {
                                         </LargeButton>
 
                                     </IonButton>
-                                    <IonButton onClick={() => router.push("/login", "forward", "replace")} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
+                                    <IonButton onClick={() => router.push("/login", "forward", "replace")} style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="clear" >
                                         <LargeButton>
                                             Start
                                         </LargeButton>

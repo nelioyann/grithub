@@ -119,6 +119,7 @@ const ViewTask: React.FC = () => {
             <IonSlides
               onIonSlideDidChange={(e) => handleSlideChange(e)}
               ref={slider}
+              options={ {spaceBetween: 12}}
               className="ion-margin-vertical"
             >
               <IonSlide>

@@ -13,6 +13,7 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
     const sliderOptions = {
         initialSlide: 0,
         speed: 400,
+        spaceBetween: 8,
         slidesPerView: 1,
 
     }

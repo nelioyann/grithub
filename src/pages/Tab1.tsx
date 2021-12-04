@@ -239,16 +239,16 @@ const Tab1: React.FC = () => {
             style={{ position: "relative" }}
           >
             {loadingHabits === false &&
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", margin: "1em 0"}}>
+              <div style={{ display: "grid", margin: "1em 0"}}>
 
-              <IonCard className="ion-margin-vertical" mode="ios" color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)" }}>
+              <IonCard className="ion-margin-vertical" mode="ios" color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "row", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)", gap: "1em"}}>
                 <IonIcon  icon={todayOutline} style={{ fontSize: "2em", color: "var(--ion-color-dark-tint)" }} />
                 <MediumParagraph>
-                  {todayDate()}
+                  Today, {todayDate()}
 
                 </MediumParagraph>
               </IonCard>
-              <IonCard className="ion-margin-vertical" mode="ios" color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)" }}>
+              {/* <IonCard className="ion-margin-vertical" mode="ios" color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)" }}>
                 <IonIcon icon={checkboxOutline} style={{ fontSize: "2em", color: "var(--ion-color-dark-tint)" }} />
                 <MediumParagraph>
                   {habits.filter(habit => habit.dates.includes(todayDateString)).length}
@@ -256,7 +256,7 @@ const Tab1: React.FC = () => {
                   {habits.length}
                   {" completed"}
                 </MediumParagraph>
-              </IonCard>
+              </IonCard> */}
               </div>
               }
             {loading === false && !user?.email && (

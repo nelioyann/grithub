@@ -1,8 +1,8 @@
-import { IonCard, IonIcon } from '@ionic/react';
+import { IonCard, IonIcon, useIonRouter } from '@ionic/react';
 import { today, square, squareOutline } from 'ionicons/icons';
 import React from 'react'
 import { IHabit } from '../../Contexts/habitsProvider';
-import { Heading5,Heading6, SmallParagraph, RowContainer } from '../../theme/globalStyles';
+import { Heading5, Heading6, SmallParagraph, RowContainer } from '../../theme/globalStyles';
 import { todayDate, getDateString } from '../Dates/DatesFunctions';
 
 export interface IMonthlyGraph {
@@ -10,13 +10,19 @@ export interface IMonthlyGraph {
 }
 
 const MonthlyGraph: React.FC<IMonthlyGraph> = ({ habit }) => {
+    const router = useIonRouter();
+
     const monthlySquares = Array.from({ length: 31 }, (_, i) => i + 1);
     let today = new Date();
     const startDate = habit?.dates && habit?.dates.length > 0 ? habit.dates[0] : getDateString(today);
     let startDateReachedMonth = false;
     let todayReachedMonth = false;
     return (
-        <IonCard mode="ios" color="light" style={{margin: "2em 0", border: "1px solid var(--ion-color-medium-tint)"}}>
+        <IonCard button={router.routeInfo?.pathname !== `/habit/${habit?.id}`} onClick={() => { 
+            if(router.routeInfo?.pathname === `/habit/${habit?.id}`) return null; 
+            router.push(`/habit/${habit?.id}`, "forward") }
+            }
+             mode="ios" color="light" style={{ margin: "2em 0", border: "1px solid var(--ion-color-medium-tint)" }}>
             {/* <Heading5>{todayDate("month")}</Heading5> */}
             <Heading6>{habit?.name}</Heading6>
             <div className="monthGraph">
