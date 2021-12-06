@@ -284,7 +284,7 @@ const Tab1: React.FC = () => {
 
                   <IonButton mode="ios" routerLink="/new" style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
                     <LargeButton>
-                      Start tracking
+                      Add a habit to track
                     </LargeButton>
 
                   </IonButton>

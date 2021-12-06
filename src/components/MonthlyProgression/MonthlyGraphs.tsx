@@ -1,15 +1,15 @@
 import { IonSlides, IonSlide, IonCard, IonButton, IonIcon } from '@ionic/react'
 import { add, addCircleOutline } from 'ionicons/icons'
 import React from 'react'
-import { IHabit } from '../../Contexts/habitsProvider'
+import { IHabit, useHabits } from '../../Contexts/habitsProvider'
 import { Heading4, Heading5, LargeParagraph, MediumButton } from '../../theme/globalStyles'
 import { todayDate } from '../Dates/DatesFunctions'
 import MonthlyGraph from './MonthlyGraph'
 
-export interface IMonthlyGraphs {
-    habits: IHabit[];
-}
-const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
+// export interface IMonthlyGraphs {
+//     habits: IHabit[];
+// }
+const MonthlyGraphs: React.FC = () => {
     const sliderOptions = {
         initialSlide: 0,
         speed: 400,
@@ -17,13 +17,13 @@ const MonthlyGraphs: React.FC<IMonthlyGraphs> = ({ habits }) => {
         slidesPerView: 1,
 
     }
-    // const {habits} = useHabits()
+    const {habits} = useHabits()
     return (
         <div style={{  margin: "3em 0" }}>
             <Heading5 style={{ margin: "1em auto", textAlign: "center", color: "var(--ion-color-primary)"}}>
             {todayDate("month")}
             </Heading5>
-            {habits.length != 0 ? (
+            {habits?.length != 0 ? (
                 <IonSlides options={sliderOptions} pager={true}>
                     {habits.map((habit, index) => (
                         <IonSlide className="ion-padding-horizontal" key={`slide=graph=${index}`} >

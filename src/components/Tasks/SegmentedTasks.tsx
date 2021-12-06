@@ -84,7 +84,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     className="ion-margin-vertical"
                 >
                     <IonSlide >
-                        <div className="ion-padding ion-no-border" style={{ backgroundColor: "transparent", padding: "8px" }}>
+                        <div className="ion-padding ion-no-border" style={{ backgroundColor: "transparent", padding: "0px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1em"}}>
                             {!loadingHabits && (
                                 habits.length > 0 ?
                                     (habits.map((habit, index) => (

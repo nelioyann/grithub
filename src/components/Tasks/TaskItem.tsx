@@ -56,17 +56,17 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
 
 
     return (
-        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "ion-padding animate-fade-down animated" : "ion-padding animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ border: dates.includes(todayDateString) ? "2px solid var(--ion-color-success)" : "2px solid var(--ion-color-medium-tint)", marginLeft: "0", marginRight: "0", backgroundColor: "transparent", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
+        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "ion-padding animate-fade-down animated" : "ion-padding animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ display: "flex", border: dates.includes(todayDateString) ? "2px solid var(--ion-color-success)" : "2px solid var(--ion-color-medium-tint)", margin: "0", backgroundColor: "transparent",minHeight: "15em", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
             {confetti && dates.includes(todayDateString) &&
 
                 <Lottie style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "100%", height: "initial", zIndex: -1 }} isClickToPauseDisabled={true} options={confettiOptions} />
             }
-            <ColumnContainer className="ion-margin-horizontal" >
+            <ColumnContainer style={{height: "100%", justifyContent: "space-between"}} >
 
                 <Heading6 onClick={() => handleChange()} style={{textAlign: "left"}} className={dates.includes(todayDateString) ? "task-completed" : ""}>{name}</Heading6>
-                <IonNote className="ion-margin-horizontal" style={{display: "flex", alignItems: "center"}}>
-                    <IonIcon color="dark" icon={repeat}></IonIcon>
-                    <SmallParagraph style={{margin: "0 0 0 8px"}}>repeat every day</SmallParagraph>
+                <IonNote className="" style={{display: "flex", alignItems: "center"}}>
+                    {/* <IonIcon color="dark" icon={repeat}></IonIcon> */}
+                    <SmallParagraph style={{margin: "0 0 0 8px"}}>done {dates?.length} {dates?.length > 1 ? "times" : "time"}</SmallParagraph>
                 </IonNote>
             </ColumnContainer>
 

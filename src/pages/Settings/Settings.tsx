@@ -128,6 +128,7 @@ const Settings: React.FC = () => {
                 </div>
                 <IonToggle
                   ref={darkToggle}
+                  mode="ios"
                   checked={darkMode}
                   id="themeToggle"
                   slot="end"

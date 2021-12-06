@@ -42,7 +42,7 @@ const Tab2: React.FC = () => {
                   <WeeklyProgression />
                 </div> */}
                 <WeeklyChart habits={habits}/>
-                <MonthlyGraphs habits={habits} />
+                <MonthlyGraphs />
 
               </>)
               :
