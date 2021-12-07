@@ -56,12 +56,12 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
 
 
     return (
-        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "ion-padding animate-fade-down animated" : "ion-padding animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ display: "flex", border: dates.includes(todayDateString) ? "2px solid var(--ion-color-success)" : "2px solid var(--ion-color-medium-tint)", margin: "0", backgroundColor: "transparent",minHeight: "15em", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
+        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "animate-fade-down animated" : "animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ display: "flex", border: dates.includes(todayDateString) ? "2px solid var(--ion-color-success)" : "2px solid var(--ion-color-medium-tint)", margin: "0", backgroundColor: "transparent",minHeight: "14em", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
             {confetti && dates.includes(todayDateString) &&
 
                 <Lottie style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "100%", height: "initial", zIndex: -1 }} isClickToPauseDisabled={true} options={confettiOptions} />
             }
-            <ColumnContainer style={{height: "100%", justifyContent: "space-between"}} >
+            <ColumnContainer style={{height: "100%", justifyContent: "space-between", padding: "1em"}} >
 
                 <Heading6 onClick={() => handleChange()} style={{textAlign: "left"}} className={dates.includes(todayDateString) ? "task-completed" : ""}>{name}</Heading6>
                 <IonNote className="" style={{display: "flex", alignItems: "center"}}>

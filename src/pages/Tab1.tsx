@@ -330,7 +330,7 @@ const Tab1: React.FC = () => {
               onDidDismiss={() => setShowOptionsModal(false)}
               swipeToClose={true}
               mode="ios"
-              presentingElement={pageRef.current}
+              // presentingElement={pageRef.current}
 
             >
               <div className="ion-padding-horizontal" style={{ width: "100%" }}>

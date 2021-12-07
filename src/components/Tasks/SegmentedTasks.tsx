@@ -7,9 +7,7 @@ import TaskItem from './TaskItem';
 import Lottie from "react-lottie";
 import completedAnimation from "./Animations/completed.json"
 import loadingAnimation from "./Animations/loading.json"
-const completedOptions = { loop: true, animationData: completedAnimation, autoplay: true }
-const loadingOptions = { loop: true, animationData: loadingAnimation, autoplay: true }
-
+import "./SegmentedTasks.css"
 
 
 export interface ISegmentedTasks {
@@ -17,6 +15,8 @@ export interface ISegmentedTasks {
     onClickHandler: (habit: IHabit) => void;
 }
 const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) => {
+    const completedOptions = { loop: true, animationData: completedAnimation, autoplay: true }
+    const loadingOptions = { loop: true, animationData: loadingAnimation, autoplay: true }
     let todayDateString = getDateString(incrementToday(0));
 
     const { habits, loadingHabits } = useHabits();
@@ -84,11 +84,11 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     className="ion-margin-vertical"
                 >
                     <IonSlide >
-                        <div className="ion-padding ion-no-border" style={{ backgroundColor: "transparent", padding: "0px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1em"}}>
+                        <div className="segmentedTasksGrid ion-no-border" >
                             {!loadingHabits && (
                                 habits.length > 0 ?
                                     (habits.map((habit, index) => (
-                                        <TaskItem id={habit.id} key={`habits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                        <TaskItem confetti={true} id={habit.id} key={`habits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
                                     )))
                                     :
                                     (
@@ -105,7 +105,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                         </div>
                     </IonSlide>
                     <IonSlide >
-                        <div className="ion-padding ion-no-border" style={{ backgroundColor: "transparent", padding: "8px" }}>
+                        <div className="segmentedTasksGrid ion-no-border" >
                             {!loadingHabits && (
                                 incompletedHabits.length > 0 ?
                                     (incompletedHabits.map((habit, index) => (
@@ -126,12 +126,12 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                         </div>
                     </IonSlide>
                     <IonSlide >
-                        <div style={{ backgroundColor: "transparent", padding: "8px" }}>
+                        <div className="segmentedTasksGrid ion-no-border" >
 
                             {!loadingHabits && (
                                 completedHabits.length > 0 ?
                                     (completedHabits.map((habit, index) => (
-                                        <TaskItem confetti={true} id={habit.id} taskIndex={index} key={`completedhabits${index}`} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                        <TaskItem  id={habit.id} taskIndex={index} key={`completedhabits${index}`} inView={inView} onClickHandler={() => onClickHandler(habit)} />
                                     )))
                                     :
                                     (
