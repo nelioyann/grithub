@@ -29,7 +29,6 @@ let getWeeklyValues = (habits: IHabit[], previousWeekMultiplier = 1) => {
         // if empty chnage the value to get empty bars
         // weekTotal += achieved;
         totalHabits = totalHabits === 0 ? 1 : totalHabits;
-        console.log(labels)
         return (achieved * 100 / totalHabits)
     }
     )

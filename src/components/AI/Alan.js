@@ -79,7 +79,7 @@ const Alan = () => {
     showExamples({
       swipeToClose: true,
       mode: "ios",
-      cssClass: "task-modal"
+      // cssClass: "task-modal"
 
     });
   };

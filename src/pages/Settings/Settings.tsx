@@ -84,7 +84,10 @@ const Settings: React.FC = () => {
               <IonNote style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase"}}>
                 Profile
               </IonNote>
+              <div onClick={() => router.push("/name")}>
+
             <UserAvatar username={name} size={70} email={user?.email || ""} />
+              </div>
               <IonItem
                 color="light"
                 detail={true}

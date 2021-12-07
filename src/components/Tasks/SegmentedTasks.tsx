@@ -1,7 +1,7 @@
 import { IonSlides, IonSlide, IonLabel, IonSegment, IonSegmentButton, IonCard, IonBadge, IonChip } from '@ionic/react';
 import React, { useRef, useState } from 'react'
 import { IHabit, useHabits } from '../../Contexts/habitsProvider';
-import { Heading5, Heading6 } from '../../theme/globalStyles';
+import { ColumnContainer, Heading5, Heading6 } from '../../theme/globalStyles';
 import { getDateString, incrementToday } from '../Dates/DatesFunctions';
 import TaskItem from './TaskItem';
 import Lottie from "react-lottie";
@@ -25,6 +25,13 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
 
     // a ref variable to handle the current slider
     const slider = useRef<HTMLIonSlidesElement>(null);
+    const sliderOptions = {
+        initialSlide: 0,
+        speed: 400,
+        spaceBetween: 10,
+        slidesPerView: 1,
+
+    }
     // Segment State
     const [taskViewSegment, settaskViewSegment] = useState("0");
     // a function to handle the segment changes
@@ -53,7 +60,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     <IonSegmentButton value="0">
 
                         <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                            <IonBadge mode="ios" color="dark">
+                            <IonBadge mode="ios" color="medium">
                                 {habits?.length || 0}
                             </IonBadge>
                             <span>All</span>
@@ -81,6 +88,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                 <IonSlides
                     onIonSlideDidChange={(e) => handleSlideChange(e)}
                     ref={slider}
+                    options={sliderOptions}
                     className="ion-margin-vertical"
                 >
                     <IonSlide >
@@ -92,13 +100,13 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                                     )))
                                     :
                                     (
-                                        <>
+                                        <ColumnContainer>
                                             <Heading6>
 
                                                 No habits
                                             </Heading6>
                                             <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
-                                        </>
+                                        </ColumnContainer>
 
                                     )
                             )}
@@ -113,13 +121,13 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                                     )))
                                     :
                                     (
-                                        <>
+                                        <ColumnContainer>
                                             <Heading6>
 
                                                 Seems like there's nothing left to do today
                                             </Heading6>
                                             <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
-                                        </>
+                                        </ColumnContainer>
 
                                     )
                             )}
@@ -135,13 +143,13 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                                     )))
                                     :
                                     (
-                                        <>
+                                        <ColumnContainer>
                                             <Heading6>
 
                                                 Seems like you haven't done anything yet today
                                             </Heading6>
                                             <Lottie isClickToPauseDisabled={true} options={loadingOptions} height={230} width={300} />
-                                        </>
+                                        </ColumnContainer>
 
                                     )
                             )}

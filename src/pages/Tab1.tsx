@@ -241,7 +241,7 @@ const Tab1: React.FC = () => {
             {loadingHabits === false &&
               <div style={{ display: "grid", margin: "1em 0"}}>
 
-              <IonCard className="ion-margin-vertical" mode="ios" color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "row", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)", gap: "1em"}}>
+              <IonCard className="ion-margin-vertical"  color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "row", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)", gap: "1em"}}>
                 <IonIcon  icon={todayOutline} style={{ fontSize: "2em", color: "var(--ion-color-dark-tint)" }} />
                 <MediumParagraph>
                   Today, {todayDate()}
@@ -260,7 +260,7 @@ const Tab1: React.FC = () => {
               </div>
               }
             {loading === false && !user?.email && (
-              <IonCard mode="ios" style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
+              <IonCard  style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
                 <Heading6
 
                 >

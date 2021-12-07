@@ -88,7 +88,7 @@ const New: React.FC = () => {
   const [newHabit, newhabitSet] = useState<string>("");
   const router = useIonRouter();
   const { user, setLoading } = useAuth();
-  const { setLoadingHabits } = useHabits();
+  const { habits, setLoadingHabits } = useHabits();
 
   const [chosenEmoji, setChosenEmoji] = useState("🎯");
   const pageRef = useRef<HTMLElement>()
@@ -180,7 +180,8 @@ const New: React.FC = () => {
           style={{ alignItems: "center" }}
         >
           <div className="page-wrapper-content ">
-            <ColumnContainer style={{ marginTop: "4em" }}>
+              {habits?.length < 4 ? 
+            (<ColumnContainer style={{ marginTop: "4em" }}>
 
 
 
@@ -248,7 +249,12 @@ const New: React.FC = () => {
                   Create habit
                 </LargeButton>
               </IonButton>
-            </ColumnContainer>
+            </ColumnContainer>)
+            :
+            (<ColumnContainer style={{textAlign: "center"}}>
+              You have reached the 4 habits limit. Remove one habit before adding new ones
+            </ColumnContainer>)
+              }
           </div>
         </div>
       </IonContent >
@@ -271,42 +277,13 @@ const HelpCard: React.FC<{
       <div className="page-wrapper-content" style={{ textAlign: "center" }}>
         <Heading5>A well defined habit should be</Heading5>
         <IonCard style={{ margin: "0.5em 0", padding: "4px 8px" }}>
-          <RowContainer style={{justifyContent: "space-between"}}>
-
             <Heading6>📝 Specific</Heading6>
-            <ColumnContainer style={{ paddingLeft: "4px 8px" }}>
-              <IonChip color="danger">
-                <IonIcon icon={thumbsDownOutline} />
-                <IonLabel>Wake up early</IonLabel>
-              </IonChip>
-              <IonChip color="success">
-                <IonIcon icon={thumbsUpOutline} />
-                <IonLabel>Wake up at 6AM</IonLabel>
-              </IonChip>
-            </ColumnContainer>
-          </RowContainer>
         </IonCard>
         <IonCard style={{ margin: "0.5em 0", padding: "4px 8px" }}>
-          <RowContainer style={{justifyContent: "space-between"}}>
             <Heading6>📏 Measurable</Heading6>
-            <ColumnContainer style={{ paddingLeft: "4px 8px" }}>
-              <IonChip color="danger">
-                <IonIcon icon={thumbsDownOutline} />
-                <IonLabel>Run</IonLabel>
-              </IonChip>
-              <IonChip color="success">
-                <IonIcon icon={thumbsUpOutline} />
-                <IonLabel>Run 3 miles</IonLabel>
-              </IonChip>
-            </ColumnContainer>
-          </RowContainer>
         </IonCard>
         <IonCard style={{ margin: "0.5em 0", padding: "4px 8px" }}>
           <Heading6>🎯 Achievable</Heading6>
-
-          {/* <MediumParagraph>
-            There is nothing wrong in setting achievable goals from the start
-          </MediumParagraph> */}
         </IonCard>
 
         <IonCard style={{ margin: "0.5em 0", padding: "4px" }}>
@@ -318,12 +295,13 @@ const HelpCard: React.FC<{
 
         </IonCard>
         <IonButton
-          fill="clear"
+          fill="outline"
           color="dark"
           onClick={() => handleHelpDismiss()}
           style={{ margin: "auto", width: "100%" }}
         >
           <IonIcon style={{ fontSize: "2rem" }} icon={closeCircle}></IonIcon>
+          Close
         </IonButton>
       </div>
     </div>
