@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { IonButton, IonButtons, IonContent, IonHeader, IonModal, IonPage, IonRouterLink, IonSlide, IonSlides, IonToolbar, useIonRouter } from '@ionic/react'
 import { Heading4, Heading5, LargeParagraph, LargeButton, MediumParagraph, RowContainer, Heading3, SmallParagraph } from '../../theme/globalStyles';
-import {Button} from '../../components/Buttons/Button';
+import { Button } from '../../components/Buttons/Button';
 import "./Onboarding.css";
 import outilAnimation from "./lottieFiles/newhabits.json"
 import calendarAnimation from "./lottieFiles/calendar.json"
@@ -17,6 +17,7 @@ import dailyHabitsMockup from "./Images/dailyHabits.png"
 
 
 import { useDarkMode } from '../../Contexts/DarkModeContext';
+import OnboardingSlide, { IOnboardingSlide } from './OnboardingSlide';
 
 const newhabitsOptions = { loop: true, animationData: outilAnimation, autoplay: true }
 const calendarOptions = { loop: true, animationData: calendarAnimation, autoplay: true }
@@ -24,7 +25,7 @@ const stairsOptions = { loop: true, animationData: stairsAnimation, autoplay: tr
 
 const Onboarding: React.FC = () => {
     const [currentIndex, currentIndexSet] = useState(0)
-    const onboardingSlides = useRef<HTMLIonSlidesElement>(null);
+    const onboardingSlidesRef = useRef<HTMLIonSlidesElement>(null);
     const { darkMode } = useDarkMode();
 
     // const themedImageFilter = darkMode ? "contrast(0) brightness(4.5)" : "contrast(1) brightness(0)";
@@ -33,13 +34,13 @@ const Onboarding: React.FC = () => {
     const router = useIonRouter();
 
     const handleSwipeNext = async () => {
-        const swiper = await onboardingSlides.current!.getSwiper()
+        const swiper = await onboardingSlidesRef.current!.getSwiper()
         swiper.slideNext()
         // console.log("Link to next page")
     }
 
     const handleSwipeFinal = async () => {
-        const swiper = await onboardingSlides.current!.getSwiper()
+        const swiper = await onboardingSlidesRef.current!.getSwiper()
         swiper.slideTo(2)
         // console.log("Link to next page")
     }
@@ -59,6 +60,26 @@ const Onboarding: React.FC = () => {
         speed: 400,
     };
     const [tutorialModal, setTutorialModal] = useState(true);
+    const onboardingContentSlides: IOnboardingSlide[] = [
+        {
+            title: "Add good habits for achieving your goals",
+            imagePath: newHabitMockup,
+            handleSwipeFinal,
+            handleSwipeNext
+        },
+        {
+            title: "Track your progress, one day at a time",
+            imagePath: dailyHabitsMockup,
+            handleSwipeFinal,
+            handleSwipeNext
+        },
+        {
+            title: "Visualize your growth and maintain streaks",
+            imagePath: monthGraphMockup,
+            handleSwipeFinal,
+            handleSwipeNext
+        },
+    ]
     return (
         <IonPage>
 
@@ -66,8 +87,19 @@ const Onboarding: React.FC = () => {
                 <div className="page-wrapper" style={{ alignItems: 'center', minHeight: '100vh' }}>
                     <div className="page-wrapper-content" >
 
-                        <IonSlides ref={onboardingSlides} style={{ width: "100%", "--bullet-background": "var(--ion-color-dark)" }} mode="ios" pager={false} options={slideOpts} onIonSlideDidChange={(e) => handleSlideChange(e)}>
-                            <IonSlide style={{ display: "flex", flexDirection: "column" }} >
+                        <IonSlides ref={onboardingSlidesRef} style={{ width: "100%", "--bullet-background": "var(--ion-color-dark)" }} mode="ios" pager={false} options={slideOpts} onIonSlideDidChange={(e) => handleSlideChange(e)}>
+                            {onboardingContentSlides.map((onboardingContentSlide, index) => (
+                                <OnboardingSlide
+                                    key={`onboardingSlide${index}`}
+                                    imagePath={onboardingContentSlide.imagePath}
+                                    title={onboardingContentSlide.title}
+                                    handleSwipeNext={handleSwipeNext}
+                                    handleSwipeFinal={handleSwipeFinal} 
+                                    lastSlide={index+1 === onboardingContentSlides?.length}
+                                    />
+                                    )
+                            )}
+                            {/* <IonSlide style={{ display: "flex", flexDirection: "column" }} >
 
                                 <div className="ion-padding-horizontal">
                                     <Heading4 style={{ color: "var(--ion-color-dark)", padding: "1em 0", margin: "auto" }}>
@@ -171,7 +203,7 @@ const Onboarding: React.FC = () => {
                                         {"Log in"}
                                     </IonRouterLink>
                                 </MediumParagraph>
-                            </IonSlide>
+                            </IonSlide> */}
 
                         </IonSlides>
 

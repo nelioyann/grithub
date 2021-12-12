@@ -2,7 +2,7 @@ import { IonCard } from '@ionic/react';
 import React from 'react'
 import { Bar, Line } from 'react-chartjs-2';
 import { IHabit, useHabits } from '../../Contexts/habitsProvider';
-import { Heading5 } from '../../theme/globalStyles';
+import { Heading5, LargeParagraph, MediumParagraph } from '../../theme/globalStyles';
 import { getDateString, incrementToday } from '../Dates/DatesFunctions';
 
 
@@ -12,12 +12,12 @@ export interface IWeeklyChart {
 
 let getWeeklyValues = (habits: IHabit[], previousWeekMultiplier = 1) => {
     let labels: String[] = [];
+    let achieved = 0;
     let values = Array(7).fill(0).map((_, index) => {
         let increment = (index - 6 * previousWeekMultiplier);
         let dateString = (getDateString(incrementToday(increment)));
         let weekday = (getDateString(incrementToday(increment), "weekDay"));
         labels.push(weekday)
-        let achieved = 0;
         let totalHabits = 0; //habits whose first date are superior to dateString
         {
             habits.forEach((habit) => {
@@ -32,7 +32,7 @@ let getWeeklyValues = (habits: IHabit[], previousWeekMultiplier = 1) => {
         return (achieved * 100 / totalHabits)
     }
     )
-    return { labels, values }
+    return { labels, values, achieved }
 }
 
 const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
@@ -41,7 +41,7 @@ const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
     // let weekTotal = 0;
     
     // console.log()
-    const { labels, values } = getWeeklyValues(habits);
+    const { labels, values, achieved } = getWeeklyValues(habits);
     let options = {
         maintainAspectRatio: true,
         scales: {
@@ -103,6 +103,7 @@ const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
                 Last 7 days
             </Heading5>
             <IonCard mode="ios" color="light" style={{ margin: "2em 0", border: "1px solid var(--ion-color-medium-tint)", minHeight: "150px" }}>
+            <LargeParagraph className="ion-margin">Number of times you completed your habits: {achieved} </LargeParagraph>
                 <Bar data={data} options={options} />
             </IonCard>
         </>

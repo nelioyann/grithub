@@ -69,9 +69,9 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
                     <SmallParagraph style={{margin: "0 0 0 8px"}}>
                         {dates?.length === 0 ?
 
-                        (<p>Unstarted</p>)
+                        "Unstarted"
                         :
-                        (<p>{`done ${dates?.length} ${dates?.length > 1 ? "times" : "time"}`}</p>)
+                        (`done ${dates?.length} ${dates?.length > 1 ? "times" : "time"}`)
                     }
                     
                     </SmallParagraph>

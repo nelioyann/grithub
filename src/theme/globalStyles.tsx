@@ -29,6 +29,7 @@ export const MediumParagraph = styled(SmallParagraph)`
 export const LargeParagraph = styled(MediumParagraph)`
   font-size: 1rem;
   line-height: 162%;
+  font-weight: initial;
 `;
 export const MediumButton = styled(MediumParagraph)`
   font-size: 1rem;

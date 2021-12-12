@@ -259,7 +259,7 @@ const Tab1: React.FC = () => {
               </IonCard> */}
               </div>
               }
-            {loading === false && !user?.email && (
+            {/* {loading === false && !user?.email && (
               <IonCard  style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
                 <Heading6
 
@@ -270,7 +270,7 @@ const Tab1: React.FC = () => {
                   Create your Grithub account to enjoy personalized content and realtime syncing across all of your devices.
                 </SmallParagraph>
               </IonCard>
-            )}
+            )} */}
 
             {!loadingHabits && (
               habits.length === 0 ? (

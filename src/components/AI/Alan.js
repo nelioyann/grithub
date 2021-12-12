@@ -13,11 +13,13 @@ import {
   todayDate,
 } from "../Dates/DatesFunctions";
 import { getWeeklyValues } from "../Charts/WeeklyChart";
+import { useAuth } from "../../Contexts/authProvider";
 
 const Alan = () => {
   const { habits, loadingHabits } = useHabits();
   const { handleDarkMode, darkMode } = useDarkMode();
   const { name } = useUsername();
+  const {user} = useAuth();
   console.log("Alan component", habits, loadingHabits, { name });
   // let [count, setCount] = useState(0);
   //   const [alanInstance, setAlanInstance] = useState()
@@ -107,6 +109,7 @@ const Alan = () => {
   };
 
   useEffect(() => {
+    if (user === null && alanInstance.current) alanInstance.current.remove(); //remove Alan when user logged out
     if (habits.length === 0 || name === "") return;
     if (!alanInstance.current) {
       alanInstance.current = alanBtn({
@@ -150,7 +153,7 @@ const Alan = () => {
         },
       });
     }
-  }, [habits, name]);
+  }, [habits, name, user]);
   return <div></div>;
 };
 

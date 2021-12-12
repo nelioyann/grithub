@@ -50,10 +50,10 @@ const Settings: React.FC = () => {
 
   const doLogout = async () => {
     const result = await logout();
-    // console.log(result)
+    console.log(result)
     // history.replace("/onboarding")
     // console.log(router.routeInfo)
-    // router.push('/onboarding', "forward", "replace")
+    router.push('/onboarding', "forward")
   };
 
   return (
