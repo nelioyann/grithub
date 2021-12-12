@@ -15,6 +15,7 @@ let getWeeklyValues = (habits: IHabit[], previousWeekMultiplier = 1) => {
     let achieved = 0;
     let values = Array(7).fill(0).map((_, index) => {
         let increment = (index - 6 * previousWeekMultiplier);
+        let achievedToday = 0;
         let dateString = (getDateString(incrementToday(increment)));
         let weekday = (getDateString(incrementToday(increment), "weekDay"));
         labels.push(weekday)
@@ -22,14 +23,14 @@ let getWeeklyValues = (habits: IHabit[], previousWeekMultiplier = 1) => {
         {
             habits.forEach((habit) => {
                 if (!habit.dates) return
-                if (habit.dates.includes(dateString)) achieved += 1;
+                if (habit.dates.includes(dateString)) achievedToday += 1;
                 if (parseInt(habit.dates[0]) <= parseInt(dateString)) totalHabits += 1
             })
         }
         // if empty chnage the value to get empty bars
-        // weekTotal += achieved;
+        achieved += achievedToday;
         totalHabits = totalHabits === 0 ? 1 : totalHabits;
-        return (achieved * 100 / totalHabits)
+        return (achievedToday * 100 / totalHabits)
     }
     )
     return { labels, values, achieved }
@@ -53,7 +54,7 @@ const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
                 }
             },
             yAxes: {
-                max: 100,
+                max: 110,
                 title: {
                     display: false,
                     text: "%"
