@@ -6,7 +6,7 @@ import Header from '../../components/Headers/Header';
 import { toast } from '../../components/Toasts/Toast';
 import { provider, useAuth } from '../../Contexts/authProvider';
 import { firebaseAuth } from "../../initFirebase"
-import { Heading3, Heading4, Heading5, LargeButton, MediumButton, MediumParagraph, RowContainer } from '../../theme/globalStyles';
+import { ColumnContainer, Heading3, Heading4, Heading5, LargeButton, LargeParagraph, MediumButton, MediumParagraph, RowContainer } from '../../theme/globalStyles';
 import "./Auth.css";
 
 
@@ -73,13 +73,13 @@ const LoginPage: React.FC = () => {
     })
     return (
         <IonPage ref={pageRef}>
-            <Header name="Log in" />
+            <Header name="Authentification" />
             <IonContent fullscreen>
                 <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center' }}>
 
 
                     <div className="page-wrapper-content ">
-
+                        <ColumnContainer>
                         <IonButton fill="outline" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--border-color": "#4c8bf5", "--color": "#fff", }} className="ion-margin-top" size="large"  expand="block" onClick={googleSignIn}>
                             <IonIcon className="ion-padding-horizontal" icon={logoGoogle} style={{ "color": "#4c8bf5" }} />
                             <MediumButton style={{ textTransform: "initial", "color": "#4c8bf5" }}>
@@ -103,6 +103,16 @@ const LoginPage: React.FC = () => {
                                 Skip login
                             </MediumButton>
                         </IonButton>
+                            </ColumnContainer>
+                            <LargeParagraph style={{margin: "16px", textAlign: "center"}}>
+                            {"By creating an account you agree to our "}
+                <IonRouterLink href="https://grithub.fr/privacy">
+                    Privacy Policy
+                </IonRouterLink> {"and "}
+                <IonRouterLink href="https://grithub.fr/terms">
+                    Terms of use
+                </IonRouterLink>
+                            </LargeParagraph>
                         {/* <Heading4 style={{ textAlign: 'center', margin: "1em auto" }}>OR </Heading4> */}
                         
 
