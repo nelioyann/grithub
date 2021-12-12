@@ -102,8 +102,8 @@ const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
             <Heading5 style={{ maxWidth: "30em", margin: "1em auto", textAlign: "center", color: "var(--ion-color-primary)" }}>
                 Last 7 days
             </Heading5>
-            <IonCard mode="ios" color="light" style={{ margin: "2em 0", border: "1px solid var(--ion-color-medium-tint)", minHeight: "150px" }}>
             <LargeParagraph className="ion-margin">Number of times you completed your habits: {achieved} </LargeParagraph>
+            <IonCard mode="ios" color="light" style={{ margin: "2em 0", border: "1px solid var(--ion-color-medium-tint)", minHeight: "150px" }}>
                 <Bar data={data} options={options} />
             </IonCard>
         </>
