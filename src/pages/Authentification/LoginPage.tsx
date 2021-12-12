@@ -80,10 +80,10 @@ const LoginPage: React.FC = () => {
 
                     <div className="page-wrapper-content ">
 
-                        <IonButton fill="outline" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--border-color": "#4c8bf5", "--color": "#fff", }} className="ion-margin-top" size="large" expand="block" onClick={googleSignIn}>
+                        <IonButton fill="outline" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--border-color": "#4c8bf5", "--color": "#fff", }} className="ion-margin-top" size="large"  expand="block" onClick={googleSignIn}>
                             <IonIcon className="ion-padding-horizontal" icon={logoGoogle} style={{ "color": "#4c8bf5" }} />
                             <MediumButton style={{ textTransform: "initial", "color": "#4c8bf5" }}>
-                                Sign in with Google
+                                Continue with Google
                             </MediumButton>
                         </IonButton>
                         <IonButton onClick={() => presentEmailLogin({
@@ -93,7 +93,7 @@ const LoginPage: React.FC = () => {
                         })} color="primary" fill="solid" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--color": "#fff", }} className="ion-margin-top" size="large" expand="block" >
                             <IonIcon className="ion-padding-horizontal" icon={mail} style={{ "color": "#fff" }} />
                             <MediumButton style={{ textTransform: "initial", "color": "#fff" }}>
-                                Log in with email
+                            Continue with email
                             </MediumButton>
                         </IonButton>
                         <IonButton style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" onClick={anonSignIn} fill="outline">
