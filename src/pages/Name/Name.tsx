@@ -38,7 +38,7 @@ const Name: React.FC = () => {
                         <IonBackButton color="dark" text="" defaultHref="/settings" />
                     </IonButtons>
                     <IonTitle slot="">
-                        <Heading4 style={{ color: "var(--ion-color-primary)", textAlign: "center" }}>Username</Heading4>
+                        <Heading4 style={{ color: "var(--ion-color-primary)", margin: "auto", textAlign: "center" }}>Username</Heading4>
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>

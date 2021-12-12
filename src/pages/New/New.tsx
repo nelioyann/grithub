@@ -157,7 +157,7 @@ const New: React.FC = () => {
           </IonButtons>
           <IonTitle slot="">
             <Heading4
-              style={{ color: "var(--ion-color-dark)", textAlign: "center" }}
+              style={{ color: "var(--ion-color-dark)", textAlign: "center", margin: "auto" }}
             >
               New habit
             </Heading4>

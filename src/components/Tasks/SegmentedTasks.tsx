@@ -67,7 +67,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                         </IonLabel>
                     </IonSegmentButton>
                     <IonSegmentButton value="1">
-                    <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                        <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
                             <IonBadge mode="ios" color="danger">
                                 {incompletedHabits?.length || 0}
                             </IonBadge>
@@ -75,7 +75,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                         </IonLabel>
                     </IonSegmentButton>
                     <IonSegmentButton value="2">
-                    <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                        <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
                             <IonBadge mode="ios" color="success">
                                 {completedHabits?.length || 0}
                             </IonBadge>
@@ -92,68 +92,74 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     className="ion-margin-vertical"
                 >
                     <IonSlide >
-                        <div className="segmentedTasksGrid ion-no-border" >
-                            {!loadingHabits && (
-                                habits.length > 0 ?
-                                    (habits.map((habit, index) => (
-                                        <TaskItem confetti={true} id={habit.id} key={`habits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
-                                    )))
-                                    :
-                                    (
-                                        <ColumnContainer>
-                                            <Heading6>
+                        {!loadingHabits && (
+                            habits.length > 0 ?
+                                (
+                                    <div className="segmentedTasksGrid ion-no-border" >
+                                        {habits.map((habit, index) => (
+                                            <TaskItem confetti={true} id={habit.id} key={`habits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                        ))}
 
-                                                No habits
-                                            </Heading6>
-                                            <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
-                                        </ColumnContainer>
+                                    </div>
+                                )
+                                :
+                                (
+                                    <ColumnContainer>
+                                        <Heading6>
+                                            No habits
+                                        </Heading6>
+                                        <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
+                                    </ColumnContainer>
 
-                                    )
-                            )}
-                        </div>
+                                )
+                        )}
                     </IonSlide>
                     <IonSlide >
-                        <div className="segmentedTasksGrid ion-no-border" >
-                            {!loadingHabits && (
-                                incompletedHabits.length > 0 ?
-                                    (incompletedHabits.map((habit, index) => (
-                                        <TaskItem id={habit.id} key={`incompletedhabits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
-                                    )))
-                                    :
-                                    (
-                                        <ColumnContainer>
-                                            <Heading6>
+                        {!loadingHabits && (
+                            incompletedHabits.length > 0 ?
+                                (
+                                    <div className="segmentedTasksGrid ion-no-border" >
+                                        {incompletedHabits.map((habit, index) => (
+                                            <TaskItem id={habit.id} key={`incompletedhabits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                        ))}
 
-                                                Seems like there's nothing left to do today
-                                            </Heading6>
-                                            <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
-                                        </ColumnContainer>
+                                    </div>
+                                )
+                                :
+                                (
+                                    <ColumnContainer>
+                                        <Heading6>
+                                            Seems like there's nothing left to do today
+                                        </Heading6>
+                                        <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
+                                    </ColumnContainer>
 
-                                    )
-                            )}
-                        </div>
+                                )
+                        )}
                     </IonSlide>
                     <IonSlide >
-                        <div className="segmentedTasksGrid ion-no-border" >
 
-                            {!loadingHabits && (
-                                completedHabits.length > 0 ?
-                                    (completedHabits.map((habit, index) => (
-                                        <TaskItem  id={habit.id} taskIndex={index} key={`completedhabits${index}`} inView={inView} onClickHandler={() => onClickHandler(habit)} />
-                                    )))
-                                    :
-                                    (
-                                        <ColumnContainer>
-                                            <Heading6>
+                        {!loadingHabits && (
+                            completedHabits.length > 0 ?
+                                (
+                                    <div className="segmentedTasksGrid ion-no-border" >
+                                        {completedHabits.map((habit, index) => (
+                                            <TaskItem id={habit.id} taskIndex={index} key={`completedhabits${index}`} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                        ))}
+                                    </div>
+                                )
+                                :
+                                (
+                                    <ColumnContainer>
+                                        <Heading6>
 
-                                                Seems like you haven't done anything yet today
-                                            </Heading6>
-                                            <Lottie isClickToPauseDisabled={true} options={loadingOptions} height={230} width={300} />
-                                        </ColumnContainer>
+                                            Seems like you haven't done anything yet today
+                                        </Heading6>
+                                        <Lottie isClickToPauseDisabled={true} options={loadingOptions} height={230} width={300} />
+                                    </ColumnContainer>
 
-                                    )
-                            )}
-                        </div>
+                                )
+                        )}
                     </IonSlide>
                 </IonSlides>
             </div>)}

@@ -15,6 +15,7 @@ import {
   IonNote,
   useIonRouter,
   IonButton,
+  IonCard,
 } from "@ionic/react";
 import { bug, moon, person, settingsOutline } from "ionicons/icons";
 import React, { useContext, useEffect, useRef, useState } from "react";
@@ -27,6 +28,7 @@ import {
   Heading2,
   Heading4,
   Heading5,
+  Heading6,
   MediumParagraph,
   SmallParagraph,
 } from "../../theme/globalStyles";
@@ -60,7 +62,7 @@ const Settings: React.FC = () => {
         <IonToolbar color="light">
           <IonTitle >
             <Heading4
-              style={{ color: "var(--ion-color-primary)" }}
+              style={{ color: "var(--ion-color-primary)", margin: "auto", textAlign: "center" }}
             >
               Settings
             </Heading4>
@@ -87,6 +89,17 @@ const Settings: React.FC = () => {
               <div onClick={() => router.push("/name")}>
 
             <UserAvatar username={name} size={70} email={user?.email || ""} />
+            { !user?.email && (
+              <IonCard  style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
+                <Heading6
+                >
+                  You are using the app as a guest
+                </Heading6>
+                <SmallParagraph >
+                  Create your Grithub account to enjoy personalized content and realtime syncing across all of your devices.
+                </SmallParagraph>
+              </IonCard>
+            )}
               </div>
               <IonItem
                 color="light"
