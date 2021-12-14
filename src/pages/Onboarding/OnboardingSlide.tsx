@@ -9,12 +9,12 @@ export interface IOnboardingSlide {
     handleSwipeNext: () => void
     lastSlide?: boolean
 }
-const OnboardingSlide: React.FC<IOnboardingSlide> = ({imagePath, handleSwipeNext, handleSwipeFinal, lastSlide}) => {
+const OnboardingSlide: React.FC<IOnboardingSlide> = ({title, imagePath, handleSwipeNext, handleSwipeFinal, lastSlide}) => {
     return (
         <IonSlide style={{ display: "flex", flexDirection: "column" }} >
             <div className="ion-padding-horizontal">
                 <Heading4 style={{ color: "var(--ion-color-dark)", padding: "1em 0", margin: "auto" }}>
-                    Add good habits for achieving your goals
+                    {title}
                 </Heading4>
                 <div className="ion-padding " style={{ display: "flex", justifyContent: "center" }}>
                     <img style={{ width: "clamp(100px, 100%, 34vh)", pointerEvents: "none" }} src={imagePath} alt="Image of building bricks" />
