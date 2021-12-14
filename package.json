@@ -1,6 +1,6 @@
 {
   "name": "grithub",
-  "version": "0.1.20",
+  "version": "0.1.23",
   "private": true,
   "dependencies": {
     "@alan-ai/alan-sdk-web": "^1.8.28",
