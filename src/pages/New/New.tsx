@@ -90,7 +90,7 @@ const New: React.FC = () => {
   const { user, setLoading } = useAuth();
   const { habits, setLoadingHabits } = useHabits();
 
-  const [chosenEmoji, setChosenEmoji] = useState("🎯");
+  const [chosenEmoji, setChosenEmoji] = useState("");
   const pageRef = useRef<HTMLElement>()
 
   const handleEmojiSelection = (event: any, emojiObject: any) => {
@@ -228,7 +228,7 @@ const New: React.FC = () => {
                 >
                   <MediumButton>
 
-                    Change this emoji : {chosenEmoji}
+                    Add an symbol {chosenEmoji}
                   </MediumButton>
                 </IonButton>
               </div>

@@ -90,17 +90,13 @@ const Tab1: React.FC = () => {
   const [inView, setInView] = useState<boolean>(false);
 
   const handleTaskSelection = (habit: IHabit) => {
-    // console.log(habit.name, "selected")
     setSelectedHabit(habit);
     setShowOptionsModal(true);
-    // console.log("New item selected", habitChecked, selectedHabit);
   };
   const handleTaskEdition = (id: string | undefined) => {
     setShowOptionsModal(false);
     setEditedHabitName(selectedHabit?.name || "")
     setShowEditModal(true)
-    // console.log(habit.name, "selected")
-    // setSelectedHabit(habit);
     console.log("New item selected", id);
   };
 
@@ -296,8 +292,6 @@ const Tab1: React.FC = () => {
                 )
             )
             }
-
-
 
 
             <IonModal

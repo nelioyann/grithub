@@ -5,7 +5,6 @@ import { useDarkMode } from "../../Contexts/DarkModeContext";
 import { useUsername } from "../../Contexts/NameContext";
 import Examples from "./Examples";
 
-
 import { useIonRouter, useIonModal } from "@ionic/react";
 import {
   getDateString,
@@ -14,16 +13,19 @@ import {
 } from "../Dates/DatesFunctions";
 import { getWeeklyValues } from "../Charts/WeeklyChart";
 import { useAuth } from "../../Contexts/authProvider";
+import { firebaseStore, arrayUnion, arrayRemove } from "../../initFirebase";
+
 
 const Alan = () => {
   const { habits, loadingHabits } = useHabits();
   const { handleDarkMode, darkMode } = useDarkMode();
   const { name } = useUsername();
-  const {user} = useAuth();
+  const { user } = useAuth();
   console.log("Alan component", habits, loadingHabits, { name });
   // let [count, setCount] = useState(0);
   //   const [alanInstance, setAlanInstance] = useState()
   const alanInstance = useRef(null);
+  const [habitsUpdatedCounter, sethabitsUpdatedCounter] = useState(0)
   const [showExamples, dismissExamples] = useIonModal(Examples);
   let todayDateString = getDateString(incrementToday(0));
   console.log(todayDateString);
@@ -54,6 +56,46 @@ const Alan = () => {
     alanInstance.current.callProjectApi("greetUser", { name });
   };
 
+
+
+  const updateDB = async (isHabitChecked, id) => {
+    try {
+      if (user === null) return;
+      let ref = await firebaseStore
+        .collection("users")
+        .doc(user.uid)
+        .collection("habits")
+        .doc(id);
+      if (isHabitChecked) {
+      console.log("Removing from array")
+      
+      // If the habit is checked then uncheck it (remove it)
+      ref.update({
+        dates: arrayRemove(todayDateString),
+      });
+    } else {
+        console.log("Adding in array")
+        ref.update({
+          dates: arrayUnion(todayDateString),
+        });
+      }
+      sethabitsUpdatedCounter(habitsUpdatedCounter+1)
+    } catch (error) { 
+      console.log("Alan error in updating habit completion");
+    }
+  }
+  const toggleHabitCompletion = (habitIndex, currenthabits) => {
+    console.log("Cureent Habits", currenthabits)
+    let index = habitIndex - 1;
+    if(!currenthabits[index]) return;
+    console.log("toggle completion from ALan", currenthabits[index]);
+    let {id} = currenthabits[index];
+    let isHabitChecked = currenthabits[index]?.dates?.includes(todayDateString);
+    updateDB(isHabitChecked, id)
+  };
+  useEffect(()=>{
+    console.log("HABITS UPDATED")
+  }, [habits])
   const summarizeHabits = () => {
     let currentWeekValues = getWeeklyValues(habits)?.values,
       previousWeekValues = getWeeklyValues(habits, 2)?.values;
@@ -82,7 +124,6 @@ const Alan = () => {
       swipeToClose: true,
       mode: "ios",
       // cssClass: "task-modal"
-
     });
   };
   const handleHideExamples = () => {
@@ -103,15 +144,19 @@ const Alan = () => {
   };
   const turnDarkMode = (target) => {
     console.log("Received from Alan", target);
-    if (target === darkMode)
+    if (target === darkMode) {
       alanInstance.current.playText("It looks like that is already the case");
+      return
+    }
     handleDarkMode(target);
   };
 
   useEffect(() => {
-    if (user === null && alanInstance.current) alanInstance.current.remove(); //remove Alan when user logged out
-    if (habits.length === 0 || name === "") return;
-    if (!alanInstance.current) {
+    // if (alanInstance.current && habitsUpdatedCounter > 0) alanInstance.current.remove(); //remove Alan when user logged out
+    if (habits.length === 0 || name === "" || user === null ) {alanInstance?.current?.remove(); return};
+    if (true) { // !alanInstance.current
+      alanInstance?.current?.remove()
+      console.log("Redoing the ALAN")
       alanInstance.current = alanBtn({
         key: "25a5adef91d2241ab59513153e5683ec2e956eca572e1d8b807a3e2338fdd0dc/stage",
         right: "2em",
@@ -150,10 +195,13 @@ const Alan = () => {
           if (commandData.command === "hide:examples") {
             handleHideExamples();
           }
+          if (commandData.command === "toggle:completion") {
+            toggleHabitCompletion(commandData.habitIndex, habits);
+          }
         },
       });
     }
-  }, [habits, name, user]);
+  }, [habits, name, user, habitsUpdatedCounter]);
   return <div></div>;
 };
 
