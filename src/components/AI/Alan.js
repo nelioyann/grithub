@@ -97,6 +97,7 @@ const Alan = () => {
     console.log("HABITS UPDATED")
   }, [habits])
   const summarizeHabits = () => {
+    router.push("/tabs/stats", "forward", "push");
     let currentWeekValues = getWeeklyValues(habits)?.values,
       previousWeekValues = getWeeklyValues(habits, 2)?.values;
     console.log({ currentWeekValues });
