@@ -1,5 +1,5 @@
 import { IonChip, IonIcon, IonItem, IonLabel, useIonModal } from '@ionic/react';
-import { calendar, layers, moon, reader } from 'ionicons/icons';
+import { calendar, checkmarkOutline, layers, moon, reader } from 'ionicons/icons';
 import React from 'react'
 import Lottie from "react-lottie";
 import aiAnimation from "./Animations/ai.json"
@@ -36,16 +36,8 @@ const Examples = () => {
 
             <Lottie isClickToPauseDisabled={true} options={aiOptions} height={200} width={300} />
             
-            <IonItem
-                color="medium"
-                lines="none"
-                className="ion-margin"
-                style={{"--border-radius"	: "5px"}}
-              >
-                <IonIcon slot="start" icon={layers}></IonIcon>
-                <IonLabel>Go to first tab</IonLabel>
-              </IonItem>
-            <IonItem
+            
+              <IonItem
                 color="medium"
                 lines="none"
                 className="ion-margin"
@@ -60,8 +52,36 @@ const Examples = () => {
                 className="ion-margin"
                 style={{"--border-radius"	: "5px"}}
               >
+                <IonIcon slot="start" icon={moon}></IonIcon>
+                <IonLabel>Turn on dark mode</IonLabel>
+              </IonItem>
+           
+            <IonItem
+                color="medium"
+                lines="none"
+                className="ion-margin"
+                style={{"--border-radius"	: "5px"}}
+              >
                 <IonIcon slot="start" icon={reader}></IonIcon>
                 <IonLabel>Tell me what are my habits</IonLabel>
+              </IonItem>
+              <IonItem
+                color="medium"
+                lines="none"
+                className="ion-margin"
+                style={{"--border-radius"	: "5px"}}
+              >
+                <IonIcon slot="start" icon={layers}></IonIcon>
+                <IonLabel>Go to first tab</IonLabel>
+              </IonItem>
+              <IonItem
+                color="medium"
+                lines="none"
+                className="ion-margin"
+                style={{"--border-radius"	: "5px"}}
+              >
+                <IonIcon slot="start" icon={checkmarkOutline}></IonIcon>
+                <IonLabel>Check my first habit</IonLabel>
               </IonItem>
             </div>
         </div>
