@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonPage, IonProgressBar, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonPage, IonProgressBar, IonTitle, IonToolbar } from '@ionic/react';
 import { addCircleOutline, settingsOutline } from 'ionicons/icons';
 import { Heading4, LargeParagraph, MediumButton } from '../theme/globalStyles';
 import './Tab2.css';
@@ -16,10 +16,13 @@ const Tab2: React.FC = () => {
 
   return (
     <IonPage >
-      <IonHeader className="ion-padding-vertical" mode="md">
+      <IonHeader className="ion-padding-vertical ion-no-border" mode="ios">
         <IonToolbar color="light">
+        <IonButtons slot="">
+            <IonBackButton color="dark" text="" defaultHref="/tabs/habits" />
+          </IonButtons>
           <IonTitle>
-            <Heading4 style={{ color: "var(--ion-color-primary)" }}>
+            <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center", margin: "auto" }}>
               Statistics
             </Heading4>
           </IonTitle>

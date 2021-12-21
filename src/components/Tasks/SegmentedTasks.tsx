@@ -60,26 +60,26 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     <IonSegmentButton value="0">
 
                         <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                            <IonBadge mode="ios" color="medium">
+                            {/* <IonBadge mode="ios" color="medium">
                                 {habits?.length || 0}
-                            </IonBadge>
+                            </IonBadge> */}
                             <span>All</span>
                         </IonLabel>
                     </IonSegmentButton>
                     <IonSegmentButton value="1">
                         <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                            <IonBadge mode="ios" color="danger">
+                            {/* <IonBadge mode="ios" color="danger">
                                 {incompletedHabits?.length || 0}
-                            </IonBadge>
+                            </IonBadge> */}
                             <span>To do</span>
                         </IonLabel>
                     </IonSegmentButton>
                     <IonSegmentButton value="2">
                         <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                            <IonBadge mode="ios" color="success">
+                            {/* <IonBadge mode="ios" color="success">
                                 {completedHabits?.length || 0}
-                            </IonBadge>
-                            <span>Done</span>
+                            </IonBadge> */}
+                            <span>Completed</span>
                         </IonLabel>
                     </IonSegmentButton>
                 </IonSegment>
