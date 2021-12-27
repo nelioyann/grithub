@@ -50,40 +50,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
             <Heading5 className="ion-margin-vertical">
                 Take a moment to tick off what you achieved today
             </Heading5>
-            <div >
-
-                <IonSegment
-                    value={taskViewSegment}
-                    onIonChange={(e) => handleSegmentChange(e)}
-                    mode="ios"
-                >
-                    <IonSegmentButton value="0">
-
-                        <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                            {/* <IonBadge mode="ios" color="medium">
-                                {habits?.length || 0}
-                            </IonBadge> */}
-                            <span>All</span>
-                        </IonLabel>
-                    </IonSegmentButton>
-                    <IonSegmentButton value="1">
-                        <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                            {/* <IonBadge mode="ios" color="danger">
-                                {incompletedHabits?.length || 0}
-                            </IonBadge> */}
-                            <span>To do</span>
-                        </IonLabel>
-                    </IonSegmentButton>
-                    <IonSegmentButton value="2">
-                        <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                            {/* <IonBadge mode="ios" color="success">
-                                {completedHabits?.length || 0}
-                            </IonBadge> */}
-                            <span>Completed</span>
-                        </IonLabel>
-                    </IonSegmentButton>
-                </IonSegment>
-            </div>
+            
             {!loadingHabits && (<div>
                 <IonSlides
                     onIonSlideDidChange={(e) => handleSlideChange(e)}
@@ -163,6 +130,31 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     </IonSlide>
                 </IonSlides>
             </div>)}
+            <div >
+
+                <IonSegment
+                    value={taskViewSegment}
+                    onIonChange={(e) => handleSegmentChange(e)}
+                    mode="ios"
+                >
+                    <IonSegmentButton value="0">
+
+                        <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                            <span>All</span>
+                        </IonLabel>
+                    </IonSegmentButton>
+                    <IonSegmentButton value="1">
+                        <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                            <span>To do</span>
+                        </IonLabel>
+                    </IonSegmentButton>
+                    <IonSegmentButton value="2">
+                        <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+                            <span>Completed</span>
+                        </IonLabel>
+                    </IonSegmentButton>
+                </IonSegment>
+            </div>
         </div>
     )
 }
