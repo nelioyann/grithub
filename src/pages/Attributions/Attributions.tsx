@@ -11,7 +11,7 @@ const Attributions: React.FC = () => {
                         <IonBackButton color="dark" text="" />
                     </IonButtons>
                     <IonTitle slot="">
-                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center" }}>Attributions</Heading4>
+                        <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center", margin: "auto" }}>Attributions</Heading4>
 
                     </IonTitle>
                 </IonToolbar>

@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -9,14 +9,14 @@ const GlobalStyle = createGlobalStyle`
 `
 export default GlobalStyle;
 
-interface ColoredProps{
-    color?: "primary" | "secondary" | "tertiary" | "medium"| "dark" | "light";
+interface ColoredProps {
+    color?: "primary" | "secondary" | "tertiary" | "medium" | "dark" | "light";
 }
 
 export const SmallParagraph = styled.p<ColoredProps>`
   font-size: 0.75rem;
   line-height: 150%;
-  color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark-shade)` };
+  color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark-shade)`};
   /* --ionicon-stroke-width: 64px; */
   white-space: normal;
   font-weight: var(--font-bold);
@@ -43,11 +43,26 @@ export const LargeButton = styled(MediumButton)`
   line-height: 122%;
 `;
 
-
+export const Heading2 = styled.h2<ColoredProps>`
+    font-weight: var(--font-bold);
+    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
+    font-size: 2.5rem;
+    line-height: 115%;
+    letter-spacing: -1px;
+    white-space: normal;
+`
+export const Heading3 = styled.h3<ColoredProps>`
+    font-weight: var(--font-bold);
+    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
+    font-size: 2rem;
+    line-height: 130%;
+    letter-spacing: -1px;
+    white-space: normal;
+`
 
 export const Heading4 = styled.h4<ColoredProps>`
     font-weight: var(--font-bold);
-    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
+    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
     padding: 0;
     margin: 0;
     /* margin: 2rem 0 1rem; */
@@ -55,38 +70,24 @@ export const Heading4 = styled.h4<ColoredProps>`
     white-space: normal;
     font-size: 1.5rem;
     line-height: 133%;
-` 
+`
 export const Heading5 = styled.h5<ColoredProps>`
-    font-weight: var(--font-bold);
-    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
+    font-weight: var(--font-regular);
+    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
     font-size: 1.25rem;
     line-height: 130%;
     white-space: normal;
-` 
+`
 export const Heading6 = styled.h6<ColoredProps>`
-    font-weight: var(--font-bold);
-    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
+    font-weight: var(--font-regular);
+    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
     font-size: 1rem;
     line-height: 130%;
     white-space: normal;
-` 
-export const Heading3 = styled.h3<ColoredProps>`
-    font-weight: var(--font-bold);
-    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
-    font-size: 2rem;
-    line-height: 130%;
-    letter-spacing: -1px;
-    white-space: normal;
-` 
+`
 
-export const Heading2 = styled.h2<ColoredProps>`
-    font-weight: var(--font-bold);
-    color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)` };
-    font-size: 2.5rem;
-    line-height: 115%;
-    letter-spacing: -1px;
-    white-space: normal;
-` 
+
+
 export const ColumnContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -103,7 +104,7 @@ export const HorizontalScroll = styled.div`
 `
 
 
-interface ModuleProps{
+interface ModuleProps {
     unique?: boolean;
 }
 

@@ -149,7 +149,6 @@ const New: React.FC = () => {
   };
   return (
     <IonPage ref={pageRef}>
-      {/* <Header name="Habits" icon={settingsOutline} iconTarget="/onboarding" /> */}
       <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
         <IonToolbar color="light">
           <IonButtons slot="">

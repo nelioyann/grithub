@@ -42,6 +42,7 @@ import {
   flag,
   pencil,
   settingsOutline,
+  statsChartOutline,
   todayOutline,
   trash,
 } from "ionicons/icons";
@@ -211,12 +212,20 @@ const Tab1: React.FC = () => {
       <IonHeader className="ion-padding-vertical" mode="md">
         <IonToolbar color="light">
           <IonTitle>
-            <Heading4 style={{ color: "var(--ion-color-primary)" }}>Hi, {name}</Heading4>
+            <Heading4 style={{ color: "var(--ion-color-dark)" }}>Hi, {name} 👋</Heading4>
           </IonTitle>
           <IonButtons slot="end">
             <IonButton style={{ "--border-radius": "0.5em" }} routerLink="/new" color="primary" mode="ios" fill="outline">
-              <IonIcon icon={addCircle}></IonIcon>
-              {/* <IonLabel>New</IonLabel> */}
+              <IonIcon icon={add}></IonIcon>
+              <IonLabel>add</IonLabel>
+            </IonButton>
+            <IonButton style={{ "--border-radius": "0.5em" }} routerLink="/tabs/stats" color="primary" mode="ios" fill="outline">
+              <IonIcon icon={statsChartOutline}></IonIcon>
+              {/* <IonLabel>add</IonLabel> */}
+            </IonButton>
+            <IonButton style={{ "--border-radius": "0.5em" }} routerLink="/tabs/settings" color="primary" mode="ios" fill="outline">
+              <IonIcon icon={settingsOutline}></IonIcon>
+              {/* <IonLabel>add</IonLabel> */}
             </IonButton>
             {/* <IonButton fill="clear" color="dark" routerLink="/settings">
               <IonIcon icon={settingsOutline} />
@@ -234,7 +243,7 @@ const Tab1: React.FC = () => {
             className="page-wrapper-content"
             style={{ position: "relative" }}
           >
-            {loadingHabits === false &&
+            {/* {loadingHabits === false &&
               <div style={{ display: "grid", margin: "1em 0"}}>
 
               <IonCard className="ion-margin-vertical"  color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "row", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)", gap: "1em"}}>
@@ -244,29 +253,9 @@ const Tab1: React.FC = () => {
 
                 </MediumParagraph>
               </IonCard>
-              {/* <IonCard className="ion-margin-vertical" mode="ios" color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "column", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)" }}>
-                <IonIcon icon={checkboxOutline} style={{ fontSize: "2em", color: "var(--ion-color-dark-tint)" }} />
-                <MediumParagraph>
-                  {habits.filter(habit => habit.dates.includes(todayDateString)).length}
-                  /
-                  {habits.length}
-                  {" completed"}
-                </MediumParagraph>
-              </IonCard> */}
               </div>
-              }
-            {/* {loading === false && !user?.email && (
-              <IonCard  style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
-                <Heading6
-
-                >
-                  You are using the app as a guest
-                </Heading6>
-                <SmallParagraph >
-                  Create your Grithub account to enjoy personalized content and realtime syncing across all of your devices.
-                </SmallParagraph>
-              </IonCard>
-            )} */}
+              } */}
+            
 
             {!loadingHabits && (
               habits.length === 0 ? (
