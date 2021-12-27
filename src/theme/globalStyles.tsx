@@ -1,4 +1,5 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
+import { ButtonProps } from "../components/Buttons/Button";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -22,7 +23,6 @@ export const SmallParagraph = styled.p<ColoredProps>`
   font-weight: var(--font-bold);
 `;
 export const MediumParagraph = styled(SmallParagraph)`
-
   font-size: 0.875rem;
   font-weight: var(--font-semibold);
 `;
@@ -31,6 +31,26 @@ export const LargeParagraph = styled(MediumParagraph)`
   line-height: 162%;
   font-weight: initial;
 `;
+
+export const ButtonText = styled.p<ButtonProps>`
+    ${({ size }) =>
+        size === "default" &&
+        css`
+            font-size: 1rem;
+            font-weight: var(--font-bold);
+            line-height: 18px;
+        `
+    }
+    ${({ size }) =>
+        size === "large" &&
+        css`
+            font-size: 1.125rem;
+            min-width: 150px;
+            font-weight: var(--font-bold);
+            line-height: 122%;
+        `
+    }
+`
 export const MediumButton = styled(MediumParagraph)`
   font-size: 1rem;
   font-weight: var(--font-bold);

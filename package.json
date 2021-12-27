@@ -24,9 +24,9 @@
     "emoji-picker-react": "^3.4.8",
     "firebase": "^8.9.1",
     "ionicons": "^5.4.0",
-    "react": "^17.0.1",
+    "react": "^17.0.2",
     "react-chartjs-2": "^3.3.0",
-    "react-dom": "^17.0.1",
+    "react-dom": "^17.0.2",
     "react-lottie": "^1.2.3",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
@@ -51,12 +51,24 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -74,6 +86,12 @@
   "devDependencies": {
     "@capacitor/cli": "3.1.1",
     "@ionic/lab": "3.2.10",
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/node-logger": "^6.4.9",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.4.9",
     "@types/react-lottie": "^1.2.6",
     "@types/styled-components": "^5.1.11"
   },
