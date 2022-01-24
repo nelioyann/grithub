@@ -267,7 +267,7 @@ const Tab1: React.FC = () => {
                   </div>
 
 
-                  <IonButton mode="ios" routerLink="/new" style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" >
+                  <IonButton mode="ios" routerLink="/new" style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" color="primary">
                     <LargeButton>
                       Add a habit to track
                     </LargeButton>
