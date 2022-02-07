@@ -6,3 +6,4 @@
 An everyday Habit Tracker for achieving your long term goals. Inspired by Simone Giertz Everyday Calendar & the Github commit system.
 
 Current Version: `v0.1.31`
+[![GitHub version](https://badge.fury.io/gh/nelioyann%2Fgrithub.svg)](https://badge.fury.io/gh/nelioyann%2Fgrithub)
