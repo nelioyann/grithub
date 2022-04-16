@@ -92,7 +92,7 @@ export const Heading4 = styled.h4<ColoredProps>`
     line-height: 133%;
 `
 export const Heading5 = styled.h5<ColoredProps>`
-    font-weight: var(--font-regular);
+    font-weight: var(--font-bold);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
     font-size: 1.25rem;
     line-height: 130%;

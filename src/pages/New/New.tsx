@@ -161,7 +161,7 @@ const New: React.FC = () => {
               New habit
             </Heading4>
           </IonTitle>
-          <IonButtons slot="end">
+          {/* <IonButtons slot="end">
             <IonButton onClick={() => presentHelp({
               mode: "ios",
               swipeToClose: true,
@@ -169,7 +169,7 @@ const New: React.FC = () => {
             })} color="dark" fill="clear">
               <IonIcon icon={helpOutline}></IonIcon>
             </IonButton>
-          </IonButtons>
+          </IonButtons> */}
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
