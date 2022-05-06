@@ -130,7 +130,7 @@ const ViewTask: React.FC = () => {
               </IonSlide>
               <IonSlide>
                 {/* <IonCard> */}
-                <Heading5>Yearly View</Heading5>
+                <Heading5>This year</Heading5>
                 <div className="yearGraph">
                   <ul className="months">
                     <li>Jan</li>
@@ -190,7 +190,8 @@ const ViewTask: React.FC = () => {
                           index % 31 === 0
                             ? "31"
                             : (index % 31).toString().padStart(2, "0");
-                        let date = month + day;
+                            let year = today.getFullYear().toString();
+                        let date = month + day + year;
                         if (parseInt(date) >= parseInt(startDate)) startDateReachedYear = true;
                         if (parseInt(date) >= parseInt(getDateString(today))) todayReachedYear = true;
                         return (

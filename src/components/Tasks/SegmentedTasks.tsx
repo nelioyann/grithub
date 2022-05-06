@@ -72,10 +72,10 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                                 :
                                 (
                                     <ColumnContainer>
+                                        <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
                                         <Heading6>
                                             No habits
                                         </Heading6>
-                                        <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
                                     </ColumnContainer>
 
                                 )
@@ -95,16 +95,16 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                                 :
                                 (
                                     <ColumnContainer>
+                                        <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
                                         <Heading6>
                                             Seems like there's nothing left to do today
                                         </Heading6>
-                                        <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
                                     </ColumnContainer>
 
                                 )
                         )}
                     </IonSlide>
-                    <IonSlide >
+                    {/* <IonSlide >
 
                         {!loadingHabits && (
                             completedHabits.length > 0 ?
@@ -127,7 +127,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
 
                                 )
                         )}
-                    </IonSlide>
+                    </IonSlide> */}
                 </IonSlides>
             </div>)}
             <div >
@@ -148,11 +148,11 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                             <span>To do</span>
                         </IonLabel>
                     </IonSegmentButton>
-                    <IonSegmentButton value="2">
+                    {/* <IonSegmentButton value="2">
                         <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
                             <span>Completed</span>
                         </IonLabel>
-                    </IonSegmentButton>
+                    </IonSegmentButton> */}
                 </IonSegment>
             </div>
         </div>

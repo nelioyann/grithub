@@ -35,7 +35,8 @@ const MonthlyGraph: React.FC<IMonthlyGraph> = ({ habit }) => {
                             let day = index % 31 === 0
                                 ? "31"
                                 : (index % 31).toString().padStart(2, "0");
-                            let date = month + day;
+                                let year = getDateString(today, "year");
+                            let date = month + day + year;
                             if (parseInt(date) >= parseInt(startDate)) startDateReachedMonth = true;
                             if (parseInt(date) >= parseInt(getDateString(today))) todayReachedMonth = true;
 
