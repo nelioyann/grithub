@@ -67,6 +67,7 @@ import { firebaseStore, arrayUnion, arrayRemove } from "../initFirebase";
 import WeeklyProgression from "../components/WeeklyProgression/WeeklyProgression";
 import MonthlyGraphs from "../components/MonthlyProgression/MonthlyGraphs";
 import SegmentedTasks from "../components/Tasks/SegmentedTasks";
+import Alan from "../components/AI/Alan";
 
 const Tab1: React.FC = () => {
 
@@ -234,7 +235,7 @@ const Tab1: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-      {/* {habits.length > 0 && name && <Alan/>} */}
+      {habits.length > 0 && name && <Alan/>}
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center" }}
