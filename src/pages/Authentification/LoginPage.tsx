@@ -2,6 +2,7 @@ import { IonHeader, useIonRouter, IonToolbar, IonTitle, IonContent, IonItem, Ion
 import { helpOutline, logoGoogle, logoGooglePlaystore, mail, mailOutline, walk } from 'ionicons/icons';
 import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router';
+import Content from '../../components/Content/Content';
 import Header from '../../components/Headers/Header';
 import { toast } from '../../components/Toasts/Toast';
 import { provider, useAuth } from '../../Contexts/authProvider';
@@ -74,7 +75,7 @@ const LoginPage: React.FC = () => {
     return (
         <IonPage ref={pageRef}>
             <Header name="Authentification" />
-            <IonContent fullscreen>
+            <Content>
                 <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center' }}>
 
 
@@ -118,7 +119,7 @@ const LoginPage: React.FC = () => {
 
                     </div>
                 </div>
-            </IonContent>
+            </Content>
         </IonPage>
     )
 }

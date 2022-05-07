@@ -68,6 +68,7 @@ import WeeklyProgression from "../components/WeeklyProgression/WeeklyProgression
 import MonthlyGraphs from "../components/MonthlyProgression/MonthlyGraphs";
 import SegmentedTasks from "../components/Tasks/SegmentedTasks";
 import Alan from "../components/AI/Alan";
+import Content from "../components/Content/Content";
 
 const Tab1: React.FC = () => {
 
@@ -234,7 +235,7 @@ const Tab1: React.FC = () => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <Content>
       {habits.length > 0 && name && <Alan/>}
         <div
           className="page-wrapper ion-padding-horizontal"
@@ -398,7 +399,7 @@ const Tab1: React.FC = () => {
             </IonModal>
           </div>
         </div>
-      </IonContent>
+      </Content>
     </IonPage>
   );
 };

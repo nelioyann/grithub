@@ -7,6 +7,7 @@ import { getDateString, incrementToday } from '../components/Dates/DatesFunction
 import WeeklyProgression from '../components/WeeklyProgression/WeeklyProgression';
 import MonthlyGraphs from '../components/MonthlyProgression/MonthlyGraphs';
 import {WeeklyChart} from '../components/Charts/WeeklyChart';
+import Content from '../components/Content/Content';
 
 const Tab2: React.FC = () => {
   const { habits, loadingHabits } = useHabits();
@@ -33,7 +34,7 @@ const Tab2: React.FC = () => {
             </IonButtons> */}
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen >
+      <Content>
         <div className="page-wrapper ion-padding-horizontal">
 
           <div className="page-wrapper-content ">
@@ -65,7 +66,7 @@ const Tab2: React.FC = () => {
             }
           </div>
         </div>
-      </IonContent>
+      </Content>
     </IonPage>
   );
 };

@@ -6,6 +6,7 @@ import Avatar from "boring-avatars";
 import { firebaseStore } from '../../initFirebase';
 import { useAuth } from '../../Contexts/authProvider';
 import UserAvatar from '../../components/Avatar/Avatar';
+import Content from '../../components/Content/Content';
 
 
 
@@ -42,7 +43,7 @@ const Name: React.FC = () => {
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent fullscreen >
+            <Content>
 
                 <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center' }}>
 
@@ -71,7 +72,7 @@ const Name: React.FC = () => {
                         </ColumnContainer>
                     </div>
                 </div>
-            </IonContent>
+            </Content>
         </IonPage>
     )
 }

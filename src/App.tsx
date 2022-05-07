@@ -86,9 +86,9 @@ const App: React.FC = () => {
                 </Route>
                 {/* Important to keep these inlines for privating routes */}
 
-                {/* <Route path="/tabs" component={Tabs} /> */}
+                <Route path="/tabs" component={Tabs} />
 
-                <PrivateRoute exact path="/tabs/habits" component={Tab1} />
+                {/* <PrivateRoute exact path="/tabs/habits" component={Tab1} />
         <Route exact path="/tabs/stats">
           <Tab2 />
         </Route>
@@ -97,7 +97,7 @@ const App: React.FC = () => {
         </Route>
         <Route exact path="/tabs">
           <Redirect to="/tabs/habits" />
-        </Route>
+        </Route> */}
 
 
                 <Route exact={true} path="/new" component={New} />
@@ -179,7 +179,7 @@ const Tabs: React.FC = () => {
           <Redirect to="/tabs/habits" />
         </Route>
       </IonRouterOutlet>
-      {/* <IonTabBar className="bottom-tab-bar" style={{ backgroundColor: "var(--ion-color-light)", "--background": "var(--ion-color-light)", "--color-selected": "var(--ion-color-primary-shade)", "--color": "var(--ion-color-medium-shade)", height: "70px" }} slot="bottom" >
+      <IonTabBar className="bottom-tab-bar"  slot="bottom" >
         <IonTabButton layout="icon-start" tab="tab1" href="/tabs/habits">
           <IonIcon icon={calendarOutline} />
           <IonLabel>Today</IonLabel>
@@ -193,7 +193,7 @@ const Tabs: React.FC = () => {
           <IonLabel>Settings</IonLabel>
         </IonTabButton>
 
-      </IonTabBar> */}
+      </IonTabBar>
     </IonTabs>
   )
 }

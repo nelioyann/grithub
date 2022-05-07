@@ -35,6 +35,7 @@ import {
 import { NameContext } from "../../Contexts/NameContext";
 import { firebaseStore } from "../../initFirebase";
 import UserAvatar from "../../components/Avatar/Avatar";
+import Content from "../../components/Content/Content";
 
 const Settings: React.FC = () => {
   const router = useIonRouter();
@@ -78,7 +79,7 @@ const Settings: React.FC = () => {
           </IonButtons> */}
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <Content>
         {/* <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" /> */}
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content">
@@ -184,7 +185,7 @@ const Settings: React.FC = () => {
             </div>
           </div>
         </div>
-      </IonContent>
+      </Content>
     </IonPage>
   );
 };

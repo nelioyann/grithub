@@ -18,6 +18,7 @@ import dailyHabitsMockup from "./Images/dailyHabits.png"
 
 import { useDarkMode } from '../../Contexts/DarkModeContext';
 import OnboardingSlide, { IOnboardingSlide } from './OnboardingSlide';
+import Content from '../../components/Content/Content';
 
 const newhabitsOptions = { loop: true, animationData: outilAnimation, autoplay: true }
 const calendarOptions = { loop: true, animationData: calendarAnimation, autoplay: true }
@@ -83,7 +84,7 @@ const Onboarding: React.FC = () => {
     return (
         <IonPage>
 
-            <IonContent fullscreen >
+            <Content>
                 <div className="page-wrapper" style={{ alignItems: 'center', minHeight: '100vh' }}>
                     <div className="page-wrapper-content" >
 
@@ -228,7 +229,7 @@ const Onboarding: React.FC = () => {
 
                     </div>
                 </div>
-            </IonContent>
+            </Content>
         </IonPage>
     )
 }

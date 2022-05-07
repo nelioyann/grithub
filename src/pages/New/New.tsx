@@ -39,6 +39,13 @@ import Picker from "emoji-picker-react";
 import "./New.css";
 import { close, closeCircle, helpOutline, thumbsDownOutline, thumbsUpOutline } from "ionicons/icons";
 import { useHabits } from "../../Contexts/habitsProvider";
+import Lottie from "react-lottie";
+import puzzleAnimation from "./puzzle.json";
+import { Button } from "../../components/Buttons/Button";
+import Content from "../../components/Content/Content";
+
+const animationOptions = { loop: true, animationData: puzzleAnimation, autoplay: true }
+
 
 const EmojiPicker: React.FC<{
   onSelected: () => void;
@@ -172,48 +179,67 @@ const New: React.FC = () => {
           </IonButtons> */}
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <Content>
         {/* <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" /> */}
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center" }}
         >
           <div className="page-wrapper-content ">
-              {habits?.length < 4 ? 
-            (<ColumnContainer style={{ marginTop: "4em" }}>
+            {habits?.length < 4 ?
+              (<ColumnContainer style={{ marginTop: "4em" }}>
 
 
 
-              <div className="ion-margin-vertical">
-                <Heading4>Name your habit </Heading4>
+                <div className="ion-margin-vertical">
+                  <Heading4>Name your habit </Heading4>
 
-                <div>
-                  <IonItem style={{ width: "100%", borderRadius: "1em" }}>
-                    <IonLabel position="floating">{chosenEmoji} Everyday, I will...</IonLabel>
-                    <IonInput
-                      
-                      onIonChange={(e: any) => handleChange(e.detail.value)}
-                      value={newHabit}
-                      placeholder="Make my bed"
+                  <div>
+                    <IonItem style={{ width: "100%", borderRadius: "1em" }}>
+                      <IonLabel position="floating">{chosenEmoji} Everyday, I will...</IonLabel>
+                      <IonInput
 
-                    ></IonInput>
-                  </IonItem>
+                        onIonChange={(e: any) => handleChange(e.detail.value)}
+                        value={newHabit}
+                        placeholder="Make my bed"
+
+                      ></IonInput>
+                    </IonItem>
+                  </div>
                 </div>
-              </div>
 
-              <div className="ion-margin-vertical">
-                {/* <Heading4>Pick an emoji </Heading4> */}
+                <div className="ion-margin-vertical">
+                  {/* <Heading4>Pick an emoji </Heading4> */}
+                  <IonButton
+                    mode="ios"
+                    onClick={() =>
+                      presentPicker({
+                        swipeToClose: true,
+                        mode: "ios",
+                        cssClass: "emoji-modal",
+                        presentingElement: pageRef.current
+
+                      })
+                    }
+                    style={{
+                      "--border-radius": "16px",
+                      "--padding-bottom": "16px",
+                      "--padding-top": "16px",
+                    }}
+                    className="ion-margin-top"
+                    size="large"
+                    expand="block"
+                    fill={"outline"}
+                    color="primary"
+                  >
+                    <MediumButton>
+
+                      Add an symbol {chosenEmoji}
+                    </MediumButton>
+                  </IonButton>
+                </div>
                 <IonButton
-                  mode="ios"
-                  onClick={() =>
-                    presentPicker({
-                      swipeToClose: true,
-                      mode: "ios",
-                      cssClass: "emoji-modal",
-                      presentingElement: pageRef.current
-
-                    })
-                  }
+                  onClick={() => handleSubmit(newHabit)}
                   style={{
                     "--border-radius": "16px",
                     "--padding-bottom": "16px",
@@ -222,41 +248,29 @@ const New: React.FC = () => {
                   className="ion-margin-top"
                   size="large"
                   expand="block"
-                  fill={"outline"}
+                  fill="solid"
                   color="primary"
                 >
-                  <MediumButton>
-
-                    Add an symbol {chosenEmoji}
-                  </MediumButton>
+                  <LargeButton style={{ color: "var(--ion-color-light)" }}>
+                    Create habit
+                  </LargeButton>
                 </IonButton>
-              </div>
-              <IonButton
-                onClick={() => handleSubmit(newHabit)}
-                style={{
-                  "--border-radius": "16px",
-                  "--padding-bottom": "16px",
-                  "--padding-top": "16px",
-                }}
-                className="ion-margin-top"
-                size="large"
-                expand="block"
-                fill="solid"
-                color="primary"
-              >
-                <LargeButton style={{ color: "var(--ion-color-light)" }}>
-                  Create habit
-                </LargeButton>
-              </IonButton>
-            </ColumnContainer>)
-            :
-            (<ColumnContainer style={{textAlign: "center"}}>
-              You have reached the 4 habits limit. Remove one habit before adding new ones
-            </ColumnContainer>)
-              }
+              </ColumnContainer>)
+              :
+              (<ColumnContainer style={{ textAlign: "center" }}>
+                <Lottie isClickToPauseDisabled={true} options={animationOptions} height={200} width={300} />
+                <Heading5>
+                  You can only have 4 habits
+                </Heading5>
+                <LargeParagraph>
+                  You can delete some habits to add more
+                </LargeParagraph>
+                <Button label="Show me my habits" routerLink="/tabs/habits" />
+              </ColumnContainer>)
+            }
           </div>
         </div>
-      </IonContent >
+      </Content >
     </IonPage >
   );
 };
@@ -276,10 +290,10 @@ const HelpCard: React.FC<{
       <div className="page-wrapper-content" style={{ textAlign: "center" }}>
         <Heading5>A well defined habit should be</Heading5>
         <IonCard style={{ margin: "0.5em 0", padding: "4px 8px" }}>
-            <Heading6>📝 Specific</Heading6>
+          <Heading6>📝 Specific</Heading6>
         </IonCard>
         <IonCard style={{ margin: "0.5em 0", padding: "4px 8px" }}>
-            <Heading6>📏 Measurable</Heading6>
+          <Heading6>📏 Measurable</Heading6>
         </IonCard>
         <IonCard style={{ margin: "0.5em 0", padding: "4px 8px" }}>
           <Heading6>🎯 Achievable</Heading6>

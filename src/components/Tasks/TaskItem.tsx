@@ -56,7 +56,7 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
 
 
     return (
-        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "animate-fade-down animated" : "animate-fade-down"} onClick={() => onClickHandler({ name, id, dates })} style={{ display: "flex", border: dates.includes(todayDateString) ? "2px solid var(--ion-color-success)" : "2px solid var(--ion-color-medium-tint)", margin: "0", backgroundColor: "transparent",minHeight: "14em", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
+        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "animate-fade animated" : "animate-fade"} onClick={() => onClickHandler({ name, id, dates })} style={{ display: "flex", border: dates.includes(todayDateString) ? "2px solid var(--ion-color-success)" : "2px solid var(--ion-color-medium-tint)", margin: "0", backgroundColor: "transparent",minHeight: "14em", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
             {confetti && dates.includes(todayDateString) &&
 
                 <Lottie style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "100%", height: "initial", zIndex: -1 }} isClickToPauseDisabled={true} options={confettiOptions} />
@@ -71,7 +71,7 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
 
                         "Unstarted"
                         :
-                        (`done ${dates?.length} ${dates?.length > 1 ? "times" : "time"}`)
+                        (`✅ ${dates?.length} ${dates?.length > 1 ? "times" : "time"}`)
                     }
                     
                     </SmallParagraph>

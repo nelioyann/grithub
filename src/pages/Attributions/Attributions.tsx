@@ -1,5 +1,6 @@
 import { IonPage, IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent, IonButton, IonTitle, IonItem } from '@ionic/react'
 import React from 'react'
+import Content from '../../components/Content/Content'
 import { LargeButton, ColumnContainer, MediumParagraph, Heading4 } from '../../theme/globalStyles'
 
 const Attributions: React.FC = () => {
@@ -16,7 +17,7 @@ const Attributions: React.FC = () => {
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent fullscreen >
+            <Content>
 
                 <div className="page-wrapper ion-padding-horizontal" >
 
@@ -38,7 +39,7 @@ const Attributions: React.FC = () => {
                         </IonItem>
                     </div>
                 </div>
-            </IonContent>
+            </Content>
         </IonPage>
     )
 }

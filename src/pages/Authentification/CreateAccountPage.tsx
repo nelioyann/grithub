@@ -2,6 +2,7 @@ import { IonButton, IonCard, IonContent, IonHeader, IonIcon, IonInput, IonItem, 
 import { helpOutline, logoGoogle, walk } from 'ionicons/icons';
 import React, { useContext, useState, useRef, useEffect } from 'react'
 import { useHistory } from 'react-router';
+import Content from '../../components/Content/Content';
 import Header from '../../components/Headers/Header';
 import { toast } from '../../components/Toasts/Toast';
 import { provider, useAuth } from '../../Contexts/authProvider';
@@ -65,7 +66,7 @@ const CreateAccountPage = () => {
   return (
     <IonPage>
       {/* <Header name="" icon={helpOutline} /> */}
-      <IonContent className="ion-padding">
+      <Content>
         <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center' }}>
 
 
@@ -137,7 +138,7 @@ const CreateAccountPage = () => {
             </IonCard>
           </div>
         </div>
-      </IonContent>
+      </Content>
     </IonPage>
   )
 }

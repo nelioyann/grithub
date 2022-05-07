@@ -30,6 +30,7 @@ import {
   RowContainer,
   SmallParagraph,
 } from "../../theme/globalStyles";
+import Content from "../Content/Content";
 import { getDateString, todayDate } from "../Dates/DatesFunctions";
 import Header from "../Headers/Header";
 import MonthlyGraph from "../MonthlyProgression/MonthlyGraph";
@@ -96,7 +97,7 @@ const ViewTask: React.FC = () => {
           
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <Content>
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content ">
 
@@ -218,7 +219,7 @@ const ViewTask: React.FC = () => {
             </IonSlides>
           </div>
         </div>
-      </IonContent>
+      </Content>
     </IonPage>
   );
 };
