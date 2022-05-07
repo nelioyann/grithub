@@ -81,9 +81,9 @@ const LoginPage: React.FC = () => {
 
                     <div className="page-wrapper-content ">
                         <ColumnContainer>
-                        <IonButton fill="outline" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--border-color": "#4c8bf5", "--color": "#fff", }} className="ion-margin-top" size="large"  expand="block" onClick={googleSignIn}>
-                            <IonIcon className="ion-padding-horizontal" icon={logoGoogle} style={{ "color": "#4c8bf5" }} />
-                            <MediumButton style={{ textTransform: "initial", "color": "#4c8bf5" }}>
+                        <IonButton color="primary" fill="outline" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--border-color": "#4c8bf5", "--color": "#fff", }} className="ion-margin-top" size="large"  expand="block" onClick={googleSignIn}>
+                            <IonIcon className="ion-padding-horizontal" icon={logoGoogle}/>
+                            <MediumButton style={{ textTransform: "initial" }}>
                                 Continue with Google
                             </MediumButton>
                         </IonButton>
@@ -91,16 +91,15 @@ const LoginPage: React.FC = () => {
                             mode: "ios",
                             swipeToClose: true,
                             presentingElement: pageRef.current
-                        })} color="primary" fill="solid" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--color": "#fff", }} className="ion-margin-top" size="large" expand="block" >
-                            <IonIcon className="ion-padding-horizontal" icon={mail} style={{ "color": "#fff" }} />
-                            <MediumButton style={{ textTransform: "initial", "color": "#fff" }}>
+                        })} color="primary" mode='ios' fill="outline" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--color": "#fff", }} className="ion-margin-top" size="large" expand="block" >
+                            <IonIcon className="ion-padding-horizontal" icon={mail}  />
+                            <MediumButton >
                             Continue with email
                             </MediumButton>
                         </IonButton>
-                        <IonButton style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" onClick={anonSignIn} fill="outline">
+                        <IonButton fill="solid" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" onClick={anonSignIn} >
                             <IonIcon className="ion-padding-horizontal" icon={walk} />
                             <MediumButton style={{ textTransform: "initial" }}>
-
                                 Skip login
                             </MediumButton>
                         </IonButton>

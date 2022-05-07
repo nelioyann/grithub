@@ -61,9 +61,9 @@ const Settings: React.FC = () => {
     <IonPage>
       <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
         <IonToolbar color="light">
-        {/* <IonButtons slot="">
+        <IonButtons slot="">
             <IonBackButton color="dark" text="" defaultHref="/tabs/habits" />
-          </IonButtons> */}
+          </IonButtons>
           <IonTitle slot="">
             <Heading4
               style={{ color: "var(--ion-color-dark)", margin: "auto", textAlign: "center" }}

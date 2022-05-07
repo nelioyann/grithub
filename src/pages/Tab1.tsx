@@ -220,24 +220,11 @@ const Tab1: React.FC = () => {
   return (
     <IonPage ref={pageRef}>
       <Header name={`Hi, ${name}`} icon={add} iconTarget="/new" />
-      {/* <IonHeader className="ion-padding-vertical" mode="md">
-        <IonToolbar color="light">
-          <IonTitle>
-            <Heading4 style={{ color: "var(--ion-color-dark)" }}> 👋</Heading4>
-          </IonTitle>
-          <IonButtons slot="end">
-            <IonButton style={{ "--border-radius": "0.5em" }} routerLink="/new" color="primary" mode="ios" fill="outline">
-              <IonIcon icon={add}></IonIcon>
-              <IonLabel>add</IonLabel>
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader> */}
       <Content>
-        {habits.length > 0 && name && <Alan />}
+        {/* {habits.length > 0 && name && <Alan />} */}
         <div
           className="page-wrapper ion-padding-horizontal"
-          style={{ alignItems: "center" }}
+          style={{ alignItems: "center", minHeight: "70vh" }}
         >
           <div
             className="page-wrapper-content"

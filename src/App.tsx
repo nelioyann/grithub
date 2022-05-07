@@ -107,7 +107,7 @@ const App: React.FC = () => {
                 <Route path="/login" exact={true}>
                   {isAuth ? <Redirect to="/tabs/habits" /> : <LoginPage />}
                 </Route>
-                {/* <Route exact={true} path="/tabs/settings" component={Settings} /> */}
+                <Route exact={true} path="/settings" component={Settings} />
                 <PrivateRoute exact={true} path="/attributions" component={Attributions} />
 
                 <Route path="/habit/:id" exact={true} component={ViewTask} />
@@ -172,9 +172,9 @@ const Tabs: React.FC = () => {
         <Route exact path="/tabs/stats">
           <Tab2 />
         </Route>
-        <Route exact path="/tabs/settings">
+        {/* <Route exact path="/tabs/settings">
           <Settings />
-        </Route>
+        </Route> */}
         <Route exact path="/tabs">
           <Redirect to="/tabs/habits" />
         </Route>
@@ -188,10 +188,10 @@ const Tabs: React.FC = () => {
           <IonIcon icon={statsChartOutline} />
           <IonLabel>Stats</IonLabel>
         </IonTabButton>
-        <IonTabButton layout="icon-start" tab="tab3" href="/tabs/settings">
+        {/* <IonTabButton layout="icon-start" tab="tab3" href="/tabs/settings">
           <IonIcon icon={settingsOutline} />
           <IonLabel>Settings</IonLabel>
-        </IonTabButton>
+        </IonTabButton> */}
 
       </IonTabBar>
     </IonTabs>

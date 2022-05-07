@@ -1,5 +1,5 @@
-import { IonBackButton, IonButton, IonButtons, IonHeader, IonIcon, IonPage,  IonTitle, IonToolbar } from '@ionic/react';
-import { add } from 'ionicons/icons';
+import { IonBackButton, IonButton, IonButtons, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { add, settings, settingsOutline } from 'ionicons/icons';
 import { Heading4, LargeParagraph, MediumButton } from '../theme/globalStyles';
 import './Tab2.css';
 import { useHabits } from '../Contexts/habitsProvider';
@@ -23,14 +23,17 @@ const Tab2: React.FC = () => {
     <IonPage >
       <IonHeader className="ion-padding-vertical ion-no-border" mode="ios">
         <IonToolbar color="light">
-          {/* <IonButtons slot="">
-            <IonBackButton color="dark" text="" defaultHref="/tabs/habits" />
-          </IonButtons> */}
+          <IonButtons slot="primary" collapse={true}>
+            <IonButton fill="clear" color="dark" routerLink={"/settings"}>
+              <IonIcon icon={settingsOutline} />
+            </IonButton>
+          </IonButtons>
           <IonTitle>
             <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center", margin: "auto" }}>
               Statistics
             </Heading4>
           </IonTitle>
+          
         </IonToolbar>
       </IonHeader>
       <Content>
