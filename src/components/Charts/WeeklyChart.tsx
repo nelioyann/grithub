@@ -80,7 +80,7 @@ const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
                 "rgba(0, 255, 162, 0.2)",
                 "rgba(0, 255, 162, 0.2)",
                 "rgba(0, 255, 162, 0.2)",
-                "rgba(255, 135, 0, 0.2)",
+                "rgba(93,95,239, 0.2)",
             ],
             borderColor: [
                 "rgb(0, 255, 162)",
@@ -89,7 +89,7 @@ const WeeklyChart: React.FC<IWeeklyChart> = ({ habits }) => {
                 "rgb(0, 255, 162)",
                 "rgb(0, 255, 162)",
                 "rgb(0, 255, 162)",
-                "rgb(255, 135, 0)",
+                "rgb(93,95,239)",
             ],
             borderWidth: 1.5,
             fill: true,

@@ -43,9 +43,44 @@ import Lottie from "react-lottie";
 import puzzleAnimation from "./puzzle.json";
 import { Button } from "../../components/Buttons/Button";
 import Content from "../../components/Content/Content";
+import styled from "styled-components";
 
 const animationOptions = { loop: true, animationData: puzzleAnimation, autoplay: true }
 
+const StyledInput = styled(IonInput)`
+    margin-top: 0.3em;
+    --padding-start: 0.90em !important;
+    --padding-end: 0.90em !important;
+    --border-color: var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.8))));
+    --background: var(--ion-color-dark-contrast) !important;
+
+`
+const StyledItem = styled(IonItem)`
+    width: 100%;
+    --background: transparent;
+    --inner-padding-start: 0 !important; 
+    --inner-padding-end: 0 !important;
+    --padding-start: 0 !important;
+    --padding-end: 0 !important;
+    overflow: visible ;
+    /* & IonLabel {
+        line-height: 1 !important;
+    } */
+    ${StyledInput}{
+        border-radius: 8px;
+        border: 2px solid var(--border-color);
+        transition: all 0.3s ;
+    }
+
+
+    &.item-interactive.item-has-focus ${StyledInput}{
+        border: 2px solid var(--highlight-background, var(--ion-color-primary, #3880ff));
+        
+    }
+    &.item-interactive.item-has-focus IonLabel{
+        color: var(--highlight-background);
+    }
+    `
 
 const EmojiPicker: React.FC<{
   onSelected: () => void;
@@ -195,16 +230,18 @@ const New: React.FC = () => {
                   <Heading4>Name your habit </Heading4>
 
                   <div>
-                    <IonItem style={{ width: "100%", borderRadius: "1em" }}>
-                      <IonLabel position="floating">{chosenEmoji} Everyday, I will...</IonLabel>
-                      <IonInput
+                    <StyledItem lines="none">
+                      <IonLabel position="stacked">
+                      {chosenEmoji} Everyday, I will...
+                      </IonLabel>
+                      <StyledInput
 
                         onIonChange={(e: any) => handleChange(e.detail.value)}
                         value={newHabit}
                         placeholder="Make my bed"
 
-                      ></IonInput>
-                    </IonItem>
+                      ></StyledInput>
+                    </StyledItem>
                   </div>
                 </div>
 
@@ -234,7 +271,7 @@ const New: React.FC = () => {
                   >
                     <MediumButton>
 
-                      Add an symbol {chosenEmoji}
+                      Link to a symbol {chosenEmoji ?? "none chosen"}
                     </MediumButton>
                   </IonButton>
                 </div>

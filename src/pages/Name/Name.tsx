@@ -61,7 +61,7 @@ const Name: React.FC = () => {
                             </IonItem>
                             <IonButton onClick={(e) => handleSave(e)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
                                 {/* routerLink="/tabs/habits" */}
-                                <LargeButton style={{ color: "var(--ion-color-light)" }}>
+                                <LargeButton >
 
                                     Save
                                 </LargeButton>

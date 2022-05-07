@@ -69,6 +69,9 @@ import MonthlyGraphs from "../components/MonthlyProgression/MonthlyGraphs";
 import SegmentedTasks from "../components/Tasks/SegmentedTasks";
 import Alan from "../components/AI/Alan";
 import Content from "../components/Content/Content";
+import Lottie from "react-lottie";
+import newAnimation from "../pages/Onboarding/lottieFiles/newhabits.json";
+
 
 const Tab1: React.FC = () => {
 
@@ -79,6 +82,12 @@ const Tab1: React.FC = () => {
   let todayDateString = getDateString(incrementToday(0));
   const pageRef = useRef<HTMLElement>()
 
+  const animationOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: newAnimation,
+
+  }
   const [presentWarning] = useIonAlert();
 
 
@@ -210,33 +219,22 @@ const Tab1: React.FC = () => {
   });
   return (
     <IonPage ref={pageRef}>
-      {/* <Header name="Habits" icon={settingsOutline} iconTarget="/settings" /> */}
-      <IonHeader className="ion-padding-vertical" mode="md">
+      <Header name={`Hi, ${name}`} icon={add} iconTarget="/new" />
+      {/* <IonHeader className="ion-padding-vertical" mode="md">
         <IonToolbar color="light">
           <IonTitle>
-            <Heading4 style={{ color: "var(--ion-color-dark)" }}>Hi, {name} 👋</Heading4>
+            <Heading4 style={{ color: "var(--ion-color-dark)" }}> 👋</Heading4>
           </IonTitle>
           <IonButtons slot="end">
             <IonButton style={{ "--border-radius": "0.5em" }} routerLink="/new" color="primary" mode="ios" fill="outline">
               <IonIcon icon={add}></IonIcon>
               <IonLabel>add</IonLabel>
             </IonButton>
-            <IonButton style={{ "--border-radius": "0.5em" }} routerLink="/tabs/stats" color="primary" mode="ios" fill="outline">
-              <IonIcon icon={statsChartOutline}></IonIcon>
-              {/* <IonLabel>add</IonLabel> */}
-            </IonButton>
-            <IonButton style={{ "--border-radius": "0.5em" }} routerLink="/tabs/settings" color="primary" mode="ios" fill="outline">
-              <IonIcon icon={settingsOutline}></IonIcon>
-              {/* <IonLabel>add</IonLabel> */}
-            </IonButton>
-            {/* <IonButton fill="clear" color="dark" routerLink="/settings">
-              <IonIcon icon={settingsOutline} />
-            </IonButton> */}
           </IonButtons>
         </IonToolbar>
-      </IonHeader>
+      </IonHeader> */}
       <Content>
-      {habits.length > 0 && name && <Alan/>}
+        {habits.length > 0 && name && <Alan />}
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center" }}
@@ -257,22 +255,26 @@ const Tab1: React.FC = () => {
               </IonCard>
               </div>
               } */}
-            
+
 
             {!loadingHabits && (
               habits.length === 0 ? (
-                <ColumnContainer style={{ gap: "1em" }}>
-
+                <ColumnContainer style={{ gap: "1em", alignItems: "center" }}>
+                  <Lottie isClickToPauseDisabled={true} options={animationOptions} height={200} width={300} />
+                  <Heading4>
+                  Start by adding a new habit.
+                  </Heading4>
                   <div>
-                    <span style={{ color: "var(--ion-color-primary)" }}>Grithub </span>
-                    helps you keep track of your habits.
+                    <b>Grithub </b>
+                    helps you keep track of your habits. 
                   </div>
 
 
-                  <IonButton mode="ios" routerLink="/new" style={{ "--background-hover-opacity": "0" }} size="large" expand="block" fill="solid" color="primary">
-                    <LargeButton>
-                      Add a habit to track
-                    </LargeButton>
+                  <IonButton mode="ios" routerLink="/new" style={{ "--background-hover-opacity": "0" }}  fill="solid" color="primary">
+                    <IonIcon icon={addOutline} />
+                    <MediumButton>
+                      Add a habit
+                    </MediumButton>
 
                   </IonButton>
                 </ColumnContainer>
@@ -315,7 +317,7 @@ const Tab1: React.FC = () => {
               onDidDismiss={() => setShowOptionsModal(false)}
               swipeToClose={true}
               mode="ios"
-              // presentingElement={pageRef.current}
+            // presentingElement={pageRef.current}
 
             >
               <div className="ion-padding-horizontal" style={{ width: "100%" }}>
@@ -342,11 +344,11 @@ const Tab1: React.FC = () => {
                   <IonItem
                     button={true}
                     style={{ "--background": "transparent" }}
-                      
+
                     onClick={() => handleTaskCompletion(selectedHabit?.id)}
                   >
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
-                    <IonLabel  className="ion-padding">
+                    <IonLabel className="ion-padding">
                       {selectedHabit?.dates.includes(todayDateString)
                         ? "Uncheck"
                         : "Mark as completed"}

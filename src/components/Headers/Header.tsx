@@ -15,17 +15,17 @@ interface HeaderProps {
 // style={{backgroundColor: "var(--ion-color-light)"}}
 const Header: React.FC<HeaderProps> = ({ name, icon, collapsible, iconTarget }) => {
     return (
-        <IonHeader  collapse={collapsible ? "condense" : undefined} className="ion-padding-vertical ion-no-border">
-            <IonToolbar  color="light"  >
-                
-                    {icon && (
+        <IonHeader collapse={collapsible ? "condense" : undefined} className="ion-no-border" style={{"padding-top": "2em", "padding-bottom": "2em"}}>
+            <IonToolbar color="light"  >
+
+                {icon && (
                     <IonButtons slot="primary" collapse={true}>
-                    <IonButton fill="clear" color="dark" routerLink={iconTarget}>
-                        <IonIcon icon={icon} />
-                    </IonButton>
-</IonButtons>)
+                        <IonButton fill="clear" color="dark" routerLink={iconTarget}>
+                            <IonIcon icon={icon} />
+                        </IonButton>
+                    </IonButtons>)
                 }
-                <IonTitle  size={collapsible ? "large" : undefined}>
+                <IonTitle size={collapsible ? "large" : undefined}>
                     <Heading4 style={{ color: "var(--ion-color-primary)" }}>{name}</Heading4>
                 </IonTitle>
             </IonToolbar>

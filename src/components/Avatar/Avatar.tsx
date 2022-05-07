@@ -10,7 +10,8 @@ export interface IAvatar {
 }
 const UserAvatar: React.FC<IAvatar> = ({ username, size, email }) => {
   return (
-    <IonCard className="ion-padding" color="light" mode="ios" style={{ width: "100%", margin: "1em auto", display: "flex", gap: "1em", justifyContent: "flex-start", borderLeft: "2px solid var(--ion-color-primary)"}}>
+    <IonCard className="ion-padding" color="light" mode="ios" style={{ width: "100%", margin: "1em auto", display: "flex", gap: "1em", justifyContent: "flex-start", borderLeft: "2px solid var(--ion-color-primary)",
+     boxShadow: "0px 0px 0px 1px rgba(var(--ion-color-dark-rgb), 0.21)"}}>
       <ColumnContainer
         style={{
           borderRadius: "50%",

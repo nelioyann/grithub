@@ -61,9 +61,9 @@ const Settings: React.FC = () => {
     <IonPage>
       <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
         <IonToolbar color="light">
-        <IonButtons slot="">
+        {/* <IonButtons slot="">
             <IonBackButton color="dark" text="" defaultHref="/tabs/habits" />
-          </IonButtons>
+          </IonButtons> */}
           <IonTitle slot="">
             <Heading4
               style={{ color: "var(--ion-color-dark)", margin: "auto", textAlign: "center" }}
@@ -93,7 +93,7 @@ const Settings: React.FC = () => {
               <div onClick={() => router.push("/name")}>
 
             <UserAvatar username={name} size={70} email={user?.email || ""} />
-            { !user?.email && (
+            {/* { !user?.email && (
               <IonCard  style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
                 <Heading6
                 >
@@ -103,7 +103,7 @@ const Settings: React.FC = () => {
                   Create your Grithub account to enjoy personalized content and realtime syncing across all of your devices.
                 </SmallParagraph>
               </IonCard>
-            )}
+            )} */}
               </div>
               <IonItem
                 color="light"
@@ -165,7 +165,7 @@ const Settings: React.FC = () => {
                 detail={true}
                 button={true}
                 lines="none"
-                href="https://grithub.fr/"
+                href="https://grithub.fr/terms"
               >
                 {/* <IonIcon slot="start" icon={person}></IonIcon> */}
                 <IonLabel>Terms of Use</IonLabel>

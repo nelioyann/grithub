@@ -47,8 +47,8 @@
   "start_url": "/",
   "Scope": "/",
   "display": "fullscreen",
-  "theme_color": "#FF8700",
-  "background_color": "#FF8700",
+  "theme_color": "#5D5FEF",
+  "background_color": "#5D5FEF",
   "description": "A scientific approach to developing solid habits. Grithub helps you track and monitor your habits so that you never have to worry about remembering which days you did them.",
   "screenshots": [
     {

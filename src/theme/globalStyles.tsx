@@ -17,7 +17,7 @@ interface ColoredProps {
 export const SmallParagraph = styled.p<ColoredProps>`
   font-size: 0.75rem;
   line-height: 150%;
-  color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark-shade)`};
+  color: ${props => props.color ? `var(--ion-color-${props.color}` : `inherit`};
   /* --ionicon-stroke-width: 64px; */
   white-space: normal;
   font-weight: var(--font-bold);
