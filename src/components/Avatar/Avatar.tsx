@@ -7,15 +7,16 @@ export interface IAvatar {
   username: string;
   size: number;
   email?: string;
+  isAButton?: boolean;
 }
-const UserAvatar: React.FC<IAvatar> = ({ username, size, email }) => {
+const UserAvatar: React.FC<IAvatar> = ({ username, size, email, isAButton }) => {
   return (
-    <IonCard className="ion-padding" color="light" mode="ios" style={{ width: "100%", margin: "1em auto", display: "flex", gap: "1em", justifyContent: "flex-start", borderLeft: "2px solid var(--ion-color-primary)",
-     boxShadow: "0px 0px 0px 1px rgba(var(--ion-color-dark-rgb), 0.21)"}}>
-      <ColumnContainer
+    <IonCard routerLink={isAButton ? "/name" : undefined} button={Boolean(isAButton)} className="ion-padding" color="light" mode="ios" style={{ width: "100%", maxWidth: "20em", margin: "1em auto", display: "flex", gap: "1em", justifyContent: "flex-start", borderLeft: "2px solid var(--ion-color-primary)",
+     boxShadow: "0px 0px 0px 1px rgba(var(--ion-color-dark-rgb), 0.21)", flexDirection: "column", alignItems: "center"}}>
+      <div
         style={{
           borderRadius: "50%",
-          margin: "1em 0",
+          margin: "1em auto",
           width: "max-content",
           alignItems: "center",
           overflow: "hidden"
@@ -27,8 +28,8 @@ const UserAvatar: React.FC<IAvatar> = ({ username, size, email }) => {
           variant="beam"
           colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
         />
-      </ColumnContainer>
-      <ColumnContainer style={{justifyContent: "center"}}>
+      </div>
+      <ColumnContainer style={{justifyContent: "center", textAlign: "center"}}>
         <MediumParagraph style={{ marginBottom: "0" }}>
           {username !== "" ? username : "Stranger"}
         </MediumParagraph>

@@ -15,7 +15,7 @@ interface ColoredProps {
 }
 
 export const SmallParagraph = styled.p<ColoredProps>`
-  font-size: 0.75rem;
+  font-size: var(--step--2);
   line-height: 150%;
   color: ${props => props.color ? `var(--ion-color-${props.color}` : `inherit`};
   /* --ionicon-stroke-width: 64px; */
@@ -23,11 +23,11 @@ export const SmallParagraph = styled.p<ColoredProps>`
   font-weight: var(--font-bold);
 `;
 export const MediumParagraph = styled(SmallParagraph)`
-  font-size: 0.875rem;
-  font-weight: var(--font-semibold);
+  font-size: var(--step--1);
+  font-weight: var(--font-regular);
 `;
 export const LargeParagraph = styled(MediumParagraph)`
-  font-size: 1rem;
+  font-size: var(--step-0);
   line-height: 162%;
   font-weight: initial;
 `;
@@ -36,7 +36,7 @@ export const ButtonText = styled.p<ButtonProps>`
     ${({ size }) =>
         size === "default" &&
         css`
-            font-size: 1rem;
+            font-size: var(--step--1);
             font-weight: var(--font-bold);
             line-height: 18px;
         `
@@ -44,7 +44,7 @@ export const ButtonText = styled.p<ButtonProps>`
     ${({ size }) =>
         size === "large" &&
         css`
-            font-size: 1.125rem;
+            font-size: var(--step-0);
             min-width: 150px;
             font-weight: var(--font-bold);
             line-height: 122%;
@@ -52,21 +52,21 @@ export const ButtonText = styled.p<ButtonProps>`
     }
 `
 export const MediumButton = styled(MediumParagraph)`
-  font-size: 1rem;
+  font-size: var(--step--1);
   font-weight: var(--font-bold);
   line-height: 18px;
   `;
 export const LargeButton = styled(MediumButton)`
   font-size: 1.125rem;
   min-width: 150px;
-  font-weight: var(--font-bold);
+  font-weight: var(--step-0);
   line-height: 122%;
 `;
 
 export const Heading2 = styled.h2<ColoredProps>`
     font-weight: var(--font-bold);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
-    font-size: 2.5rem;
+    font-size: var(--step-4);
     line-height: 115%;
     letter-spacing: -1px;
     white-space: normal;
@@ -74,34 +74,34 @@ export const Heading2 = styled.h2<ColoredProps>`
 export const Heading3 = styled.h3<ColoredProps>`
     font-weight: var(--font-bold);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
-    font-size: 2rem;
+    font-size: var(--step-3);
     line-height: 130%;
     letter-spacing: -1px;
     white-space: normal;
 `
 
 export const Heading4 = styled.h4<ColoredProps>`
-    font-weight: var(--font-bold);
+    font-weight: var(--font-regular);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
     padding: 0;
     margin: 0;
     /* margin: 2rem 0 1rem; */
     max-width: 40ch;
     white-space: normal;
-    font-size: 1.5rem;
+    font-size: var(--step-2);
     line-height: 133%;
 `
 export const Heading5 = styled.h5<ColoredProps>`
-    font-weight: var(--font-bold);
+    font-weight: var(--font-regular);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
-    font-size: 1.25rem;
+    font-size: var(--step-1);
     line-height: 130%;
     white-space: normal;
 `
 export const Heading6 = styled.h6<ColoredProps>`
     font-weight: var(--font-regular);
     color: ${props => props.color ? `var(--ion-color-${props.color}` : `var(--ion-color-dark)`};
-    font-size: 1rem;
+    font-size: var(--step-0);
     line-height: 130%;
     white-space: normal;
 `

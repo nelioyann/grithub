@@ -17,7 +17,7 @@ import {
   IonButton,
   IonCard,
 } from "@ionic/react";
-import { bug, moon, person, settingsOutline } from "ionicons/icons";
+import { bug, home, moon, person, settingsOutline } from "ionicons/icons";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router";
 import Header from "../../components/Headers/Header";
@@ -41,13 +41,13 @@ const Settings: React.FC = () => {
   const router = useIonRouter();
   const { user, logout, setLoading } = useAuth();
 
-  const {handleDarkMode, darkMode} = useDarkMode()
+  const { handleDarkMode, darkMode } = useDarkMode()
   // console.log(darkMode)
   // Query for the toggle that is used to change between themes
   const darkToggle = useRef<HTMLIonToggleElement>(null);
   const { name } = useContext(NameContext);
 
-  
+
 
   const doLogout = async () => {
     const result = await logout();
@@ -59,9 +59,9 @@ const Settings: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
+      {/* <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
         <IonToolbar color="light">
-        <IonButtons slot="">
+          <IonButtons slot="">
             <IonBackButton color="dark" text="" defaultHref="/tabs/habits" />
           </IonButtons>
           <IonTitle slot="">
@@ -71,40 +71,25 @@ const Settings: React.FC = () => {
               Settings
             </Heading4>
           </IonTitle>
-          {/* <IonButtons slot="end">
-            <IonButton routerLink="/new" color="primary" mode="ios" fill="outline">
-              <IonIcon icon={createOutline}></IonIcon>
-            </IonButton>
-     
-          </IonButtons> */}
+
         </IonToolbar>
-      </IonHeader>
+      </IonHeader> */}
+        <Header name="Settings" icon={home} iconTarget="/tabs/habits" />
       <Content>
-        {/* <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" /> */}
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content">
-            <div style={{display: "flex", justifyContent: "center"}}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
 
             </div>
             <div className="ion-margin-top">
-              <IonNote style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase"}}>
-                Profile
-              </IonNote>
-              <div onClick={() => router.push("/name")}>
 
-            <UserAvatar username={name} size={70} email={user?.email || ""} />
-            {/* { !user?.email && (
-              <IonCard  style={{ marginLeft: "0", marginRight: "0" }} className="ion-padding ion-margin-vertical" color="medium">
-                <Heading6
-                >
-                  You are using the app as a guest
-                </Heading6>
-                <SmallParagraph >
-                  Create your Grithub account to enjoy personalized content and realtime syncing across all of your devices.
-                </SmallParagraph>
-              </IonCard>
-            )} */}
-              </div>
+              {/* <div style={{ width: "max-content" }} onClick={() => router.push("/name")}> */}
+
+              <UserAvatar isAButton={true} username={name} size={70} email={user?.email || ""} />
+              {/* </div> */}
+              <Heading6 style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase" }}>
+                Profile
+              </Heading6>
               <IonItem
                 color="light"
                 detail={true}
@@ -112,19 +97,10 @@ const Settings: React.FC = () => {
                 routerLink="/name"
                 lines="none"
               >
-                {/* <IonIcon slot="start" icon={person}></IonIcon> */}
-                <IonLabel>Change username</IonLabel>
+                <IonIcon slot="start" icon={person}></IonIcon>
+                <MediumParagraph>Change your username</MediumParagraph>
               </IonItem>
-              <IonItem
-                color="light"
-                detail={true}
-                button={true}
-                lines="none"
-                href="https://yannicknana.fr/#contact"
-              >
-                {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
-                <IonLabel>Report a problem</IonLabel>
-              </IonItem>
+
               <IonItem
                 color="light"
                 detail={true}
@@ -132,18 +108,18 @@ const Settings: React.FC = () => {
                 onClick={doLogout}
                 lines="none"
               >
-                {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
-                <IonLabel>Logout</IonLabel>
+                <IonIcon slot="start" icon={bug}></IonIcon>
+                <MediumParagraph>Logout</MediumParagraph>
               </IonItem>
             </div>
             <div>
-              <IonNote style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase"}}>
+              <Heading6 style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase" }}>
                 Appearance
-              </IonNote>
+              </Heading6>
               <IonItem color="light" lines="none">
-                {/* <IonIcon slot="start" icon={moon}></IonIcon> */}
+                <IonIcon slot="start" icon={moon}></IonIcon>
                 <div>
-                  <IonLabel>Dark Mode</IonLabel>
+                  <MediumParagraph>Dark theme</MediumParagraph>
                   {/* <IonN>Turn on Dark Mode for a great viewing experience and battery saving.</IonN> */}
                 </div>
                 <IonToggle
@@ -156,31 +132,41 @@ const Settings: React.FC = () => {
                 />
               </IonItem>
             </div>
-            <div style={{marginBottom: "4em"}}>
-              <IonNote style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase"}}>
+            <div style={{ marginBottom: "4em" }}>
+              <Heading6 style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase" }}>
                 About
-              </IonNote>
+              </Heading6>
               <IonItem
+                color="light"
+                detail={true}
+                button={true}
+                lines="none"
+                href="https://yannicknana.fr/#contact"
+              >
+                {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
+                <MediumParagraph>Report a problem</MediumParagraph>
+              </IonItem>
+              {/* <IonItem
                 color="light"
                 detail={true}
                 button={true}
                 lines="none"
                 href="https://grithub.fr/terms"
               >
-                {/* <IonIcon slot="start" icon={person}></IonIcon> */}
-                <IonLabel>Terms of Use</IonLabel>
-              </IonItem>
-              <IonItem
+                <IonIcon slot="start" icon={person}></IonIcon>
+                <MediumParagraph>Terms of Use</MediumParagraph>
+              </IonItem> */}
+              {/* <IonItem
                 color="light"
                 routerLink="/attributions"
                 detail={true}
                 button={true}
                 lines="none"
               >
-                <IonLabel>Attributions</IonLabel>
-              </IonItem>
+                <MediumParagraph >Attributions</MediumParagraph>
+              </IonItem> */}
               <IonItem color="light" lines="none" button={true}>
-                <IonLabel>Version: v0.1.39 </IonLabel>
+                <MediumParagraph>Version: v0.1.39 </MediumParagraph>
               </IonItem>
             </div>
           </div>

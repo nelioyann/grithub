@@ -1,7 +1,7 @@
 import React from "react";
 import { IonButton, IonButtons, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/react';
 // import { home } from "ionicons/icons";
-import { Heading3, Heading4 } from "../../theme/globalStyles";
+import { Heading3, Heading4, Heading6 } from "../../theme/globalStyles";
 import { personCircle, search, ellipsisHorizontal, ellipsisVertical } from "ionicons/icons";
 
 interface HeaderProps {
@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ name, icon, collapsible, iconTarget }) 
                     </IonButtons>)
                 }
                 <IonTitle size={collapsible ? "large" : undefined}>
-                    <Heading4 style={{ color: "var(--ion-color-primary)" }}>{name}</Heading4>
+                    <Heading6 style={{ color: "var(--ion-color-primary)" }}>{name}</Heading6>
                 </IonTitle>
             </IonToolbar>
 

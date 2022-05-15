@@ -221,7 +221,6 @@ const Tab1: React.FC = () => {
     <IonPage ref={pageRef}>
       <Header name={`Hi, ${name}`} icon={add} iconTarget="/new" />
       <Content>
-        {/* {habits.length > 0 && name && <Alan />} */}
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center", minHeight: "70vh" }}
@@ -230,18 +229,17 @@ const Tab1: React.FC = () => {
             className="page-wrapper-content"
             style={{ position: "relative" }}
           >
-            {/* {loadingHabits === false &&
-              <div style={{ display: "grid", margin: "1em 0"}}>
+            {loadingHabits === false &&
+              <div style={{ display: "grid", margin: "1em 0" }}>
 
-              <IonCard className="ion-margin-vertical"  color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "row", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)", gap: "1em"}}>
-                <IonIcon  icon={todayOutline} style={{ fontSize: "2em", color: "var(--ion-color-dark-tint)" }} />
-                <MediumParagraph>
-                  Today, {todayDate()}
-
-                </MediumParagraph>
-              </IonCard>
+                <IonCard className="ion-margin-vertical" color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "row", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)", gap: "1em", boxShadow: "0px 0px 0px 1px rgba(var(--ion-color-dark-rgb), 0.21)" }}>
+                  <IonIcon icon={todayOutline} style={{ fontSize: "2em", color: "var(--ion-color-dark-tint)" }} />
+                  <MediumParagraph>
+                    Today, {todayDate()}
+                  </MediumParagraph>
+                </IonCard>
               </div>
-              } */}
+            }
 
 
             {!loadingHabits && (
@@ -249,15 +247,15 @@ const Tab1: React.FC = () => {
                 <ColumnContainer style={{ gap: "1em", alignItems: "center" }}>
                   <Lottie isClickToPauseDisabled={true} options={animationOptions} height={200} width={300} />
                   <Heading4>
-                  Start by adding a new habit.
+                    Start by adding a new habit.
                   </Heading4>
                   <div>
                     <b>Grithub </b>
-                    helps you keep track of your habits. 
+                    helps you keep track of your habits.
                   </div>
 
 
-                  <IonButton mode="ios" routerLink="/new" style={{ "--background-hover-opacity": "0" }}  fill="solid" color="primary">
+                  <IonButton mode="ios" routerLink="/new" style={{ "--background-hover-opacity": "0" }} fill="solid" color="primary">
                     <IonIcon icon={addOutline} />
                     <MediumButton>
                       Add a habit

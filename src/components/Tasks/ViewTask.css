@@ -109,7 +109,6 @@
 .squares li {
     display: grid;
     place-items: center;
-    /* background-color: var(--ion-color-medium); */
     border-radius: 0.3em;
 }
 
@@ -124,11 +123,12 @@
 
 .squares li.uncompleted[data-level="tracked"] {
     border: 1px solid var(--ion-color-tertiary);
+    /* background-color: rgba(var(--ion-color-dark-rgb), 0.8); */
+
+
 
 }
 .squares li.uncompleted[data-level="untracked"] {
-    /* background-color: var(--ion-color-medium); */
-    background-color: transparent;
     color: var(--ion-color-dark);
     border: none;
 }

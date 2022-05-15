@@ -12,10 +12,17 @@ import "./WeeklyCalendar.css"
 // import { updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import Lottie from "react-lottie";
 import confettiAnimation from "./Animations/confetti.json"
+import styled from 'styled-components'
 
 
 const confettiOptions = { loop: true, animationData: confettiAnimation, autoplay: true }
 
+const StyledTaskCard = styled(IonCard)`
+
+    &:nth-child(odd){
+        min-height:  18em;
+    }
+`
 
 export interface IClickableHabit {
     id: string,
@@ -56,7 +63,7 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
 
 
     return (
-        <IonCard ref={elTask} mode="ios" button={true} className={inView ? "animate-fade animated" : "animate-fade"} onClick={() => onClickHandler({ name, id, dates })} style={{ display: "flex", border: dates.includes(todayDateString) ? "2px solid var(--ion-color-success)" : "2px solid var(--ion-color-medium-tint)", margin: "0", backgroundColor: "transparent",minHeight: "14em", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
+        <StyledTaskCard ref={elTask} mode="ios" button={true} className={inView ? "animate-fade animated" : "animate-fade"} onClick={() => onClickHandler({ name, id, dates })} style={{ display: "flex", border: dates.includes(todayDateString) ? "2px solid var(--ion-color-success)" : "2px solid var(--ion-color-medium-tint)", margin: "0", backgroundColor: "transparent",minHeight: "15em", animationDelay: delay, position: "relative", boxShadow: dates.includes(todayDateString) && "none" }}  >
             {confetti && dates.includes(todayDateString) &&
 
                 <Lottie style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "100%", height: "initial", zIndex: -1 }} isClickToPauseDisabled={true} options={confettiOptions} />
@@ -68,7 +75,6 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
                     {/* <IonIcon color="dark" icon={repeat}></IonIcon> */}
                     <SmallParagraph style={{margin: "0 0 0 8px"}}>
                         {dates?.length === 0 ?
-
                         "Unstarted"
                         :
                         (`✅ ${dates?.length} ${dates?.length > 1 ? "times" : "time"}`)
@@ -78,7 +84,7 @@ const TaskItem: React.FC<IClickableHabit> = ({ id, onClickHandler, taskIndex, in
                 </IonNote>
             </ColumnContainer>
 
-        </IonCard>
+        </StyledTaskCard>
     )
 }
 

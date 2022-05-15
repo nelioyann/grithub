@@ -20,7 +20,6 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
     let todayDateString = getDateString(incrementToday(0));
 
     const { habits, loadingHabits } = useHabits();
-    const completedHabits = habits.filter(habit => habit.dates.includes(todayDateString))
     const incompletedHabits = habits.filter(habit => !habit.dates.includes(todayDateString))
 
     // a ref variable to handle the current slider
@@ -58,21 +57,15 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     mode="ios"
                 >
                     <IonSegmentButton value="0">
-
-                        <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                            <span>All</span>
-                        </IonLabel>
-                    </IonSegmentButton>
-                    <IonSegmentButton value="1">
                         <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
                             <span>To do</span>
                         </IonLabel>
                     </IonSegmentButton>
-                    {/* <IonSegmentButton value="2">
+                    <IonSegmentButton value="1">
                         <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                            <span>Completed</span>
+                            <span>All</span>
                         </IonLabel>
-                    </IonSegmentButton> */}
+                    </IonSegmentButton>
                 </IonSegment>
             </div>
             {!loadingHabits && (<div>
@@ -82,29 +75,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     options={sliderOptions}
                     className="ion-margin-vertical"
                 >
-                    <IonSlide >
-                        {!loadingHabits && (
-                            habits.length > 0 ?
-                                (
-                                    <div className="segmentedTasksGrid ion-no-border" >
-                                        {habits.map((habit, index) => (
-                                            <TaskItem confetti={true} id={habit.id} key={`habits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
-                                        ))}
 
-                                    </div>
-                                )
-                                :
-                                (
-                                    <ColumnContainer>
-                                        <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
-                                        <Heading6>
-                                            No habits
-                                        </Heading6>
-                                    </ColumnContainer>
-
-                                )
-                        )}
-                    </IonSlide>
                     <IonSlide >
                         {!loadingHabits && (
                             incompletedHabits.length > 0 ?
@@ -128,33 +99,31 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                                 )
                         )}
                     </IonSlide>
-                    {/* <IonSlide >
-
+                    <IonSlide >
                         {!loadingHabits && (
-                            completedHabits.length > 0 ?
+                            habits.length > 0 ?
                                 (
                                     <div className="segmentedTasksGrid ion-no-border" >
-                                        {completedHabits.map((habit, index) => (
-                                            <TaskItem id={habit.id} taskIndex={index} key={`completedhabits${index}`} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                        {habits.map((habit, index) => (
+                                            <TaskItem confetti={true} id={habit.id} key={`habits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
                                         ))}
                                     </div>
                                 )
                                 :
                                 (
                                     <ColumnContainer>
+                                        <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
                                         <Heading6>
-
-                                            Seems like you haven't done anything yet today
+                                            No habits
                                         </Heading6>
-                                        <Lottie isClickToPauseDisabled={true} options={loadingOptions} height={230} width={300} />
                                     </ColumnContainer>
 
                                 )
                         )}
-                    </IonSlide> */}
+                    </IonSlide>
                 </IonSlides>
             </div>)}
-            
+
         </div>
     )
 }

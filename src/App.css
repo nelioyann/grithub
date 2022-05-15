@@ -1,3 +1,5 @@
+
+
 .page-wrapper-content,
 ion-toolbar {
   /* width: clamp(15em, 100%, 45em); */
@@ -47,7 +49,7 @@ ion-tab-bar {
 }
 
 ion-tab-button {
-  border-radius: 1em;
+  border-radius: 8px;
   border: 1px solid rgba(var(--ion-color-light-contrast-rgb), 0.08);
   box-shadow: 0 4px 8px 0 rgba(31, 38, 135, 0.27);
   /* background-color: rgba(var(--ion-color-dark-contrast-rgb), 0.9); */
@@ -69,10 +71,11 @@ ion-tab-button {
   color: var(--ion-color-dark);
   --color-focused: var(--ion-color-secondary);
   --color-selected: var(--ion-color-primary);
+  font-size: var(--step-0);
 }
 
 ion-tab-button:not(.tab-selected):hover  {
-    transform: translateY(-0.5em);
+    transform: translateY(-5px);
   
 }
 
@@ -84,6 +87,8 @@ ion-tab-button.tab-selected {
   animation-iteration-count: 1;
   animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
+
 @keyframes wobble {
   from {
     transform: translate3d(0, 0, 0);

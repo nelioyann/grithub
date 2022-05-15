@@ -1,7 +1,7 @@
 import { IonPage, IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent, IonButton, IonTitle, IonItem } from '@ionic/react'
 import React from 'react'
 import Content from '../../components/Content/Content'
-import { LargeButton, ColumnContainer, MediumParagraph, Heading4 } from '../../theme/globalStyles'
+import { LargeButton, ColumnContainer, MediumParagraph, Heading4, LargeParagraph } from '../../theme/globalStyles'
 
 const Attributions: React.FC = () => {
     return (
@@ -23,19 +23,19 @@ const Attributions: React.FC = () => {
 
                     <div className="page-wrapper-content">
                         <IonItem color="light">
-                            <MediumParagraph>Illustrations: absurd.design</MediumParagraph>
+                            <LargeParagraph>Illustrations: absurd.design</LargeParagraph>
                         </IonItem>
                         <IonItem color="light">
-                            <MediumParagraph>Animations: LottieFiles</MediumParagraph>
+                            <LargeParagraph>Animations from LottieFiles</LargeParagraph>
                         </IonItem>
                         <IonItem color="light">
-                            <MediumParagraph>User Icons: Boring Avatars</MediumParagraph>
+                            <LargeParagraph>User Icons generated with the Boring Avatars library</LargeParagraph>
                         </IonItem>
                         <IonItem color="light">
-                            <MediumParagraph>Emoji Picker React</MediumParagraph>
+                            <LargeParagraph>Emoji Picker React</LargeParagraph>
                         </IonItem>
                         <IonItem color="light">
-                            <MediumParagraph>Voice Assistant: Alan AI</MediumParagraph>
+                            <LargeParagraph>Voice Assistant: Alan AI</LargeParagraph>
                         </IonItem>
                     </div>
                 </div>

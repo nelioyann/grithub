@@ -300,7 +300,7 @@ const New: React.FC = () => {
                   You can only have 4 habits
                 </Heading5>
                 <LargeParagraph>
-                  You can delete some habits to add more
+                  Delete some habits to add new ones
                 </LargeParagraph>
                 <Button label="Show me my habits" routerLink="/tabs/habits" />
               </ColumnContainer>)

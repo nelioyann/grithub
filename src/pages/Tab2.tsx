@@ -10,6 +10,7 @@ import Lottie from 'react-lottie';
 
 import statsAnimation from "./stats.json"
 import { Button } from '../components/Buttons/Button';
+import Header from '../components/Headers/Header';
 const animationOptions = {
   loop: true,
   autoplay: true,
@@ -21,7 +22,8 @@ const Tab2: React.FC = () => {
 
   return (
     <IonPage >
-      <IonHeader className="ion-padding-vertical ion-no-border" mode="ios">
+      <Header name='Statistics' icon={settingsOutline} iconTarget="/settings"/>
+      {/* <IonHeader className="ion-padding-vertical ion-no-border" mode="ios">
         <IonToolbar color="light">
           <IonButtons slot="primary" collapse={true}>
             <IonButton fill="clear" color="dark" routerLink={"/settings"}>
@@ -35,7 +37,7 @@ const Tab2: React.FC = () => {
           </IonTitle>
           
         </IonToolbar>
-      </IonHeader>
+      </IonHeader> */}
       <Content>
         <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: "center" }}>
           <div className="page-wrapper-content ">
