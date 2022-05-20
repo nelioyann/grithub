@@ -162,7 +162,7 @@ const Settings: React.FC = () => {
                 <MediumParagraph >Attributions</MediumParagraph>
               </IonItem> */}
               <IonItem color="light" lines="none" button={true}>
-                <SmallParagraph>Version: v0.1.40 </SmallParagraph>
+                <MediumParagraph>Version: v0.1.41 </MediumParagraph>
               </IonItem>
             </div>
           </div>
