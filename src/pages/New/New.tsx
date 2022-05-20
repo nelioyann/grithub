@@ -64,6 +64,7 @@ const StyledItem = styled(IonItem)`
     --padding-start: 0 !important;
     --padding-end: 0 !important;
     overflow: visible ;
+    font-size: 1.5em;
     /* & IonLabel {
         line-height: 1 !important;
     } */
@@ -80,6 +81,8 @@ const StyledItem = styled(IonItem)`
     }
     &.item-interactive.item-has-focus IonLabel{
         color: var(--highlight-background);
+        margin-bottom: 0.5em; ;
+        /* font-size: larger ; */
     }
     `
 
@@ -206,7 +209,7 @@ const New: React.FC = () => {
           </IonTitle>
         </IonToolbar>
       </IonHeader> */}
-        <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="tabs/settings" />
+      <Header name="New habit" icon={settingsOutline} collapsible={true} iconTarget="tabs/settings" />
       <Content>
         <div
           className="page-wrapper ion-padding-horizontal"
@@ -219,19 +222,19 @@ const New: React.FC = () => {
 
 
                 <div className="ion-margin-vertical">
-                  <Heading4>Name your habit </Heading4>
+                  <Heading6>
+                    Enter a title for your new habit, then select an emoji to represent it.
+                  </Heading6>
 
                   <div>
                     <StyledItem lines="none">
                       <IonLabel position="stacked">
-                      {chosenEmoji} Everyday, I will...
+                        {chosenEmoji} Everyday, I will...
                       </IonLabel>
                       <StyledInput
-
                         onIonChange={(e: any) => handleChange(e.detail.value)}
                         value={newHabit}
                         placeholder="Make my bed"
-
                       ></StyledInput>
                     </StyledItem>
                   </div>

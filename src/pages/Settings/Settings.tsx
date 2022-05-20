@@ -74,7 +74,7 @@ const Settings: React.FC = () => {
 
         </IonToolbar>
       </IonHeader> */}
-        <Header name="Settings" icon={home} iconTarget="/tabs/habits" />
+      <Header name="Settings" icon={home} iconTarget="/tabs/habits" />
       <Content>
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content">
@@ -82,12 +82,8 @@ const Settings: React.FC = () => {
 
             </div>
             <div className="ion-margin-top">
-
-              {/* <div style={{ width: "max-content" }} onClick={() => router.push("/name")}> */}
-
               <UserAvatar isAButton={true} username={name} size={70} email={user?.email || ""} />
-              {/* </div> */}
-              <Heading6 style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase" }}>
+              <Heading6 className="ion-margin-top" style={{ color: "var(--ion-color-primary)" }}>
                 Profile
               </Heading6>
               <IonItem
@@ -98,7 +94,7 @@ const Settings: React.FC = () => {
                 lines="none"
               >
                 <IonIcon slot="start" icon={person}></IonIcon>
-                <MediumParagraph>Change your username</MediumParagraph>
+                <SmallParagraph>Change your username</SmallParagraph>
               </IonItem>
 
               <IonItem
@@ -109,17 +105,17 @@ const Settings: React.FC = () => {
                 lines="none"
               >
                 <IonIcon slot="start" icon={bug}></IonIcon>
-                <MediumParagraph>Logout</MediumParagraph>
+                <SmallParagraph>Logout</SmallParagraph>
               </IonItem>
             </div>
             <div>
-              <Heading6 style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase" }}>
+              <Heading6 className="ion-margin-top" style={{ color: "var(--ion-color-primary)" }}>
                 Appearance
               </Heading6>
               <IonItem color="light" lines="none">
                 <IonIcon slot="start" icon={moon}></IonIcon>
                 <div>
-                  <MediumParagraph>Dark theme</MediumParagraph>
+                  <SmallParagraph>Dark theme</SmallParagraph>
                   {/* <IonN>Turn on Dark Mode for a great viewing experience and battery saving.</IonN> */}
                 </div>
                 <IonToggle
@@ -133,7 +129,7 @@ const Settings: React.FC = () => {
               </IonItem>
             </div>
             <div style={{ marginBottom: "4em" }}>
-              <Heading6 style={{ color: "var(--ion-color-primary)", fontWeight: "bolder", textTransform: "uppercase" }}>
+              <Heading6 className="ion-margin-top" style={{ color: "var(--ion-color-primary)" }}>
                 About
               </Heading6>
               <IonItem
@@ -144,7 +140,7 @@ const Settings: React.FC = () => {
                 href="https://yannicknana.fr/#contact"
               >
                 {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
-                <MediumParagraph>Report a problem</MediumParagraph>
+                <SmallParagraph>Report a problem</SmallParagraph>
               </IonItem>
               {/* <IonItem
                 color="light"
@@ -166,7 +162,7 @@ const Settings: React.FC = () => {
                 <MediumParagraph >Attributions</MediumParagraph>
               </IonItem> */}
               <IonItem color="light" lines="none" button={true}>
-                <MediumParagraph>Version: v0.1.40 </MediumParagraph>
+                <SmallParagraph>Version: v0.1.40 </SmallParagraph>
               </IonItem>
             </div>
           </div>
