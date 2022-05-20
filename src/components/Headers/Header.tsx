@@ -1,5 +1,5 @@
 import React from "react";
-import { IonButton, IonButtons, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButton, IonButtons, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/react';
 // import { home } from "ionicons/icons";
 import { Heading3, Heading4, Heading6 } from "../../theme/globalStyles";
 import { personCircle, search, ellipsisHorizontal, ellipsisVertical } from "ionicons/icons";
@@ -9,15 +9,20 @@ interface HeaderProps {
     icon?: string;
     collapsible?: boolean;
     iconTarget?: string;
-
+    withBackButton?: boolean;
+    backButtonLink?: string;
 
 }
 // style={{backgroundColor: "var(--ion-color-light)"}}
-const Header: React.FC<HeaderProps> = ({ name, icon, collapsible, iconTarget }) => {
+const Header: React.FC<HeaderProps> = ({ name, icon, collapsible, iconTarget, withBackButton, backButtonLink = "tabs/habits" }) => {
     return (
-        <IonHeader collapse={collapsible ? "condense" : undefined} className="ion-no-border" style={{paddingTop: "2em", paddingBottom: "2em"}}>
+        <IonHeader mode="ios" collapse={collapsible ? "condense" : undefined} style={{ paddingTop: "2em", paddingBottom: "2em" }}>
             <IonToolbar color="light"  >
-
+                {withBackButton &&
+                    <IonButtons slot="start">
+                        <IonBackButton color="dark" text="" defaultHref={backButtonLink} />
+                    </IonButtons>
+                }
                 {icon && (
                     <IonButtons slot="primary" collapse={true}>
                         <IonButton fill="clear" color="dark" routerLink={iconTarget}>

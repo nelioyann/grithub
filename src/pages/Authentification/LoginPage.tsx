@@ -7,7 +7,7 @@ import Header from '../../components/Headers/Header';
 import { toast } from '../../components/Toasts/Toast';
 import { provider, useAuth } from '../../Contexts/authProvider';
 import { firebaseAuth } from "../../initFirebase"
-import { ColumnContainer, Heading3, Heading4, Heading5, LargeButton, LargeParagraph, MediumButton, MediumParagraph, RowContainer } from '../../theme/globalStyles';
+import { ColumnContainer, Heading3, Heading4, Heading5, LargeButton, LargeParagraph, MediumButton, MediumParagraph, RowContainer, SmallParagraph } from '../../theme/globalStyles';
 import "./Auth.css";
 
 
@@ -80,10 +80,10 @@ const LoginPage: React.FC = () => {
 
 
                     <div className="page-wrapper-content ">
-                        <ColumnContainer>
-                        <IonButton color="primary" fill="outline" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--border-color": "#4c8bf5", "--color": "#fff", }} className="ion-margin-top" size="large"  expand="block" onClick={googleSignIn}>
+                        <div>
+                        <IonButton color="primary" mode='ios' fill="outline" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px", "--color": "#fff", }} className="ion-margin-top" size="large" expand="block"  onClick={googleSignIn}>
                             <IonIcon className="ion-padding-horizontal" icon={logoGoogle}/>
-                            <MediumButton style={{ textTransform: "initial" }}>
+                            <MediumButton>
                                 Continue with Google
                             </MediumButton>
                         </IonButton>
@@ -99,12 +99,12 @@ const LoginPage: React.FC = () => {
                         </IonButton>
                         <IonButton fill="solid" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" onClick={anonSignIn} >
                             <IonIcon className="ion-padding-horizontal" icon={walk} />
-                            <MediumButton style={{ textTransform: "initial" }}>
+                            <MediumButton>
                                 Skip login
                             </MediumButton>
                         </IonButton>
-                            </ColumnContainer>
-                            <LargeParagraph style={{margin: "16px", textAlign: "center"}}>
+                            </div>
+                            <SmallParagraph style={{margin: "16px", textAlign: "center"}}>
                             {"By creating an account you agree to our "}
                 <IonRouterLink href="https://grithub.fr/privacy">
                     Privacy Policy
@@ -112,7 +112,7 @@ const LoginPage: React.FC = () => {
                 <IonRouterLink href="https://grithub.fr/terms">
                     Terms of use
                 </IonRouterLink>
-                            </LargeParagraph>
+                            </SmallParagraph>
                         {/* <Heading4 style={{ textAlign: 'center', margin: "1em auto" }}>OR </Heading4> */}
                         
 

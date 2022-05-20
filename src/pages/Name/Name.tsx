@@ -7,6 +7,7 @@ import { firebaseStore } from '../../initFirebase';
 import { useAuth } from '../../Contexts/authProvider';
 import UserAvatar from '../../components/Avatar/Avatar';
 import Content from '../../components/Content/Content';
+import Header from '../../components/Headers/Header';
 
 
 
@@ -33,16 +34,8 @@ const Name: React.FC = () => {
     }
     return (
         <IonPage >
-            <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
-                <IonToolbar color="light" >
-                    <IonButtons slot="">
-                        <IonBackButton color="dark" text="" defaultHref="/settings" />
-                    </IonButtons>
-                    <IonTitle slot="">
-                        <Heading4 style={{ color: "var(--ion-color-primary)", margin: "auto", textAlign: "center" }}>Username</Heading4>
-                    </IonTitle>
-                </IonToolbar>
-            </IonHeader>
+
+            <Header name="Username" withBackButton backButtonLink="tabs/settings"/>
             <Content>
 
                 <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center' }}>

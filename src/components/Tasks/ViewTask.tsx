@@ -86,7 +86,7 @@ const ViewTask: React.FC = () => {
   };
   return (
     <IonPage>
-      <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
+      {/* <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
         <IonToolbar color="light">
           <IonButtons slot="">
             <IonBackButton color="dark" text="" defaultHref="/tabs/habits" />
@@ -96,7 +96,8 @@ const ViewTask: React.FC = () => {
           </IonTitle>
           
         </IonToolbar>
-      </IonHeader>
+      </IonHeader> */}
+      <Header name={habit?.name} withBackButton backButtonLink="tabs/habits"/>
       <Content>
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content ">
@@ -203,7 +204,7 @@ const ViewTask: React.FC = () => {
                             data-day={day}
                             data-month={month}
                           >
-                            <SmallParagraph style={{ margin: 0, color: "inherit", padding: "0" }}>
+                            <SmallParagraph style={{ margin: 0, color: "inherit", padding: "0", fontWeight: "lighter" }}>
                               {index % 31 === 0
                                 ? "31"
                                 : (index % 31).toString()}

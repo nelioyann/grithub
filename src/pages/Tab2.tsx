@@ -1,6 +1,6 @@
 import { IonBackButton, IonButton, IonButtons, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { add, settings, settingsOutline } from 'ionicons/icons';
-import { Heading4, LargeParagraph, MediumButton } from '../theme/globalStyles';
+import { Heading4, Heading6, LargeParagraph, MediumButton, MediumParagraph } from '../theme/globalStyles';
 import './Tab2.css';
 import { useHabits } from '../Contexts/habitsProvider';
 import MonthlyGraphs from '../components/MonthlyProgression/MonthlyGraphs';
@@ -15,6 +15,7 @@ const animationOptions = {
   loop: true,
   autoplay: true,
   animationData: statsAnimation,
+  speed: 0
 
 }
 const Tab2: React.FC = () => {
@@ -22,7 +23,7 @@ const Tab2: React.FC = () => {
 
   return (
     <IonPage >
-      <Header name='Statistics' icon={settingsOutline} iconTarget="/settings"/>
+      <Header name='Statistics' icon={settingsOutline} iconTarget="tabs/settings"/>
       {/* <IonHeader className="ion-padding-vertical ion-no-border" mode="ios">
         <IonToolbar color="light">
           <IonButtons slot="primary" collapse={true}>
@@ -51,10 +52,10 @@ const Tab2: React.FC = () => {
               (
                 <div className="ion-padding" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
                   <Lottie isClickToPauseDisabled={true} options={animationOptions} height={250} width={300} />
-                  <Heading4 as="p">Display your progression</Heading4>
-                  <LargeParagraph style={{ textAlign: 'center' }}>
+                  <Heading6 as="p">Display your progression</Heading6>
+                  <MediumParagraph style={{ textAlign: 'center' }}>
                     Your progress will be displayed here, once you have added some habits.
-                  </LargeParagraph>
+                  </MediumParagraph>
                   <IonButton mode="ios" routerLink="/new" fill="solid">
                     <IonIcon icon={add}></IonIcon>
                     <MediumButton>

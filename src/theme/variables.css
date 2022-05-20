@@ -119,14 +119,23 @@ http://ionicframework.com/docs/theming/ */
   --font-semibold: 600;
   --font-regular: 400;
   
-  --step--2: clamp(0.91rem, calc(0.89rem + 0.10vw), 0.96rem);
+  /* --step--2: clamp(0.91rem, calc(0.89rem + 0.10vw), 0.96rem);
   --step--1: clamp(1.09rem, calc(1.05rem + 0.21vw), 1.20rem);
   --step-0: clamp(1.31rem, calc(1.24rem + 0.37vw), 1.50rem);
   --step-1: clamp(1.58rem, calc(1.46rem + 0.59vw), 1.88rem);
   --step-2: clamp(1.89rem, calc(1.71rem + 0.89vw), 2.34rem);
   --step-3: clamp(2.27rem, calc(2.01rem + 1.29vw), 2.93rem);
   --step-4: clamp(2.72rem, calc(2.36rem + 1.83vw), 3.66rem);
-  --step-5: clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem);
+  --step-5: clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem); */
+
+  --step--2: clamp(0.79rem, calc(0.75rem + 0.18vw), 0.96rem);
+  --step--1: clamp(0.89rem, calc(0.81rem + 0.33vw), 1.20rem);
+  --step-0: clamp(1.00rem, calc(0.87rem + 0.52vw), 1.50rem);
+  --step-1: clamp(1.13rem, calc(0.93rem + 0.79vw), 1.88rem);
+  --step-2: clamp(1.27rem, calc(0.99rem + 1.13vw), 2.34rem);
+  --step-3: clamp(1.42rem, calc(1.03rem + 1.58vw), 2.93rem);
+  --step-4: clamp(1.60rem, calc(1.07rem + 2.16vw), 3.66rem);
+  --step-5: clamp(1.80rem, calc(1.08rem + 2.91vw), 4.58rem);
 }
 
 

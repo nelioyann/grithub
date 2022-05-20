@@ -37,13 +37,14 @@ import { useAuth } from "../../Contexts/authProvider";
 import { toast } from "../../components/Toasts/Toast";
 import Picker from "emoji-picker-react";
 import "./New.css";
-import { close, closeCircle, helpOutline, thumbsDownOutline, thumbsUpOutline } from "ionicons/icons";
+import { close, closeCircle, helpOutline, settingsOutline, thumbsDownOutline, thumbsUpOutline } from "ionicons/icons";
 import { useHabits } from "../../Contexts/habitsProvider";
 import Lottie from "react-lottie";
 import puzzleAnimation from "./puzzle.json";
 import { Button } from "../../components/Buttons/Button";
 import Content from "../../components/Content/Content";
 import styled from "styled-components";
+import Header from "../../components/Headers/Header";
 
 const animationOptions = { loop: true, animationData: puzzleAnimation, autoplay: true }
 
@@ -191,7 +192,7 @@ const New: React.FC = () => {
   };
   return (
     <IonPage ref={pageRef}>
-      <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
+      {/* <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
         <IonToolbar color="light">
           <IonButtons slot="">
             <IonBackButton color="dark" text="" defaultHref="/" />
@@ -203,19 +204,10 @@ const New: React.FC = () => {
               New habit
             </Heading4>
           </IonTitle>
-          {/* <IonButtons slot="end">
-            <IonButton onClick={() => presentHelp({
-              mode: "ios",
-              swipeToClose: true,
-              presentingElement: pageRef.current
-            })} color="dark" fill="clear">
-              <IonIcon icon={helpOutline}></IonIcon>
-            </IonButton>
-          </IonButtons> */}
         </IonToolbar>
-      </IonHeader>
+      </IonHeader> */}
+        <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="tabs/settings" />
       <Content>
-        {/* <Header name="Habits" icon={settingsOutline} collapsible={true} iconTarget="/settings" /> */}
         <div
           className="page-wrapper ion-padding-horizontal"
           style={{ alignItems: "center" }}

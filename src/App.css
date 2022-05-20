@@ -3,7 +3,7 @@
 .page-wrapper-content,
 ion-toolbar {
   /* width: clamp(15em, 100%, 45em); */
-  width: clamp(15em, 100%, 70em);
+  width: clamp(15em, 100%, 65em);
   margin: 0 auto 0px !important;
 }
 
@@ -71,7 +71,7 @@ ion-tab-button {
   color: var(--ion-color-dark);
   --color-focused: var(--ion-color-secondary);
   --color-selected: var(--ion-color-primary);
-  font-size: var(--step-0);
+  font-size: var(--step--2);
 }
 
 ion-tab-button:not(.tab-selected):hover  {

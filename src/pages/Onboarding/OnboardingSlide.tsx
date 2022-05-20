@@ -1,7 +1,7 @@
 import { IonSlide, IonButton, IonRouterLink } from '@ionic/react'
 import React from 'react'
 import Lottie from 'react-lottie';
-import { Heading4, LargeButton, MediumParagraph } from '../../theme/globalStyles'
+import { Heading4, Heading6, LargeButton, MediumParagraph } from '../../theme/globalStyles'
 export interface IOnboardingSlide {
     title: string;
     imagePath: string
@@ -20,9 +20,9 @@ const OnboardingSlide: React.FC<IOnboardingSlide> = ({ title, imagePath, handleS
 
                 <Lottie isClickToPauseDisabled={true} options={lottieOption} height={200} width={300} />
 
-                <Heading4 style={{ color: "var(--ion-color-dark)", padding: "1em", margin: "auto" }}>
+                <Heading6 style={{ color: "var(--ion-color-dark)", padding: "1em", margin: "auto" }}>
                     {title}
-                </Heading4>
+                </Heading6>
                 <div className="ion-margin-vertical " style={{ display: "grid", gridTemplateColumns: "1fr", justifyContent: "space-between" }}>
                     {/* <IonButton style={{ "--background-hover-opacity": "0" }} color="dark" size="large" expand="block" fill="clear" onClick={() => handleSwipeFinal()} >
                         <LargeButton>

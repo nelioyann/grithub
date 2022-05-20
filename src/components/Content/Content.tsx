@@ -50,7 +50,7 @@ const StyledContent = styled(IonContent) <{ onDesktop: boolean }>`
 `
 
 const PageContentInner = styled.div`
-    width: clamp(15em, 100%, 70em); //set on higher styled component
+    width: clamp(15em, 100%, 65em); //set on higher styled component
     margin: auto;
 `
 

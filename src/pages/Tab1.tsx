@@ -246,9 +246,9 @@ const Tab1: React.FC = () => {
               habits.length === 0 ? (
                 <ColumnContainer style={{ gap: "1em", alignItems: "center" }}>
                   <Lottie isClickToPauseDisabled={true} options={animationOptions} height={200} width={300} />
-                  <Heading4>
+                  <Heading6>
                     Start by adding a new habit.
-                  </Heading4>
+                  </Heading6>
                   <div>
                     <b>Grithub </b>
                     helps you keep track of your habits.

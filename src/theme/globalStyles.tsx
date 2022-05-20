@@ -20,7 +20,7 @@ export const SmallParagraph = styled.p<ColoredProps>`
   color: ${props => props.color ? `var(--ion-color-${props.color}` : `inherit`};
   /* --ionicon-stroke-width: 64px; */
   white-space: normal;
-  font-weight: var(--font-bold);
+  font-weight: var(--font-regular);
 `;
 export const MediumParagraph = styled(SmallParagraph)`
   font-size: var(--step--1);
