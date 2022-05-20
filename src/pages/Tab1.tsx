@@ -249,10 +249,10 @@ const Tab1: React.FC = () => {
                   <Heading6>
                     Start by adding a new habit.
                   </Heading6>
-                  <div>
+                  <MediumParagraph>
                     <b>Grithub </b>
-                    helps you keep track of your habits.
-                  </div>
+                    helps you keep track of your habits. Start by adding a new one
+                  </MediumParagraph>
 
 
                   <IonButton mode="ios" routerLink="/new" style={{ "--background-hover-opacity": "0" }} fill="solid" color="primary">

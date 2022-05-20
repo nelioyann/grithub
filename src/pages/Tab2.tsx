@@ -24,21 +24,6 @@ const Tab2: React.FC = () => {
   return (
     <IonPage >
       <Header name='Statistics' icon={settingsOutline} iconTarget="tabs/settings"/>
-      {/* <IonHeader className="ion-padding-vertical ion-no-border" mode="ios">
-        <IonToolbar color="light">
-          <IonButtons slot="primary" collapse={true}>
-            <IonButton fill="clear" color="dark" routerLink={"/settings"}>
-              <IonIcon icon={settingsOutline} />
-            </IonButton>
-          </IonButtons>
-          <IonTitle>
-            <Heading4 style={{ color: "var(--ion-color-dark)", textAlign: "center", margin: "auto" }}>
-              Statistics
-            </Heading4>
-          </IonTitle>
-          
-        </IonToolbar>
-      </IonHeader> */}
       <Content>
         <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: "center" }}>
           <div className="page-wrapper-content ">

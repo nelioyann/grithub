@@ -1,6 +1,6 @@
 import { useIonRouter, IonPage, IonContent, IonInput, IonItem, IonLabel, IonButton, IonBackButton, IonButtons, IonHeader, IonToolbar, IonTitle } from '@ionic/react'
 import React, { useContext, useState } from 'react'
-import { Heading4, LargeButton, ColumnContainer, MediumParagraph } from '../../theme/globalStyles'
+import { Heading4, LargeButton, ColumnContainer, MediumParagraph, Heading5, Heading6 } from '../../theme/globalStyles'
 import { NameContext } from '../../Contexts/NameContext';
 import Avatar from "boring-avatars";
 import { firebaseStore } from '../../initFirebase';
@@ -44,9 +44,9 @@ const Name: React.FC = () => {
                         <ColumnContainer style={{ margin: "4em 0" }} >
 
                             <UserAvatar username={name} size={100} />
-                            <Heading4 style={{ marginTop: "auto" }}>
+                            <Heading6 style={{ marginTop: "auto" }}>
                                 How should we refer to you ?
-                            </Heading4>
+                            </Heading6>
 
                             <IonItem className="ion-margin-vertical">
                                 <IonLabel position="floating">Preferred name</IonLabel>

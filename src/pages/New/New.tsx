@@ -64,7 +64,7 @@ const StyledItem = styled(IonItem)`
     --padding-start: 0 !important;
     --padding-end: 0 !important;
     overflow: visible ;
-    font-size: 1.5em;
+    font-size: var(--step-0);
     /* & IonLabel {
         line-height: 1 !important;
     } */
@@ -81,7 +81,7 @@ const StyledItem = styled(IonItem)`
     }
     &.item-interactive.item-has-focus IonLabel{
         color: var(--highlight-background);
-        margin-bottom: 0.5em; ;
+        margin-bottom: 0.5em; 
         /* font-size: larger ; */
     }
     `
@@ -195,21 +195,7 @@ const New: React.FC = () => {
   };
   return (
     <IonPage ref={pageRef}>
-      {/* <IonHeader mode="ios" className="ion-padding-vertical ion-no-border">
-        <IonToolbar color="light">
-          <IonButtons slot="">
-            <IonBackButton color="dark" text="" defaultHref="/" />
-          </IonButtons>
-          <IonTitle slot="">
-            <Heading4
-              style={{ color: "var(--ion-color-dark)", textAlign: "center", margin: "auto" }}
-            >
-              New habit
-            </Heading4>
-          </IonTitle>
-        </IonToolbar>
-      </IonHeader> */}
-      <Header name="New habit" icon={settingsOutline} collapsible={true} iconTarget="tabs/settings" />
+      <Header withBackButton name="New habit" />
       <Content>
         <div
           className="page-wrapper ion-padding-horizontal"
@@ -218,8 +204,6 @@ const New: React.FC = () => {
           <div className="page-wrapper-content ">
             {habits?.length < 4 ?
               (<ColumnContainer style={{ marginTop: "4em" }}>
-
-
 
                 <div className="ion-margin-vertical">
                   <Heading6>
