@@ -50,6 +50,7 @@ import ViewTask from './components/Tasks/ViewTask';
 import Attributions from './pages/Attributions/Attributions';
 import Loader from './pages/Loader/Loader';
 import Alan from './components/AI/Alan';
+import Notifications from './pages/Settings/Notifications';
 
 const App: React.FC = () => {
   const { loading } = useAuth();
@@ -88,16 +89,6 @@ const App: React.FC = () => {
 
                 <Route path="/tabs" component={Tabs} />
 
-                {/* <PrivateRoute exact path="/tabs/habits" component={Tab1} />
-        <Route exact path="/tabs/stats">
-          <Tab2 />
-        </Route>
-        <Route exact path="/tabs/settings">
-          <Settings />
-        </Route>
-        <Route exact path="/tabs">
-          <Redirect to="/tabs/habits" />
-        </Route> */}
 
 
                 <Route exact={true} path="/new" component={New} />
@@ -136,19 +127,6 @@ const App: React.FC = () => {
 export default App;
 
 
-// const PrivateRout: React.FC<{
-//   component: React.FC,
-//   path: string,
-//   exact: boolean
-// }> = (props) => {
-//   const isAuth = firebaseAuth.currentUser !== null;
-//   return (
-//     isAuth ? (<Route path={props.path} exact={props.exact} component={props.component} />) :
-//       (<Redirect to="/login" />)
-
-//   )
-
-// }
 
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
   // const {user, loading} = useAuth();
@@ -174,6 +152,9 @@ const Tabs: React.FC = () => {
         </Route>
         <Route exact path="/tabs/settings">
           <Settings />
+        </Route>
+        <Route exact path="/tabs/settings/notifications">
+          <Notifications />
         </Route>
         <Route exact path="/tabs">
           <Redirect to="/tabs/habits" />
