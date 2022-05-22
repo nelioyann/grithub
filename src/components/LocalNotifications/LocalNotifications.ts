@@ -52,7 +52,7 @@ class Notifications{
                 {
                     notifications: [{
                         title: "Grithub",
-                        body: "Scheduled Notifications",
+                        body: "Daily scheduled Notifications",
                         schedule: {
                             on: {
                                 hour,
@@ -75,6 +75,10 @@ class Notifications{
     }
 }
 
+/**
+ * 
+ * @returns isAccessGranted: boolean
+ */
 export const isAccessGranted = async () => {
     const { display } = await LocalNotifications.checkPermissions();
     return display === 'granted';
