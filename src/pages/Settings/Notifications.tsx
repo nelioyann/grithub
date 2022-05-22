@@ -8,12 +8,13 @@ import { cafeOutline } from 'ionicons/icons'
 
 const Notifications = () => {
     const morningToggle = useRef<HTMLIonToggleElement>(null);
-    const isScheduled  = false;
+    const isScheduled = false;
     // const afternoonToggle = useRef<HTMLIonToggleElement>(null);
     const handleNotification = (willSchedule: boolean) => {
         console.log("Showing notifications for morning", willSchedule);
         if (willSchedule) {
             notifications.testSchedule();
+            // notifications.isAccessGranted()
         }
     }
     return (
@@ -22,7 +23,7 @@ const Notifications = () => {
             <Content>
                 <IonItem color="light" lines="none">
                     <IonIcon slot="start" icon={cafeOutline}></IonIcon>
-                        <MediumParagraph>Morning motivation</MediumParagraph>
+                    <MediumParagraph>Morning motivation</MediumParagraph>
                     <IonToggle
                         ref={morningToggle}
                         mode="ios"
@@ -31,6 +32,9 @@ const Notifications = () => {
                         slot="end"
                         onIonChange={(e) => handleNotification(e.detail.checked)}
                     />
+                </IonItem>
+                <IonItem button color="light" lines="none" onClick={() => notifications.requestAccess()}>
+                    Request permission to send notifications
                 </IonItem>
             </Content>
         </IonPage>

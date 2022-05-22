@@ -90,7 +90,7 @@ const Settings: React.FC = () => {
                 lines="none"
               >
                 <IonIcon slot="start" icon={person}></IonIcon>
-                <SmallParagraph>Change your username</SmallParagraph>
+                <MediumParagraph>Change your username</MediumParagraph>
               </IonItem>
 
               <IonItem
@@ -101,7 +101,7 @@ const Settings: React.FC = () => {
                 lines="none"
               >
                 <IonIcon slot="start" icon={bug}></IonIcon>
-                <SmallParagraph>Logout</SmallParagraph>
+                <MediumParagraph>Logout</MediumParagraph>
               </IonItem>
             </div>
             <div>

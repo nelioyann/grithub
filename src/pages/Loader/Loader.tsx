@@ -11,13 +11,10 @@ const Loader = () => {
         <IonPage>
             <Content>
                 <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: 'center', height: '100%', overflow: 'hidden' }}>
-
                     <div className="page-wrapper-content">
                         <IonCard mode="ios" style={{ width: "max-content", margin: "auto", borderRadius: "50%" }}>
-
                             <Lottie isClickToPauseDisabled={true} options={loadingGearsOptions} height={230} width={230} />
                         </IonCard>
-
                     </div>
                 </div>
             </Content>

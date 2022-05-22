@@ -18,21 +18,23 @@ class Notifications{
                 {
                     title: 'First notification',
                     body: 'This is the first notification',
-                    id: 1,
+                    id: 12,
                     schedule: { at: new Date(Date.now() + 5000) }
                 },
                 {
                     title: 'Second notification',
                     body: 'This is the second notification',
-                    id: 2,
+                    id: 23,
                     schedule: { at: new Date(Date.now() + 10000) }
                 }
             ]
         };
-        await LocalNotifications.schedule(options);
+        const result = await LocalNotifications.schedule(options);
+        console.log('Scheduled notifications: ', result);
     }
     public isAccessGranted = async () => {
         const { display } = await LocalNotifications.checkPermissions();
+        // console.log('Access granted?', display);
         return display === 'granted';
     };
 
@@ -59,7 +61,7 @@ class Notifications{
                                 minute
                             },
                         },
-                        id: 1,
+                        id: 12,
                     }]
                 }
             );
