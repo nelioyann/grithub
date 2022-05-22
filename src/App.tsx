@@ -57,9 +57,7 @@ const App: React.FC = () => {
   const { habits, loadingHabits } = useHabits();
   let isAuth = firebaseAuth.currentUser !== null;
 
-  // console.log(loading)
   if (loading || isAuth && loadingHabits) {
-    console.log(loading, isAuth, loadingHabits);
     return (
       <IonApp>
         {/* <IonLoading isOpen={loading === loadingHabits === true} message="Loading..." /> */}
@@ -161,15 +159,15 @@ const Tabs: React.FC = () => {
         </Route>
       </IonRouterOutlet>
       <IonTabBar className="bottom-tab-bar"  slot="bottom" >
-        <IonTabButton layout="icon-start" tab="tab1" href="/tabs/habits">
+        <IonTabButton layout="icon-top" tab="tab1" href="/tabs/habits">
           <IonIcon icon={calendarOutline} />
           <IonLabel>Today</IonLabel>
         </IonTabButton>
-        <IonTabButton layout="icon-start" tab="tab2" href="/tabs/stats">
+        <IonTabButton layout="icon-top" tab="tab2" href="/tabs/stats">
           <IonIcon icon={statsChartOutline} />
           <IonLabel>Stats</IonLabel>
         </IonTabButton>
-        <IonTabButton layout="icon-start" tab="tab3" href="/tabs/settings">
+        <IonTabButton layout="icon-top" tab="tab3" href="/tabs/settings">
           <IonIcon icon={settingsOutline} />
           <IonLabel>Settings</IonLabel>
         </IonTabButton>

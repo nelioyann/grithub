@@ -33,8 +33,9 @@ ion-col {
 ion-tab-bar {
   box-sizing: border-box;
   width: clamp(5em, calc(100% - 4em), 50em);
+  height: 4em;
   position: absolute;
-  bottom: 1em;
+  bottom: 2em;
   left: 50%;
   transform: translateX(-50%);
   padding: 0.5em;
