@@ -23,13 +23,13 @@ const Tab2: React.FC = () => {
 
   return (
     <IonPage >
-      <Header name='Statistics' icon={settingsOutline} iconTarget="tabs/settings"/>
+      <Header name='Statistics' />
       <Content>
         <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: "center" }}>
           <div className="page-wrapper-content ">
             {!loadingHabits &&
               habits.length !== 0 ? (<>
-                <WeeklyChart habits={habits} />
+                {/* <WeeklyChart habits={habits} /> */}
                 <MonthlyGraphs />
 
               </>)

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { IonButton, IonButtons, IonContent, IonHeader, IonModal, IonPage, IonRouterLink, IonSlide, IonSlides, IonTitle, IonToolbar, useIonRouter } from '@ionic/react'
-import { Heading4, Heading5, LargeParagraph, LargeButton, MediumParagraph, RowContainer, Heading3, SmallParagraph, ColumnContainer } from '../../theme/globalStyles';
+import { Heading4, Heading5, LargeParagraph, LargeButton, MediumParagraph, RowContainer, Heading3, SmallParagraph, ColumnContainer, Heading6 } from '../../theme/globalStyles';
 import { Button } from '../../components/Buttons/Button';
 import "./Onboarding.css";
 import outilAnimation from "./lottieFiles/newhabits.json"
@@ -19,6 +19,7 @@ import dailyHabitsMockup from "./Images/dailyHabits.png"
 import { useDarkMode } from '../../Contexts/DarkModeContext';
 import OnboardingSlide, { IOnboardingSlide } from './OnboardingSlide';
 import Content from '../../components/Content/Content';
+import Header from '../../components/Headers/Header';
 
 const newhabitsOptions = { loop: true, animationData: outilAnimation, autoplay: true }
 const calendarOptions = { loop: true, animationData: calendarAnimation, autoplay: true }
@@ -87,10 +88,11 @@ const Onboarding: React.FC = () => {
     ]
     return (
         <IonPage>
-            <IonHeader className='ion-padding'>
+            <Header name="Grithub"/>
+            {/* <IonHeader className='ion-padding'>
                 <IonToolbar color="light">
                     <IonTitle>
-                        <ColumnContainer style={{alignItems: "center", gap: "0.5em", justifyContent: "center"}}>
+                        <RowContainer style={{alignItems: "center", gap: "0.5em", justifyContent: "center"}}>
 
                         <svg style={{width: "2em", height: "2em"}} width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_807_893)">
@@ -103,14 +105,14 @@ const Onboarding: React.FC = () => {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <Heading4>
+                        <Heading6>
                             GRITHUB
-                        </Heading4>
+                        </Heading6>
                         
-                        </ColumnContainer>
+                        </RowContainer>
                     </IonTitle>
                 </IonToolbar>
-            </IonHeader>
+            </IonHeader> */}
             <Content>
                 <div className="page-wrapper" style={{ alignItems: 'center', minHeight: '90vh' }}>
 

@@ -17,17 +17,13 @@ import {
   IonButton,
   IonCard,
 } from "@ionic/react";
-import { bug, home, moon, person, settingsOutline } from "ionicons/icons";
+import { alarm, bug, home, moon, person } from "ionicons/icons";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router";
 import Header from "../../components/Headers/Header";
 import { useAuth } from "../../Contexts/authProvider";
 import { useDarkMode } from "../../Contexts/DarkModeContext";
 import {
-  ColumnContainer,
-  Heading2,
-  Heading4,
-  Heading5,
   Heading6,
   MediumParagraph,
   SmallParagraph,
@@ -74,7 +70,7 @@ const Settings: React.FC = () => {
 
         </IonToolbar>
       </IonHeader> */}
-      <Header name="Settings" icon={home} iconTarget="/tabs/habits" />
+      <Header name="Settings"  />
       <Content>
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content">
@@ -94,7 +90,7 @@ const Settings: React.FC = () => {
                 lines="none"
               >
                 <IonIcon slot="start" icon={person}></IonIcon>
-                <SmallParagraph>Change your username</SmallParagraph>
+                <MediumParagraph>Change your username</MediumParagraph>
               </IonItem>
 
               <IonItem
@@ -105,7 +101,7 @@ const Settings: React.FC = () => {
                 lines="none"
               >
                 <IonIcon slot="start" icon={bug}></IonIcon>
-                <SmallParagraph>Logout</SmallParagraph>
+                <MediumParagraph>Logout</MediumParagraph>
               </IonItem>
             </div>
             <div>
@@ -115,7 +111,7 @@ const Settings: React.FC = () => {
               <IonItem color="light" lines="none">
                 <IonIcon slot="start" icon={moon}></IonIcon>
                 <div>
-                  <SmallParagraph>Dark theme</SmallParagraph>
+                  <MediumParagraph>Dark theme</MediumParagraph>
                   {/* <IonN>Turn on Dark Mode for a great viewing experience and battery saving.</IonN> */}
                 </div>
                 <IonToggle
@@ -140,7 +136,7 @@ const Settings: React.FC = () => {
                 href="https://yannicknana.fr/#contact"
               >
                 {/* <IonIcon slot="start" icon={bug}></IonIcon> */}
-                <SmallParagraph>Report a problem</SmallParagraph>
+                <MediumParagraph>Report a problem</MediumParagraph>
               </IonItem>
               {/* <IonItem
                 color="light"
@@ -164,6 +160,17 @@ const Settings: React.FC = () => {
               <IonItem color="light" lines="none" button={true}>
                 <MediumParagraph>Version: v0.1.42 </MediumParagraph>
               </IonItem>
+
+              {/* <IonItem
+                color="light"
+                detail={true}
+                button={true}
+                routerLink="/tabs/settings/notifications"
+                lines="none"
+              >
+                <IonIcon slot="start" icon={alarm}></IonIcon>
+                <MediumParagraph>Notifications</MediumParagraph>
+              </IonItem> */}
             </div>
           </div>
         </div>

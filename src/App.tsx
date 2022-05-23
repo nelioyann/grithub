@@ -50,15 +50,14 @@ import ViewTask from './components/Tasks/ViewTask';
 import Attributions from './pages/Attributions/Attributions';
 import Loader from './pages/Loader/Loader';
 import Alan from './components/AI/Alan';
+import Notifications from './pages/Settings/Notifications';
 
 const App: React.FC = () => {
   const { loading } = useAuth();
   const { habits, loadingHabits } = useHabits();
   let isAuth = firebaseAuth.currentUser !== null;
 
-  // console.log(loading)
   if (loading || isAuth && loadingHabits) {
-    console.log(loading, isAuth, loadingHabits);
     return (
       <IonApp>
         {/* <IonLoading isOpen={loading === loadingHabits === true} message="Loading..." /> */}
@@ -88,16 +87,6 @@ const App: React.FC = () => {
 
                 <Route path="/tabs" component={Tabs} />
 
-                {/* <PrivateRoute exact path="/tabs/habits" component={Tab1} />
-        <Route exact path="/tabs/stats">
-          <Tab2 />
-        </Route>
-        <Route exact path="/tabs/settings">
-          <Settings />
-        </Route>
-        <Route exact path="/tabs">
-          <Redirect to="/tabs/habits" />
-        </Route> */}
 
 
                 <Route exact={true} path="/new" component={New} />
@@ -136,19 +125,6 @@ const App: React.FC = () => {
 export default App;
 
 
-// const PrivateRout: React.FC<{
-//   component: React.FC,
-//   path: string,
-//   exact: boolean
-// }> = (props) => {
-//   const isAuth = firebaseAuth.currentUser !== null;
-//   return (
-//     isAuth ? (<Route path={props.path} exact={props.exact} component={props.component} />) :
-//       (<Redirect to="/login" />)
-
-//   )
-
-// }
 
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
   // const {user, loading} = useAuth();
@@ -175,20 +151,23 @@ const Tabs: React.FC = () => {
         <Route exact path="/tabs/settings">
           <Settings />
         </Route>
+        <Route exact path="/tabs/settings/notifications">
+          <Notifications />
+        </Route>
         <Route exact path="/tabs">
           <Redirect to="/tabs/habits" />
         </Route>
       </IonRouterOutlet>
       <IonTabBar className="bottom-tab-bar"  slot="bottom" >
-        <IonTabButton layout="icon-start" tab="tab1" href="/tabs/habits">
+        <IonTabButton layout="icon-top" tab="tab1" href="/tabs/habits">
           <IonIcon icon={calendarOutline} />
           <IonLabel>Today</IonLabel>
         </IonTabButton>
-        <IonTabButton layout="icon-start" tab="tab2" href="/tabs/stats">
+        <IonTabButton layout="icon-top" tab="tab2" href="/tabs/stats">
           <IonIcon icon={statsChartOutline} />
           <IonLabel>Stats</IonLabel>
         </IonTabButton>
-        <IonTabButton layout="icon-start" tab="tab3" href="/tabs/settings">
+        <IonTabButton layout="icon-top" tab="tab3" href="/tabs/settings">
           <IonIcon icon={settingsOutline} />
           <IonLabel>Settings</IonLabel>
         </IonTabButton>

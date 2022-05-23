@@ -97,10 +97,10 @@ const LoginPage: React.FC = () => {
                             Continue with email
                             </MediumButton>
                         </IonButton>
-                        <IonButton fill="solid" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" onClick={anonSignIn} >
+                        <IonButton mode="ios" fill="solid" style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" onClick={anonSignIn} >
                             <IonIcon className="ion-padding-horizontal" icon={walk} />
                             <MediumButton>
-                                Skip login
+                                Continue without an account
                             </MediumButton>
                         </IonButton>
                             </div>

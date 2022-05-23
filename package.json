@@ -6,6 +6,7 @@
     "@alan-ai/alan-sdk-web": "^1.8.28",
     "@capacitor/android": "^3.1.2",
     "@capacitor/core": "3.1.1",
+    "@capacitor/local-notifications": "^1.1.0",
     "@capacitor/status-bar": "^1.0.3",
     "@ionic/react": "^5.5.0",
     "@ionic/react-router": "^5.5.0",
