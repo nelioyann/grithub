@@ -71,7 +71,17 @@ import Alan from "../components/AI/Alan";
 import Content from "../components/Content/Content";
 import Lottie from "react-lottie";
 import newAnimation from "../pages/Onboarding/lottieFiles/newhabits.json";
+import styled from "styled-components";
+import Avatar from "boring-avatars";
 
+
+const AvatarWrapper = styled.span`
+
+
+  svg {
+  border-radius: 0.2rem;
+  }
+`
 
 const Tab1: React.FC = () => {
 
@@ -223,7 +233,7 @@ const Tab1: React.FC = () => {
       <Content>
         <div
           className="page-wrapper ion-padding-horizontal"
-          style={{ alignItems: "center", minHeight: "70vh" }}
+          style={{ alignItems: "center" }}
         >
           <div
             className="page-wrapper-content"
@@ -233,7 +243,15 @@ const Tab1: React.FC = () => {
               <div style={{ display: "grid", margin: "1em 0" }}>
 
                 <IonCard className="ion-margin-vertical" color="light" style={{ textAlign: "center", padding: "1em", display: "flex", flexDirection: "row", alignItems: "center", borderLeft: "2px solid var(--ion-color-primary)", gap: "1em", boxShadow: "0px 0px 0px 1px rgba(var(--ion-color-dark-rgb), 0.21)" }}>
-                  <IonIcon icon={todayOutline} style={{ fontSize: "2em", color: "var(--ion-color-dark-tint)" }} />
+                  <AvatarWrapper>
+                  <Avatar
+                    size={40}
+                    name={name !== "" ? name : "Stranger"}
+                    variant="beam"
+                    colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
+                    />
+                    </AvatarWrapper>
+                  {/* <IonIcon icon={todayOutline} style={{ fontSize: "2em", color: "var(--ion-color-dark-tint)" }} /> */}
                   <MediumParagraph>
                     Today, {todayDate()}
                   </MediumParagraph>

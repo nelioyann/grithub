@@ -70,7 +70,7 @@ const Settings: React.FC = () => {
 
         </IonToolbar>
       </IonHeader> */}
-      <Header name="Settings" icon={home} iconTarget="/tabs/habits" />
+      <Header name="Settings"  />
       <Content>
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content">
@@ -161,7 +161,7 @@ const Settings: React.FC = () => {
                 <MediumParagraph>Version: v0.1.42 </MediumParagraph>
               </IonItem>
 
-              <IonItem
+              {/* <IonItem
                 color="light"
                 detail={true}
                 button={true}
@@ -170,7 +170,7 @@ const Settings: React.FC = () => {
               >
                 <IonIcon slot="start" icon={alarm}></IonIcon>
                 <MediumParagraph>Notifications</MediumParagraph>
-              </IonItem>
+              </IonItem> */}
             </div>
           </div>
         </div>
