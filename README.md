@@ -4,7 +4,15 @@
 
 # Grithub
 
-An everyday Habit Tracker for achieving your long term goals. Inspired by Simone Giertz Everyday Calendar & the Github commit system.
+An free Habit Tracker for achieving your long term goals. 
+
+## Inspirations
+
+- Simone Giertz's Everyday Calendar 
+- Github commit system
+- Angela Duckworth's Grit
+
+
 
 
 
