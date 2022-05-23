@@ -16,8 +16,8 @@ interface HeaderProps {
 // style={{backgroundColor: "var(--ion-color-light)"}}
 const Header: React.FC<HeaderProps> = ({ name, icon, collapsible, iconTarget, withBackButton, backButtonLink = "tabs/habits" }) => {
     return (
-        <IonHeader mode="ios" collapse={collapsible ? "condense" : undefined} style={{ paddingTop: "2em", paddingBottom: "2em" }}>
-            <IonToolbar color="light"  >
+        <IonHeader mode="ios" collapse={collapsible ? "condense" : undefined} style={{ paddingTop: "2em", paddingBottom: "0.5em" }}>
+            <IonToolbar color="light" className="ion-no-border" >
                 {withBackButton &&
                     <IonButtons slot="start">
                         <IonBackButton color="dark" text="" defaultHref={backButtonLink} />

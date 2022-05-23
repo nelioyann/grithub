@@ -19,6 +19,7 @@ import dailyHabitsMockup from "./Images/dailyHabits.png"
 import { useDarkMode } from '../../Contexts/DarkModeContext';
 import OnboardingSlide, { IOnboardingSlide } from './OnboardingSlide';
 import Content from '../../components/Content/Content';
+import Header from '../../components/Headers/Header';
 
 const newhabitsOptions = { loop: true, animationData: outilAnimation, autoplay: true }
 const calendarOptions = { loop: true, animationData: calendarAnimation, autoplay: true }
@@ -87,7 +88,8 @@ const Onboarding: React.FC = () => {
     ]
     return (
         <IonPage>
-            <IonHeader className='ion-padding'>
+            <Header name="Grithub"/>
+            {/* <IonHeader className='ion-padding'>
                 <IonToolbar color="light">
                     <IonTitle>
                         <RowContainer style={{alignItems: "center", gap: "0.5em", justifyContent: "center"}}>
@@ -110,7 +112,7 @@ const Onboarding: React.FC = () => {
                         </RowContainer>
                     </IonTitle>
                 </IonToolbar>
-            </IonHeader>
+            </IonHeader> */}
             <Content>
                 <div className="page-wrapper" style={{ alignItems: 'center', minHeight: '90vh' }}>
 
