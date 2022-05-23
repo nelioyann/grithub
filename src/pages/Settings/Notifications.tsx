@@ -10,10 +10,10 @@ const Notifications = () => {
     const morningToggle = useRef<HTMLIonToggleElement>(null);
     const isScheduled = false;
     // const afternoonToggle = useRef<HTMLIonToggleElement>(null);
-    const handleNotification = (willSchedule: boolean) => {
+    const handleNotification = async (willSchedule: boolean) => {
         console.log("Showing notifications for morning", willSchedule);
         if (willSchedule) {
-            notifications.schedule();
+            await notifications.schedule();
             // notifications.isAccessGranted()
         }
     }
@@ -21,21 +21,31 @@ const Notifications = () => {
         <IonPage>
             <Header name="Notifications" withBackButton backButtonLink='/tabs/settings' />
             <Content>
-                <IonItem color="light" lines="none">
-                    <IonIcon slot="start" icon={cafeOutline}></IonIcon>
-                    <MediumParagraph>Morning motivation</MediumParagraph>
-                    <IonToggle
-                        ref={morningToggle}
-                        mode="ios"
-                        checked={isScheduled}
-                        id="themeToggle"
-                        slot="end"
-                        onIonChange={(e) => handleNotification(e.detail.checked)}
-                    />
-                </IonItem>
-                <IonItem button color="light" lines="none" onClick={() => notifications.requestAccess()}>
-                    Request permission to send notifications
-                </IonItem>
+                <div
+                    className="page-wrapper ion-padding-horizontal"
+                //   style={{ alignItems: "center"}}
+                >
+                    <div
+                        className="page-wrapper-content"
+                        style={{ position: "relative" }}
+                    >
+                        <IonItem color="light" lines="none">
+                            <IonIcon slot="start" icon={cafeOutline}></IonIcon>
+                            <MediumParagraph>Morning motivation</MediumParagraph>
+                            <IonToggle
+                                ref={morningToggle}
+                                mode="ios"
+                                checked={isScheduled}
+                                disabled={true}
+                                id="themeToggle"
+                                slot="end"
+                                onIonChange={(e) => handleNotification(e.detail.checked)}
+                            />
+                        </IonItem>
+                        <p>This feature is currently in development</p>
+                        
+                    </div>
+                </div>
             </Content>
         </IonPage>
     )
