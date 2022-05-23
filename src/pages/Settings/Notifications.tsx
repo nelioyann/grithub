@@ -13,7 +13,7 @@ const Notifications = () => {
     const handleNotification = (willSchedule: boolean) => {
         console.log("Showing notifications for morning", willSchedule);
         if (willSchedule) {
-            notifications.testSchedule();
+            notifications.schedule();
             // notifications.isAccessGranted()
         }
     }

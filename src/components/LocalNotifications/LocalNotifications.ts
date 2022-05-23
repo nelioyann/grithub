@@ -12,29 +12,28 @@ class Notifications{
         });
     }
 
-    public testSchedule = async () => {
-        const options: ScheduleOptions = {
-            notifications: [
-                {
-                    title: 'First notification',
-                    body: 'This is the first notification',
-                    id: 12,
-                    schedule: { at: new Date(Date.now() + 5000) }
-                },
-                {
-                    title: 'Second notification',
-                    body: 'This is the second notification',
-                    id: 23,
-                    schedule: { at: new Date(Date.now() + 10000) }
-                }
-            ]
-        };
-        const result = await LocalNotifications.schedule(options);
-        console.log('Scheduled notifications: ', result);
-    }
+    // public testSchedule = async () => {
+    //     const options: ScheduleOptions = {
+    //         notifications: [
+    //             {
+    //                 title: 'First notification',
+    //                 body: 'This is the first notification',
+    //                 id: 12,
+    //                 schedule: { at: new Date(Date.now() + 5000) }
+    //             },
+    //             {
+    //                 title: 'Second notification',
+    //                 body: 'This is the second notification',
+    //                 id: 23,
+    //                 schedule: { at: new Date(Date.now() + 10000) }
+    //             }
+    //         ]
+    //     };
+    //     const result = await LocalNotifications.schedule(options);
+    //     console.log('Scheduled notifications: ', result);
+    // }
     public isAccessGranted = async () => {
         const { display } = await LocalNotifications.checkPermissions();
-        // console.log('Access granted?', display);
         return display === 'granted';
     };
 
@@ -43,28 +42,42 @@ class Notifications{
      * @returns {Promise<void>}
      */
     public requestAccess = async () => {
-        if (!(await this.isAccessGranted())) return;
+        if ((await this.isAccessGranted())) {
+            console.log('Permission already granted');
+            return;
+        };
         await LocalNotifications.requestPermissions();
     };
 
-    public schedule = async (hour: number, minute: number) => {
+    public schedule = async (hour: number = 8, minute: number = 0) => {
         try {
-            if (!(await this.isAccessGranted())) return;
-            await LocalNotifications.schedule(
+            //Request/ check permissions
+            if ( !((await LocalNotifications.requestPermissions()).display === 'granted') ) return;
+            
+            // Clear old notifications in prep for refresh 
+            const pending = await LocalNotifications.getPending();
+            if (pending.notifications.length > 0) {
+                await LocalNotifications.cancel(pending);
+            }
+
+            const result = await LocalNotifications.schedule(
                 {
                     notifications: [{
                         title: "Grithub",
-                        body: "Daily scheduled Notifications",
+                        body: "Daily reminder to check your habits",
                         schedule: {
-                            on: {
-                                hour,
-                                minute
-                            },
+                            // on: {
+                            //     hour,
+                            //     minute
+                            // },
+                            every: "minute",
+                            count: 10
                         },
-                        id: 12,
+                        id: new Date().getTime(),
                     }]
                 }
             );
+            console.log('Scheduled notifications result: ', result);
     
         } catch (e) {
             console.log(e);
