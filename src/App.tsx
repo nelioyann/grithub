@@ -10,7 +10,7 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { calendarOutline, settingsOutline, statsChartOutline } from 'ionicons/icons';
+import { calendarOutline, checkboxOutline, gridOutline, settingsOutline, statsChartOutline } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 
@@ -160,12 +160,12 @@ const Tabs: React.FC = () => {
       </IonRouterOutlet>
       <IonTabBar className="bottom-tab-bar"  slot="bottom" >
         <IonTabButton layout="icon-top" tab="tab1" href="/tabs/habits">
-          <IonIcon icon={calendarOutline} />
+          <IonIcon icon={checkboxOutline} />
           <IonLabel>Today</IonLabel>
         </IonTabButton>
         <IonTabButton layout="icon-top" tab="tab2" href="/tabs/stats">
-          <IonIcon icon={statsChartOutline} />
-          <IonLabel>Stats</IonLabel>
+          <IonIcon icon={gridOutline} />
+          <IonLabel>Logs</IonLabel>
         </IonTabButton>
         <IonTabButton layout="icon-top" tab="tab3" href="/tabs/settings">
           <IonIcon icon={settingsOutline} />

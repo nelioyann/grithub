@@ -21,6 +21,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
 
     const { habits, loadingHabits } = useHabits();
     const incompletedHabits = habits.filter(habit => !habit.dates.includes(todayDateString))
+    const completedHabits = habits.filter(habit => habit.dates.includes(todayDateString))
 
     // a ref variable to handle the current slider
     const slider = useRef<HTMLIonSlidesElement>(null);
@@ -63,7 +64,7 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     </IonSegmentButton>
                     <IonSegmentButton value="1">
                         <IonLabel style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                            <span>All</span>
+                            <span>Completed</span>
                         </IonLabel>
                     </IonSegmentButton>
                 </IonSegment>
@@ -101,21 +102,22 @@ const SegmentedTasks: React.FC<ISegmentedTasks> = ({ inView, onClickHandler }) =
                     </IonSlide>
                     <IonSlide >
                         {!loadingHabits && (
-                            habits.length > 0 ?
+                            completedHabits.length > 0 ?
                                 (
                                     <div className="segmentedTasksGrid ion-no-border" >
-                                        {habits.map((habit, index) => (
-                                            <TaskItem confetti={true} id={habit.id} key={`habits${index}`} taskIndex={index} inView={inView} onClickHandler={() => onClickHandler(habit)} />
+                                        {completedHabits.map((habit, index) => (
+                                            <TaskItem confetti={true} id={habit.id} taskIndex={index} key={`completedhabits${index}`} inView={inView} onClickHandler={() => onClickHandler(habit)} />
                                         ))}
                                     </div>
                                 )
                                 :
                                 (
                                     <ColumnContainer>
-                                        <Lottie isClickToPauseDisabled={true} options={completedOptions} height={230} width={300} />
                                         <Heading6>
-                                            No habits
+
+                                            Seems like you haven't done anything yet today
                                         </Heading6>
+                                        <Lottie isClickToPauseDisabled={true} options={loadingOptions} height={230} width={300} />
                                     </ColumnContainer>
 
                                 )

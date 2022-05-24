@@ -8,7 +8,7 @@ import { toast } from '../../components/Toasts/Toast';
 import { provider, useAuth } from '../../Contexts/authProvider';
 import { NameContext } from '../../Contexts/NameContext';
 import { firebaseAuth, firebaseStore } from '../../initFirebase';
-import { Heading4, Heading5, LargeButton, MediumParagraph } from '../../theme/globalStyles';
+import { Heading4, Heading5, LargeButton, MediumParagraph, SmallParagraph } from '../../theme/globalStyles';
 
 const CreateAccountPage = () => {
   const history = useHistory()
@@ -71,12 +71,15 @@ const CreateAccountPage = () => {
 
 
           <div className="page-wrapper-content ">
-            
-
-        
 
 
-            <Heading5>Create an account </Heading5>
+
+
+
+            <Heading5 style={{ textAlign: "center" }}>Create an account </Heading5>
+            <SmallParagraph style={{ textAlign: "center" }}>
+              So your data can be synced across your devices
+            </SmallParagraph>
             <IonCard>
 
               <IonItem color="">
@@ -117,7 +120,7 @@ const CreateAccountPage = () => {
                 <IonButton onClick={doSignUp}>Create Account</IonButton>
 
               </div>
-              <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center"}}>{"Already have an account? "}
+              <MediumParagraph style={{ margin: "0.5em auto", textAlign: "center" }}>{"Already have an account? "}
 
                 <IonRouterLink
                   routerLink="/login"
@@ -126,13 +129,13 @@ const CreateAccountPage = () => {
                   {"Log in"}
                 </IonRouterLink>
               </MediumParagraph>
-              <MediumParagraph style={{margin: "16px", textAlign: "center"}}>
+              <MediumParagraph style={{ margin: "16px", textAlign: "center" }}>
                 {"By creating an account you agree to our "}
                 <IonRouterLink href="https://grithub.fr/terms">
-                    Privacy Policy
+                  Privacy Policy
                 </IonRouterLink> {"and "}
                 <IonRouterLink href="https://grithub.fr/terms">
-                    Terms of use
+                  Terms of use
                 </IonRouterLink>
               </MediumParagraph>
             </IonCard>

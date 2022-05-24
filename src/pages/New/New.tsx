@@ -92,7 +92,7 @@ const EmojiPicker: React.FC<{
   return (
     // <div className="ion-padding-horizontal" style={{ width: '100%' }}>
 
-    <div style={{ height: "100%" }}>
+    <div style={{ height: "100%", width: "100%" }}>
       <div
         style={{
           display: "flex",

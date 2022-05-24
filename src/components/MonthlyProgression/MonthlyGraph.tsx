@@ -57,7 +57,7 @@ const MonthlyGraph: React.FC<IMonthlyGraph> = ({ habit }) => {
                 </ul>
                 <div
                     className="helperGraph ion-padding"
-                    style={{ display: "grid", gridTemplateColumns: "1fr 1fr", maxWidth: "15em", margin: "auto" }}
+                    style={{ display: "flex", flexWrap: "wrap", margin: "auto", gap: "1em", justifyContent: "center" }}   
                 >
                     <RowContainer>
                         <IonIcon color="tertiary" icon={square}></IonIcon>
@@ -72,7 +72,7 @@ const MonthlyGraph: React.FC<IMonthlyGraph> = ({ habit }) => {
                         </SmallParagraph>
                     </RowContainer>
                     <RowContainer>
-                        <IonIcon color="medium" icon={square}></IonIcon>
+                        <IonIcon style={{border: "1px dashed var(--ion-color-dark)"}} color="medium" icon={square}></IonIcon>
                         <SmallParagraph style={{ paddingLeft: "0.3em" }}>
                             Not tracked
                         </SmallParagraph>

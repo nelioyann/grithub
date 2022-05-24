@@ -14,14 +14,15 @@ const MonthlyGraphs: React.FC = () => {
         initialSlide: 0,
         speed: 400,
         spaceBetween: 8,
-        slidesPerView: 1,
+        slidesPerView: 1.1,
 
     }
     const {habits} = useHabits()
     return (
         <div style={{  margin: "3em 0" }}>
-            <Heading5 style={{ margin: "1em auto", textAlign: "center", color: "var(--ion-color-primary)"}}>
-            {todayDate("month")}
+            <Heading5 style={{ margin: "1em auto", textAlign: 'center'}}>
+            {/* {todayDate("month")} */}
+            What you have been up to this month
             </Heading5>
             {habits?.length != 0 ? (
                 <IonSlides options={sliderOptions} pager={true}>

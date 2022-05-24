@@ -246,7 +246,7 @@ const Tab1: React.FC = () => {
                   <AvatarWrapper>
                   <Avatar
                     size={40}
-                    name={name !== "" ? name : "Stranger"}
+                    name={name !== "" ? name : "Nameless Griter"}
                     variant="beam"
                     colors={["#8ecae6", "#219ebc", "#023047", "#ffb703", "#fb8500"]}
                     />

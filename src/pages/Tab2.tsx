@@ -23,7 +23,7 @@ const Tab2: React.FC = () => {
 
   return (
     <IonPage >
-      <Header name='Statistics' />
+      <Header name='Logs' />
       <Content>
         <div className="page-wrapper ion-padding-horizontal" style={{ alignItems: "center" }}>
           <div className="page-wrapper-content ">
