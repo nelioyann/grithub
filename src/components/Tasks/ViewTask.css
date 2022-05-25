@@ -132,6 +132,7 @@
 .squares li.uncompleted[data-level="untracked"] {
     color: var(--ion-color-dark);
     border: none;
+    border: 1px dashed var(--ion-color-dark);
 }
 
 .squares li[data-level="2"] {

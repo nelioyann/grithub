@@ -10,6 +10,7 @@ import MonthlyGraph from './MonthlyGraph'
 //     habits: IHabit[];
 // }
 const MonthlyGraphs: React.FC = () => {
+    const {habits} = useHabits()
     const sliderOptions = {
         initialSlide: 0,
         speed: 400,
@@ -17,7 +18,6 @@ const MonthlyGraphs: React.FC = () => {
         slidesPerView: 1.1,
 
     }
-    const {habits} = useHabits()
     return (
         <div style={{  margin: "3em 0" }}>
             <Heading5 style={{ margin: "1em auto", textAlign: 'center'}}>

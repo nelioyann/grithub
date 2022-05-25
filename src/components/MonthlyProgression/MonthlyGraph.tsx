@@ -72,7 +72,7 @@ const MonthlyGraph: React.FC<IMonthlyGraph> = ({ habit }) => {
                         </SmallParagraph>
                     </RowContainer>
                     <RowContainer>
-                        <IonIcon style={{border: "1px dashed var(--ion-color-dark)"}} color="medium" icon={square}></IonIcon>
+                        <IonIcon style={{border: "1px dashed var(--ion-color-dark)"}} color="light" icon={square}></IonIcon>
                         <SmallParagraph style={{ paddingLeft: "0.3em" }}>
                             Not tracked
                         </SmallParagraph>

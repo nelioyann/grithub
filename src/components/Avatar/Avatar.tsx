@@ -22,7 +22,7 @@ const UserAvatar: React.FC<IAvatar> = ({ username, size, email, isAButton }) => 
       width: "100%", margin: "1em auto", display: "flex", gap: "1em", justifyContent: "flex-start", borderLeft: "2px solid var(--ion-color-primary)",
       boxShadow: "0px 0px 0px 1px rgba(var(--ion-color-dark-rgb), 0.21)", flexDirection: "column", alignItems: "center"
     }}>
-      <RowContainer style={{gap: "1em"}}>
+      <RowContainer style={{gap: "1em", width: "100%"}}>
 
       <StyledWrapper
         style={{

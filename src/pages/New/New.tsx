@@ -211,16 +211,16 @@ const New: React.FC = () => {
                   </Heading6>
 
                   <div>
-                    <StyledItem lines="none">
+                    <IonItem >
                       <IonLabel position="stacked">
                         {chosenEmoji} Everyday, I will...
                       </IonLabel>
-                      <StyledInput
+                      <IonInput
                         onIonChange={(e: any) => handleChange(e.detail.value)}
                         value={newHabit}
                         placeholder="Make my bed"
-                      ></StyledInput>
-                    </StyledItem>
+                      ></IonInput>
+                    </IonItem>
                   </div>
                 </div>
 

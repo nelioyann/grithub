@@ -48,11 +48,11 @@ const Name: React.FC = () => {
                                 How should we refer to you ?
                             </Heading6>
 
-                            <IonItem className="ion-margin-vertical">
-                                <IonLabel position="floating">Preferred name</IonLabel>
+                            <IonItem color='medium' className="ion-margin-vertical">
+                                <IonLabel position="stacked">Preferred name</IonLabel>
                                 <IonInput onIonChange={(e) => handleChange(e)} value={nameInput}></IonInput>
                             </IonItem>
-                            <IonButton onClick={(e) => handleSave(e)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
+                            <IonButton mode="ios" onClick={(e) => handleSave(e)} style={{ "--border-radius": "16px", "--padding-bottom": "16px", "--padding-top": "16px" }} className="ion-margin-top" size="large" expand="block" fill="solid" color="primary">
                                 {/* routerLink="/tabs/habits" */}
                                 <LargeButton >
 

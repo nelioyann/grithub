@@ -97,7 +97,7 @@ const ViewTask: React.FC = () => {
           
         </IonToolbar>
       </IonHeader> */}
-      <Header name={habit?.name} withBackButton backButtonLink="tabs/habits"/>
+      <Header name="" withBackButton backButtonLink="tabs/habits"/>
       <Content>
         <div className="page-wrapper ion-padding-horizontal">
           <div className="page-wrapper-content ">
@@ -125,14 +125,17 @@ const ViewTask: React.FC = () => {
               className="ion-margin-vertical"
             >
               <IonSlide>
-              <Heading5>{todayDate("month")}</Heading5>
+              <Heading5>{
+                habit?.name
+              // todayDate("month")
+              }</Heading5>
 
               <MonthlyGraph habit={habit} />
                 
               </IonSlide>
               <IonSlide>
                 {/* <IonCard> */}
-                <Heading5>This year</Heading5>
+                <Heading5>{habit?.name}</Heading5>
                 <div className="yearGraph">
                   <ul className="months">
                     <li>Jan</li>
