@@ -158,7 +158,7 @@ const Settings: React.FC = () => {
                 <MediumParagraph >Attributions</MediumParagraph>
               </IonItem> */}
               <IonItem color="light" lines="none" button={true}>
-                <MediumParagraph>Version: v0.1.44 </MediumParagraph>
+                <MediumParagraph>Version: v0.1.45 </MediumParagraph>
               </IonItem>
 
               {/* <IonItem
